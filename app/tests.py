@@ -55,8 +55,7 @@ class test_db (TestCase):
        session_token.add(new_r)
        session_token.commit()
 
-       restaurant_1 = session_token.query.filter ( Restaurants.name == "Little\
-                                                  Italy 2")
+       restaurant_1 = session_token.query(Restaurants).filter_by (name == "Little Italy 2")
 
        assert not (session_token.query(Restaurants) is None)
 
@@ -98,9 +97,59 @@ class test_db (TestCase):
 
     def test_4_Locations_addition(self):
         global session_token
+        '''
+        Testing our Wrapper to add records on Locations
+
+        '''
+        add_Location (
+                        session_token,
+                        zipcode = 77777,
+                        average_rating = 3,
+                        average_price = 2,
+                        adjacent_location = 77778,
+                        average_health_rating = 88,
+                        highest_price = "$$",
+                        popular_food_type = "Italian",
+                        highest_rated_restaurant = "Little Italy"
+                     )
+
+        assert not (session_token.query(Locations) is  None)
 
     def test_5_Locations_manual_integrity(self):
         global session_token
+        '''
+        Testing query data on Locations
+
+        '''
+        global session_token
+
+        new_l = (
+                session_token,
+                zipcode = 77777,
+                average_rating = 3,
+                average_price = 2,
+                adjacent_location = 77778,
+                average_health_rating = 88,
+                highest_price = "$$",
+                popular_food_type = "Italian",
+                highest_rated_restaurant = "Little Italy"
+                )
+
+       session_token.add(new_l)
+       session_token.commit()
+
+       loc = session_token.query(Locations).filter_by (zipcode == 77777)
+
+       assert not (session_token.query(Locations) is None)
+
+       assert (loc.zipcode == 77777)
+       assert (loc.average_rating == 3)
+       assert (loc.average_price == 2)
+       assert (loc.adjacent_location == 77778)
+       assert (loc.highest_price == "$$")
+       assert (loc.popular_food_type == "Italian")
+       assert (loc.highest_rated_restaurant == "Little Italy")
+
 
     def test_6_Locations_delete (self):
         global session_token
