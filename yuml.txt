@@ -1,6 +1,0 @@
-%2F%2F idb diagram, 
-
-[Restaurants|name: string; location: string; price: string; rating: float; hours: string; food type: string; recent review: string; image: .jpg]<-<>->[Food Types| food type: string; average price: string; average rating: float; highest rated restaurant: string; best location: int; image: .jpg],[Locations| zip code: int; average price: string; average rating: float; popular food type: string; highest rated restaurant: string; cheapest restaurant: string] <>->[Restaurants],[Locations] <-<>-> [Food Types], [Reviews| review id: int; date: string; rating: float; username: string; restaurant id: int; location: int; review: string; image: .jpg], [Reviews] <-<>-> [Restaurants], [Reviews] <>-> [Locations]
-
-
-https://yuml.me/a56817a9

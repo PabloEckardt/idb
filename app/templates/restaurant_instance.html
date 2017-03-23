@@ -6,17 +6,26 @@
 <header>
   <h1 class = "detailView">{{ instance["name"] }}</h1>
 </header>
+<div class="col-sm-12">
 
-<nav class="nav">
+
+<article class="article">
+<div class = "row">
+<div class = "col-sm-4">
+ <div class="thumbnail_container">
+  <div class="thumbnail">
+  <img src="{{ url_for('static', filename='img/' + instance['img'])}}" align="right">
+  </div>
+ </div>
+ </div>
+ <div class = "col-sm-8">
+ <nav class="nav">
 <ul>
   <li><a href="/Food_Types/{{instance['food_type'] }}">Go to {{instance["food_type"] }}</a></li>
   <li><a href="/Locations/{{instance['zip'] }}">Go to {{instance["zip"] }}</a></li>
   <li><a href="/Reviews/{{instance['id']}}">Go to Review</a></li>
 </ul>
 </nav>
-
-<article class="article">
-  <p> <img src="{{ url_for('static', filename='img/' + instance['img'])}}" align="right"> </p>
   <h2> Food Type </h2>
   <a href="/Food_Types/{{instance['food_type'] }}"> {{ instance["food_type"] }} </a>
 
@@ -34,9 +43,11 @@
 
   <h2> Recent Review </h2>
   <p> "{{ instance["last_review"] }}" </p>
+  </div>
 </article>
-
-<footer>SWE Phase 1</footer>
+</div>
+</div>
+<footer></footer>
 </div>
 
 </body>

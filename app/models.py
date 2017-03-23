@@ -87,8 +87,8 @@ class Locations(Base):
 
 
 # create an engine that stores data in the local directory's db file
-db_name = 'sqlite:///sql_example.db'
-engine = create_engine(db_name)
+#db_name = 'sqlite:///sql_example.db'
+#engine = create_engine(db_name)
 
 # Create all tables in the engine. Equivalent to Create Table in sql
-Base.metadata.create_all(engine)
+#Base.metadata.create_all(engine)

@@ -1,0 +1,13 @@
+%2F%2F idb diagram, 
+
+[Restaurants|name: string; location: string; price: string; rating: float; hours: string; food type:
+string; recent review: string; image: .jpg]<-<>->[Food Types| food type: string; average price:
+string; average rating: float; highest rated restaurant: string; best location: int; country of
+origin: string; image url: string; open restaurants: bool],[Locations| zip code: int; average price: string; average rating: float; adjacent location:
+int; highest price: string; average health rating: int; popular food type: string; highest rated
+restaurant: string; cheapest restaurant: string] <>->[Restaurants],[Locations] <-<>-> [Food Types],
+[Reviews| review id: int; date: string; rating: float; username: string; restaurant id: int;
+location: int; review: string; profile picture url: string; restaurant pictures url: string], [Reviews] <-<>-> [Restaurants], [Reviews] <>-> [Locations]
+
+
+https://yuml.me/a56817a9
