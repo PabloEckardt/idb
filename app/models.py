@@ -91,4 +91,4 @@ class Locations(Base):
 #engine = create_engine(db_name)
 
 # Create all tables in the engine. Equivalent to Create Table in sql
-Base.metadata.create_all(engine)
+#Base.metadata.create_all(engine)
