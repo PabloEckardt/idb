@@ -13,28 +13,28 @@ ifeq ($(shell uname), Darwin)          # Apple
     PIP      := pip3.5
     PYLINT   := pylint
     COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
+    PYDOC    := pydoc
     AUTOPEP8 := autopep8
 else ifeq ($(CI), true)                # Travis CI
     PYTHON   := python2.7
     PIP      := pip3.5
     PYLINT   := pylint
     COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
+    PYDOC    := pydoc
     AUTOPEP8 := autopep8
 else ifeq ($(shell uname -p), unknown) # Docker
     PYTHON   := python2.7
     PIP      := pip3.5
     PYLINT   := pylint
     COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
+    PYDOC    := pydoc
     AUTOPEP8 := autopep8
 else                                   # UTCS
     PYTHON   := python2.7
     PIP      := pip3
     PYLINT   := pylint
     COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
+    PYDOC    := pydoc
     AUTOPEP8 := autopep8
 endif
 
