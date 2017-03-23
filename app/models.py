@@ -7,12 +7,17 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+# -------------
+# Reviews 
+# -------------
 
 class Reviews(Base):
+    """
+    Primary Key = review_id (Surrogate key)
+    Foreign Keys: to Locations Table, and Restaurants Table
+    """
     __tablename__ = 'reviews'
 
-    # Unless we have both a name and a time of publication (to the minute)
-    # we have to use another surrogate key
     review_id = Column(Integer, primary_key=True)
 
     date = Column(String(250), nullable=False)
@@ -27,8 +32,15 @@ class Reviews(Base):
     zipcode = Column(Integer, ForeignKey('locations.zipcode'), nullable=False)
     location = relationship("Locations", foreign_keys=[zipcode])
 
+# -------------
+# Food Types
+# -------------
 
 class Food_Types(Base):
+    """
+    Primary Key = food_type (Natural Key)
+    Foreign Keys: to Locations Table, and Restaurants Table
+    """
     __tablename__ = 'food_types'
 
     food_type = Column(String(250), primary_key=True)
@@ -45,12 +57,16 @@ class Food_Types(Base):
     best_location = Column(Integer, ForeignKey("locations.zipcode"), nullable=False)
     location = relationship("Locations", foreign_keys=[best_location])
 
+# -------------
+# Restaurants
+# -------------
 
 class Restaurants(Base):
+    """
+    Primary Key = id (Surrogate key)
+    Foreign Keys: to Food_Types Table, and Reviews Table
+    """
     __tablename__ = 'restaurants'
-
-    # columns
-    # We need a surrogate key because name is not a unique key
 
     id = Column(Integer, primary_key=True)
 
@@ -66,8 +82,15 @@ class Restaurants(Base):
     Recent_Review = Column(String(250), ForeignKey('reviews.review_id'), nullable=False)
     review = relationship("Reviews", foreign_keys=[Recent_Review])
 
+# -------------
+# Locations
+# -------------
 
 class Locations(Base):
+    """
+    Primary Key = Zipcode (Natural Key)
+    Foreign Keys: to Food_Types Table, and Restaurants Table
+    """
     __tablename__ = 'locations'
 
     # columns
