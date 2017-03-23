@@ -19,7 +19,7 @@ else ifeq ($(CI), true)                # Travis CI
     PYTHON   := python2.7
     PIP      := pip
     PYLINT   := pylint
-    COVERAGE := coverage-3.5
+    COVERAGE := coverage
     PYDOC    := pydoc
     AUTOPEP8 := autopep8
 else ifeq ($(shell uname -p), unknown) # Docker
