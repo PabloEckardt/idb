@@ -327,6 +327,35 @@ class test_db (TestCase):
 
     def test_12_Food_Type_delete (self):
         global session_token
+        '''
+        Testing Deletion of Records on Food Types
+
+        '''
+        global session_token
+
+        new_f = Food_Types (
+                        session_token,
+                        food_type= "Italian",
+                        average_price= 3,
+                        average_rating= 3,
+                        country_of_origin = "Italy",
+                        image_url= "/food_types/italian/",
+                        open_restaurants = 1,
+                        highest_rated_restaurant = "Little Italy",
+                        best_location = 78787
+                        )
+
+        session_token.add(new_f)
+        session_token.commit()
+
+        f = session_token.query(Food_Types).filter_by(food_type = "Italian").first()
+
+        session_token.delete(f)
+        session_token.commit()
+
+        f = session_token.query(Food_Types).filter_by(food_type = "Italian").first()
+
+        assert (f is None)
 # ----
 # main
 # ----
