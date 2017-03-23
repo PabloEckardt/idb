@@ -1,10 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 # import our models
-from models.py import Restaurants, Locations, Food_types, Reviews, Base
+from models import Restaurants, Locations, Food_Types, Reviews, Base
 
-absolute_path = 'sqlite:////home/pablo/git/idb/'
-db_name = 'alchemy_test_1'
+#absolute_path = 'sqlite:////home/pablo/git/idb/'
+#db_name = 'alchemy_test_1'
 
 
 # Bind the engine to the metadata of the Base class so that the
@@ -18,51 +18,71 @@ def init_session():
 
 
 def add_restaurant(session_obj, name, location, price, rating, hours,
-                   food_type, recent_review):
+                   food_type, Recent_Review):
+
     new_restaurant = Restaurants(name=name,
                                  location=location,
                                  price=price,
                                  rating=rating,
                                  hours=hours,
                                  food_type=food_type,
-                                 recent_review=recent_review)
+                                 Recent_Review=Recent_Review)
 
     session_obj.add(new_restaurant)
     session_obj.commit()
 
 
 def add_location(session_obj, zipcode, average_price, popular_food_type,
-                 highest_rated_restaurant, lowest_rated_restaurant):
-    new_location = Locations(zipcode=zipcode,
+                 highest_rated_restaurant, lowest_rated_restaurant,
+                average_rating, average_health_rating, adjacent_location):
+    new_location = Locations(
+                             average_rating=average_rating,
                              average_price=average_price,
+                             ajacent_location=adjacent_location,
+                             average_health_rating=average_health_rating,
+                             zipcode=zipcode,
                              popular_food_type=popular_food_type,
-                             highest_rated_restaurant=highest_rated_restaurant,
-                             lowest_rated_restaurant=lowest_rated_restaurant)
+                             highest_rated_restaurant=highest_rated_restaurant
+                            )
 
     session_obj.add(new_location)
     session_obj.commit()
 
 
-def add_food_type(session_obj, food_type, average_price, average_rating,
-                  highest_rated_restaurant, best_location):
-    new_food_type = Food_types(food_type=food_type,
-                               average_rating=average_rating,
+def add_food_type(session_obj, food_type, average_price,
+                  average_rating, country_of_origin,
+                  image_url, open_restaurants,
+                  highest_rated_restaurant, best_location,):
+
+    new_food_type = Food_types(
+                               food_type=food_type,
                                average_price=average_price,
+                               average_rating=average_rating,
+                               country_of_origin=country_of_origin,
+                               image_url=image_url,
+                               open_restaurants=open_restaurants,
                                highest_rated_restaurant=highest_rated_restaurant,
-                               best_location=best_location)
+                               best_location=best_location
+                              )
 
     session_obj.add(new_food_type)
     session_obj.commit()
 
 
-def add_review(session_obj, date, rating, username, restaurant_id,
-               zipcode):
+def add_review(session_obj, date, rating, username, profile_picture_url,
+               restaurant_id, restaurant_pictures_url, zipcode):
+
     # I realized that having zipcode and restaurant id is wasteful.
-    new_review = Reviews(date=date,
+    new_review = Reviews(
+                         date=date,
                          rating=rating,
                          username=username,
+                         profile_picture_url=profile_picture_url,
+                         restaurant_pictures_url=restaurant_pictures_url,
                          restaurant_id=restaurant_id,
-                         zipcode=zipcode)
+                         zipcode=zipcode
+                        )
+
     session_obj.add(new_review)
     session_obj.commit()
 

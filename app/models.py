@@ -14,9 +14,12 @@ class Reviews(Base):
     # Unless we have both a name and a time of publication (to the minute)
     # we have to use another surrogate key
     review_id = Column(Integer, primary_key=True)
+
     date = Column(String(250), nullable=False)
     rating = Column(Integer, nullable=False)
     username = Column(String(250), nullable=False)
+    profile_picture_url = Column(String(250), nullable=False)
+    restaurant_pictures_url = Column(String(250), nullable=False)
 
     restaurant_id = Column(Integer, ForeignKey('restaurants.id'), nullable=False)
     restaurant = relationship("Restaurants", foreign_keys=[restaurant_id])
@@ -29,8 +32,12 @@ class Food_Types(Base):
     __tablename__ = 'food_types'
 
     food_type = Column(String(250), primary_key=True)
+
     average_price = Column(Integer, nullable=False)
     average_rating = Column(Integer, nullable=False)
+    country_of_origin = Column(String(250), nullable=False)
+    image_url = Column(String(250), nullable=False)
+    open_restaurants = Column(Integer, nullable=True)
 
     highest_rated_restaurant = Column(Integer, ForeignKey('restaurants.id'), nullable=False)
     restaurant = relationship("Restaurants", foreign_keys=[highest_rated_restaurant])
@@ -46,6 +53,7 @@ class Restaurants(Base):
     # We need a surrogate key because name is not a unique key
 
     id = Column(Integer, primary_key=True)
+
     name = Column(String(250), nullable=False)
     location = Column(String(250), nullable=False)
     price = Column(Integer, nullable=False)
@@ -64,7 +72,12 @@ class Locations(Base):
 
     # columns
     zipcode = Column(Integer, primary_key=True)
+
+    average_rating = Column(Integer, nullable=False)
     average_price = Column(Integer, nullable=False)
+    adjacent_location = Column (Integer, nullable=False)
+    average_health_rating = Column(Integer,nullable=False)
+    highest_price = Column(String(250), nullable=False)
 
     popular_food_type = Column(String(250), ForeignKey('food_types.food_type'), nullable=False)
     food = relationship("Food_Types", foreign_keys=[popular_food_type])
