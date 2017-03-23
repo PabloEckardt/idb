@@ -4,6 +4,7 @@ language: python
 
 python:
     - "3.5"
+      "2.7"
     
 before_install:
     - pip install --upgrade pip
@@ -13,7 +14,6 @@ install:
     - pip install coverage
     - pip install numpy
     - pip install pylint
-    - pip install sqlalchemy
       pip install -r requirements.txt
     
 before_script:
