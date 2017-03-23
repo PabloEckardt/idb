@@ -60,33 +60,43 @@ restaurant_db=[
 location_db=[
     {"zip": "78701",
     "average_price": "$$",
+    "average_rating": "4",
     "popular_food_type": "Italian",
     "highest_rated_restaurant": "Little Italy",
-    "lowest_rated_restaurant": "Little Italia"
+    "highest_rated_restaurant_id": "1",
+    "cheapest_restaurant": "Niki's Pizza"
     },
     {"zip": "78702", 
     "average_price": "$$$",
+    "average_rating": "5",
     "popular_food_type": "Mediterranean",
     "highest_rated_restaurant": "Gato",
-    "lowest_rated_restaurant": "Kitty"
+    "highest_rated_restaurant_id": "2",
+    "cheapest_restaurant": "Verts"
     },
     {"zip": "78703", 
     "average_price": "$",
+    "average_rating": "3",
     "popular_food_type": "American",
     "highest_rated_restaurant": "Stack Burgers",
-    "lowest_rated_restaurant": "Piled Sandwiches"
+    "highest_rated_restaurant_id": "3",
+    "cheapest_restaurant": "McDonalds"
     },
     {"zip": "78704", 
     "average_price": "$$",
+    "average_rating": "2",
     "popular_food_type": "Indian",
     "highest_rated_restaurant": "Biryani",
-    "lowest_rated_restaurant": "Mcdonalds"
+    "highest_rated_restaurant_id": "4",
+    "cheapest_restaurant": "Tarka"
     },
     {"zip": "78705", 
     "average_price": "$",
+    "average_rating": "4.5",
     "popular_food_type": "Chinese",
     "highest_rated_restaurant": "Ho ho Chinese BBQ",
-    "lowest_rated_restaurant": "Panda Express"
+    "highest_rated_restaurant_id": "5",
+    "cheapest_restaurant": "Panda Express"
     }]
 
 food_type_db=[
@@ -94,30 +104,35 @@ food_type_db=[
      "average_price": "$",
      "average_rating": "3",
      "highest_rated_restaurant": "Ho Ho chinese BBQ",
+     "highest_rated_restaurant_id": "5",
      "best_location": "78705"
     },
     {"food_type": "Mediterranean",
      "average_price": "$$$",
      "average_rating": "4.2",
      "highest_rated_restaurant": "Gato",
+     "highest_rated_restaurant_id": "2",
      "best_location": "78702"
     },
     {"food_type": "Italian",
      "average_price": "$$$",
      "average_rating": "4.8",
      "highest_rated_restaurant": "Little Italy",
+     "highest_rated_restaurant_id": "1",
      "best_location": "78701"
     },
     {"food_type": "Indian",
      "average_price": "$$",
      "average_rating": "3.8",
      "highest_rated_restaurant": "Biryani",
+     "highest_rated_restaurant_id": "4",
      "best_location": "78704"
     },
     {"food_type": "American",
      "average_price": "$",
      "average_rating": "3.1",
      "highest_rated_restaurant": "Stack Burgers",
+     "highest_rated_restaurant_id": "3",
      "best_location": "78703"
      }]
 
@@ -127,7 +142,7 @@ review_db =[
      "rating": "4",
      "username": "Federico",
      "restaurant": "Little Italy",
-     "zip": "78701",
+     "location": "78701",
      "review": "Incredible Garlic Bread",
      "restaurant_id": "1"
     },
@@ -136,7 +151,7 @@ review_db =[
      "rating": "3",
      "username": "Chuck",
      "restaurant": "Gato",
-     "zip": "78702",
+     "location": "78702",
      "review": "Great Hummus",
      "restaurant_id": "2"
     },
@@ -145,7 +160,7 @@ review_db =[
      "rating": "5",
      "username": "Gabriel",
      "restaurant": "Stack Burgers",
-     "zip": "78703",
+     "location": "78703",
      "review": "Didn't like their Waffles",
      "restaurant_id": "3"
     },
@@ -153,8 +168,8 @@ review_db =[
      "date": "1/10/2017",
      "rating": "4",
      "username": "Dominique",
-     "restaurant": "Biryani",
-     "zip": "78704",
+     "restaurant": "Biryani Pot",
+     "location": "78704",
      "review": "Great Basmati rice",
      "restaurant_id": "4"
     },
@@ -162,8 +177,8 @@ review_db =[
      "date": "1/11/2004",
      "rating": "4",
      "username": "Maggie",
-     "restaurant": "Ho Ho chinese BBQ",
-     "zip": "78705",
+     "restaurant": "Ho Ho Chinese BBQ",
+     "location": "78705",
      "review": "I didn't like the General Tso Chicken",
      "restaurant_id": "5"
      }]

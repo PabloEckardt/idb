@@ -90,3 +90,9 @@ ENV/
 
 #pycharm
 .idea
+
+#pylint
+.pylintrc
+
+# temp files
+*.tmp

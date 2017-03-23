@@ -4,21 +4,27 @@
 <body>
 <div class="flex-container">
 <header>
-  <h1 class = "detailView">{{ instance["username"] }} - review of {{ instance["restaurant"] }}</h1>
+  <h1 class = "detailView">{{ instance["username"] }} - {{ instance["review_id"] }}</h1>
 </header>
 
 <nav class="nav">
 <ul>
-  <li><a href="#">More {{instance["food_type"] }} restaurants</a></li>
-  <li><a href="#">More Reviews</a></li>
+  <li><a href="/Restaurants/{{instance['restaurant_id']}}">Go to {{instance["restaurant"] }}</a></li>
+  <li><a href="/Locations/{{instance['location']}}">Go to {{instance["location"] }}</a></li>
 </ul>
 </nav>
 
 <article class="article">
-    <p> <img src="{{ url_for('static', filename='img/' + 'temp_image.png')}}" align="right"> </p>
+  <p> <img src="{{ url_for('static', filename='img/' + 'temp_image.png')}}" align="right"> </p>
+
+  <h2> Username </h2>
+  <p> {{ instance["username"] }} </p>
+
+  <h2> Restaurant </h2>
+  <p> {{ instance["restaurant"] }} </p>
 
   <h2> Location </h2>
-  <p> {{ instance["zip"] }} </p>
+  <p> {{ instance["location"] }} </p>
 
   <h2> Rating </h2>
   <p> {{ instance["rating"] }} </p>
@@ -26,8 +32,8 @@
   <h2> Review </h2>
   <p> {{ instance["review"] }} </p>
 
-    <h2> Date </h2>
-    <p> {{ instance["date"] }} </p>
+  <h2> Date </h2>
+  <p> {{ instance["date"] }} </p>
 
 </article>
 

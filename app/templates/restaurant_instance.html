@@ -9,15 +9,16 @@
 
 <nav class="nav">
 <ul>
-  <li><a href="#">More {{instance["food_type"] }} restaurants</a></li>
-  <li><a href="#">More Reviews</a></li>
+  <li><a href="/Food_Types/{{instance['food_type'] }}">Go to {{instance["food_type"] }}</a></li>
+  <li><a href="/Locations/{{instance['zip'] }}">Go to {{instance["zip"] }}</a></li>
+  <li><a href="/Reviews/{{instance['id']}}">Go to Review</a></li>
 </ul>
 </nav>
 
 <article class="article">
   <p> <img src="{{ url_for('static', filename='img/' + instance['img'])}}" align="right"> </p>
   <h2> Food Type </h2>
-  <p> {{ instance["food_type"] }} </p>
+  <a href="/Food_Types/{{instance['food_type'] }}"> {{ instance["food_type"] }} </a>
 
   <h2> Rating </h2>
   <p> {{ instance["rating"] }} </p>
@@ -31,7 +32,7 @@
   <h2> Hours </h2>
   <p> {{ instance["hours"] }} </p>
 
-  <h2> Last Review </h2>
+  <h2> Recent Review </h2>
   <p> "{{ instance["last_review"] }}" </p>
 </article>
 

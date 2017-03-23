@@ -7,3 +7,20 @@ python:
     
 before_install:
     - pip install --upgrade pip
+    
+install:
+    - pip install autopep8
+    - pip install coverage
+    - pip install numpy
+    - pip install pylint
+    - pip install sqlalchemy
+    
+before_script:
+    - uname -a
+    - printenv | sort
+    - make versions
+    
+script:
+    - date
+    - ls -al
+    - make test

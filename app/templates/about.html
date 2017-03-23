@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<head>
-    <title>About</title>
-</head>
-<body>
-    <div id="row1" class="row">
-        <div class="title">
+{% extends "layout.html" %}
+{% block body %}
+    <div class="title" style = "text-align: center; margin-bottom: 30px;">
             <h1 id="title1">Meet the Appetizers</h1>
-        </div>
-        <p id="description">Welcome to FoodCloseTo.me! This site is intended for foodies looking to find the best restaurants and locations for whatever your palette desires, allowing searches for restaurant, food type, location, and review.</p>
-        <div class="row">
-            <div class="col1">
-                <p>*picture*</p>
+            <br>
+            <p id="description" style = "margin:0 auto; max-width: 400px;">Welcome to FoodCloseTo.me! This site is intended for foodies looking to find the best restaurants and locations for whatever your palette desires, allowing searches for restaurant, food type, location, and review.</p>
+    </div>
+    <div class = "container">
+    <div class="row" style = "text-align: center; margin-bottom: 30px;">
+        
+            <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+                
+                <div class="thumbnail_container">
+                  <div class="thumbnail">
+                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/edwin.jpg') }}">
+                  </div>
+                </div>
                 <h2>Edwin Bejarano</h2>
                 <p>*description*</p>
                 <p><strong>*role*</strong></p>
@@ -18,10 +22,12 @@
                 <p><strong>Issues:</strong></p>
                 <p><strong>Unit tests:</strong></p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col1">
-                <p>*picture*</p>
+            <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+                <div class="thumbnail_container">
+                  <div class="thumbnail">
+                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/pablo.jpeg') }}">
+                  </div>
+                </div>
                 <h2>Pablo Eckardt Salazar</h2>
                 <p>*description*</p>
                 <p><strong>*role*</strong></p>
@@ -29,10 +35,12 @@
                 <p><strong>Issues:</strong></p>
                 <p><strong>Unit tests:</strong></p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col1">
-                <p>*picture*</p>
+            <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+                <div class="thumbnail_container">
+                  <div class="thumbnail">
+                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/parker.jpg') }}">
+                  </div>
+                </div>
                 <h2>Parker Kruzel</h2>
                 <p>*description*</p>
                 <p><strong>*role*</strong></p>
@@ -40,10 +48,12 @@
                 <p><strong>Issues:</strong></p>
                 <p><strong>Unit tests:</strong></p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col1">
-                <p>*picture*</p>
+            <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+                <div class="thumbnail_container">
+                  <div class="thumbnail">
+                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/audric.jpg') }}">
+                  </div>
+                </div>
                 <h2>Audric Terry</h2>
                 <p>*description*</p>
                 <p><strong>*role*</strong></p>
@@ -51,11 +61,9 @@
                 <p><strong>Issues:</strong></p>
                 <p><strong>Unit tests:</strong></p>
             </div>
-        </div>
     </div>
-    <div id="row2" class="row">
-      <div class="row">
-        <div class="col2 stats"> 
+      <div class="row" style = "text-align: center; margin-bottom: 30px;">
+        <div class="col-sm-4"> 
           <div class="title">
             <h1>Stats</h1>
           </div>
@@ -67,14 +75,15 @@
           <p><a class="stats_link" href="https://github.com/PabloEckardt/idb">GitHub Repo</a></p>
         </div>
 
-        <div class="col-lg-4 stats">
+        <div class="col-sm-8"> 
           <div class="title">
             <h1>Data</h1>
           </div>
           <p><a class="stats_link" href ="https://www.yelp.com/developers">yelp Fusion</a>- API from which data was obtained.</p>
        </div>
-
-       <div class="col-lg-4 stats" id="tools">
+    </div>
+    <div class="row">
+       <div class="col-sm-12 stats" id="tools">
           <div class="title">
             <h1>Tools</h1>
           </div>
@@ -86,6 +95,8 @@
            <p>Trello: A web application used for organizing projects and delegating tasks.</p>
        </div>
       </div> <!-- end of row for info -->
-      
-    </div> 
-</body>
+    </div>
+    {% endblock %}
+
+
+}
