@@ -72,10 +72,7 @@ clean:
 	rm -f  *.pyc
 	rm -f  *.tmp
 
-pylint:
-	pylint app/models.py
-
-test: IDB1.html, IDB1.log, pylint
+test: IDB1.html IDB1.log
 	ls -al
 	make check
 
