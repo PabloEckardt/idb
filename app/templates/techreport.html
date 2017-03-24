@@ -5,6 +5,23 @@
             <br>
             <p id="description" style = "margin:0 auto; max-width: 400px;">Welcome to FoodCloseTo.me! This site is intended for foodies looking to find the best restaurants and locations for whatever your palette desires, allowing searches for restaurant, food type, location, and review.</p>
     </div>
+    <div class = "row">
+    <div class = "container" style = "border:1px solid #000000;">
+      <div class = "col-sm-3" style = "text-align: center;">
+        <a href = "#introduction">Introduction</a>
+      </div>
+      <div class = "col-sm-3" style = "text-align: center;">
+        <a href = "#design">Design</a>
+      </div>
+      <div class = "col-sm-3" style = "text-align: center;">
+        <a href = "#tools">Tools</a>
+      </div>
+      <div class = "col-sm-3" style = "text-align: center;">
+        <a href = "#hosting">Hosting</a>
+      </div>
+      </div>
+    </div>
+    <br><br>
     <div class = "container">
     <div class="row" style = "text-align: center; margin-bottom: 30px;">
         
@@ -65,33 +82,87 @@
       <div class="row" style = "margin-bottom: 30px;">
         <div class="col-sm-12"> 
           <div class="title">
-            <h1>Introduction </h1>
+            <h1 id = "introduction">Introduction </h1><br>
           </div>
-          <p> INTRO </p>
+          <br>
+          <p> There is a need to have an easy to use, centralized, and informative website for restaurants in the immediate area. There are currently certain sites that do provide a certain amount of these qualities but they are too broad in scope and not specific to the needs of every city. The goal of FoodCloseToMe is to have a website that will make the user feel like it was built for them and their city.  </p>
+
+          <p>A use case would be for someone interested in learning about the different type of foods and areas in their city. Let’s say a user wants to know how Italian food fares in their city, they can go to FoodCloseTo.me and check out the food types. They can then click on Italian and it will show the best rated restaurant in their area and where this restaurant is located. This now gives the user a means to check out the different food types and see where they can go to get the best of the best in their respective cities. Other means of finding this information could be by area first instead of food type.</p>
         </div>
       </div>
     <div class="row" style = "margin-bottom: 30px;">
         <div class="col-sm-12"> 
           <div class="title">
-            <h1>Design</h1>
+            <h1 id = "design">Design</h1><br>
           </div>
-          <p> DESIGN </p>
+          <h2>Front End:</h2><br>
+          <p>The front end was designed using a basic bootstrap enabled theme and Flask. Flask templates were used to render each page with “layout.html” template as the base template. All the templates used by Flask are found within the “app/template” folder. These templates use Flask syntax to help populate the pages, especially when dealing with the grids found on each main model page. The grid is filled in depending on the size of the passed data, which it will iterated through and display each instance on the page. Each page will have a navbar at the top to allow users to easily navigate to the different areas of the site. Aside from the navbar each page will have a different template used to show the content. “app/template/layout.html” inside the “app/template” folder will be the main layout of the website. Each other template will be extending “app/template/layout.html” and including a block named “body” to render that page properly through the rendering function for each view in “app/views.py”.</p>
+          <p>The majority of the CSS is managed by the bootstrap included css but for the rest of the designs, the CSS is in “static/style.css”. The CSS found in this file will be a little more specific to the needs of the website and pages, such as certain CSS classes found in the about.html or restaurants.html web pages.</p>
+          <p>The instance pages are pages that will hold more details about a specific restaurant, location, or food type. The middle column within each instance page will have information such as: Best Restaurant, Reviews, Name of Restaurant, Hours of Operation, Price, Popular Food Type, or Cheapest Restaurant. On the left hand side (right hand side for the restaurants instance page) there will be links that the user will be able to click that will send them to a restaurant or location.</p>
+          <h2>Back End:</h2> <br>
+          <p>At this point of the development of foodcloseto.me we have 4 models:  Reviews,  Food_Types,  Locations, Restaurants. </p>
+          <ul>
+          <li><strong>Restaurants:</strong> Restaurants instances are the heart and soul of our application. They provide the most useful information for users and they will receive the most attention and tailoring. The restaurant table works with a Primary-Surrogate  key  for simplicity but it will probably be optimized to a composite key using addresses and restaurant names. Restaurants will link to the Food_Types table and the Reviews table. And are the most linked-to model with a total of 3 other tables linking to Restaurants. We consider all attributes to this model to be essential so they are non-nullable. For the foreseeable future until we can better gauge the capabilities of the Yelp and Google Business API. Restaurants can be easily sorted or filtered by design by parameters such as price and rating.
+          </li>
+          <li>
+          <strong>Locations:</strong>  Locations instances represent Zipcodes. These naturally keyed elements have interesting meta-data relating food in enclosed areas. For example: average_health_rating attribute, is a parameter that averages the health ratings of several establishments via public records to give a general idea of what an eating experience could be at a given area. That information coupled with averaged prices of the area can give a user a general idea if he even wants to visit the area.
+          </li>
+          <li><strong>Food Types:</strong> This is another meta-data oriented model similar to Locations. In this case users can see how a food type such as: “Italian”, or “American” performs as far as ratings (user experience) and price. The motivation for this model is for users to start getting general ideas in their search for a restaurant. </li>
+          <li><strong>Reviews:</strong> Our Reviews model is designed for when the user already has an idea of a selected handful of restaurants he wants to visit, and may user other direct user experiences to make a final selection. Among its attributes there is brief information about the reviewer and information about the review itself such as the date. It connects to Restaurants, and Locations. </li>
+          </ul>
        </div>
     </div>
     <div class="row" style = "margin-bottom: 30px;">
         <div class="col-sm-12"> 
           <div class="title">
-            <h1>Tools</h1>
+            <h1 id = "tools">Tools</h1><br>
           </div>
-          <p> Tools </p>
+          <h2> Documentation </h2><br>
+          <p>The API is documented using Apiary, a json-based API Documentation tool. The Apiary page for the project can be found at http://docs.foodclosetome.apiary.io. The documentation gives a description of each method of the API, detailing the path of the method, the needed variables for each method (if any), and what will be returned by each method. The documentation is divided into groups, each of which contains different paths, each of which contains methods that are called using these paths, showing a sample of what response a user would expect when calling these methods.</p>
+  
+          <h2> Development </h2><br>
+          <p>The source code for this project can be found on GitHub at <a href = "https://github.com/PabloEckardt/idb">https://github.com/PabloEckardt/idb</a>. GitHub is an application that stores files and allows for branching and version control, as well as continuous integration (see below). In addition, issues are added and updated using the issue tracker. Currently, there is a main branch (master), a branch for creating the database (db), and a branch to fix template issues (badTemplate).</p>
+          <p>Continuous integration was done with Travis CI. Travis CI is an application that connects to a GitHub repo and runs a simulation on it every time a push is made, documenting whether it succeeded or failed. The instructions that Travis CI follows, before and during execution of project code, can be seen and edited in .travis.yml. Currently, the system is setup to run Pydoc on models.py, and check for necessary files. The system will also be setup to run the tests located in app/tests.py, ensuring that our API returns the expected results on particular requests.</p>
+          <p>The makefile is a file that builds several files by running a series of commands. To test the data for the presence of files and the functionality of the programs, simply run ‘make test’ (which is also the process run by Travis CI).</p>
+          <h2> Front End </h2><br>
+          <p> Bootstrap was used for the overall design of the website. The basic theme was used to produce the final product. A carousel is displayed on the splash screen that was also made using bootstrap. </p>
+          <h2> Back End </h2><br>
+          <p><strong>SQLAlchemy</strong><br> Our database is completely implemented on SQLAlchemy, which for simplicity let's say it works as a wrapper around SQL. So rather than having to write SQL commands inside python within exec() statements. SQLAlchemy allows us to take a more Object Oriented Programming approach to database management. SQLAlchemy has Database migration, downgrading and other management tools which have not been implemented for this project but will be available in the next phases.</p>
+          <p>For instance we intend to use this Object Oriented approach by having objects like session_tokens which are generated by our function init_session(). Those tokens can be used to orderly commit changes to the database, since in the future we will implement restrictions on the creation of session_tokens objects. This intended use may help with future synchronization issues between users querying from our API, or accessing the website and us doing database changes.</p>
+          <p>In addition to the OOP philosophy embedded into SQLAlchemy, it also allows us to build our own wrappers over the already relatively simple functionalities. In this case, our file insert_records.py has wrappers to insert and commit changes to session_tokens. This is purely for simplicity, maintainability and readability of future users.</p>
+          <p><strong>Flask</strong><br> Flask is what we are using as the spirit of our backend. It is the framework of our application and we use it consistently to render templates. Flask was important for the early development stages before the deployment of our website for several reasons. First it allowed us to preview and interact with our website before it was deployed using Google Cloud Platform. Running our Flask app would is enough to run our website locally using localHost:5000/. A functionality that is still useful to test changes before deploying them in a more realistic scenario.</p>
+          <p>Secondly, it was very easy to start the project in several machines because Flask works on a Python Virtual Environment. Which means that any user can download our repo from github, activate the virtual environment and run the application since all package dependencies will be contained in the virtual environment. </p>
+          <p>In addition to the to those key features I described above. Flask is the Engine that renders our templates. Meaning HTML elements, and python logic common throughout different pages; such as the navigation bar, do not need to be re-implemented across different files. Templates are crucial at eliminating code duplication and building a maintainable code base. If we ever need to change parameters for the grid  in our project. We don’t need to do that for every Model we have designed, or future models we make. We can just modify the template grid.html. Which contains the logic that will be applied through any view that renders the template.</p>
+          <p>Flask Views, are another feature of flask similar to templates in spirit.
+          Views allow us to statically or dynamically handle URLs. A view exists in the form of a python function with a decorator. The function renders the template, and the decorator specifies the url in the website to be rendered with the template. The reason why this is important is that ideally the database will be periodically updated adding new elements to the website. Without Views and templates every time we would add an instance of any of our models we would have to manually add the URLs and HTML pages to make them accessible. But since we do have these tools, for example: Every restaurant added to the database with a surrogate key 0 - N, can be automatically rendered by simply accessing foodcloseto.ne/Restaurants/ <0-N>. This guarantees the scalability of our internet database.</p>
        </div>
     </div>
     <div class="row" style = "margin-bottom: 30px;">
         <div class="col-sm-12"> 
           <div class="title">
-            <h1>Hosting</h1>
+            <h1 id = "hosting">Hosting</h1><br>
           </div>
-          <p> Hostin </p>
+          <p><strong>Google Cloud Platforms:</strong><br> We decided to host our website on Google Cloud Platforms (GCP). The reason we chose GCP over Amazon Web Services (AWS) is because we felt like GCP is current and relevant. We also feel like it will simply be a matter of time before GCP overtakes AWS and become the leading Cloud Hosting Platform. The remaining portion of this section will mostly consist of setup/management details of our GCP server and possibly some further motivation behind our decisions.</p>
+          <p><strong>App Engine:</strong><br> GCP’s App Engine is essentially one or more servers that are connected and have a high level of configurability. The engine consists of versions and instances. The versions, which are created upon each push or deployment to the App Engine, represent this version of the service. An incredible feature of GCP is that it will keep track of all your versions to provide a sense of version control for your product or service. Versions must be deleted manually. The instances are essentially how GCP scales your service, either manually or dynamically. The more traffic your service receives, the more instances GCP will deploy of that particular version. The opposite is also true.</p>
+          <p><strong>app.yaml:</strong> This file is responsible for configuring the actual Google App Engine (aka the server) that hosts our website. The .yml extension is short for YAML and is a basic human-readable serialization format. If you direct your attention to the app.yaml file that we have in our repository, you’ll notice that there are only a few lines. I’ll walk through each line in and explain what is happening starting on line 5:</p>
+          <ul>
+            <li>
+            <p>runtime: python - this line tells the App Engine the main runtime environment used in the application. This field is required.</p>
+            </li>
+            <li>
+            <p>env: flex - This specifies that we want our environment to be handled automatically by GCP. This includes scaling and load balancing.</p>
+            </li>
+            <li>
+            <p>entrypoint: gunicorn -b :$PORT main:app - This specifies where we want the WSGI server to enter our application. Gunicorn is the server and the rest of the line are arguments specifying the port and file. Although I won’t go into it here, WSGI servers (along with GCP’s nice design) are the reason a setup this simple sufficient; one of the major reasons we used GCP.</p>
+            </li>
+            <li>
+            <p>runtime_config: This is just a key denoting a new configuration section.</p>
+            </li>
+            <li>
+            <p>python_version: 3 - The python version we want to the server to run in.</p>
+            </li>
+          </ul>
+          <p><strong>config.py:</strong> This is the last configuration file. It doesn’t exactly interact with GCP directly, but, rather, interacts with it indirectly. Essentially, that file contains the GCP Project ID which then goes in our main Flask object. This Project ID is how the local version of the Google Cloud SDK authenticates the user when utilizing their provided command line interface (CLI).  This CLI is what we use to deploy our application to the App Engine and is by far the easiest way to do so.</p>
        </div>
     </div>
     {% endblock %}
