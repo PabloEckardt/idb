@@ -9,32 +9,32 @@ FILES :=		\
     .travis.yml         
 
 ifeq ($(shell uname), Darwin)          # Apple
-    PYTHON   := python3.5
+    PYTHON   := python2.7
     PIP      := pip3.5
     PYLINT   := pylint
     COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
+    PYDOC    := pydoc
     AUTOPEP8 := autopep8
 else ifeq ($(CI), true)                # Travis CI
     PYTHON   := python3.5
-    PIP      := pip3.5
+    PIP      := pip3
     PYLINT   := pylint
-    COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
+    COVERAGE := coverage
+    PYDOC    := pydoc3
     AUTOPEP8 := autopep8
 else ifeq ($(shell uname -p), unknown) # Docker
-    PYTHON   := python3.5
+    PYTHON   := python2.7
     PIP      := pip3.5
     PYLINT   := pylint
     COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
+    PYDOC    := pydoc
     AUTOPEP8 := autopep8
 else                                   # UTCS
-    PYTHON   := python3
+    PYTHON   := python2.7
     PIP      := pip3
     PYLINT   := pylint
     COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
+    PYDOC    := pydoc
     AUTOPEP8 := autopep8
 endif
 
@@ -42,13 +42,10 @@ endif
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
 IDB1.html: app/models.py
-	pydoc3 -w app/models.py
-    
+	python -m pydoc -w app/models.py > IDB1.html
+
 IDB1.log:
 	git log > IDB1.log
-
-#models.tmp: app/models.py .pylintrc
-#	-$(PYLINT) app/models.py
 
 check:
 	@	not_found=0;                                 \
@@ -74,11 +71,11 @@ clean:
 	rm -f  .pylintrc
 	rm -f  *.pyc
 	rm -f  *.tmp
-    
+
 test: IDB1.html IDB1.log
 	ls -al
 	make check
-    
+
 versions:
 	which make
 	make --version
