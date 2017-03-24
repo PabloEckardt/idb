@@ -75,7 +75,7 @@ clean:
 pylint:
 	pylint app/models.py
 
-test: IDB1.html IDB1.log, pylint
+test: IDB1.html, IDB1.log, pylint
 	ls -al
 	make check
 
