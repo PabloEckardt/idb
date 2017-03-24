@@ -13,7 +13,7 @@ install:
     - pip install coverage
     - pip install numpy
     - pip install pylint
-    - pip install sqlalchemy
+    - pip install -r requirements.txt
     
 before_script:
     - uname -a
