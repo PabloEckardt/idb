@@ -16,8 +16,8 @@ ifeq ($(shell uname), Darwin)          # Apple
     PYDOC    := pydoc
     AUTOPEP8 := autopep8
 else ifeq ($(CI), true)                # Travis CI
-    PYTHON   := python2.7
-    PIP      := pip
+    PYTHON   := python3.5
+    PIP      := pip3
     PYLINT   := pylint
     COVERAGE := coverage
     PYDOC    := pydoc3
@@ -76,7 +76,6 @@ clean:
 	rm -f  *.tmp
     
 test: IDB1.html IDB1.log
-	. ./gen_venv.sh
 	ls -al
 	make check
     
