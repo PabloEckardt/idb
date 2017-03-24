@@ -43,12 +43,9 @@ endif
 
 IDB1.html: app/models.py
 	python -m pydoc -w app/models.py > IDB1.html
-    
+
 IDB1.log:
 	git log > IDB1.log
-
-#models.tmp: app/models.py .pylintrc
-#	-$(PYLINT) app/models.py
 
 check:
 	@	not_found=0;                                 \
@@ -74,11 +71,11 @@ clean:
 	rm -f  .pylintrc
 	rm -f  *.pyc
 	rm -f  *.tmp
-    
+
 test: IDB1.html IDB1.log
 	ls -al
 	make check
-    
+
 versions:
 	which make
 	make --version
