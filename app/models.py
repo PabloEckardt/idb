@@ -1,3 +1,7 @@
+"""
+models.py
+"""
+
 import os
 import sys
 from sqlalchemy import Column, ForeignKey, Integer, String
@@ -32,6 +36,28 @@ class Reviews(Base):
     zipcode = Column(Integer, ForeignKey('locations.zipcode'), nullable=False)
     location = relationship("Locations", foreign_keys=[zipcode])
 
+    def __init__ (self, date, rating, username, profile_picture_url,
+                  restaurant_pictures_url, restaurant_id, zipcode):
+
+        assert (type(date) is String))
+        assert (type(rating) is String))
+        assert (type(username) is int))
+        assert (type(profile_picture_url) is int))
+        assert (type(restaurant_pictures_url) is String))
+
+        assert (type(restaurant_id) is int))
+        assert (type(zipcode) is int))
+
+
+        self.date = date
+        self.rating = rating
+        self.username = username
+        self.profile_picture_url = profile_picture_url
+        self.restaurant_pictures_url = restaurant_pictures_url
+
+        self.restaurant_id = restaurant_id
+        self.zipcode = zipcode
+
 # -------------
 # Food Types
 # -------------
@@ -56,6 +82,32 @@ class Food_Types(Base):
 
     best_location = Column(Integer, ForeignKey("locations.zipcode"), nullable=False)
     location = relationship("Locations", foreign_keys=[best_location])
+
+    def __init__ (food_type, average_price, average_rating, country_of_origin,
+                  image_url, open_restaurants, highest_rated_restaurant,
+                  best_location):
+
+        assert (type(food_type) is String))
+
+        assert (type(average_price) is int))
+        assert (type(average_rating) is int))
+        assert (type(country_of_origin) is String))
+        assert (type(image_url) is String))
+        assert (type(open_restaurants is String))
+
+        assert (type(highest_rated_restaurant is int))
+        assert (type(location is int))
+
+        self.food_type = food_type
+
+        self.average_price = average_price
+        self.average_rating = average_rating
+        self.country_of_origin = country_of_origin
+        self.image_url = image_url
+        self.open_restaurants = open_restaurants
+
+        self.highest_rated_restaurant = highest_rated_restaurant
+        self.location = location
 
 # -------------
 # Restaurants
@@ -82,6 +134,26 @@ class Restaurants(Base):
     Recent_Review = Column(String(250), ForeignKey('reviews.review_id'), nullable=False)
     review = relationship("Reviews", foreign_keys=[Recent_Review])
 
+    def __init__ (self, name, location, price, rating, hours, food_type, food,
+                 Recent_Review, Review):
+
+        assert (type(name) is String))
+        assert (type(location) is String))
+        assert (type(price) is int))
+        assert (type(rating) is int))
+        assert (type(hours) is String))
+
+        assert (type(Recent_Review is String))
+        assert (type(food_type is String))
+
+        self.name = name
+        self.location = location
+        self.price = price
+        self.rating = rating
+        self.hours = hours
+
+        self.food_type = food_type
+        self.Recent_Review = food_type
 # -------------
 # Locations
 # -------------
@@ -108,6 +180,31 @@ class Locations(Base):
     highest_rated_restaurant = Column(Integer, ForeignKey('restaurants.id'), nullable=False)
     restaurant = relationship("Restaurants", foreign_keys=[highest_rated_restaurant])
 
+    def __init__ (self, zipcode, average_rating, average_price,
+                  adjacent_location, average_health_rating, highest_price,
+                  popular_food_type, highest_rated_restaurant):
+
+        assert (type(zipcode) is int))
+
+        assert (type(average_rating) is int))
+        assert (type(average_price) is int))
+        assert (type(adjacent_location) is int))
+        assert (type(average_health_rating) is int))
+        assert (type(highest_price) is String))
+
+        assert (type(popular_food_type) is String))
+        assert (type(highest_rated_restaurant) is String))
+
+       self.zipcode = zipcode
+
+       self.average_rating = average_rating
+       self.average_price = average_price
+       self.adjacent_location = adjacent_location
+       self.average_health_rating = average_health_rating,
+       self.highest_price = highest_price
+
+       self.highest_rated_restaurant = highest_rated_restaurant
+       self.popular_food_type = popular_food_type
 
 # create an engine that stores data in the local directory's db file
 #db_name = 'sqlite:///sql_example.db'
