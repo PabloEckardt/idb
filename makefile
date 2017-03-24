@@ -76,6 +76,7 @@ clean:
 	rm -f  *.tmp
     
 test: IDB1.html IDB1.log
+	. ./gen_venv.sh
 	ls -al
 	make check
     
