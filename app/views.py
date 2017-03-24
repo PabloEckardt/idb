@@ -265,3 +265,9 @@ def review(pk):
     for d in review_db:
         if d["review_id"] == pk:
             return render_template("review_instance.html",instance=d)
+
+# Tech Report
+
+@views.route('/About/TechReport')
+def techreport():
+    return render_template("techreport.html")

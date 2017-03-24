@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="title" style = "text-align: center; margin-bottom: 30px;">
+            <h1 id="title1">Meet the Appetizers</h1>
+            <br>
+            <p id="description" style = "margin:0 auto; max-width: 400px;">Welcome to FoodCloseTo.me! This site is intended for foodies looking to find the best restaurants and locations for whatever your palette desires, allowing searches for restaurant, food type, location, and review.</p>
+    </div>
+    <div class = "container">
+    <div class="row" style = "text-align: center; margin-bottom: 30px;">
+        
+            <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+                
+                <div class="thumbnail_container">
+                  <div class="thumbnail">
+                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/edwin.jpg') }}">
+                  </div>
+                </div>
+                <h2>Edwin Bejarano</h2>
+                <p>Senior Computer Science major. I like long walks on the beach while not coding. Other than that you will find me watching Netflix or at the gym.</p>
+                <p><strong>Front end</strong></p>
+                <p><strong>Commits: 28</strong></p>
+                <p><strong>Issues: 6</strong></p>
+                <p><strong>Unit tests: 3</strong></p>
+            </div>
+            <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+                <div class="thumbnail_container">
+                  <div class="thumbnail">
+                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/pablo.jpeg') }}">
+                  </div>
+                </div>
+                <h2>Pablo Eckardt Salazar</h2>
+                <p>I am a clever clever good looking engineer into backend and I like things like OpenCV. Oh and I like corgis.</p>
+                <p><strong>Backend</strong></p>
+                <p><strong>Commits: 35 </strong></p>
+                <p><strong>Issues: 7</strong></p>
+                <p><strong>Unit tests: 3</strong></p>
+            </div>
+            <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+                <div class="thumbnail_container">
+                  <div class="thumbnail">
+                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/parker.jpg') }}">
+                  </div>
+                </div>
+                <h2>Parker Kruzel</h2>
+                <p>I am a junior Computer Science student. I am an avid eSports enthusiast (with a particular love of Pokemon and Dota 2), and I am currently preparing to study in Sweden this fall.</p>
+                <p><strong>Front end</strong></p>
+                <p><strong>Commits: 11</strong></p>
+                <p><strong>Issues: 5</strong></p>
+                <p><strong>Unit tests: 3</strong></p>
+            </div>
+            <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+                <div class="thumbnail_container">
+                  <div class="thumbnail">
+                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/audric.jpg') }}">
+                  </div>
+                </div>
+                <h2>Audric Terry</h2>
+                <p>I like soccer and juice, that's it.</p>
+                <p><strong>Backend</strong></p>
+                <p><strong>Commits: 27</strong></p>
+                <p><strong>Issues: 5</strong></p>
+                <p><strong>Unit tests: 3</strong></p>
+            </div>
+    </div>
+      <div class="row" style = "margin-bottom: 30px;">
+        <div class="col-sm-12"> 
+          <div class="title">
+            <h1>Introduction </h1>
+          </div>
+          <p> INTRO </p>
+        </div>
+      </div>
+    <div class="row" style = "margin-bottom: 30px;">
+        <div class="col-sm-12"> 
+          <div class="title">
+            <h1>Design</h1>
+          </div>
+          <p> DESIGN </p>
+       </div>
+    </div>
+    <div class="row" style = "margin-bottom: 30px;">
+        <div class="col-sm-12"> 
+          <div class="title">
+            <h1>Tools</h1>
+          </div>
+          <p> Tools </p>
+       </div>
+    </div>
+    <div class="row" style = "margin-bottom: 30px;">
+        <div class="col-sm-12"> 
+          <div class="title">
+            <h1>Hosting</h1>
+          </div>
+          <p> Hostin </p>
+       </div>
+    </div>
+    {% endblock %}
+
+
+}
