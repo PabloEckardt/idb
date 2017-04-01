@@ -24,6 +24,7 @@ import pprint
 import requests
 import sys
 import urllib
+import zipcodes
 
 
 # This client code can run on Python 2.x or 3.x.  Your imports can be
@@ -43,8 +44,8 @@ except ImportError:
 # OAuth credential placeholders that must be filled in by users.
 # You can find them on
 # https://www.yelp.com/developers/v3/manage_app
-CLIENT_ID = None
-CLIENT_SECRET = None
+CLIENT_ID = "oQeTOrWw-rVtEKjG6sA2ew"
+CLIENT_SECRET = "8wZGatI4Bjq064mYOa37QdmYvO3VdeJsoq6Ju7kaASPP9nhS2FmRKnAR4NZcg7BM"
 
 
 # API constants, you shouldn't have to change these.
@@ -58,7 +59,7 @@ GRANT_TYPE = 'client_credentials'
 # Defaults for our simple example.
 DEFAULT_TERM = 'dinner'
 DEFAULT_LOCATION = 'San Francisco, CA'
-SEARCH_LIMIT = 3
+SEARCH_LIMIT = 2
 
 
 def obtain_bearer_token(host, path):
@@ -133,8 +134,10 @@ def search(bearer_token, term, location):
     url_params = {
         'term': term.replace(' ', '+'),
         'location': location.replace(' ', '+'),
-        'limit': SEARCH_LIMIT
+        'limit': SEARCH_LIMIT,
+        'offset': 0
     }
+    print (url_params)
     return request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
 
 
@@ -170,29 +173,33 @@ def query_api(term, location):
         return
 
     business_id = businesses[0]['id']
-
-    print(u'{0} businesses found, querying business info ' \
-        'for the top result "{1}" ...'.format(
-            len(businesses), business_id))
-    response = get_business(bearer_token, business_id)
-
     print(u'Result for business "{0}" found:'.format(business_id))
     pprint.pprint(response, indent=2)
+    #for e in businesses:
+    #    print(e.name)
+
+    #print(u'{0} businesses found, querying business info ' \
+    #    'for the top result "{1}" ...'.format(
+    #        len(businesses), business_id))
+    #response = get_business(bearer_token, business_id)
+
+    #pprint.pprint(response, indent=2)
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    #parser = argparse.ArgumentParser()
 
-    parser.add_argument('-q', '--term', dest='term', default=DEFAULT_TERM,
-                        type=str, help='Search term (default: %(default)s)')
-    parser.add_argument('-l', '--location', dest='location',
-                        default=DEFAULT_LOCATION, type=str,
-                        help='Search location (default: %(default)s)')
+    #parser.add_argument('-q', '--term', dest='term', default=DEFAULT_TERM,
+    #                    type=str, help='Search term (default: %(default)s)')
+    #parser.add_argument('-l', '--location', dest='location',
+    #                    default=DEFAULT_LOCATION, type=str,
+    #                    help='Search location (default: %(default)s)')
 
-    input_values = parser.parse_args()
+    #input_values = parser.parse_args()
+
 
     try:
-        query_api(input_values.term, input_values.location)
+        query_api("food", "78704")
     except HTTPError as error:
         sys.exit(
             'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
