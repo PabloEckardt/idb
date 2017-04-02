@@ -24,7 +24,7 @@ import pprint
 import requests
 import sys
 import urllib
-import zipcodes
+from zipcodes import zipCodes
 
 
 # This client code can run on Python 2.x or 3.x.  Your imports can be
@@ -120,7 +120,7 @@ def request(host, path, bearer_token, url_params=None):
     return response.json()
 
 
-def search(bearer_token, term, location):
+def search(bearer_token, term, location, offset):
     """Query the Search API by a search term and location.
 
     Args:
@@ -135,7 +135,7 @@ def search(bearer_token, term, location):
         'term': term.replace(' ', '+'),
         'location': location.replace(' ', '+'),
         'limit': SEARCH_LIMIT,
-        'offset': 0
+        'offset': offset
     }
     print (url_params)
     return request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
@@ -155,7 +155,7 @@ def get_business(bearer_token, business_id):
     return request(API_HOST, business_path, bearer_token)
 
 
-def query_api(term, location):
+def query_api(term, location, offset):
     """Queries the API by the input values from the user.
 
     Args:
@@ -164,51 +164,36 @@ def query_api(term, location):
     """
     bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
 
-    response = search(bearer_token, term, location)
+    response = search(bearer_token, term, location, offset)
 
     businesses = response.get('businesses')
 
-    if not businesses:
-        print(u'No businesses for {0} in {1} found.'.format(term, location))
-        return
-
-    business_id = businesses[0]['id']
-    print(u'Result for business "{0}" found:'.format(business_id))
-    pprint.pprint(response, indent=2)
-    #for e in businesses:
-    #    print(e.name)
-
-    #print(u'{0} businesses found, querying business info ' \
-    #    'for the top result "{1}" ...'.format(
-    #        len(businesses), business_id))
-    #response = get_business(bearer_token, business_id)
-
-    #pprint.pprint(response, indent=2)
+    return businesses
 
 
 def main():
-    #parser = argparse.ArgumentParser()
 
-    #parser.add_argument('-q', '--term', dest='term', default=DEFAULT_TERM,
-    #                    type=str, help='Search term (default: %(default)s)')
-    #parser.add_argument('-l', '--location', dest='location',
-    #                    default=DEFAULT_LOCATION, type=str,
-    #                    help='Search location (default: %(default)s)')
+    for zipcode in zipCodes:
+        offset = 0
+        restaurants = {}
+        while offset != 1000:
+            try:
+                businesses = query_api("food", zipcode,offset)
+                restaurants = dict(restaurants, **businesses)
+                if not businesses:
+                    break
 
-    #input_values = parser.parse_args()
-
-
-    try:
-        query_api("food", "78704")
-    except HTTPError as error:
-        sys.exit(
-            'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
-                error.code,
-                error.url,
-                error.read(),
-            )
-        )
-
+            except HTTPError as error:
+                sys.exit(
+                    'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
+                        error.code,
+                        error.url,
+                        error.read(),
+                    )
+                )
+                offset += 50
+        with open (zipcode+".json", "w") as f:
+            json.dumps(restaurants, f)
 
 if __name__ == '__main__':
     main()
