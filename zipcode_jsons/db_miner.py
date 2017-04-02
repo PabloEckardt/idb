@@ -59,7 +59,7 @@ GRANT_TYPE = 'client_credentials'
 # Defaults for our simple example.
 DEFAULT_TERM = 'dinner'
 DEFAULT_LOCATION = 'San Francisco, CA'
-SEARCH_LIMIT = 2
+SEARCH_LIMIT = 50
 
 
 def obtain_bearer_token(host, path):
@@ -176,13 +176,15 @@ def main():
     for zipcode in zipCodes:
         offset = 0
         restaurants = {}
+        count = 0
         while offset != 1000:
             try:
                 businesses = query_api("food", str(zipcode),offset)
-                for e in businesses:
-                    restaurants = dict(restaurants, **e)
                 if not businesses:
                     break
+                for e in businesses:
+                    restaurants[count] = e
+                    count += 1
 
             except HTTPError as error:
                 sys.exit(
@@ -193,6 +195,12 @@ def main():
                     )
                 )
             offset += 50
+        count = 0
+        #for i,e in enumerate(restaurants):
+        #    print("#######################")
+        #    print(i, count)
+        #    for key in restaurants[i].keys():
+        #        print(key, restaurants[i][key])
         with open (str(zipcode)+".json", "w") as f:
             json.dumps(restaurants, f)
 
