@@ -42,33 +42,33 @@ class test_db (TestCase):
 
         '''
         global session_token
-
+        n = "Little Italy 2"
         new_r = Restaurants(
-                name="Little Italy 2",
+                name= n,
                 location=78701,
                 price=2,
                 rating=3,
                 hours="9 to 5",
                 food_type="Italian",
-                Recent_Review="1"
+                Recent_Review=1
                 )
 
 
         session_token.add(new_r)
         session_token.commit()
 
-        restaurant_1=session_token.query(Restaurants).filter_by(name == "Little Italy\
-                                                                  2").first()
+        restaurant_1=session_token.query(Restaurants).filter_by(
+            name = "Little Italy 2").first()
 
         assert not (session_token.query(Restaurants) is None)
 
-        assert (restaurant_1.name == "Litte Italy 2")
-        assert (restaurant_1.location == 78701)
-        assert (restaurant_1.price == 2)
-        assert (restaurant_1.rating == 3)
-        assert (restaurant_1.hours == "9 to 5")
-        assert (restaurant_1.food_type == "Italian")
-        assert (restaurant_1.recent_review == "1")
+        assert restaurant_1.name == n
+        assert restaurant_1.location == 78701
+        assert restaurant_1.price == 2
+        assert restaurant_1.rating == 3
+        assert restaurant_1.hours == "9 to 5"
+        assert restaurant_1.food_type == "Italian"
+        assert restaurant_1.Recent_Review == 1
 
     def test_3_Restaurants_delete(self):
         '''
