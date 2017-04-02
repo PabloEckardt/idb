@@ -190,9 +190,15 @@ class Locations(Base):
     restaurant=relationship("Restaurants", foreign_keys=[
                             highest_rated_restaurant])
 
-    def __init__(self, zipcode, average_rating, average_price,
-                  adjacent_location, average_health_rating, highest_price,
-                  popular_food_type, highest_rated_restaurant):
+    def __init__(self,
+                 average_rating,
+                 average_price,
+                 adjacent_location,
+                 average_health_rating,
+                 zipcode,
+                 highest_price,
+                 popular_food_type,
+                 highest_rated_restaurant):
 
         assert (type(zipcode) is int)
 

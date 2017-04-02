@@ -30,15 +30,17 @@ def add_restaurant(session_obj, name, location, price, rating, hours,
     session_obj.commit()
 
 
-def add_location(session_obj, zipcode, average_price, popular_food_type,
-                 highest_rated_restaurant, lowest_rated_restaurant,
-                 average_rating, average_health_rating, adjacent_location):
+def add_location(session_obj, average_rating, average_price,
+                adjacent_location, average_health_rating,zipcode,
+                 highest_price, popular_food_type, highest_rated_restaurant):
+
     new_location = Locations(
         average_rating=average_rating,
         average_price=average_price,
-        ajacent_location=adjacent_location,
+        adjacent_location=adjacent_location,
         average_health_rating=average_health_rating,
         zipcode=zipcode,
+        highest_price=highest_price,
         popular_food_type=popular_food_type,
         highest_rated_restaurant=highest_rated_restaurant
     )

@@ -50,7 +50,7 @@ class test_db (TestCase):
                 rating=3,
                 hours="9 to 5",
                 food_type="Italian",
-                recent_review="1"
+                Recent_Review="1"
                 )
 
 
@@ -83,7 +83,7 @@ class test_db (TestCase):
                 rating = "3",
                 hours = "9 to 5",
                 food_type = "Italian",
-                recent_review = "1")
+                Recent_Review = "1")
 
         session_token.add(new_r)
         session_token.commit()
@@ -107,11 +107,11 @@ class test_db (TestCase):
         '''
         add_location(
                         session_token,
-                        zipcode=77777,
                         average_rating=3,
                         average_price=2,
                         adjacent_location=77778,
                         average_health_rating=88,
+                        zipcode=77777,
                         highest_price="$$",
                         popular_food_type="Italian",
                         highest_rated_restaurant="Little Italy"
@@ -128,7 +128,6 @@ class test_db (TestCase):
         global session_token
 
         new_l=Locations(
-                session_token,
                 zipcode=77777,
                 average_rating=3,
                 average_price=2,
@@ -164,7 +163,6 @@ class test_db (TestCase):
         global session_token
 
         new_l=Locations(
-                session_token,
                 zipcode=77776,
                 average_rating=3,
                 average_price=2,
@@ -215,7 +213,6 @@ class test_db (TestCase):
         global session_token
 
         new_r=Reviews(
-                    session_token,
                     date="12/1/2014",
                     rating=4,
                     username="pebs",
@@ -249,7 +246,6 @@ class test_db (TestCase):
         global session_token
 
         new_r=Reviews(
-                    session_token,
                     date="12/1/2014",
                     rating=4,
                     username="pebs",
