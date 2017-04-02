@@ -196,13 +196,8 @@ def main():
                 )
             offset += 50
         count = 0
-        #for i,e in enumerate(restaurants):
-        #    print("#######################")
-        #    print(i, count)
-        #    for key in restaurants[i].keys():
-        #        print(key, restaurants[i][key])
         with open (str(zipcode)+".json", "w") as f:
-            json.dumps(restaurants, f)
+            json.dump(restaurants, f, indent=3)
 
 if __name__ == '__main__':
     main()
