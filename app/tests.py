@@ -9,7 +9,7 @@
 # -------
 from io import StringIO
 from unittest import main, TestCase
-from models import Restaurants, Locations, Food_types, Reviews
+from models import Restaurants, Locations, Food_Types, Reviews
 from insert_records import init_session, add_restaurant, add_location, add_food_type, add_review
 
 session_token = init_session()
@@ -31,7 +31,7 @@ class test_db (TestCase):
                        rating="3",
                        hours="9 to 5",
                        food_type="Italian",
-                       recent_review="1"
+                       Recent_Review="1"
                        )
 
         assert not (session_token.query(Restaurants) is None)
@@ -50,24 +50,25 @@ class test_db (TestCase):
                 rating=3,
                 hours="9 to 5",
                 food_type="Italian",
-                recent_review="1")
+                recent_review="1"
                 )
 
-       session_token.add(new_r)
-       session_token.commit()
 
-       restaurant_1=session_token.query(Restaurants).filter_by(name == "Little Italy\
+        session_token.add(new_r)
+        session_token.commit()
+
+        restaurant_1=session_token.query(Restaurants).filter_by(name == "Little Italy\
                                                                   2").first()
 
-       assert not (session_token.query(Restaurants) is None)
+        assert not (session_token.query(Restaurants) is None)
 
-       assert (restaurant_1.name == "Litte Italy 2")
-       assert (restaurant_1.location == 78701)
-       assert (restaurant_1.price == 2)
-       assert (restaurant_1.rating == 3)
-       assert (restaurant_1.hours == "9 to 5")
-       assert (restaurant_1.food_type == "Italian")
-       assert (restaurant_1.recent_review == "1")
+        assert (restaurant_1.name == "Litte Italy 2")
+        assert (restaurant_1.location == 78701)
+        assert (restaurant_1.price == 2)
+        assert (restaurant_1.rating == 3)
+        assert (restaurant_1.hours == "9 to 5")
+        assert (restaurant_1.food_type == "Italian")
+        assert (restaurant_1.recent_review == "1")
 
     def test_3_Restaurants_delete(self):
         '''
@@ -83,7 +84,6 @@ class test_db (TestCase):
                 hours = "9 to 5",
                 food_type = "Italian",
                 recent_review = "1")
-                )
 
         session_token.add(new_r)
         session_token.commit()
@@ -105,7 +105,7 @@ class test_db (TestCase):
         Testing our Wrapper to add records on Locations
 
         '''
-        add_Location(
+        add_location(
                         session_token,
                         zipcode=77777,
                         average_rating=3,
@@ -139,20 +139,20 @@ class test_db (TestCase):
                 highest_rated_restaurant="Little Italy"
                 )
 
-       session_token.add(new_l)
-       session_token.commit()
+        session_token.add(new_l)
+        session_token.commit()
 
-       loc=session_token.query(Locations).filter_by(zipcode == 77777).first()
+        loc=session_token.query(Locations).filter_by(zipcode = 77777).first()
 
-       assert not (session_token.query(Locations) is None)
+        assert not (session_token.query(Locations) is None)
 
-       assert (loc.zipcode == 77777)
-       assert (loc.average_rating == 3)
-       assert (loc.average_price == 2)
-       assert (loc.adjacent_location == 77778)
-       assert (loc.highest_price == "$$")
-       assert (loc.popular_food_type == "Italian")
-       assert (loc.highest_rated_restaurant == "Little Italy")
+        assert (loc.zipcode == 77777)
+        assert (loc.average_rating == 3)
+        assert (loc.average_price == 2)
+        assert (loc.adjacent_location == 77778)
+        assert (loc.highest_price == "$$")
+        assert (loc.popular_food_type == "Italian")
+        assert (loc.highest_rated_restaurant == "Little Italy")
 
 
     def test_6_Locations_delete(self):
@@ -225,20 +225,20 @@ class test_db (TestCase):
                     zipcode=67777
                 )
 
-       session_token.add(new_r)
-       session_token.commit()
+        session_token.add(new_r)
+        session_token.commit()
 
-       rev=session_token.query(Reviews).filter_by(review_id=1).first()
+        rev=session_token.query(Reviews).filter_by(review_id=1).first()
 
-       assert not (session_token.query(Reviews) is None)
+        assert not (session_token.query(Reviews) is None)
 
-       assert (rev.zipcode == 67777)
-       assert (rev.date == "12/1/2014")
-       assert (rev.rating == 4)
-       assert (rev.username == "pebs")
-       assert (rev.profile_picture_url == "/review_profiles/pebs")
-       assert (rev.restaurant_pictures_url == "/reviews_images/pebs/1")
-       assert (rev.restaurant_id == 1)
+        assert (rev.zipcode == 67777)
+        assert (rev.date == "12/1/2014")
+        assert (rev.rating == 4)
+        assert (rev.username == "pebs")
+        assert (rev.profile_picture_url == "/review_profiles/pebs")
+        assert (rev.restaurant_pictures_url == "/reviews_images/pebs/1")
+        assert (rev.restaurant_id == 1)
 
     def test_9_Reviews_delete(self):
         global session_token
@@ -300,7 +300,6 @@ class test_db (TestCase):
         global session_token
 
         new_f=Food_Types(
-                        session_token,
                         food_type="Italian",
                         average_price=3,
                         average_rating=3,
@@ -311,22 +310,22 @@ class test_db (TestCase):
                         best_location=78787
                            )
 
-       session_token.add(new_f)
-       session_token.commit()
+        session_token.add(new_f)
+        session_token.commit()
 
-       food=session_token.query(Food_Types).filter_by(
+        food=session_token.query(Food_Types).filter_by(
            food_type="Italian").first()
 
-       assert not (session_token.query(Food_Types) is None)
+        assert not (session_token.query(Food_Types) is None)
 
-       assert (food.food_type == "Italian")
-       assert (food.average_price == 3)
-       assert (food.rating == 3)
-       assert (food.country_of_origin == "Italy")
-       assert (food.image_url == "/food_types/italian/")
-       assert (food.open_restaurants == 1)
-       assert (food.highest_rated_restaurant == "Little Italy")
-       assert (food.best_location == 78787)
+        assert (food.food_type == "Italian")
+        assert (food.average_price == 3)
+        assert (food.rating == 3)
+        assert (food.country_of_origin == "Italy")
+        assert (food.image_url == "/food_types/italian/")
+        assert (food.open_restaurants == 1)
+        assert (food.highest_rated_restaurant == "Little Italy")
+        assert (food.best_location == 78787)
 
     def test_12_Food_Type_delete(self):
         global session_token
@@ -337,7 +336,6 @@ class test_db (TestCase):
         global session_token
 
         new_f=Food_Types(
-                        session_token,
                         food_type="Italian",
                         average_price=3,
                         average_rating=3,
