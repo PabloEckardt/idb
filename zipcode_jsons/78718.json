@@ -5,10 +5,9 @@
         "url": "https://www.yelp.com/biz/halal-bros-austin-3?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(737) 222-5487",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.3931649974197,
-            "longitude": -97.706302665174
+            "longitude": -97.706302665174,
+            "latitude": 30.3931649974197
         },
         "rating": 4.0,
         "id": "halal-bros-austin-3",
@@ -24,8 +23,9 @@
             }
         ],
         "distance": 250.05760767319998,
-        "review_count": 85,
         "name": "Halal Bros",
+        "review_count": 85,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -46,10 +46,9 @@
         "url": "https://www.yelp.com/biz/culvers-austin-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 836-4162",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.3914442020144,
-            "longitude": -97.7139369909109
+            "longitude": -97.7139369909109,
+            "latitude": 30.3914442020144
         },
         "rating": 4.0,
         "id": "culvers-austin-austin",
@@ -65,8 +64,9 @@
             }
         ],
         "distance": 846.5016550869999,
-        "review_count": 145,
         "name": "Culver's - Austin",
+        "review_count": 145,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -87,10 +87,9 @@
         "url": "https://www.yelp.com/biz/caf%C3%A9-java-austin-2?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 339-7677",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.4000609323005,
-            "longitude": -97.7041617306885
+            "longitude": -97.7041617306885,
+            "latitude": 30.4000609323005
         },
         "rating": 4.5,
         "id": "caf\u00e9-java-austin-2",
@@ -106,8 +105,9 @@
             }
         ],
         "distance": 993.3949843503999,
-        "review_count": 718,
         "name": "Caf\u00e9 Java",
+        "review_count": 718,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "Ste K",
@@ -129,10 +129,9 @@
         "url": "https://www.yelp.com/biz/subway-austin-11?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 490-1377",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.39257,
-            "longitude": -97.70742
+            "longitude": -97.70742,
+            "latitude": 30.39257
         },
         "rating": 1.5,
         "id": "subway-austin-11",
@@ -148,8 +147,9 @@
             }
         ],
         "distance": 201.53158098819998,
-        "review_count": 19,
         "name": "Subway",
+        "review_count": 19,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "Bldg 3, Unit 900",
@@ -171,12 +171,9 @@
         "url": "https://www.yelp.com/biz/doubledaves-pizza-works-austin-2?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 719-3283",
         "is_closed": false,
-        "transactions": [
-            "delivery"
-        ],
         "coordinates": {
-            "latitude": 30.40013,
-            "longitude": -97.70392
+            "longitude": -97.70392,
+            "latitude": 30.40013
         },
         "rating": 3.5,
         "id": "doubledaves-pizza-works-austin-2",
@@ -188,8 +185,11 @@
             }
         ],
         "distance": 1012.7598667957999,
-        "review_count": 79,
         "name": "DoubleDave's Pizza Works",
+        "review_count": 79,
+        "transactions": [
+            "delivery"
+        ],
         "location": {
             "city": "Austin",
             "address2": "Ste F",
@@ -207,15 +207,14 @@
     },
     "5": {
         "phone": "+15128321928",
+        "distance": 782.833187408,
         "url": "https://www.yelp.com/biz/churchs-chicken-austin-2?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 832-1928",
-        "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.39815,
-            "longitude": -97.7050299
+            "longitude": -97.7050299,
+            "latitude": 30.39815
         },
-        "rating": 2.0,
+        "is_closed": false,
         "id": "churchs-chicken-austin-2",
         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/YV7kZ3Sr2ZycnU2h45pZYw/o.jpg",
         "categories": [
@@ -228,9 +227,6 @@
                 "alias": "chicken_wings"
             }
         ],
-        "distance": 782.833187408,
-        "review_count": 8,
-        "name": "Church's Chicken",
         "location": {
             "city": "Austin",
             "address2": "",
@@ -243,7 +239,11 @@
             "state": "TX",
             "zip_code": "78758",
             "country": "US"
-        }
+        },
+        "rating": 2.0,
+        "name": "Church's Chicken",
+        "review_count": 8,
+        "transactions": []
     },
     "6": {
         "phone": "+15129739344",
@@ -251,12 +251,9 @@
         "url": "https://www.yelp.com/biz/tacos-durango-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 973-9344",
         "is_closed": false,
-        "transactions": [
-            "pickup"
-        ],
         "coordinates": {
-            "latitude": 30.3998349098879,
-            "longitude": -97.7044089690365
+            "longitude": -97.7044089690365,
+            "latitude": 30.3998349098879
         },
         "rating": 4.0,
         "id": "tacos-durango-austin",
@@ -272,8 +269,11 @@
             }
         ],
         "distance": 966.5473951079999,
-        "review_count": 19,
         "name": "Tacos Durango",
+        "review_count": 19,
+        "transactions": [
+            "pickup"
+        ],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -294,10 +294,9 @@
         "url": "https://www.yelp.com/biz/central-donut-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 833-6993",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.39257,
-            "longitude": -97.70742
+            "longitude": -97.70742,
+            "latitude": 30.39257
         },
         "rating": 4.5,
         "id": "central-donut-austin",
@@ -309,8 +308,9 @@
             }
         ],
         "distance": 201.53158098819998,
-        "review_count": 46,
         "name": "Central Donut",
+        "review_count": 46,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "Ste 700",
@@ -332,10 +332,9 @@
         "url": "https://www.yelp.com/biz/maki-toki-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 832-0200",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.39257,
-            "longitude": -97.70742
+            "longitude": -97.70742,
+            "latitude": 30.39257
         },
         "rating": 3.0,
         "id": "maki-toki-austin",
@@ -351,8 +350,9 @@
             }
         ],
         "distance": 201.53158098819998,
-        "review_count": 142,
         "name": "Maki Toki",
+        "review_count": 142,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "Ste 300",
@@ -374,10 +374,9 @@
         "url": "https://www.yelp.com/biz/kiefers-cafe-and-catering-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 719-5550",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.3881797790527,
-            "longitude": -97.7101211547852
+            "longitude": -97.7101211547852,
+            "latitude": 30.3881797790527
         },
         "rating": 3.5,
         "id": "kiefers-cafe-and-catering-austin",
@@ -397,8 +396,9 @@
             }
         ],
         "distance": 591.419172945,
-        "review_count": 75,
         "name": "Kiefer's Cafe & Catering",
+        "review_count": 75,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "Ste 105",
@@ -420,10 +420,9 @@
         "url": "https://www.yelp.com/biz/wendys-austin-20?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 873-7979",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.39257,
-            "longitude": -97.70742
+            "longitude": -97.70742,
+            "latitude": 30.39257
         },
         "rating": 2.0,
         "id": "wendys-austin-20",
@@ -439,8 +438,9 @@
             }
         ],
         "distance": 201.53158098819998,
-        "review_count": 17,
         "name": "Wendy's",
+        "review_count": 17,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -461,10 +461,9 @@
         "url": "https://www.yelp.com/biz/river-city-donut-2-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 832-0425",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.400297,
-            "longitude": -97.703887
+            "longitude": -97.703887,
+            "latitude": 30.400297
         },
         "rating": 4.0,
         "id": "river-city-donut-2-austin",
@@ -480,8 +479,9 @@
             }
         ],
         "distance": 1026.3199886084,
-        "review_count": 35,
         "name": "River City Donut 2",
+        "review_count": 35,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -502,10 +502,9 @@
         "url": "https://www.yelp.com/biz/4th-tap-brewing-co-op-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 904-9817",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.3852,
-            "longitude": -97.71196
+            "longitude": -97.71196,
+            "latitude": 30.3852
         },
         "rating": 4.5,
         "id": "4th-tap-brewing-co-op-austin",
@@ -517,8 +516,9 @@
             }
         ],
         "distance": 932.0362253459999,
-        "review_count": 71,
         "name": "4th Tap Brewing Co-op",
+        "review_count": 71,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -539,10 +539,9 @@
         "url": "https://www.yelp.com/biz/circle-brewing-company-austin-2?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 814-7599",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.39105,
-            "longitude": -97.71535
+            "longitude": -97.71535,
+            "latitude": 30.39105
         },
         "rating": 4.0,
         "id": "circle-brewing-company-austin-2",
@@ -554,8 +553,9 @@
             }
         ],
         "distance": 982.047592384,
-        "review_count": 33,
         "name": "Circle Brewing Company",
+        "review_count": 33,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "Ste B",
@@ -577,10 +577,9 @@
         "url": "https://www.yelp.com/biz/cordial-creations-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 939-2993",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.400269,
-            "longitude": -97.7041533
+            "longitude": -97.7041533,
+            "latitude": 30.400269
         },
         "rating": 5.0,
         "id": "cordial-creations-austin",
@@ -596,8 +595,9 @@
             }
         ],
         "distance": 1016.4825920837999,
-        "review_count": 1,
         "name": "Cordial Creations",
+        "review_count": 1,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "Ste J-142",
@@ -619,10 +619,9 @@
         "url": "https://www.yelp.com/biz/topgolf-austin-2?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 222-5950",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.3982988883254,
-            "longitude": -97.7175606715332
+            "longitude": -97.7175606715332,
+            "latitude": 30.3982988883254
         },
         "rating": 4.0,
         "id": "topgolf-austin-2",
@@ -642,8 +641,9 @@
             }
         ],
         "distance": 1433.0349844457999,
-        "review_count": 490,
         "name": "Topgolf",
+        "review_count": 490,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -664,10 +664,9 @@
         "url": "https://www.yelp.com/biz/metric-liquor-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 275-0320",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.4001931838192,
-            "longitude": -97.7040787786245
+            "longitude": -97.7040787786245,
+            "latitude": 30.4001931838192
         },
         "rating": 4.0,
         "id": "metric-liquor-austin",
@@ -679,8 +678,9 @@
             }
         ],
         "distance": 1008.7299667819999,
-        "review_count": 5,
         "name": "Metric Liquor",
+        "review_count": 5,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "Ste I",
@@ -702,10 +702,9 @@
         "url": "https://www.yelp.com/biz/top-dawg-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.3873023986816,
-            "longitude": -97.7063140869141
+            "longitude": -97.7063140869141,
+            "latitude": 30.3873023986816
         },
         "rating": 4.5,
         "id": "top-dawg-austin",
@@ -717,8 +716,9 @@
             }
         ],
         "distance": 476.52332092399996,
-        "review_count": 2,
         "name": "Top Dawg",
+        "review_count": 2,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -739,10 +739,9 @@
         "url": "https://www.yelp.com/biz/dandys-5-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 833-6977",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.40013,
-            "longitude": -97.70392
+            "longitude": -97.70392,
+            "latitude": 30.40013
         },
         "rating": 2.0,
         "id": "dandys-5-austin",
@@ -754,8 +753,9 @@
             }
         ],
         "distance": 1012.7598667957999,
-        "review_count": 1,
         "name": "Dandy's 5",
+        "review_count": 1,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -776,10 +776,9 @@
         "url": "https://www.yelp.com/biz/oskar-blues-brewery-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 243-7054",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.3839,
-            "longitude": -97.713545
+            "longitude": -97.713545,
+            "latitude": 30.3839
         },
         "rating": 3.5,
         "id": "oskar-blues-brewery-austin",
@@ -791,8 +790,9 @@
             }
         ],
         "distance": 1143.028424178,
-        "review_count": 11,
         "name": "Oskar Blues Brewery",
+        "review_count": 11,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -809,15 +809,14 @@
     },
     "20": {
         "phone": "+15124707376",
+        "distance": 476.52332092399996,
         "url": "https://www.yelp.com/biz/summer-sno-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 470-7376",
-        "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.3841552734375,
-            "longitude": -97.7073516845703
+            "longitude": -97.7073516845703,
+            "latitude": 30.3841552734375
         },
-        "rating": 5.0,
+        "is_closed": false,
         "id": "summer-sno-austin",
         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/HfhG8lXi8P0QmoMv-QjXQw/o.jpg",
         "categories": [
@@ -834,9 +833,6 @@
                 "alias": "desserts"
             }
         ],
-        "distance": 476.52332092399996,
-        "review_count": 1,
-        "name": "Summer Sno",
         "location": {
             "city": "Austin",
             "address2": null,
@@ -848,7 +844,11 @@
             "state": "TX",
             "zip_code": "78758",
             "country": "US"
-        }
+        },
+        "rating": 5.0,
+        "name": "Summer Sno",
+        "review_count": 1,
+        "transactions": []
     },
     "21": {
         "phone": "+15128366360",
@@ -856,10 +856,9 @@
         "url": "https://www.yelp.com/biz/the-canary-roost-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 836-6360",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.4001293,
-            "longitude": -97.7039185
+            "longitude": -97.7039185,
+            "latitude": 30.4001293
         },
         "rating": 2.5,
         "id": "the-canary-roost-austin",
@@ -875,8 +874,9 @@
             }
         ],
         "distance": 1012.7598667957999,
-        "review_count": 59,
         "name": "The Canary Roost",
+        "review_count": 59,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": "",
@@ -897,10 +897,9 @@
         "url": "https://www.yelp.com/biz/ez-stop-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 719-9077",
         "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.382982,
-            "longitude": -97.694374
+            "longitude": -97.694374,
+            "latitude": 30.382982
         },
         "rating": 4.0,
         "id": "ez-stop-austin",
@@ -912,8 +911,9 @@
             }
         ],
         "distance": 1375.151740012,
-        "review_count": 1,
         "name": "Ez Stop",
+        "review_count": 1,
+        "transactions": [],
         "location": {
             "city": "Austin",
             "address2": null,
@@ -930,15 +930,14 @@
     },
     "23": {
         "phone": "+15123878031",
+        "distance": 476.52332092399996,
         "url": "https://www.yelp.com/biz/texas-wildflours-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 387-8031",
-        "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.3873023986816,
-            "longitude": -97.7063140869141
+            "longitude": -97.7063140869141,
+            "latitude": 30.3873023986816
         },
-        "rating": 5.0,
+        "is_closed": false,
         "id": "texas-wildflours-austin",
         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/PVjpXfLAQoA1NHAqSlyPbg/o.jpg",
         "categories": [
@@ -951,9 +950,6 @@
                 "alias": "customcakes"
             }
         ],
-        "distance": 476.52332092399996,
-        "review_count": 1,
-        "name": "Texas Wildflours",
         "location": {
             "city": "Austin",
             "address2": null,
@@ -965,19 +961,22 @@
             "state": "TX",
             "zip_code": "78758",
             "country": "US"
-        }
+        },
+        "rating": 5.0,
+        "name": "Texas Wildflours",
+        "review_count": 1,
+        "transactions": []
     },
     "24": {
         "phone": "+15128376550",
+        "distance": 1415.963154006,
         "url": "https://www.yelp.com/biz/capitol-beverage-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
         "display_phone": "(512) 837-6550",
-        "is_closed": false,
-        "transactions": [],
         "coordinates": {
-            "latitude": 30.38434,
-            "longitude": -97.71772
+            "longitude": -97.71772,
+            "latitude": 30.38434
         },
-        "rating": 2.0,
+        "is_closed": false,
         "id": "capitol-beverage-austin",
         "image_url": "",
         "categories": [
@@ -986,9 +985,6 @@
                 "alias": "beer_and_wine"
             }
         ],
-        "distance": 1415.963154006,
-        "review_count": 1,
-        "name": "Capitol Beverage",
         "location": {
             "city": "Austin",
             "address2": "",
@@ -1001,6 +997,10 @@
             "state": "TX",
             "zip_code": "78758",
             "country": "US"
-        }
+        },
+        "rating": 2.0,
+        "name": "Capitol Beverage",
+        "review_count": 1,
+        "transactions": []
     }
 }

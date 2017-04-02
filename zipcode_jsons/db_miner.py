@@ -202,7 +202,7 @@ def main():
         #    for key in restaurants[i].keys():
         #        print(key, restaurants[i][key])
         with open (str(zipcode)+".json", "w") as f:
-            json.dumps(restaurants, f)
+            json.dump(restaurants, f, indent = 4)
 
 if __name__ == '__main__':
     main()
