@@ -113,7 +113,7 @@ def request(host, path, bearer_token, url_params=None):
         'Authorization': 'Bearer %s' % bearer_token,
     }
 
-    print(u'Querying {0} ...'.format(url))
+    #print(u'Querying {0} ...'.format(url))
 
     response = requests.request('GET', url, headers=headers, params=url_params)
 
@@ -167,19 +167,41 @@ def query_api(term, location, offset):
     response = search(bearer_token, term, location, offset)
 
     businesses = response.get('businesses')
+    if businesses:
+        #pprint.pprint(businesses, indent=2)
+        new_businesses = []
+        for e in businesses:
+            try:
+                new_businesses.append(get_business(bearer_token, e["id"]))
+            except:
+                print("Caught Exception...")
+                pass
 
-    return businesses
+        return new_businesses
+    else:
+        print(businesses)
+    return
 
 
 def main():
+    parser = argparse.ArgumentParser()
 
-    for zipcode in zipCodes:
+    parser.add_argument("-f", "--firstIdx", dest="first", default=0, type=int, help="Idx to start at\
+    in the zipcodes list (default: 0)")
+
+    parser.add_argument("-s", "--secondIdx", dest="second", default=len(zipCodes)-1, type=int,
+    help="Idx to end at in the zipcodes list (default: len(zipCodes)-1)")
+
+    args = parser.parse_args()
+
+    for i in range(args.first, args.second+1):
+        zipcode = zipCodes[i]
         offset = 0
         restaurants = {}
         count = 0
         while offset != 1000:
             try:
-                businesses = query_api("food", str(zipcode),offset)
+                businesses = query_api("restaurants", "Austin, TX, " + str(zipcode) + ", United States", offset)
                 if not businesses:
                     break
                 for e in businesses:
