@@ -205,10 +205,15 @@ def index():
 # Model Views
 
 
+import sys
+sys.path.append("..")
+from main import raw_data
 @views.route('/Restaurants')
 def Restaurants():
-    global restaurant_db
-    return render_template("restaurants.html", model_elements=restaurant_db)
+    ret = []
+    for d in raw_data:
+        ret.append(raw_data[d])
+    return render_template("restaurants.html", model_elements=ret)
 
 
 @views.route('/Locations')
@@ -241,12 +246,12 @@ def About():
 # RESTAURANTS
 
 
-import sys
-sys.path.append("..")
-from main import raw_data
 @views.route('/Restaurants/<pk>')
 def restaurant(pk):
-    return render_template("restaurant_instance.html", instance=raw_data)
+    global restaurant_db
+    for dpk in restaurant_db:
+        if dpk["id"] == pk:
+            return render_template("restaurant_instance.html", instance=dpk)
 
 # LOCATIONS
 

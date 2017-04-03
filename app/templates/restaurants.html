@@ -94,12 +94,9 @@
 
 		<a href = "/Restaurants/{{ element['id'] }}">
 		<div class = "col-sm-4" style = "height: 300px;">
-            <img style = "width:100%; height: 150px;" src = "{{ url_for('static', filename='img/' +
-            element['img']) }}">
+            <img style = "width:100%; height: 150px;" src = "{{  element['image_url'] }}">
 			<p style = "font-size: 2em;">{{ element["name"] }}</p>
-			Address: {{element["location"]}}<br>
 			Rating: {{element["rating"]}} <br>
-			Food Type: {{element["food_type"]}}
 		</div>
 		</a>
 		{% endfor %}
