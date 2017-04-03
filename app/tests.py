@@ -149,7 +149,7 @@ class test_db (TestCase):
         assert (loc.average_rating == 3)
         assert (loc.average_price == 2)
         assert (loc.adjacent_location == 77778)
-        assert (loc.highest_price == "$$")
+        assert (loc.highest_price == 2)
         assert (loc.popular_food_type == "Italian")
         assert (loc.highest_rated_restaurant == "Little Italy")
 
@@ -168,7 +168,7 @@ class test_db (TestCase):
                 average_price=2,
                 adjacent_location=77778,
                 average_health_rating=88,
-                highest_price="$$",
+                highest_price= 2,
                 popular_food_type="Italian",
                 highest_rated_restaurant="Little Italy"
                 )
@@ -225,7 +225,7 @@ class test_db (TestCase):
         session_token.add(new_r)
         session_token.commit()
 
-        rev=session_token.query(Reviews).filter_by(review_id=1).first()
+        rev=session_token.query(Reviews).filter_by(review_id=2).first()
 
         assert not (session_token.query(Reviews) is None)
 
@@ -263,7 +263,7 @@ class test_db (TestCase):
         session_token.delete(r)
         session_token.commit()
 
-        r=session_token.query(Locations).filter_by(review_id=1).first()
+        r=session_token.query(Reviews).filter_by(review_id=1).first()
 
         assert (r is None)
 

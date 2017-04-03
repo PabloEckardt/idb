@@ -42,9 +42,9 @@ class Reviews(Base):
                   restaurant_pictures_url, restaurant_id, zipcode):
 
         assert (type(date) is str)
-        assert (type(rating) is str)
-        assert (type(username) is int)
-        assert (type(profile_picture_url) is int)
+        assert (type(rating) is int)
+        assert (type(username) is str)
+        assert (type(profile_picture_url) is str)
         assert (type(restaurant_pictures_url) is str)
 
         assert (type(restaurant_id) is int)
@@ -179,7 +179,7 @@ class Locations(Base):
     average_price=Column(Integer, nullable=False)
     adjacent_location=Column(Integer, nullable=False)
     average_health_rating=Column(Integer, nullable=False)
-    highest_price=Column(String(250), nullable=False)
+    highest_price=Column(Integer, nullable=False)
 
     popular_food_type=Column(String(250), ForeignKey(
         'food_types.food_type'), nullable=False)
@@ -206,7 +206,7 @@ class Locations(Base):
         assert (type(average_price) is int)
         assert (type(adjacent_location) is int)
         assert (type(average_health_rating) is int)
-        assert (type(highest_price) is String)
+        assert (type(highest_price) is int)
 
         assert (type(popular_food_type) is str)
         assert (type(highest_rated_restaurant) is str)
