@@ -27,11 +27,11 @@ class test_db (TestCase):
                        session_token,
                        name="Little Italy",
                        location=78701,
-                       price="$$",
-                       rating="3",
+                       price=2,
+                       rating=3,
                        hours="9 to 5",
                        food_type="Italian",
-                       Recent_Review="1"
+                       Recent_Review=1
                        )
 
         assert not (session_token.query(Restaurants) is None)
@@ -79,11 +79,11 @@ class test_db (TestCase):
         new_r=Restaurants(
                 name = "Little Italy 3",
                 location = 78701,
-                price = "$$",
-                rating = "3",
+                price = 2,
+                rating = 3,
                 hours = "9 to 5",
                 food_type = "Italian",
-                Recent_Review = "1")
+                Recent_Review = 1)
 
         session_token.add(new_r)
         session_token.commit()
@@ -112,7 +112,7 @@ class test_db (TestCase):
                         adjacent_location=77778,
                         average_health_rating=88,
                         zipcode=77777,
-                        highest_price="$$",
+                        highest_price=2,
                         popular_food_type="Italian",
                         highest_rated_restaurant="Little Italy"
                      )
@@ -128,12 +128,12 @@ class test_db (TestCase):
         global session_token
 
         new_l=Locations(
-                zipcode=77777,
+                zipcode=77776,
                 average_rating=3,
                 average_price=2,
                 adjacent_location=77778,
                 average_health_rating=88,
-                highest_price="$$",
+                highest_price=2,
                 popular_food_type="Italian",
                 highest_rated_restaurant="Little Italy"
                 )
@@ -163,7 +163,7 @@ class test_db (TestCase):
         global session_token
 
         new_l=Locations(
-                zipcode=77776,
+                zipcode=77771,
                 average_rating=3,
                 average_price=2,
                 adjacent_location=77778,
@@ -281,7 +281,7 @@ class test_db (TestCase):
                         country_of_origin="Italy",
                         image_url="/food_types/italian/",
                         open_restaurants=1,
-                        highest_rated_restaurant="Little Italy",
+                        highest_rated_restaurant=92834,
                         best_location=78787
                       )
 
@@ -296,13 +296,13 @@ class test_db (TestCase):
         global session_token
 
         new_f=Food_Types(
-                        food_type="Italian",
+                        food_type="Italian2",
                         average_price=3,
                         average_rating=3,
                         country_of_origin="Italy",
                         image_url="/food_types/italian/",
                         open_restaurants=1,
-                        highest_rated_restaurant="Little Italy",
+                        highest_rated_restaurant= 123,
                         best_location=78787
                            )
 
@@ -310,17 +310,17 @@ class test_db (TestCase):
         session_token.commit()
 
         food=session_token.query(Food_Types).filter_by(
-           food_type="Italian").first()
+           food_type="Italian2").first()
 
         assert not (session_token.query(Food_Types) is None)
 
-        assert (food.food_type == "Italian")
+        assert (food.food_type == "Italian2")
         assert (food.average_price == 3)
-        assert (food.rating == 3)
+        assert (food.average_rating == 3)
         assert (food.country_of_origin == "Italy")
         assert (food.image_url == "/food_types/italian/")
         assert (food.open_restaurants == 1)
-        assert (food.highest_rated_restaurant == "Little Italy")
+        assert (food.highest_rated_restaurant == 123)
         assert (food.best_location == 78787)
 
     def test_12_Food_Type_delete(self):
@@ -332,13 +332,13 @@ class test_db (TestCase):
         global session_token
 
         new_f=Food_Types(
-                        food_type="Italian",
+                        food_type="Italian3",
                         average_price=3,
                         average_rating=3,
                         country_of_origin="Italy",
                         image_url="/food_types/italian/",
                         open_restaurants=1,
-                        highest_rated_restaurant="Little Italy",
+                        highest_rated_restaurant=123,
                         best_location=78787
                         )
 
@@ -346,13 +346,13 @@ class test_db (TestCase):
         session_token.commit()
 
         f=session_token.query(Food_Types).filter_by(
-            food_type="Italian").first()
+            food_type="Italian3").first()
 
         session_token.delete(f)
         session_token.commit()
 
         f=session_token.query(Food_Types).filter_by(
-            food_type="Italian").first()
+            food_type="Italian3").first()
 
         assert (f is None)
 # ----
@@ -361,3 +361,5 @@ class test_db (TestCase):
 
 if __name__ == "__main__":  # pragma: no cover
     main()
+
+

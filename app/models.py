@@ -92,13 +92,13 @@ class Food_Types(Base):
                   image_url, open_restaurants, highest_rated_restaurant,
                   best_location):
 
-        assert (type(food_type) is String)
+        assert (type(food_type) is str)
 
         assert (type(average_price) is int)
         assert (type(average_rating) is int)
-        assert (type(country_of_origin) is String)
-        assert (type(image_url) is String)
-        assert (type(open_restaurants) is String)
+        assert (type(country_of_origin) is str)
+        assert (type(image_url) is str)
+        assert (type(open_restaurants) is int)
 
         assert (type(highest_rated_restaurant) is int)
         assert (type(best_location) is int)
