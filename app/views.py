@@ -241,12 +241,12 @@ def About():
 # RESTAURANTS
 
 
+import sys
+sys.path.append("..")
+from main import raw_data
 @views.route('/Restaurants/<pk>')
 def restaurant(pk):
-    global restaurant_db
-    for d in restaurant_db:
-        if d["id"] == pk:
-            return render_template("restaurant_instance.html", instance=d)
+    return render_template("restaurant_instance.html", instance=raw_data)
 
 # LOCATIONS
 
