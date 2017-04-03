@@ -3,14 +3,12 @@ from sqlalchemy.orm import sessionmaker
 # import our models
 from models import Restaurants, Locations, Food_Types, Reviews, Base
 
-#absolute_path = 'sqlite:////home/pablo/git/idb/'
-#db_name = 'alchemy_test_1'
-
+db_name = 'sqlite:///sql_example.db'
 
 # Bind the engine to the metadata of the Base class so that the
 # declaratives can be accessed through a DBSession instance
 def init_session():
-    engine = create_engine(absolute_path + db_name)
+    engine = create_engine(db_name)
     Base.metadata.bind = engine
     DBSession = sessionmaker(bind=engine)
     session_obj = DBSession()
@@ -32,15 +30,17 @@ def add_restaurant(session_obj, name, location, price, rating, hours,
     session_obj.commit()
 
 
-def add_location(session_obj, zipcode, average_price, popular_food_type,
-                 highest_rated_restaurant, lowest_rated_restaurant,
-                 average_rating, average_health_rating, adjacent_location):
+def add_location(session_obj, average_rating, average_price,
+                adjacent_location, average_health_rating,zipcode,
+                 highest_price, popular_food_type, highest_rated_restaurant):
+
     new_location = Locations(
         average_rating=average_rating,
         average_price=average_price,
-        ajacent_location=adjacent_location,
+        adjacent_location=adjacent_location,
         average_health_rating=average_health_rating,
         zipcode=zipcode,
+        highest_price=highest_price,
         popular_food_type=popular_food_type,
         highest_rated_restaurant=highest_rated_restaurant
     )
@@ -54,7 +54,7 @@ def add_food_type(session_obj, food_type, average_price,
                   image_url, open_restaurants,
                   highest_rated_restaurant, best_location,):
 
-    new_food_type = Food_types(
+    new_food_type = Food_Types(
         food_type=food_type,
         average_price=average_price,
         average_rating=average_rating,

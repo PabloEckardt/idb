@@ -41,14 +41,14 @@ class Reviews(Base):
     def __init__(self, date, rating, username, profile_picture_url,
                   restaurant_pictures_url, restaurant_id, zipcode):
 
-        assert (type(date) is String))
-        assert (type(rating) is String))
-        assert (type(username) is int))
-        assert (type(profile_picture_url) is int))
-        assert (type(restaurant_pictures_url) is String))
+        assert (type(date) is str)
+        assert (type(rating) is int)
+        assert (type(username) is str)
+        assert (type(profile_picture_url) is str)
+        assert (type(restaurant_pictures_url) is str)
 
-        assert (type(restaurant_id) is int))
-        assert (type(zipcode) is int))
+        assert (type(restaurant_id) is int)
+        assert (type(zipcode) is int)
 
 
         self.date=date
@@ -88,20 +88,20 @@ class Food_Types(Base):
         "locations.zipcode"), nullable=False)
     location=relationship("Locations", foreign_keys=[best_location])
 
-    def __init__(food_type, average_price, average_rating, country_of_origin,
+    def __init__(self, food_type, average_price, average_rating, country_of_origin,
                   image_url, open_restaurants, highest_rated_restaurant,
                   best_location):
 
-        assert (type(food_type) is String))
+        assert (type(food_type) is str)
 
-        assert (type(average_price) is int))
-        assert (type(average_rating) is int))
-        assert (type(country_of_origin) is String))
-        assert (type(image_url) is String))
-        assert (type(open_restaurants is String))
+        assert (type(average_price) is int)
+        assert (type(average_rating) is int)
+        assert (type(country_of_origin) is str)
+        assert (type(image_url) is str)
+        assert (type(open_restaurants) is int)
 
-        assert (type(highest_rated_restaurant is int))
-        assert (type(location is int))
+        assert (type(highest_rated_restaurant) is int)
+        assert (type(best_location) is int)
 
         self.food_type=food_type
 
@@ -112,7 +112,7 @@ class Food_Types(Base):
         self.open_restaurants=open_restaurants
 
         self.highest_rated_restaurant=highest_rated_restaurant
-        self.location=location
+        self.best_location=best_location
 
 # -------------
 # Restaurants
@@ -128,7 +128,7 @@ class Restaurants(Base):
     id=Column(Integer, primary_key=True)
 
     name=Column(String(250), nullable=False)
-    location=Column(String(250), nullable=False)
+    location=Column(Integer, nullable=False)
     price=Column(Integer, nullable=False)
     rating=Column(Integer, nullable=False)
     hours=Column(String(250), nullable=False)
@@ -137,21 +137,21 @@ class Restaurants(Base):
         'food_types.food_type'), nullable=False)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
-    Recent_Review=Column(String(250), ForeignKey(
+    Recent_Review=Column(Integer, ForeignKey(
         'reviews.review_id'), nullable=False)
     review=relationship("Reviews", foreign_keys=[Recent_Review])
 
-    def __init__(self, name, location, price, rating, hours, food_type, food,
-                 Recent_Review, Review):
+    def __init__(self, name, location, price, rating, hours, food_type,
+                 Recent_Review):
 
-        assert (type(name) is String))
-        assert (type(location) is String))
-        assert (type(price) is int))
-        assert (type(rating) is int))
-        assert (type(hours) is String))
+        assert (type(name) is str)
+        assert (type(location) is int)
+        assert (type(price) is int)
+        assert (type(rating) is int)
+        assert (type(hours) is str)
 
-        assert (type(Recent_Review is String))
-        assert (type(food_type is String))
+        assert (type(Recent_Review) is int)
+        assert (type(food_type) is str)
 
         self.name=name
         self.location=location
@@ -160,7 +160,7 @@ class Restaurants(Base):
         self.hours=hours
 
         self.food_type=food_type
-        self.Recent_Review=food_type
+        self.Recent_Review=Recent_Review
 # -------------
 # Locations
 # -------------
@@ -179,7 +179,7 @@ class Locations(Base):
     average_price=Column(Integer, nullable=False)
     adjacent_location=Column(Integer, nullable=False)
     average_health_rating=Column(Integer, nullable=False)
-    highest_price=Column(String(250), nullable=False)
+    highest_price=Column(Integer, nullable=False)
 
     popular_food_type=Column(String(250), ForeignKey(
         'food_types.food_type'), nullable=False)
@@ -190,35 +190,41 @@ class Locations(Base):
     restaurant=relationship("Restaurants", foreign_keys=[
                             highest_rated_restaurant])
 
-    def __init__(self, zipcode, average_rating, average_price,
-                  adjacent_location, average_health_rating, highest_price,
-                  popular_food_type, highest_rated_restaurant):
+    def __init__(self,
+                 average_rating,
+                 average_price,
+                 adjacent_location,
+                 average_health_rating,
+                 zipcode,
+                 highest_price,
+                 popular_food_type,
+                 highest_rated_restaurant):
 
-        assert (type(zipcode) is int))
+        assert (type(zipcode) is int)
 
-        assert (type(average_rating) is int))
-        assert (type(average_price) is int))
-        assert (type(adjacent_location) is int))
-        assert (type(average_health_rating) is int))
-        assert (type(highest_price) is String))
+        assert (type(average_rating) is int)
+        assert (type(average_price) is int)
+        assert (type(adjacent_location) is int)
+        assert (type(average_health_rating) is int)
+        assert (type(highest_price) is int)
 
-        assert (type(popular_food_type) is String))
-        assert (type(highest_rated_restaurant) is String))
+        assert (type(popular_food_type) is str)
+        assert (type(highest_rated_restaurant) is str)
 
-       self.zipcode=zipcode
+        self.zipcode=zipcode
 
-       self.average_rating=average_rating
-       self.average_price=average_price
-       self.adjacent_location=adjacent_location
-       self.average_health_rating=average_health_rating,
-       self.highest_price=highest_price
+        self.average_rating=average_rating
+        self.average_price=average_price
+        self.adjacent_location=adjacent_location
+        self.average_health_rating=average_health_rating
+        self.highest_price=highest_price
 
-       self.highest_rated_restaurant=highest_rated_restaurant
-       self.popular_food_type=popular_food_type
+        self.highest_rated_restaurant=highest_rated_restaurant
+        self.popular_food_type=popular_food_type
 
 # create an engine that stores data in the local directory's db file
-# db_name = 'sqlite:///sql_example.db'
-# engine = create_engine(db_name)
+db_name = 'sqlite:///sql_example.db'
+engine = create_engine(db_name)
 
 # Create all tables in the engine. Equivalent to Create Table in sql
-# Base.metadata.create_all(engine)
+Base.metadata.create_all(engine)
