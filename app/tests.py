@@ -58,6 +58,7 @@ class test_db (TestCase):
 
         session_token.add(new_r)
         session_token.commit()
+
         restaurant_1=session_token.query(Restaurants).filter_by(
             name = "Little Italy 2").first()
 
@@ -347,6 +348,7 @@ class test_db (TestCase):
 
         f=session_token.query(Food_Types).filter_by(
             food_type="Italian3").first()
+
         session_token.delete(f)
         session_token.commit()
 
@@ -355,9 +357,7 @@ class test_db (TestCase):
 
         assert (f is None)
 
-		
-
-	def test_13_restaurant_query_by_id(self):
+    def test_13_restaurant_query_by_id(self):
 		global session_token
 	   	new_r1 = Restaurants(
 							name= "Little Italy",
@@ -379,19 +379,20 @@ class test_db (TestCase):
 							Recent_Review=1
 							)
 
-		session_token.add(new_r1)
-		session_token.commit()
-		session_token.add(new_r2)
-		session_token.commit()
-		results = query_restaurant_by_id(session_token, 1)
+        session_token.add(new_r1)
+        session_token.commit()
+        session_token.add(new_r2)
+        session_token.commit()
 
-	def test_14_restaurant_query_all(self):
-		global session_token
-		results = query_all_restaurants(session_token)
+        results = query_restaurant_by_id(session_token, 1)
+
+    def test_14_restaurant_query_all(self):
+        global session_token
+        results = query_all_restaurants(session_token)
 
 	def test_15_location_query_by_zip(self):
 		global session_token
-		new_l=Locations(
+        new_l=Locations(
                 zipcode=77771,
                 average_rating=3,
                 average_price=2,
