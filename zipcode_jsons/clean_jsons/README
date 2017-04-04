@@ -1,6 +1,6 @@
 How to quickly filter more restaurants out of the list.
 
-add or remove elements from rejects.txt
+add or remove elements from rejects.txt ("These are categories")
 python mega_cleaner.py; python mega_to_zip; python split_in_food_types
 
 see:
