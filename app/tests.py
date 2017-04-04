@@ -7,6 +7,7 @@
 # -------
 # imports
 # -------
+import json
 from io import StringIO
 from unittest import main, TestCase
 from models import Restaurants, Locations, Food_Types, Reviews
@@ -355,6 +356,33 @@ class test_db (TestCase):
             food_type="Italian3").first()
 
         assert (f is None)
+
+    def test_restaurant_query(self):
+        global session_token
+        add_restaurant(
+                       session_token,
+                       name="Little Italy",
+                       location=78701,
+                       price=2,
+                       rating=3,
+                       hours="9 to 5",
+                       food_type="Italian",
+                       Recent_Review=1
+                       )
+
+        n = "Little Italy 2"
+        add_restaurant(
+                name= n,
+                location=78701,
+                price=2,
+                rating=3,
+                hours="9 to 5",
+                food_type="Italian",
+                Recent_Review=1
+                )
+        
+        results = query_restaurant(sesion_token, Location=78701)
+
 # ----
 # main
 # ----
