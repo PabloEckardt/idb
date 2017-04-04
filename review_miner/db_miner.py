@@ -119,17 +119,15 @@ def main():
             else:
                 reviews[key] = response.json().get("reviews")
                 reviews_collected.append(key)
-                if count == 10:
-                    break
 
 
-    with open ("review_key_data.txt") as rkd:
-        rkd.write("collected")
+    with open ("review_key_data.txt", "w") as rkd:
+        rkd.write("collected\n")
         for c in reviews_collected:
-            rkd.write(c,"\n")
-        rkd.write("not collected")
+            rkd.write(c+"\n")
+        rkd.write("not collected\n")
         for c in reviews_not_collected:
-            rkd.write(c,"\n")
+            rkd.write(c+"\n")
 
     with open ("reviews.json", "w") as r:
         json.dump(reviews, r, indent=4)
