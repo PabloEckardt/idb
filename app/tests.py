@@ -72,6 +72,7 @@ class test_db (TestCase):
         assert restaurant_1.Recent_Review == 1
 
     def test_3_Restaurants_delete(self):
+        global session_token
         '''
         Testing Deletion of Records on Restaurants
 
@@ -106,6 +107,7 @@ class test_db (TestCase):
         Testing our Wrapper to add records on Locations
 
         '''
+        global session_token
         add_location(
                         session_token,
                         average_rating=3,
@@ -274,6 +276,7 @@ class test_db (TestCase):
         Testing our Wrapper to add records on Food Types
 
         '''
+        global session_token
         add_food_type(
                         session_token,
                         food_type="Italian",
@@ -357,41 +360,41 @@ class test_db (TestCase):
 
 		
 
-	def test_13_restaurant_query_by_id(self):
-		global session_token
-	   	new_r1 = Restaurants(
-							name= "Little Italy",
-							location=78701,
-							price=2,
-							rating=3,
-							hours="9 to 5",
-							food_type="Italian",
-							Recent_Review=1
-							)
+    def test_13_restaurant_query_by_id(self):
+        global session_token
+        new_r1 = Restaurants(
+                            name= "Little Italy16",
+                            location=78701,
+                            price=2,
+                            rating=3,
+                            hours="9 to 5",
+                            food_type="Italian",
+                            Recent_Review=1
+                            )
 
-		new_r2 = Restaurants(
-							name= "Not-So-Little Italy",
-							location=78701,
-							price=2,
-							rating=3,
-							hours="9 to 5",
-							food_type="Italian",
-							Recent_Review=1
-							)
+        new_r2 = Restaurants(
+                            name= "Not-So-Little Italy",
+                            location=78701,
+                            price=2,
+                            rating=3,
+                            hours="9 to 5",
+                            food_type="Italian",
+                            Recent_Review=1
+                            )
 
-		session_token.add(new_r1)
-		session_token.commit()
-		session_token.add(new_r2)
-		session_token.commit()
-		results = query_restaurant_by_id(session_token, 1)
+        session_token.add(new_r1)
+        session_token.commit()
+        session_token.add(new_r2)
+        session_token.commit()
+        results = query_restaurant_by_id(session_token, 1)
 
-	def test_14_restaurant_query_all(self):
-		global session_token
-		results = query_all_restaurants(session_token)
+    def test_14_restaurant_query_all(self):
+        global session_token
+        results = query_all_restaurants(session_token)
 
-	def test_15_location_query_by_zip(self):
-		global session_token
-		new_l=Locations(
+    def test_15_location_query_by_zip(self):
+        global session_token
+        new_l=Locations(
                 zipcode=77771,
                 average_rating=3,
                 average_price=2,
@@ -399,11 +402,11 @@ class test_db (TestCase):
                 average_health_rating=88,
                 highest_price= 2,
                 popular_food_type="Italian",
-                highest_rated_restaurant="Little Italy"
+                highest_rated_restaurant="Little Italy17"
                 )
 
-		session_token.add(new_l)
-		session_token.commit()
+        session_token.add(new_l)
+        session_token.commit()
 
 # ----
 # main
