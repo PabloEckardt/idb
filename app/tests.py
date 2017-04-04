@@ -379,18 +379,32 @@ class test_db (TestCase):
 							Recent_Review=1
 							)
 
-        	session_token.add(new_r1)
-        	session_token.commit()
-        	session_token.add(new_r2)
-        	session_token.commit()
+        session_token.add(new_r1)
+        session_token.commit()
+        session_token.add(new_r2)
+        session_token.commit()
 
-        	results = query_restaurant_by_id(session_token, 1)
+        results = query_restaurant_by_id(session_token, 1)
 
     def test_14_restaurant_query_all(self):
         global session_token
         results = query_all_restaurants(session_token)
 
+	def test_15_location_query_by_zip(self):
+		global session_token
+        new_l=Locations(
+                zipcode=77771,
+                average_rating=3,
+                average_price=2,
+                adjacent_location=77778,
+                average_health_rating=88,
+                highest_price= 2,
+                popular_food_type="Italian",
+                highest_rated_restaurant="Little Italy"
+                )
 
+		session_token.add(new_l)
+		session_token.commit()
 
 # ----
 # main

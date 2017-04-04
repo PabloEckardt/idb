@@ -5,7 +5,7 @@
 # pylint: disable = missing-docstring
 
 import json
-from flask import jsonify
+from flask import Flask, jsonify
 from insert_records import init_session
 from models import Restaurants, Locations, Food_Types, Reviews, Base
 
