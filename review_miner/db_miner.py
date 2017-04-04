@@ -101,6 +101,8 @@ def main():
     }
 
     reviews = {}
+    reviews_collected = []
+    reviews_not_collected = []
 
     count = 0
     with open ("new_mega.json", "r") as m:
@@ -111,10 +113,23 @@ def main():
             id = new_mega[key]["id"]
             url = "https://api.yelp.com/v3/businesses/" + id + "/reviews"
             response = requests.request('GET', url, headers=headers)
-            reviews[key] = response.json().get("reviews")
-            if count == 2:
-                break
+            if not response:
+                reviews_not_collected.append(key)
+                print("key:", key,"is broken")
+            else:
+                reviews[key] = response.json().get("reviews")
+                reviews_collected.append(key)
+                if count == 10:
+                    break
 
+
+    with open ("review_key_data.txt") as rkd:
+        rkd.write("collected")
+        for c in reviews_collected:
+            rkd.write(c,"\n")
+        rkd.write("not collected")
+        for c in reviews_not_collected:
+            rkd.write(c,"\n")
 
     with open ("reviews.json", "w") as r:
         json.dump(reviews, r, indent=4)
