@@ -8,6 +8,7 @@
 # imports
 # -------
 import json
+from flask import current_app as app
 from io import StringIO
 from unittest import main, TestCase
 from models import Restaurants, Locations, Food_Types, Reviews
@@ -15,7 +16,6 @@ from insert_records import init_session, add_restaurant, add_location, add_food_
 from query_records import query_all_restaurants, query_restaurant_by_id, query_all_food_types, query_food_type_by_name, query_all_reviews, query_review_by_id, query_all_locations, query_location_by_zip
 
 session_token = init_session()
-
 
 class test_db (TestCase):
 
@@ -222,7 +222,7 @@ class test_db (TestCase):
                     profile_picture_url="/review_profiles/pebs",
                     restaurant_pictures_url="/reviews_images/pebs/1",
                     restaurant_id=1,
-                    zipcode=67777
+                    zipcode=67778
                 )
 
         session_token.add(new_r)
@@ -232,7 +232,7 @@ class test_db (TestCase):
 
         assert not (session_token.query(Reviews) is None)
 
-        assert (rev.zipcode == 67777)
+        assert (rev.zipcode == 67778)
         assert (rev.date == "12/1/2014")
         assert (rev.rating == 4)
         assert (rev.username == "pebs")
@@ -358,8 +358,6 @@ class test_db (TestCase):
 
         assert (f is None)
 
-		
-
     def test_13_restaurant_query_by_id(self):
         global session_token
         new_r1 = Restaurants(
@@ -388,14 +386,23 @@ class test_db (TestCase):
         session_token.commit()
         results = query_restaurant_by_id(session_token, 1)
 
+        r = json.loads(results)
+
+        assert(r is not None)
+        assert(r["id"] == 1)
+
     def test_14_restaurant_query_all(self):
         global session_token
         results = query_all_restaurants(session_token)
+        r = json.loads(results)
+
+        assert(r is not None)
+        assert(len(r) > 1)
 
     def test_15_location_query_by_zip(self):
         global session_token
         new_l=Locations(
-                zipcode=77771,
+                zipcode=77779,
                 average_rating=3,
                 average_price=2,
                 adjacent_location=77778,
@@ -407,6 +414,75 @@ class test_db (TestCase):
 
         session_token.add(new_l)
         session_token.commit()
+
+        result = query_location_by_zip(session_token, 77779)
+        r = json.loads(result)
+        assert (r is not None)
+        assert (r["zipcode"] == 77779)
+
+    def test_16_location_query_all(self) :
+        global session_token
+        results = query_all_locations(session_token)
+        r = json.loads(results)
+        assert (r is not None)
+        assert (len(r) == 1)
+
+    def test_17_food_type_query_by_name(self):
+        global session_token
+        new_f=Food_Types(
+                        food_type="Chinese",
+                        average_price=3,
+                        average_rating=3,
+                        country_of_origin="China",
+                        image_url="/food_types/Chinese/",
+                        open_restaurants=1,
+                        highest_rated_restaurant=123,
+                        best_location=78787
+                        )
+
+        session_token.add(new_f)
+        session_token.commit()
+        
+        result = query_food_type_by_name(session_token, "Chinese")
+        r = json.loads(result)
+
+        assert (r is not None)
+        assert (r["food_type"] == "Chinese")
+
+    def test_18_food_type_query_all(self):
+        global session_token
+        results = query_all_food_types(session_token)
+        r = json.loads(results)
+        assert (r is not None)
+        assert (len(r) > 0)
+
+    def test_19_review_query_by_id(self):
+        global session_token
+        new_r=Reviews(
+                    date="12/1/2014",
+                    rating=5,
+                    username="bob",
+                    profile_picture_url="/review_profiles/pebs",
+                    restaurant_pictures_url="/reviews_images/pebs/1",
+                    restaurant_id=2,
+                    zipcode=67778
+                )
+
+        session_token.add(new_r)
+        session_token.commit()
+
+        result = query_review_by_id(session_token, 1)
+        r = json.loads(result)
+
+        assert(r is not None)
+        assert(r["review_id"] == 1)
+
+    def test_20_review_query_all(self):
+        global session_token
+        results = query_all_reviews(session_obj)
+        r = json.loads(results)
+        assert(r is not None)
+        assert(len(r) > 0)
 
 # ----
 # main
