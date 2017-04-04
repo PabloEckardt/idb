@@ -111,9 +111,10 @@ def main():
             id = new_mega[key]["id"]
             url = "https://api.yelp.com/v3/businesses/" + id + "/reviews"
             response = requests.request('GET', url, headers=headers)
-            reviews[key] = response
-            if count == 0:
+            reviews[key] = response.json().get("reviews")
+            if count == 2:
                 break
+
 
     with open ("reviews.json", "w") as r:
         json.dump(reviews, r, indent=4)
