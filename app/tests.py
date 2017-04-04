@@ -12,8 +12,7 @@ from io import StringIO
 from unittest import main, TestCase
 from models import Restaurants, Locations, Food_Types, Reviews
 from insert_records import init_session, add_restaurant, add_location, add_food_type, add_review
-from query_records.py import query_all_restaurants, query_restaurant_by_id, query_all_food_types, query_food_type_by_name,
-                query_all_reviews, query_review_by_id, query_all_locations, query_location_by_zip
+from query_records import query_all_restaurants, query_restaurant_by_id, query_all_food_types, query_food_type_by_name, query_all_reviews, query_review_by_id, query_all_locations, query_location_by_zip
 
 session_token = init_session()
 
@@ -361,23 +360,24 @@ class test_db (TestCase):
 
     def test_13_restaurant_query_by_id(self):
         global session_token
+		
         new_r1 = Restaurants(
-                name= "Little Italy",
+                			name= "Little Italy",
+                			location=78701,
+                			price=2,
+                			rating=3,
+                			hours="9 to 5",
+                			food_type="Italian",
+                			Recent_Review=1
+                )
+
+        new_r2 = Restaurants(
+                name= "Not-So-Little Italy",
                 location=78701,
                 price=2,
                 rating=3,
                 hours="9 to 5",
                 food_type="Italian",
-                Recent_Review=1
-                )
-
-        new_r2 = Restaurants(
-                name= n,
-                location=78701,
-                price=2,
-                rating=3,
-                hours="9 to 5",
-                food_type="Not-So-Little Italy",
                 Recent_Review=1
                 )
 
