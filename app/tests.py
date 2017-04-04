@@ -372,6 +372,7 @@ class test_db (TestCase):
 
         n = "Little Italy 2"
         add_restaurant(
+                session_token,
                 name= n,
                 location=78701,
                 price=2,
