@@ -1,7 +1,7 @@
 import json
 
 food_types = {}
-with open ("new_mega.json", "r") as mega:
+with open ("one2oneMega.json", "r") as mega:
     restaurants = json.load(mega)
     for key in restaurants.keys():
         l = restaurants[key]["categories"]

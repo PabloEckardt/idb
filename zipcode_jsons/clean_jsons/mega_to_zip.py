@@ -1,7 +1,7 @@
 import json
 
 mega = {}
-with open("new_mega.json", "r") as f:
+with open("one2oneMega.json", "r") as f:
     mega = json.load(f)
 
 zips = {}
