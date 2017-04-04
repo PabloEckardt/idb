@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Yelp Fusion API code sample.
+Yelp Fusion API code sample without the superflous data.
 
 This program demonstrates the capability of the Yelp Fusion API
 by using the Search API to query for businesses by a search term and location,
@@ -24,7 +24,6 @@ import pprint
 import requests
 import sys
 import urllib
-from zipcodes import zipCodes
 
 
 # This client code can run on Python 2.x or 3.x.  Your imports can be
@@ -92,126 +91,32 @@ def obtain_bearer_token(host, path):
     return bearer_token
 
 
-def request(host, path, bearer_token, url_params=None):
-    """Given a bearer token, send a GET request to the API.
 
-    Args:
-        host (str): The domain host of the API.
-        path (str): The path of the API after the domain.
-        bearer_token (str): OAuth bearer token, obtained using client_id and client_secret.
-        url_params (dict): An optional set of query parameters in the request.
+def main():
 
-    Returns:
-        dict: The JSON response from the request.
+    bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
 
-    Raises:
-        HTTPError: An error occurs from the HTTP request.
-    """
-    url_params = url_params or {}
-    url = '{0}{1}'.format(host, quote(path.encode('utf8')))
     headers = {
         'Authorization': 'Bearer %s' % bearer_token,
     }
 
-    #print(u'Querying {0} ...'.format(url))
+    reviews = {}
 
-    response = requests.request('GET', url, headers=headers, params=url_params)
+    count = 0
+    with open ("new_mega.json", "r") as m:
+        new_mega = json.load(m)
+        for key in new_mega:
+            print(count)
+            count += 1
+            id = new_mega[key]["id"]
+            url = "https://api.yelp.com/v3/businesses/" + id + "/reviews"
+            response = requests.request('GET', url, headers=headers)
+            reviews[key] = response
+            if count == 0:
+                break
 
-    return response.json()
-
-
-def search(bearer_token, term, location, offset):
-    """Query the Search API by a search term and location.
-
-    Args:
-        term (str): The search term passed to the API.
-        location (str): The search location passed to the API.
-
-    Returns:
-        dict: The JSON response from the request.
-    """
-
-    url_params = {
-        'term': term.replace(' ', '+'),
-        'location': location.replace(' ', '+'),
-        'limit': SEARCH_LIMIT,
-        'offset': offset
-    }
-    print (url_params)
-    return request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
-
-
-def get_business(bearer_token, business_id):
-    """Query the Business API by a business ID.
-
-    Args:
-        business_id (str): The ID of the business to query.
-
-    Returns:
-        dict: The JSON response from the request.
-    """
-    business_path = BUSINESS_PATH + business_id
-
-    return request(API_HOST, business_path, bearer_token)
-
-
-def query_api(term, location, offset):
-    """Queries the API by the input values from the user.
-
-    Args:
-        term (str): The search term to query.
-        location (str): The location of the business to query.
-    """
-    bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
-
-    response = search(bearer_token, term, location, offset)
-
-    businesses = response.get('businesses')
-    if businesses:
-        #pprint.pprint(businesses, indent=2)
-        new_businesses = []
-        for e in businesses:
-            try:
-                new_businesses.append(get_business(bearer_token, e["id"]))
-            except:
-                print("Caught Exception...")
-                pass
-
-        return new_businesses
-    else:
-        print(businesses)
-    return
-
-
-def main():
-    with open("new_mega.json", "r") as nmj:
-
-    for i in range(args.first, args.second+1):
-        zipcode = zipCodes[i]
-        offset = 0
-        restaurants = {}
-        count = 0
-        while offset != 1000:
-            try:
-                businesses = query_api("restaurants", "Austin, TX, " + str(zipcode) + ", United States", offset)
-                if not businesses:
-                    break
-                for e in businesses:
-                    restaurants[count] = e
-                    count += 1
-
-            except HTTPError as error:
-                sys.exit(
-                    'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
-                        error.code,
-                        error.url,
-                        error.read(),
-                    )
-                )
-            offset += 50
-        count = 0
-        with open (str(zipcode)+".json", "w") as f:
-            json.dump(restaurants, f, indent = 4)
+    with open ("reviews.json", "w") as r:
+        json.dump(reviews, r, indent=4)
 
 if __name__ == '__main__':
     main()
