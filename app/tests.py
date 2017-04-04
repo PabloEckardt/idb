@@ -332,7 +332,6 @@ class test_db (TestCase):
 
         '''
         global session_token
-
         new_f=Food_Types(
                         food_type="Italian3",
                         average_price=3,
@@ -359,34 +358,33 @@ class test_db (TestCase):
         assert (f is None)
 
     def test_13_restaurant_query_by_id(self):
-        global session_token
-		
-        new_r1 = Restaurants(
-                			name= "Little Italy",
-                			location=78701,
-                			price=2,
-                			rating=3,
-                			hours="9 to 5",
-                			food_type="Italian",
-                			Recent_Review=1
-                )
+		global session_token
+	   	new_r1 = Restaurants(
+							name= "Little Italy",
+							location=78701,
+							price=2,
+							rating=3,
+							hours="9 to 5",
+							food_type="Italian",
+							Recent_Review=1
+							)
 
-        new_r2 = Restaurants(
-                name= "Not-So-Little Italy",
-                location=78701,
-                price=2,
-                rating=3,
-                hours="9 to 5",
-                food_type="Italian",
-                Recent_Review=1
-                )
+		new_r2 = Restaurants(
+							name= "Not-So-Little Italy",
+							location=78701,
+							price=2,
+							rating=3,
+							hours="9 to 5",
+							food_type="Italian",
+							Recent_Review=1
+							)
 
-        session_token.add(new_r1)
-        session_token.commit()
-        session_token.add(new_r2)
-        session_token.commit()
+        	session_token.add(new_r1)
+        	session_token.commit()
+        	session_token.add(new_r2)
+        	session_token.commit()
 
-        results = query_restaurant_by_id(sesion_token, 1)
+        	results = query_restaurant_by_id(session_token, 1)
 
     def test_14_restaurant_query_all(self):
         global session_token
