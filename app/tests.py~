@@ -58,6 +58,7 @@ class test_db (TestCase):
 
         session_token.add(new_r)
         session_token.commit()
+        query_restaurant_by_id(session_token, 1)
         restaurant_1=session_token.query(Restaurants).filter_by(
             name = "Little Italy 2").first()
 
