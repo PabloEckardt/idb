@@ -105,9 +105,20 @@ def query_review_by_id(session_obj, id):
             "zipcode":review.zipcode
             }
     return json.dumps(result)
-    return jsonify(json_list = review)
 
 def query_all_reviews(session_obj):
     reviews = session_obj.query(Reviews).all()
-    return jsonify(json_list = reviews)
+    ret = []
+    for review in reviews :
+        conv = {"review_id":review.review_id,
+            "date":review.date,
+            "rating":review.rating,
+            "username":review.username,
+            "profile_picture_url":review.profile_picture_url,
+            "restaurant_pictures_url":review.restaurant_pictures_url,
+            "restaurant_id":review.restaurant_id,
+            "zipcode":review.zipcode
+            }
+        ret.append(conv)
+    return json.dumps(ret)
 

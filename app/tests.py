@@ -479,7 +479,7 @@ class test_db (TestCase):
 
     def test_20_review_query_all(self):
         global session_token
-        results = query_all_reviews(session_obj)
+        results = query_all_reviews(session_token)
         r = json.loads(results)
         assert(r is not None)
         assert(len(r) > 0)
