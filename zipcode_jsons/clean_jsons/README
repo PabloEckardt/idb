@@ -1,0 +1,9 @@
+How to quickly filter more restaurants out of the list.
+
+add or remove elements from rejects.txt
+python mega_cleaner.py; python mega_to_zip; python split_in_food_types
+
+see:
+deleted_from_mega.txt // for details on restaurants deleted.
+the outoput of split_in_food_types.py to see number of restaurants per category.
+
