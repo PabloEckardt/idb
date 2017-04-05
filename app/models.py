@@ -29,7 +29,9 @@ class Reviews(Base):
     rating = Column(Integer, nullable=False)
     username = Column(String(250), nullable=False)
     profile_picture_url = Column(String(250), nullable=False)
+    # TODO get rid of this
     restaurant_pictures_url = Column(String(250), nullable=False)
+    # TODO add url for review
 
     restaurant_id = Column(Integer, ForeignKey(
         'restaurants.id'), nullable=False)
@@ -75,8 +77,10 @@ class Food_Types(Base):
 
     average_price=Column(Integer, nullable=False)
     average_rating=Column(Integer, nullable=False)
+    # TODO get rid of this
     country_of_origin=Column(String(250), nullable=False)
     image_url=Column(String(250), nullable=False)
+    # TODO get rid of this
     open_restaurants=Column(Integer, nullable=True)
 
     highest_rated_restaurant=Column(
@@ -131,6 +135,7 @@ class Restaurants(Base):
     location=Column(Integer, nullable=False)
     price=Column(Integer, nullable=False)
     rating=Column(Integer, nullable=False)
+    #TODO get rid of the hours
     hours=Column(String(250), nullable=False)
 
     food_type=Column(String(250), ForeignKey(
@@ -177,7 +182,9 @@ class Locations(Base):
 
     average_rating=Column(Integer, nullable=False)
     average_price=Column(Integer, nullable=False)
+    # TODO get rid of this
     adjacent_location=Column(Integer, nullable=False)
+    # TODO get rid of this
     average_health_rating=Column(Integer, nullable=False)
     highest_price=Column(Integer, nullable=False)
 
