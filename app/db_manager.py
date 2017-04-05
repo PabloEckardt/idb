@@ -14,4 +14,3 @@ def init_session(engine):
 
 def setupdb(engine):
     Base.metadata.create_all(engine)
-
