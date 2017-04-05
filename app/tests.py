@@ -29,7 +29,6 @@ class test_db (TestCase):
                        location=78701,
                        price=2,
                        rating=3,
-                       hours="9 to 5",
                        food_type="Italian",
                        Recent_Review=1
                        )
@@ -48,7 +47,6 @@ class test_db (TestCase):
                 location=78701,
                 price=2,
                 rating=3,
-                hours="9 to 5",
                 food_type="Italian",
                 Recent_Review=1
                 )
@@ -66,7 +64,6 @@ class test_db (TestCase):
         assert restaurant_1.location == 78701
         assert restaurant_1.price == 2
         assert restaurant_1.rating == 3
-        assert restaurant_1.hours == "9 to 5"
         assert restaurant_1.food_type == "Italian"
         assert restaurant_1.Recent_Review == 1
 
@@ -81,7 +78,6 @@ class test_db (TestCase):
                 location = 78701,
                 price = 2,
                 rating = 3,
-                hours = "9 to 5",
                 food_type = "Italian",
                 Recent_Review = 1)
 
@@ -109,8 +105,6 @@ class test_db (TestCase):
                         session_token,
                         average_rating=3,
                         average_price=2,
-                        adjacent_location=77778,
-                        average_health_rating=88,
                         zipcode=77777,
                         highest_price=2,
                         popular_food_type="Italian",
@@ -131,8 +125,6 @@ class test_db (TestCase):
                 zipcode=77776,
                 average_rating=3,
                 average_price=2,
-                adjacent_location=77778,
-                average_health_rating=88,
                 highest_price=2,
                 popular_food_type="Italian",
                 highest_rated_restaurant="Little Italy"
@@ -148,7 +140,6 @@ class test_db (TestCase):
         assert (loc.zipcode == 77777)
         assert (loc.average_rating == 3)
         assert (loc.average_price == 2)
-        assert (loc.adjacent_location == 77778)
         assert (loc.highest_price == 2)
         assert (loc.popular_food_type == "Italian")
         assert (loc.highest_rated_restaurant == "Little Italy")
@@ -163,11 +154,9 @@ class test_db (TestCase):
         global session_token
 
         new_l=Locations(
-                zipcode=77771,
+                zipcode=11111,
                 average_rating=3,
                 average_price=2,
-                adjacent_location=77778,
-                average_health_rating=88,
                 highest_price= 2,
                 popular_food_type="Italian",
                 highest_rated_restaurant="Little Italy"
@@ -176,12 +165,12 @@ class test_db (TestCase):
         session_token.add(new_l)
         session_token.commit()
 
-        l=session_token.query(Locations).filter_by(zipcode=77776).first()
+        l=session_token.query(Locations).filter_by(zipcode=11111).first()
 
         session_token.delete(l)
         session_token.commit()
 
-        l=session_token.query(Locations).filter_by(zipcode=77776).first()
+        l=session_token.query(Locations).filter_by(zipcode=11111).first()
 
         assert (l is None)
 
@@ -197,7 +186,7 @@ class test_db (TestCase):
                     rating=4,
                     username="pebs",
                     profile_picture_url="/review_profiles/pebs",
-                    restaurant_pictures_url="/reviews_images/pebs/1",
+                    review_url="/review/1",
                     restaurant_id=1,
                     zipcode=77777
                     )
@@ -217,7 +206,7 @@ class test_db (TestCase):
                     rating=4,
                     username="pebs",
                     profile_picture_url="/review_profiles/pebs",
-                    restaurant_pictures_url="/reviews_images/pebs/1",
+                    review_url="/review/1",
                     restaurant_id=1,
                     zipcode=67777
                 )
@@ -234,7 +223,7 @@ class test_db (TestCase):
         assert (rev.rating == 4)
         assert (rev.username == "pebs")
         assert (rev.profile_picture_url == "/review_profiles/pebs")
-        assert (rev.restaurant_pictures_url == "/reviews_images/pebs/1")
+        assert (rev.review_url == "/review/1")
         assert (rev.restaurant_id == 1)
 
     def test_9_Reviews_delete(self):
@@ -250,7 +239,7 @@ class test_db (TestCase):
                     rating=4,
                     username="pebs",
                     profile_picture_url="/review_profiles/pebs",
-                    restaurant_pictures_url="/reviews_images/pebs/1",
+                    review_url="/reviews_images/pebs/1",
                     restaurant_id=1,
                     zipcode=67777
                 )
@@ -258,12 +247,12 @@ class test_db (TestCase):
         session_token.add(new_r)
         session_token.commit()
 
-        r=session_token.query(Reviews).filter_by(review_id=1).first()
+        r=session_token.query(Reviews).filter_by(review_id=3).first()
 
         session_token.delete(r)
         session_token.commit()
 
-        r=session_token.query(Reviews).filter_by(review_id=1).first()
+        r=session_token.query(Reviews).filter_by(review_id=3).first()
 
         assert (r is None)
 
@@ -278,9 +267,7 @@ class test_db (TestCase):
                         food_type="Italian",
                         average_price=3,
                         average_rating=3,
-                        country_of_origin="Italy",
                         image_url="/food_types/italian/",
-                        open_restaurants=1,
                         highest_rated_restaurant=92834,
                         best_location=78787
                       )
@@ -299,9 +286,7 @@ class test_db (TestCase):
                         food_type="Italian2",
                         average_price=3,
                         average_rating=3,
-                        country_of_origin="Italy",
                         image_url="/food_types/italian/",
-                        open_restaurants=1,
                         highest_rated_restaurant= 123,
                         best_location=78787
                            )
@@ -317,9 +302,7 @@ class test_db (TestCase):
         assert (food.food_type == "Italian2")
         assert (food.average_price == 3)
         assert (food.average_rating == 3)
-        assert (food.country_of_origin == "Italy")
         assert (food.image_url == "/food_types/italian/")
-        assert (food.open_restaurants == 1)
         assert (food.highest_rated_restaurant == 123)
         assert (food.best_location == 78787)
 
@@ -335,9 +318,7 @@ class test_db (TestCase):
                         food_type="Italian3",
                         average_price=3,
                         average_rating=3,
-                        country_of_origin="Italy",
                         image_url="/food_types/italian/",
-                        open_restaurants=1,
                         highest_rated_restaurant=123,
                         best_location=78787
                         )

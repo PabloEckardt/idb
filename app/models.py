@@ -28,10 +28,9 @@ class Reviews(Base):
     date = Column(String(250), nullable=False)
     rating = Column(Integer, nullable=False)
     username = Column(String(250), nullable=False)
-    profile_picture_url = Column(String(250), nullable=False)
-    # TODO get rid of this
-    restaurant_pictures_url = Column(String(250), nullable=False)
-    # TODO add url for review
+    profile_picture_url = Column(String(250), nullable=True)
+    review_url = Column(String(350), nullable=False)
+
 
     restaurant_id = Column(Integer, ForeignKey(
         'restaurants.id'), nullable=False)
@@ -41,13 +40,14 @@ class Reviews(Base):
     location = relationship("Locations", foreign_keys=[zipcode])
 
     def __init__(self, date, rating, username, profile_picture_url,
-                  restaurant_pictures_url, restaurant_id, zipcode):
+                  review_url, restaurant_id, zipcode):
 
         assert (type(date) is str)
         assert (type(rating) is int)
         assert (type(username) is str)
-        assert (type(profile_picture_url) is str)
-        assert (type(restaurant_pictures_url) is str)
+
+        assert (type(profile_picture_url) is str or None)
+        assert (type(review_url) is str)
 
         assert (type(restaurant_id) is int)
         assert (type(zipcode) is int)
@@ -57,7 +57,7 @@ class Reviews(Base):
         self.rating=rating
         self.username=username
         self.profile_picture_url=profile_picture_url
-        self.restaurant_pictures_url=restaurant_pictures_url
+        self.review_url=review_url
 
         self.restaurant_id=restaurant_id
         self.zipcode=zipcode
@@ -77,11 +77,7 @@ class Food_Types(Base):
 
     average_price=Column(Integer, nullable=False)
     average_rating=Column(Integer, nullable=False)
-    # TODO get rid of this
-    country_of_origin=Column(String(250), nullable=False)
     image_url=Column(String(250), nullable=False)
-    # TODO get rid of this
-    open_restaurants=Column(Integer, nullable=True)
 
     highest_rated_restaurant=Column(
         Integer, ForeignKey('restaurants.id'), nullable=False)
@@ -92,17 +88,15 @@ class Food_Types(Base):
         "locations.zipcode"), nullable=False)
     location=relationship("Locations", foreign_keys=[best_location])
 
-    def __init__(self, food_type, average_price, average_rating, country_of_origin,
-                  image_url, open_restaurants, highest_rated_restaurant,
+    def __init__(self, food_type, average_price, average_rating,
+                  image_url, highest_rated_restaurant,
                   best_location):
 
         assert (type(food_type) is str)
 
         assert (type(average_price) is int)
         assert (type(average_rating) is int)
-        assert (type(country_of_origin) is str)
         assert (type(image_url) is str)
-        assert (type(open_restaurants) is int)
 
         assert (type(highest_rated_restaurant) is int)
         assert (type(best_location) is int)
@@ -111,9 +105,7 @@ class Food_Types(Base):
 
         self.average_price=average_price
         self.average_rating=average_rating
-        self.country_of_origin=country_of_origin
         self.image_url=image_url
-        self.open_restaurants=open_restaurants
 
         self.highest_rated_restaurant=highest_rated_restaurant
         self.best_location=best_location
@@ -135,8 +127,6 @@ class Restaurants(Base):
     location=Column(Integer, nullable=False)
     price=Column(Integer, nullable=False)
     rating=Column(Integer, nullable=False)
-    #TODO get rid of the hours
-    hours=Column(String(250), nullable=False)
 
     food_type=Column(String(250), ForeignKey(
         'food_types.food_type'), nullable=False)
@@ -146,14 +136,13 @@ class Restaurants(Base):
         'reviews.review_id'), nullable=False)
     review=relationship("Reviews", foreign_keys=[Recent_Review])
 
-    def __init__(self, name, location, price, rating, hours, food_type,
+    def __init__(self, name, location, price, rating, food_type,
                  Recent_Review):
 
         assert (type(name) is str)
         assert (type(location) is int)
         assert (type(price) is int)
         assert (type(rating) is int)
-        assert (type(hours) is str)
 
         assert (type(Recent_Review) is int)
         assert (type(food_type) is str)
@@ -162,7 +151,6 @@ class Restaurants(Base):
         self.location=location
         self.price=price
         self.rating=rating
-        self.hours=hours
 
         self.food_type=food_type
         self.Recent_Review=Recent_Review
@@ -182,10 +170,6 @@ class Locations(Base):
 
     average_rating=Column(Integer, nullable=False)
     average_price=Column(Integer, nullable=False)
-    # TODO get rid of this
-    adjacent_location=Column(Integer, nullable=False)
-    # TODO get rid of this
-    average_health_rating=Column(Integer, nullable=False)
     highest_price=Column(Integer, nullable=False)
 
     popular_food_type=Column(String(250), ForeignKey(
@@ -200,8 +184,6 @@ class Locations(Base):
     def __init__(self,
                  average_rating,
                  average_price,
-                 adjacent_location,
-                 average_health_rating,
                  zipcode,
                  highest_price,
                  popular_food_type,
@@ -211,8 +193,6 @@ class Locations(Base):
 
         assert (type(average_rating) is int)
         assert (type(average_price) is int)
-        assert (type(adjacent_location) is int)
-        assert (type(average_health_rating) is int)
         assert (type(highest_price) is int)
 
         assert (type(popular_food_type) is str)
@@ -222,8 +202,6 @@ class Locations(Base):
 
         self.average_rating=average_rating
         self.average_price=average_price
-        self.adjacent_location=adjacent_location
-        self.average_health_rating=average_health_rating
         self.highest_price=highest_price
 
         self.highest_rated_restaurant=highest_rated_restaurant
