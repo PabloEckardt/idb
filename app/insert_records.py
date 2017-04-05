@@ -15,14 +15,13 @@ def init_session():
     return session_obj
 
 
-def add_restaurant(session_obj, name, location, price, rating, hours,
+def add_restaurant(session_obj, name, location, price, rating,
                    food_type, Recent_Review):
 
     new_restaurant = Restaurants(name=name,
                                  location=location,
                                  price=price,
                                  rating=rating,
-                                 hours=hours,
                                  food_type=food_type,
                                  Recent_Review=Recent_Review)
 
@@ -31,14 +30,11 @@ def add_restaurant(session_obj, name, location, price, rating, hours,
 
 
 def add_location(session_obj, average_rating, average_price,
-                adjacent_location, average_health_rating,zipcode,
-                 highest_price, popular_food_type, highest_rated_restaurant):
+                zipcode, highest_price, popular_food_type, highest_rated_restaurant):
 
     new_location = Locations(
         average_rating=average_rating,
         average_price=average_price,
-        adjacent_location=adjacent_location,
-        average_health_rating=average_health_rating,
         zipcode=zipcode,
         highest_price=highest_price,
         popular_food_type=popular_food_type,
@@ -50,17 +46,14 @@ def add_location(session_obj, average_rating, average_price,
 
 
 def add_food_type(session_obj, food_type, average_price,
-                  average_rating, country_of_origin,
-                  image_url, open_restaurants,
+                  average_rating,image_url,
                   highest_rated_restaurant, best_location,):
 
     new_food_type = Food_Types(
         food_type=food_type,
         average_price=average_price,
         average_rating=average_rating,
-        country_of_origin=country_of_origin,
         image_url=image_url,
-        open_restaurants=open_restaurants,
         highest_rated_restaurant=highest_rated_restaurant,
         best_location=best_location
     )
@@ -70,7 +63,7 @@ def add_food_type(session_obj, food_type, average_price,
 
 
 def add_review(session_obj, date, rating, username, profile_picture_url,
-               restaurant_id, restaurant_pictures_url, zipcode):
+               restaurant_id, review_url, zipcode):
 
     # I realized that having zipcode and restaurant id is wasteful.
     new_review = Reviews(
@@ -78,7 +71,7 @@ def add_review(session_obj, date, rating, username, profile_picture_url,
         rating=rating,
         username=username,
         profile_picture_url=profile_picture_url,
-        restaurant_pictures_url=restaurant_pictures_url,
+        review_url=review_url,
         restaurant_id=restaurant_id,
         zipcode=zipcode
     )
