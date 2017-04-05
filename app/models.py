@@ -4,7 +4,7 @@ models.py
 
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -124,11 +124,19 @@ class Restaurants(Base):
 
     name=Column(String(250), nullable=False)
     location=Column(Integer, nullable=False)
-    price=Column(Integer, nullable=False)
-    rating=Column(Integer, nullable=False)
+    price=Column(String(40), nullable=False)
+    rating=Column(Float, nullable=False)
 
     food_type=Column(String(250), ForeignKey(
         'food_types.food_type'), nullable=False)
+    food=relationship("Food_Types", foreign_keys=[food_type])
+
+    food_type2=Column(String(250), ForeignKey(
+        'food_types.food_type'), nullable=True)
+    food=relationship("Food_Types", foreign_keys=[food_type])
+
+    food_type3=Column(String(250), ForeignKey(
+        'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
     Recent_Review=Column(Integer, ForeignKey(
@@ -136,12 +144,12 @@ class Restaurants(Base):
     review=relationship("Reviews", foreign_keys=[Recent_Review])
 
     def __init__(self, name, location, price, rating, food_type,
-                 Recent_Review):
+                 Recent_Review, food_type2 = None, food_type3 = None):
 
         assert (type(name) is str)
         assert (type(location) is int)
-        assert (type(price) is int)
-        assert (type(rating) is int)
+        assert (type(price) is str)
+        assert (type(rating) is float)
 
         assert (type(Recent_Review) is int)
         assert (type(food_type) is str)
@@ -152,6 +160,8 @@ class Restaurants(Base):
         self.rating=rating
 
         self.food_type=food_type
+        self.food_type2=food_type2
+        self.food_type3=food_type3
         self.Recent_Review=Recent_Review
 # -------------
 # Locations

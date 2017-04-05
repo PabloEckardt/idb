@@ -32,8 +32,8 @@ class test_db (TestCase):
                        self.session_token,
                        name="Little Italy",
                        location=78701,
-                       price=2,
-                       rating=3,
+                       price="$",
+                       rating=3.0,
                        food_type="Italian",
                        Recent_Review=1
                        )
@@ -50,8 +50,8 @@ class test_db (TestCase):
         new_r = Restaurants(
                 name= n,
                 location=78701,
-                price=2,
-                rating=3,
+                price="$",
+                rating=3.0,
                 food_type="Italian",
                 Recent_Review=1
                 )
@@ -67,8 +67,8 @@ class test_db (TestCase):
 
         assert restaurant_1.name == n
         assert restaurant_1.location == 78701
-        assert restaurant_1.price == 2
-        assert restaurant_1.rating == 3
+        assert restaurant_1.price == "$"
+        assert restaurant_1.rating == 3.0
         assert restaurant_1.food_type == "Italian"
         assert restaurant_1.Recent_Review == 1
 
@@ -81,8 +81,8 @@ class test_db (TestCase):
         new_r=Restaurants(
                 name = "Little Italy 3",
                 location = 78701,
-                price = 2,
-                rating = 3,
+                price="$",
+                rating = 3.0,
                 food_type = "Italian",
                 Recent_Review = 1)
 
