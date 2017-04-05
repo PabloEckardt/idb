@@ -124,13 +124,13 @@ class Restaurants(Base):
 
     name=Column(String(250), nullable=False)
     location=Column(Integer, nullable=False)
-    price=Column(String(40), nullable=False)
+    price=Column(String(40), nullable=True)
     rating=Column(Float, nullable=False)
     Review=Column(String(500), nullable=False)
     Review_Date=Column(String(250), nullable=False)
 
     food_type=Column(String(250), ForeignKey(
-        'food_types.food_type'), nullable=False)
+        'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
     food_type2=Column(String(250), ForeignKey(
@@ -145,14 +145,12 @@ class Restaurants(Base):
                  Review_Date,
                  food_type, food_type2 = None, food_type3 = None):
 
-        assert (type(name) is str)
+        assert (type(name) is unicode)
         assert (type(location) is int)
-        assert (type(price) is str)
         assert (type(rating) is float)
 
-        assert (type(Review) is str)
-        assert (type(Review_Date) is str)
-        assert (type(food_type) is str)
+        assert (type(Review) is unicode)
+        assert (type(Review_Date) is unicode)
 
         self.name=name
         self.location=location
