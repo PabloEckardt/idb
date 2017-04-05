@@ -1,18 +1,6 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 # import our models
 from models import Restaurants, Locations, Food_Types, Reviews, Base
 
-db_name = 'sqlite:///sql_example.db'
-
-# Bind the engine to the metadata of the Base class so that the
-# declaratives can be accessed through a DBSession instance
-def init_session():
-    engine = create_engine(db_name)
-    Base.metadata.bind = engine
-    DBSession = sessionmaker(bind=engine)
-    session_obj = DBSession()
-    return session_obj
 
 
 def add_restaurant(session_obj, name, location, price, rating,

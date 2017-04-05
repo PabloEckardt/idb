@@ -10,21 +10,26 @@
 from io import StringIO
 from unittest import main, TestCase
 from models import Restaurants, Locations, Food_Types, Reviews
-from insert_records import init_session, add_restaurant, add_location, add_food_type, add_review
+from insert_records import add_restaurant, add_location, add_food_type, add_review
+from db_manager import setupdb, init_session
+from sqlalchemy import create_engine
 
-session_token = init_session()
 
 
 class test_db (TestCase):
 
+    db_name = 'sqlite:///testdb.db'
+    testEngine = create_engine(db_name)
+    setupdb(testEngine)
+    session_token = init_session(testEngine)
+
     def test_1_restaurant_addition(self):
-        global session_token
         '''
         Testing our Wrapper to add records on Restaurants
 
         '''
         add_restaurant(
-                       session_token,
+                       self.session_token,
                        name="Little Italy",
                        location=78701,
                        price=2,
@@ -33,14 +38,14 @@ class test_db (TestCase):
                        Recent_Review=1
                        )
 
-        assert not (session_token.query(Restaurants) is None)
+        assert not (self.session_token.query(Restaurants) is None)
 
     def test_2_Restaurants_manual_integrity(self):
         '''
         Testing query data on Restaurants
 
         '''
-        global session_token
+        
         n = "Little Italy 2"
         new_r = Restaurants(
                 name= n,
@@ -52,13 +57,13 @@ class test_db (TestCase):
                 )
 
 
-        session_token.add(new_r)
-        session_token.commit()
+        self.session_token.add(new_r)
+        self.session_token.commit()
 
-        restaurant_1=session_token.query(Restaurants).filter_by(
+        restaurant_1=self.session_token.query(Restaurants).filter_by(
             name = "Little Italy 2").first()
 
-        assert not (session_token.query(Restaurants) is None)
+        assert not (self.session_token.query(Restaurants) is None)
 
         assert restaurant_1.name == n
         assert restaurant_1.location == 78701
@@ -72,7 +77,7 @@ class test_db (TestCase):
         Testing Deletion of Records on Restaurants
 
         '''
-        global session_token
+        
         new_r=Restaurants(
                 name = "Little Italy 3",
                 location = 78701,
@@ -81,28 +86,28 @@ class test_db (TestCase):
                 food_type = "Italian",
                 Recent_Review = 1)
 
-        session_token.add(new_r)
-        session_token.commit()
+        self.session_token.add(new_r)
+        self.session_token.commit()
 
-        rst=session_token.query(Restaurants).filter_by(
+        rst=self.session_token.query(Restaurants).filter_by(
             name="Little Italy 3").first()
 
-        session_token.delete(rst)
-        session_token.commit()
+        self.session_token.delete(rst)
+        self.session_token.commit()
 
-        rst=session_token.query(Restaurants).filter_by(
+        rst=self.session_token.query(Restaurants).filter_by(
             name="Little Italy 3").first()
 
         assert (rst is None)
 
     def test_4_Locations_addition(self):
-        global session_token
+        
         '''
         Testing our Wrapper to add records on Locations
 
         '''
         add_location(
-                        session_token,
+                        self.session_token,
                         average_rating=3,
                         average_price=2,
                         zipcode=77777,
@@ -111,15 +116,15 @@ class test_db (TestCase):
                         highest_rated_restaurant="Little Italy"
                      )
 
-        assert not (session_token.query(Locations) is None)
+        assert not (self.session_token.query(Locations) is None)
 
     def test_5_Locations_manual_integrity(self):
-        global session_token
+        
         '''
         Testing query data on Locations
 
         '''
-        global session_token
+        
 
         new_l=Locations(
                 zipcode=77776,
@@ -130,12 +135,12 @@ class test_db (TestCase):
                 highest_rated_restaurant="Little Italy"
                 )
 
-        session_token.add(new_l)
-        session_token.commit()
+        self.session_token.add(new_l)
+        self.session_token.commit()
 
-        loc=session_token.query(Locations).filter_by(zipcode = 77777).first()
+        loc=self.session_token.query(Locations).filter_by(zipcode = 77777).first()
 
-        assert not (session_token.query(Locations) is None)
+        assert not (self.session_token.query(Locations) is None)
 
         assert (loc.zipcode == 77777)
         assert (loc.average_rating == 3)
@@ -146,12 +151,12 @@ class test_db (TestCase):
 
 
     def test_6_Locations_delete(self):
-        global session_token
+        
         '''
         Testing Deletion of Records on Locations
 
         '''
-        global session_token
+        
 
         new_l=Locations(
                 zipcode=11111,
@@ -162,26 +167,26 @@ class test_db (TestCase):
                 highest_rated_restaurant="Little Italy"
                 )
 
-        session_token.add(new_l)
-        session_token.commit()
+        self.session_token.add(new_l)
+        self.session_token.commit()
 
-        l=session_token.query(Locations).filter_by(zipcode=11111).first()
+        l=self.session_token.query(Locations).filter_by(zipcode=11111).first()
 
-        session_token.delete(l)
-        session_token.commit()
+        self.session_token.delete(l)
+        self.session_token.commit()
 
-        l=session_token.query(Locations).filter_by(zipcode=11111).first()
+        l=self.session_token.query(Locations).filter_by(zipcode=11111).first()
 
         assert (l is None)
 
     def test_7_Reviews_addition(self):
-        global session_token
+        
         '''
         Testing our Wrapper to add records on Reviews
 
         '''
         add_review(
-                    session_token,
+                    self.session_token,
                     date="12/1/2014",
                     rating=4,
                     username="pebs",
@@ -191,15 +196,15 @@ class test_db (TestCase):
                     zipcode=77777
                     )
 
-        assert not (session_token.query(Reviews) is None)
+        assert not (self.session_token.query(Reviews) is None)
 
     def test_8_Reviews__manual_integrity(self):
-        global session_token
+        
         '''
         Testing query data on Reviews
 
         '''
-        global session_token
+        
 
         new_r=Reviews(
                     date="12/1/2014",
@@ -211,12 +216,12 @@ class test_db (TestCase):
                     zipcode=67777
                 )
 
-        session_token.add(new_r)
-        session_token.commit()
+        self.session_token.add(new_r)
+        self.session_token.commit()
 
-        rev=session_token.query(Reviews).filter_by(review_id=2).first()
+        rev=self.session_token.query(Reviews).filter_by(review_id=2).first()
 
-        assert not (session_token.query(Reviews) is None)
+        assert not (self.session_token.query(Reviews) is None)
 
         assert (rev.zipcode == 67777)
         assert (rev.date == "12/1/2014")
@@ -227,12 +232,12 @@ class test_db (TestCase):
         assert (rev.restaurant_id == 1)
 
     def test_9_Reviews_delete(self):
-        global session_token
+        
         '''
         Testing Deletion of Records on Reviews
 
         '''
-        global session_token
+        
 
         new_r=Reviews(
                     date="12/1/2014",
@@ -244,26 +249,26 @@ class test_db (TestCase):
                     zipcode=67777
                 )
 
-        session_token.add(new_r)
-        session_token.commit()
+        self.session_token.add(new_r)
+        self.session_token.commit()
 
-        r=session_token.query(Reviews).filter_by(review_id=3).first()
+        r=self.session_token.query(Reviews).filter_by(review_id=3).first()
 
-        session_token.delete(r)
-        session_token.commit()
+        self.session_token.delete(r)
+        self.session_token.commit()
 
-        r=session_token.query(Reviews).filter_by(review_id=3).first()
+        r=self.session_token.query(Reviews).filter_by(review_id=3).first()
 
         assert (r is None)
 
     def test_10_Food_Type_addition(self):
-        global session_token
+        
         '''
         Testing our Wrapper to add records on Food Types
 
         '''
         add_food_type(
-                        session_token,
+                        self.session_token,
                         food_type="Italian",
                         average_price=3,
                         average_rating=3,
@@ -272,15 +277,15 @@ class test_db (TestCase):
                         best_location=78787
                       )
 
-        assert not (session_token.query(Food_Types) is None)
+        assert not (self.session_token.query(Food_Types) is None)
 
     def test_11_Food_Type_manual_Integrity(self):
-        global session_token
+        
         '''
         Testing query data on Food Types
 
         '''
-        global session_token
+        
 
         new_f=Food_Types(
                         food_type="Italian2",
@@ -291,13 +296,13 @@ class test_db (TestCase):
                         best_location=78787
                            )
 
-        session_token.add(new_f)
-        session_token.commit()
+        self.session_token.add(new_f)
+        self.session_token.commit()
 
-        food=session_token.query(Food_Types).filter_by(
+        food=self.session_token.query(Food_Types).filter_by(
            food_type="Italian2").first()
 
-        assert not (session_token.query(Food_Types) is None)
+        assert not (self.session_token.query(Food_Types) is None)
 
         assert (food.food_type == "Italian2")
         assert (food.average_price == 3)
@@ -307,12 +312,12 @@ class test_db (TestCase):
         assert (food.best_location == 78787)
 
     def test_12_Food_Type_delete(self):
-        global session_token
+        
         '''
         Testing Deletion of Records on Food Types
 
         '''
-        global session_token
+        
 
         new_f=Food_Types(
                         food_type="Italian3",
@@ -323,16 +328,16 @@ class test_db (TestCase):
                         best_location=78787
                         )
 
-        session_token.add(new_f)
-        session_token.commit()
+        self.session_token.add(new_f)
+        self.session_token.commit()
 
-        f=session_token.query(Food_Types).filter_by(
+        f=self.session_token.query(Food_Types).filter_by(
             food_type="Italian3").first()
 
-        session_token.delete(f)
-        session_token.commit()
+        self.session_token.delete(f)
+        self.session_token.commit()
 
-        f=session_token.query(Food_Types).filter_by(
+        f=self.session_token.query(Food_Types).filter_by(
             food_type="Italian3").first()
 
         assert (f is None)

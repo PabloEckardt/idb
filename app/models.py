@@ -5,11 +5,10 @@ models.py
 import os
 import sys
 from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
-
-Base = declarative_base()
+from sqlalchemy.ext.declarative import declarative_base
+from db_manager import Base
 
 # -------------
 # Reviews
@@ -206,10 +205,3 @@ class Locations(Base):
 
         self.highest_rated_restaurant=highest_rated_restaurant
         self.popular_food_type=popular_food_type
-
-# create an engine that stores data in the local directory's db file
-db_name = 'sqlite:///sql_example.db'
-engine = create_engine(db_name)
-
-# Create all tables in the engine. Equivalent to Create Table in sql
-Base.metadata.create_all(engine)
