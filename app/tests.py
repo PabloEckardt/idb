@@ -64,7 +64,6 @@ class test_db (TestCase):
         assert restaurant_1.location == 78701
         assert restaurant_1.price == 2
         assert restaurant_1.rating == 3
-        assert restaurant_1.hours == "9 to 5"
         assert restaurant_1.food_type == "Italian"
         assert restaurant_1.Recent_Review == 1
 
@@ -224,7 +223,7 @@ class test_db (TestCase):
         assert (rev.rating == 4)
         assert (rev.username == "pebs")
         assert (rev.profile_picture_url == "/review_profiles/pebs")
-        assert (rev.review_url == "/reviews_images/pebs/1")
+        assert (rev.review_url == "/review/1")
         assert (rev.restaurant_id == 1)
 
     def test_9_Reviews_delete(self):
