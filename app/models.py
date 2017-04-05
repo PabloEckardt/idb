@@ -126,6 +126,8 @@ class Restaurants(Base):
     location=Column(Integer, nullable=False)
     price=Column(String(40), nullable=False)
     rating=Column(Float, nullable=False)
+    Review=Column(String(500), nullable=False)
+    Review_Date=Column(String(250), nullable=False)
 
     food_type=Column(String(250), ForeignKey(
         'food_types.food_type'), nullable=False)
@@ -139,19 +141,17 @@ class Restaurants(Base):
         'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
-    Recent_Review=Column(Integer, ForeignKey(
-        'reviews.review_id'), nullable=False)
-    review=relationship("Reviews", foreign_keys=[Recent_Review])
-
-    def __init__(self, name, location, price, rating, food_type,
-                 Recent_Review, food_type2 = None, food_type3 = None):
+    def __init__(self, name, location, price, rating, Review,
+                 Review_Date,
+                 food_type, food_type2 = None, food_type3 = None):
 
         assert (type(name) is str)
         assert (type(location) is int)
         assert (type(price) is str)
         assert (type(rating) is float)
 
-        assert (type(Recent_Review) is int)
+        assert (type(Review) is str)
+        assert (type(Review_Date) is str)
         assert (type(food_type) is str)
 
         self.name=name
@@ -162,7 +162,8 @@ class Restaurants(Base):
         self.food_type=food_type
         self.food_type2=food_type2
         self.food_type3=food_type3
-        self.Recent_Review=Recent_Review
+        self.Review=Review
+        self.Review_Date=Review_Date
 # -------------
 # Locations
 # -------------

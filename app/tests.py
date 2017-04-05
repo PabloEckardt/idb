@@ -29,14 +29,15 @@ class test_db (TestCase):
 
         '''
         add_restaurant(
-                       self.session_token,
-                       name="Little Italy",
-                       location=78701,
-                       price="$",
-                       rating=3.0,
-                       food_type="Italian",
-                       Recent_Review=1
-                       )
+                        self.session_token,
+                        name="Little Italy",
+                        location=78701,
+                        price="$",
+                        rating=3.0,
+                        Review="test",
+                        Review_Date="date",
+                        food_type="Italian"
+                      )
 
         assert not (self.session_token.query(Restaurants) is None)
 
@@ -53,7 +54,8 @@ class test_db (TestCase):
                 price="$",
                 rating=3.0,
                 food_type="Italian",
-                Recent_Review=1
+                Review="test",
+                Review_Date="date"
                 )
 
 
@@ -70,7 +72,8 @@ class test_db (TestCase):
         assert restaurant_1.price == "$"
         assert restaurant_1.rating == 3.0
         assert restaurant_1.food_type == "Italian"
-        assert restaurant_1.Recent_Review == 1
+        assert restaurant_1.Review == "test"
+        assert restaurant_1.Review_Date == "date"
 
     def test_3_Restaurants_delete(self):
         '''
@@ -84,7 +87,9 @@ class test_db (TestCase):
                 price="$",
                 rating = 3.0,
                 food_type = "Italian",
-                Recent_Review = 1)
+                Review = "test",
+                Review_Date ="date"
+                )
 
         self.session_token.add(new_r)
         self.session_token.commit()

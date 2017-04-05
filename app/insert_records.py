@@ -4,14 +4,19 @@ from models import Restaurants, Locations, Food_Types, Reviews, Base
 
 
 def add_restaurant(session_obj, name, location, price, rating,
-                   food_type, Recent_Review):
+                   Review, Review_Date, *food_types):
+
 
     new_restaurant = Restaurants(name=name,
                                  location=location,
                                  price=price,
                                  rating=rating,
-                                 food_type=food_type,
-                                 Recent_Review=Recent_Review)
+                                 Review=Review,
+                                 Review_Date=Review_Date,
+                                 food_type=food_types[0],
+                                 food_type2=food_types[1],
+                                 food_type3=food_types[2]
+                                 )
 
     session_obj.add(new_restaurant)
     session_obj.commit()
