@@ -1,1 +1,0 @@
-This is our 'root' directory in our app. 

@@ -1,0 +1,26 @@
+How to quickly filter more restaurants out of the list:
+>python restaurants_cleaner.py; python restaurants_to_locations; python restaurants_to_food_types.py
+
+add or remove elements from filtered_from_categories.txt
+
+note: if you are going to do this. Remember to then run restaurant_reviews_equalizer.py
+in order to make the a restaurants json that does not have anymore
+restaurants than the ones reviews.
+
+see:
+-filtered_from_restaurants.txt // for details on restaurants deleted.
+-the outoput of restaurants_to_food_types.py to see number of restaurants per category.
+
+list of files we care about:
+
+   slimmed down restuarants_with_filtered_categories.json which doesn't have the 83 reviews the api failed to get
+   the result is now restaurants.json
+
+   Main files:
+   1) restaurants.json
+
+   2) locations.json
+
+   3) food_types.json
+
+   4) reviews.json
