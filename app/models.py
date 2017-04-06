@@ -182,6 +182,7 @@ class Restaurants(Base):
 
     def to_dict(self):
         return {
+                "id": self.id,
                 "name": self.name,
                 "yelp_id": self.yelp_id,
                 "location": self.location,
