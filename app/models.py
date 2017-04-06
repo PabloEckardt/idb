@@ -120,14 +120,30 @@ class Restaurants(Base):
     """
     __tablename__='restaurants'
 
+    # pk
     id=Column(Integer, primary_key=True)
-
+    # identifiers
     name=Column(String(250), nullable=False)
+    yelp_id = Column(String(250), nullable=False)
+    # location data
     location=Column(Integer, nullable=False)
+    lat = Column(Float, nullable=False)
+    long = Column(Float, nullable=False)
+    city = Column(String(250), nullable=False)
+    address = Column(String(250), nullable=True)
+    phone = Column(String(250), nullable=False)
+    # business data
     price=Column(String(40), nullable=True)
     rating=Column(Float, nullable=False)
-    Review=Column(String(500), nullable=False)
-    Review_Date=Column(String(250), nullable=False)
+    review=Column(String(500), nullable=False)
+    review_date=Column(String(250), nullable=False)
+    review_count=Column(Integer, nullable=False)
+    review_key=Column(String(50), nullable=False)
+    # urls
+    url = Column(String(400), nullable=False)
+    img_url = Column(String(400), nullable=True)
+
+
 
     food_type=Column(String(250), ForeignKey(
         'food_types.food_type'), nullable=True)
@@ -141,27 +157,56 @@ class Restaurants(Base):
         'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
-    def __init__(self, name, location, price, rating, Review,
-                 Review_Date,
-                 food_type, food_type2 = None, food_type3 = None):
+    def __init__(self,
+                 name,
+                 yelp_id,
+                 location,
+                 lat,
+                 long,
+                 city,
+                 address,
+                 phone,
+                 price,
+                 rating,
+                 review,
+                 review_date,
+                 review_count,
+                 review_key,
+                 url,
+                 img_url,
+                 food_type,
+                 food_type2 = None,
+                 food_type3 = None):
 
         assert (type(name) is unicode)
         assert (type(location) is int)
         assert (type(rating) is float)
 
-        assert (type(Review) is unicode)
-        assert (type(Review_Date) is unicode)
+        assert (type(review) is unicode)
+        assert (type(review_date) is unicode)
 
         self.name=name
+        self.yelp_id=yelp_id
+
         self.location=location
+        self.lat=lat
+        self.long=long
+        self.city=city
+        self.address=address
+        self.phone=phone
+
         self.price=price
         self.rating=rating
+        self.review=review
+        self.review_date=review_date
+        self.review_count=review_count
+        self.review_key=review_key
 
+        self.url=url
+        self.img_url=img_url
         self.food_type=food_type
         self.food_type2=food_type2
         self.food_type3=food_type3
-        self.Review=Review
-        self.Review_Date=Review_Date
 # -------------
 # Locations
 # -------------
