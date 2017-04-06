@@ -3,7 +3,7 @@ var RestItem = React.createClass({
         return (
             <a href = {"/Restaurants/" + this.props.id}>
                 <div className = "col-sm-4" id = "restaurantGrid">
-                    <img src = {"static/img/" + this.props.url} />
+                    <img src = {this.props.img_url} />
                     <h1>{ this.props.name}</h1>
                     Address: { this.props.address }<br />
                     Rating: { this.props.rating } <br />
@@ -23,10 +23,11 @@ var RestList = React.createClass({
                     key={index}
                     name={element.name}
                     rating={element.rating}
-                    address={element.location}
+                    address={element.address}
                     foodtype={element.food_type}
-                    url={element.img}
+                    img_url={element.img_url}
                     id={element.id}
+                    price = {element.price}
                 />
             );
         });
@@ -95,7 +96,7 @@ function getData() {
     // });
     var url = "http://localhost:5000/API/Restaurants";
     $.getJSON( url, {
-        tags: "mount rainier",
+        tags: "restaurants",
         tagmode: "any",
         format: "json"
     })
@@ -112,15 +113,15 @@ function sortGrid(e) {
     //getData();
     var sortBy = e.options[e.selectedIndex].value;
     console.log(e.options[e.selectedIndex].value);
-    var url = "http://localhost:5000/API/test/sort=1/location=3";
+    var url = "http://foodcloseto.me/API/Restaurants?sortby=" + sortBy.toLowerCase();
     $.getJSON( url, {
-        tags: "mount rainier",
+        tags: "restaurants",
         tagmode: "any",
         format: "json"
     })
         .done(function( data ) {
             console.log(data);
-            elements = data["restaurant_db"];
+            elements = data;
             // TODO: review if we need to keep this or remove above
             ReactDOM.render(<RestList elements={elements} />, document.getElementById('restGrid'));
         });
