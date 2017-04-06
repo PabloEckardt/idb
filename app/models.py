@@ -157,6 +157,27 @@ class Restaurants(Base):
         'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
+    def to_dict(self):
+        return {"name": self.name,
+                "location": self.location,
+                "lat": self.lat,
+                "long": self.long,
+                "city": self.city,
+                "address": self.address,
+                "phone": self.phone,
+                "price": self.price,
+                "rating": self.rating,
+                "review": self.review,
+                "review_date": self.review_date,
+                "review_count": self.review_count,
+                "review_key": self.review_key,
+                "url": self.url,
+                "img_url": self.img_url,
+                "food_type": self.food_type,
+                "food_type2": self.food_type2,
+                "food_type3": self.food_type3
+                }
+
     def __init__(self,
                  name,
                  yelp_id,
