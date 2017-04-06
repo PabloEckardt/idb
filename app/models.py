@@ -41,6 +41,17 @@ class Reviews(Base):
     zipcode = Column(Integer, ForeignKey('locations.zipcode'), nullable=False)
     location = relationship("Locations", foreign_keys=[zipcode])
 
+    def to_dict(self):
+        return {"restaurant_id": self.restaurant_id,
+                "yelp_restaurant_id": self.yelp_restaurant_id,
+                "date": self.date,
+                "rating": self.rating,
+                "username": self.username,
+                "review": self.review,
+                "profile_picture_url": self.profile_picture_url,
+                "review_url": self.review_url,
+                "zipcode": self.zipcode}
+
     def __init__(self,
                  restaurant_id,
                  yelp_restaurant_id,
@@ -172,6 +183,7 @@ class Restaurants(Base):
 
     def to_dict(self):
         return {"name": self.name,
+                "yelp_id": self.yelp_id,
                 "location": self.location,
                 "lat": self.lat,
                 "long": self.long,

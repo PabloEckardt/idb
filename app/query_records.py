@@ -5,7 +5,7 @@
 # pylint: disable = missing-docstring
 import json
 from app import *
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 from models import Restaurants, Locations, Food_Types, Reviews, Base
 
 def query_restaurant_by_id(session_obj, i):
@@ -20,9 +20,11 @@ def query_restaurant_by_id(session_obj, i):
             }
     return json.dumps(result)
 
-def query_all_restaurants():
+def query_all_restaurants(sortby):
     session = Session()
-    result = session.query(Restaurants).order_by(Restaurants.name).all()
+    if sortby == None:
+        sortby = "name"
+    result = session.query(Restaurants).filter(Restaurants.price != "").order_by(sortby).all()
     # TODO: Figure out more efficient way to do this
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)
@@ -98,19 +100,9 @@ def query_review_by_id(session_obj, id):
             }
     return json.dumps(result)
 
-def query_all_reviews(session_obj):
-    reviews = session_obj.query(Reviews).all()
-    ret = []
-    for review in reviews :
-        conv = {"review_id":review.review_id,
-            "date":review.date,
-            "rating":review.rating,
-            "username":review.username,
-            "profile_picture_url":review.profile_picture_url,
-            "restaurant_pictures_url":review.restaurant_pictures_url,
-            "restaurant_id":review.restaurant_id,
-            "zipcode":review.zipcode
-            }
-        ret.append(conv)
-    return json.dumps(ret)
+def query_all_reviews():
+    session = Session()
+    result = session.query(Reviews).order_by(Reviews.username).all()
+    result2 = [e.to_dict() for e in result]
+    return jsonify(result2)
 
