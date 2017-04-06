@@ -4,12 +4,11 @@ models.py
 
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, ForeignKey, Integer, String, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
-
-Base = declarative_base()
+from sqlalchemy.ext.declarative import declarative_base
+from db_manager import Base
 
 # -------------
 # Reviews
@@ -23,43 +22,67 @@ class Reviews(Base):
     """
     __tablename__ = 'reviews'
 
-    review_id = Column(Integer, primary_key=True)
+    # pk
+    id = Column(Integer, primary_key=True)
+    restaurant_id = Column(String(250), nullable=False)
+    # identifiers
+    yelp_restaurant_id = Column(String(250), nullable=False)
 
+    # Review Data
     date = Column(String(250), nullable=False)
     rating = Column(Integer, nullable=False)
     username = Column(String(250), nullable=False)
-    profile_picture_url = Column(String(250), nullable=False)
-    # TODO get rid of this
-    restaurant_pictures_url = Column(String(250), nullable=False)
-    # TODO add url for review
+    review = Column(String(900), nullable=False)
 
-    restaurant_id = Column(Integer, ForeignKey(
-        'restaurants.id'), nullable=False)
-    restaurant = relationship("Restaurants", foreign_keys=[restaurant_id])
+    # urls
+    profile_picture_url = Column(String(250), nullable=True)
+    review_url = Column(String(350), nullable=False)
 
     zipcode = Column(Integer, ForeignKey('locations.zipcode'), nullable=False)
     location = relationship("Locations", foreign_keys=[zipcode])
 
-    def __init__(self, date, rating, username, profile_picture_url,
-                  restaurant_pictures_url, restaurant_id, zipcode):
+    def to_dict(self):
+        return {"restaurant_id": self.restaurant_id,
+                "yelp_restaurant_id": self.yelp_restaurant_id,
+                "date": self.date,
+                "rating": self.rating,
+                "username": self.username,
+                "review": self.review,
+                "profile_picture_url": self.profile_picture_url,
+                "review_url": self.review_url,
+                "zipcode": self.zipcode}
 
-        assert (type(date) is str)
+    def __init__(self,
+                 restaurant_id,
+                 yelp_restaurant_id,
+                 date,
+                 rating,
+                 username,
+                 review,
+                 profile_picture_url,
+                 review_url,
+                 zipcode
+                 ):
+
+        assert (type(date) is unicode)
         assert (type(rating) is int)
-        assert (type(username) is str)
-        assert (type(profile_picture_url) is str)
-        assert (type(restaurant_pictures_url) is str)
+        assert (type(username) is unicode)
 
-        assert (type(restaurant_id) is int)
-        assert (type(zipcode) is int)
+        assert (type(review_url) is unicode)
 
+        assert (type(zipcode) is unicode)
+
+        self.restaurant_id=restaurant_id
+        self.yelp_restaurant_id=yelp_restaurant_id
 
         self.date=date
         self.rating=rating
         self.username=username
-        self.profile_picture_url=profile_picture_url
-        self.restaurant_pictures_url=restaurant_pictures_url
+        self.review=review
 
-        self.restaurant_id=restaurant_id
+        self.profile_picture_url=profile_picture_url
+        self.review_url=review_url
+
         self.zipcode=zipcode
 
 # -------------
@@ -77,11 +100,7 @@ class Food_Types(Base):
 
     average_price=Column(Integer, nullable=False)
     average_rating=Column(Integer, nullable=False)
-    # TODO get rid of this
-    country_of_origin=Column(String(250), nullable=False)
     image_url=Column(String(250), nullable=False)
-    # TODO get rid of this
-    open_restaurants=Column(Integer, nullable=True)
 
     highest_rated_restaurant=Column(
         Integer, ForeignKey('restaurants.id'), nullable=False)
@@ -92,17 +111,15 @@ class Food_Types(Base):
         "locations.zipcode"), nullable=False)
     location=relationship("Locations", foreign_keys=[best_location])
 
-    def __init__(self, food_type, average_price, average_rating, country_of_origin,
-                  image_url, open_restaurants, highest_rated_restaurant,
+    def __init__(self, food_type, average_price, average_rating,
+                  image_url, highest_rated_restaurant,
                   best_location):
 
         assert (type(food_type) is str)
 
         assert (type(average_price) is int)
         assert (type(average_rating) is int)
-        assert (type(country_of_origin) is str)
         assert (type(image_url) is str)
-        assert (type(open_restaurants) is int)
 
         assert (type(highest_rated_restaurant) is int)
         assert (type(best_location) is int)
@@ -111,9 +128,7 @@ class Food_Types(Base):
 
         self.average_price=average_price
         self.average_rating=average_rating
-        self.country_of_origin=country_of_origin
         self.image_url=image_url
-        self.open_restaurants=open_restaurants
 
         self.highest_rated_restaurant=highest_rated_restaurant
         self.best_location=best_location
@@ -129,43 +144,118 @@ class Restaurants(Base):
     """
     __tablename__='restaurants'
 
-    id=Column(Integer, primary_key=True)
-
+    # pk
+    id=Column(String(250), primary_key=True)
+    # identifiers
     name=Column(String(250), nullable=False)
+    yelp_id = Column(String(250), nullable=False)
+    # location data
     location=Column(Integer, nullable=False)
-    price=Column(Integer, nullable=False)
-    rating=Column(Integer, nullable=False)
-    #TODO get rid of the hours
-    hours=Column(String(250), nullable=False)
+    lat = Column(Float, nullable=False)
+    long = Column(Float, nullable=False)
+    city = Column(String(250), nullable=False)
+    address = Column(String(250), nullable=True)
+    phone = Column(String(250), nullable=False)
+    # business data
+    price=Column(String(40), nullable=True)
+    rating=Column(Float, nullable=False)
+    review=Column(String(500), nullable=False)
+    review_date=Column(String(250), nullable=False)
+    review_count=Column(Integer, nullable=False)
+    review_key=Column(String(50), nullable=False)
+    # urls
+    url = Column(String(400), nullable=False)
+    img_url = Column(String(400), nullable=True)
+
+
 
     food_type=Column(String(250), ForeignKey(
-        'food_types.food_type'), nullable=False)
+        'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
-    Recent_Review=Column(Integer, ForeignKey(
-        'reviews.review_id'), nullable=False)
-    review=relationship("Reviews", foreign_keys=[Recent_Review])
+    food_type2=Column(String(250), ForeignKey(
+        'food_types.food_type'), nullable=True)
+    food=relationship("Food_Types", foreign_keys=[food_type])
 
-    def __init__(self, name, location, price, rating, hours, food_type,
-                 Recent_Review):
+    food_type3=Column(String(250), ForeignKey(
+        'food_types.food_type'), nullable=True)
+    food=relationship("Food_Types", foreign_keys=[food_type])
 
-        assert (type(name) is str)
+    def to_dict(self):
+        return {"name": self.name,
+                "yelp_id": self.yelp_id,
+                "location": self.location,
+                "lat": self.lat,
+                "long": self.long,
+                "city": self.city,
+                "address": self.address,
+                "phone": self.phone,
+                "price": self.price,
+                "rating": self.rating,
+                "review": self.review,
+                "review_date": self.review_date,
+                "review_count": self.review_count,
+                "review_key": self.review_key,
+                "url": self.url,
+                "img_url": self.img_url,
+                "food_type": self.food_type,
+                "food_type2": self.food_type2,
+                "food_type3": self.food_type3
+                }
+
+    def __init__(self,
+                 id,
+                 name,
+                 yelp_id,
+                 location,
+                 lat,
+                 long,
+                 city,
+                 address,
+                 phone,
+                 price,
+                 rating,
+                 review,
+                 review_date,
+                 review_count,
+                 review_key,
+                 url,
+                 img_url,
+                 food_type,
+                 food_type2 = None,
+                 food_type3 = None):
+
+        assert (type(name) is unicode)
         assert (type(location) is int)
-        assert (type(price) is int)
-        assert (type(rating) is int)
-        assert (type(hours) is str)
+        assert (type(rating) is float)
 
-        assert (type(Recent_Review) is int)
-        assert (type(food_type) is str)
+        assert (type(review) is unicode)
+        assert (type(review_date) is unicode)
+
+        self.id=id
 
         self.name=name
+        self.yelp_id=yelp_id
+
         self.location=location
+        self.lat=lat
+        self.long=long
+        self.city=city
+        self.address=address
+        self.phone=phone
+
         self.price=price
         self.rating=rating
-        self.hours=hours
+        self.review=review
+        self.review_date=review_date
+        self.review_count=review_count
+        self.review_key=review_key
 
+        self.url=url
+        self.img_url=img_url
         self.food_type=food_type
-        self.Recent_Review=Recent_Review
+        self.food_type2=food_type2
+        self.food_type3=food_type3
 # -------------
 # Locations
 # -------------
@@ -182,10 +272,6 @@ class Locations(Base):
 
     average_rating=Column(Integer, nullable=False)
     average_price=Column(Integer, nullable=False)
-    # TODO get rid of this
-    adjacent_location=Column(Integer, nullable=False)
-    # TODO get rid of this
-    average_health_rating=Column(Integer, nullable=False)
     highest_price=Column(Integer, nullable=False)
 
     popular_food_type=Column(String(250), ForeignKey(
@@ -200,8 +286,6 @@ class Locations(Base):
     def __init__(self,
                  average_rating,
                  average_price,
-                 adjacent_location,
-                 average_health_rating,
                  zipcode,
                  highest_price,
                  popular_food_type,
@@ -211,8 +295,6 @@ class Locations(Base):
 
         assert (type(average_rating) is int)
         assert (type(average_price) is int)
-        assert (type(adjacent_location) is int)
-        assert (type(average_health_rating) is int)
         assert (type(highest_price) is int)
 
         assert (type(popular_food_type) is str)
@@ -222,16 +304,7 @@ class Locations(Base):
 
         self.average_rating=average_rating
         self.average_price=average_price
-        self.adjacent_location=adjacent_location
-        self.average_health_rating=average_health_rating
         self.highest_price=highest_price
 
         self.highest_rated_restaurant=highest_rated_restaurant
         self.popular_food_type=popular_food_type
-
-# create an engine that stores data in the local directory's db file
-db_name = 'sqlite:///sql_example.db'
-engine = create_engine(db_name)
-
-# Create all tables in the engine. Equivalent to Create Table in sql
-Base.metadata.create_all(engine)

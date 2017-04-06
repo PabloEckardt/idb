@@ -12,3 +12,13 @@ SECRET_KEY = 'secret'
 # Google Cloud Project ID. This can be found on the 'Overview' page at
 # https://console.developers.google.com
 PROJECT_ID = 'foodclosetome-162203'
+
+SQLALCHEMY_DATABASE = 'sqlite:///app/db/food_close_to.db'
+
+RESTAURANTS = 'app/db/restaurants.json'
+
+ZIP_CODES = 'app/db/zip_codes.json'
+
+FOOD_TYPES = 'app/db/food_types.json'
+
+REVIEWS = 'app/db/reviews.json'
