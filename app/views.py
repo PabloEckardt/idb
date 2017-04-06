@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, render_template, jsonify
-from query_records import *
+from query_records import query_all_restaurants
 
 restaurant_db = [
     {"name": "Little Italy",

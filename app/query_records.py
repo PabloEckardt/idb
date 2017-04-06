@@ -4,9 +4,8 @@
 # pylint: disable = invalid-name
 # pylint: disable = missing-docstring
 import json
-from app impoort *
+from app import *
 from flask import Flask, jsonify
-from insert_records import init_session
 from models import Restaurants, Locations, Food_Types, Reviews, Base
 
 def query_restaurant_by_id(session_obj, i):
@@ -22,10 +21,11 @@ def query_restaurant_by_id(session_obj, i):
     return json.dumps(result)
 
 def query_all_restaurants():
-    #result = session_obj.query(Restaurants).all()
     session = Session()
     result = session.query(Restaurants).order_by(Restaurants.name).all()
-    return jsonify(**result.to_dict())
+    # TODO: Figure out more efficient way to do this
+    result2 = [e.to_dict() for e in result]
+    return jsonify(result2)
 
 def query_location_by_zip(session_obj, z):
     location = session_obj.query(Locations).filter_by(zipcode = z).first()
