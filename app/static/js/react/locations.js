@@ -6,7 +6,7 @@ var LocationItem = React.createClass({
                     <h1>{ this.props.name}</h1>
                     Restaurant Count: { this.props.address }<br />
                     Average Rating: { this.props.rating } <br />
-                    Price Ranges: { this.props.Lprice + " - " + this.props.Hprice }
+                    Price Ranges: { this.props.Hprice + " - " + this.props.Lprice }
 
                 </div>
             </a>
