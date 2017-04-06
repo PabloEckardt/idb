@@ -47,7 +47,6 @@ def add_restaurants(flask_app):
                                 *l
                                 )
 
-# TODO populate all reviews
 
 def add_reviews(flask_app):
     session_token = app.Session()
@@ -76,8 +75,13 @@ def add_reviews(flask_app):
 
 
 # TODO populate all Locations (tedious)
+def add_locations(flask_app):
+    session_token = app.Session()
 
-# TODO populate all food types
+
+
+
+
 
 def find_avg_price(l):
     price = 0.0

@@ -102,7 +102,7 @@ class Food_Types(Base):
     average_rating=Column(Float, nullable=False)
     image_url=Column(String(250), nullable=False)
     number_restaurants=Column(Integer, nullable=False)
-
+    # TODO add most popular restaurant
 
     highest_rated_restaurant=Column(
         Integer, ForeignKey('restaurants.id'), nullable=False)
@@ -271,11 +271,13 @@ class Locations(Base):
     __tablename__='locations'
 
     # columns
-    zipcode=Column(Integer, primary_key=True)
+    zipcode=Column(String(250), primary_key=True)
 
-    average_rating=Column(Integer, nullable=False)
-    average_price=Column(Integer, nullable=False)
-    highest_price=Column(Integer, nullable=False)
+    average_rating=Column(Float, nullable=False)
+    average_price=Column(Float, nullable=False)
+    highest_price=Column(String(250), nullable=False)
+    lowest_price=Column(String(250), nullable=False)
+    most_popular_restaurant=Column(String(250),nullable=False)
 
     popular_food_type=Column(String(250), ForeignKey(
         'food_types.food_type'), nullable=False)
@@ -286,22 +288,17 @@ class Locations(Base):
     restaurant=relationship("Restaurants", foreign_keys=[
                             highest_rated_restaurant])
 
-    def __init__(self,
+    def __init__(
+                 self,
+                 zipcode,
                  average_rating,
                  average_price,
-                 zipcode,
                  highest_price,
+                 lowest_price,
                  popular_food_type,
-                 highest_rated_restaurant):
+                 highest_rated_restaurant
+                 ):
 
-        assert (type(zipcode) is int)
-
-        assert (type(average_rating) is int)
-        assert (type(average_price) is int)
-        assert (type(highest_price) is int)
-
-        assert (type(popular_food_type) is str)
-        assert (type(highest_rated_restaurant) is str)
 
         self.zipcode=zipcode
 
