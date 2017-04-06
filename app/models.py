@@ -162,7 +162,6 @@ class Restaurants(Base):
     review=Column(String(500), nullable=False)
     review_date=Column(String(250), nullable=False)
     review_count=Column(Integer, nullable=False)
-    review_key=Column(String(50), nullable=False)
     # urls
     url = Column(String(400), nullable=False)
     img_url = Column(String(400), nullable=True)
@@ -182,7 +181,8 @@ class Restaurants(Base):
     food=relationship("Food_Types", foreign_keys=[food_type])
 
     def to_dict(self):
-        return {"name": self.name,
+        return {
+                "name": self.name,
                 "yelp_id": self.yelp_id,
                 "location": self.location,
                 "lat": self.lat,
@@ -195,7 +195,6 @@ class Restaurants(Base):
                 "review": self.review,
                 "review_date": self.review_date,
                 "review_count": self.review_count,
-                "review_key": self.review_key,
                 "url": self.url,
                 "img_url": self.img_url,
                 "food_type": self.food_type,
@@ -218,7 +217,6 @@ class Restaurants(Base):
                  review,
                  review_date,
                  review_count,
-                 review_key,
                  url,
                  img_url,
                  food_type,
@@ -249,7 +247,6 @@ class Restaurants(Base):
         self.review=review
         self.review_date=review_date
         self.review_count=review_count
-        self.review_key=review_key
 
         self.url=url
         self.img_url=img_url

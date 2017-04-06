@@ -41,7 +41,6 @@ def add_restaurants(flask_app):
                                 rest_dict["review_count"],
                                 rest_dict["url"],
                                 img_url,
-                                key,
                                 *l
                                 )
 
