@@ -4,77 +4,82 @@
 <div class = "container" style = "margin:auto;">
 	<div class="row">
 	<div class = "col-sm-3">
-		Filters:
+		<input class = "filterMainButton" type ="button" value = "Filters" role="button" data-toggle="collapse" href="#allFilters" aria-expanded="false" aria-controls="allFilter" />
 		<br>
-		<a role="button" data-toggle="collapse" href="#priceFilter" aria-expanded="false" aria-controls="priceFilter">
-		  Price
-		</a><br>
+		<div class = "collapse" id = "allFilters">
+			<br>
+			<a role="button" data-toggle="collapse" href="#priceFilter" aria-expanded="false" aria-controls="priceFilter">
+			  Price
+			</a><br>
 
-		<div class="collapse" id="priceFilter">
-		  <div class="btn-group" data-toggle="buttons">
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> $
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> $$
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> $$$
-		  		</label>
-			  </div>
-		</div>
-
-		<a role="button" data-toggle="collapse" href="#reviewFilter" aria-expanded="false" aria-controls="reviewFilter">
-		  Rating
-		</a> <br>
-
-		<div class="collapse" id="reviewFilter">
-		  <div class="btn-group" data-toggle="buttons">
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;	
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;
-		  		</label>
-			  </div>
-		</div>
-
-		<a role="button" data-toggle="collapse" href="#foodtypeFilter" aria-expanded="false" aria-controls="foodtypeFilter">
-		  Food Type
-		</a> <br>
-
-		<div class="collapse" id="foodtypeFilter">
-		  <div class="containerFoodType">
-			  {% for element in food_types %}
-		    <input type="checkbox" value = {{ element[0] }} /> {{element[1]}} <br />
-			  {% endfor %}
+			<div class="collapse" id="priceFilter">
+			  <div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off"> $
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off"> $$
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off"> $$$
+					</label>
+				  </div>
 			</div>
+
+			<a role="button" data-toggle="collapse" href="#reviewFilter" aria-expanded="false" aria-controls="reviewFilter">
+			  Rating
+			</a> <br>
+
+			<div class="collapse" id="reviewFilter">
+			  <div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off"> 	&#9734;
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off"> 	&#9734;
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off"> 	&#9734;
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off"> 	&#9734;
+					</label>
+					<label class="btn btn-primary">
+						<input type="checkbox" autocomplete="off"> 	&#9734;
+					</label>
+				  </div>
+			</div>
+
+			<a role="button" data-toggle="collapse" href="#foodtypeFilter" aria-expanded="false" aria-controls="foodtypeFilter">
+			  Food Type
+			</a> <br>
+
+			<div class="collapse" id="foodtypeFilter">
+			  <div class="containerFoodType">
+				  {% for element in food_types %}
+				<input type="checkbox" value = {{ element[0] }} /> {{element[1]}} <br />
+				  {% endfor %}
+				</div>
+			</div>
+
+			<a role="button" data-toggle="collapse" href="#distanceFilter" aria-expanded="false" aria-controls="distanceFilter">
+			  Distance
+			</a> <br>
+
+			<div class="collapse" id="distanceFilter">
+			  <input type = "text" size = "2" > miles from <input type = "text" size = "5">
+			</div>
+
+
+			<br>
+			<input type = "button"  value = "Filter!" />
+
 		</div>
-
-		<a role="button" data-toggle="collapse" href="#distanceFilter" aria-expanded="false" aria-controls="distanceFilter">
-		  Distance
-		</a> <br>
-
-		<div class="collapse" id="distanceFilter">
-		  <input type = "text" size = "2" > miles from <input type = "text" size = "5">
-		</div>
-
-
-		<br><br><br>
-
+		<br>
 	</div>
-
-	<div id = "Grid" class = "col-sm-9">
-		<select onChange = "sortGrid(this);" class = "pull-right">
+		<div style = "text-align: right;">
+		Sort By:
+		<select onChange = "sortGrid(this);" >
 			<option value="Name-L">Name - A to Z</option>
 			<option value="Name-H">Name - Z to A</option>
 			<option value="Rating-L">Rating - Low to High</option>
@@ -82,7 +87,10 @@
 			<option value="Price-L">Price - Low to High</option>
 			<option value="Price-H">Price - High to Low</option>
 		</select>
-		<p class = "pull-right">Sort By:</p>
+		</div>
+	<div id = "Grid" class = "col-sm-9">
+
+
 
 		<div id = "restGrid" class = "col-sm-12">
 		</div>
