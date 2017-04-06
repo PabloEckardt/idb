@@ -194,7 +194,7 @@ def find_img_url (food_type, img_list):
     if food_type in img_list:
         return "static/img/" + food_type + ".jpg"
     else:
-        return "img/default.jpg"
+        return "/static/img/default.jpg"
 
 def find_highest_rated_r(rl):
     rating = 1
