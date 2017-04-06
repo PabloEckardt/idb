@@ -57,7 +57,6 @@ class Reviews(Base):
         assert (type(rating) is int)
         assert (type(username) is unicode)
 
-        assert (type(profile_picture_url) is unicode or None)
         assert (type(review_url) is unicode)
 
         assert (type(zipcode) is unicode)

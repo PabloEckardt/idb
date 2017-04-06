@@ -18,6 +18,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     setupdb(db_engine)
     session_token = init_session(db_engine)
     populate_db.add_restaurants(app, session_token)
+    populate_db.add_reviews(app,session_token)
 
     if config_overrides:
         app.config.update(config_overrides)
