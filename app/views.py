@@ -225,30 +225,25 @@ def restaurant(pk):
 
 @views.route('/Locations/<pk>')
 def location(pk):
-    global location_db
-    for d in location_db:
-        if d["zip"] == pk:
-            return render_template("location_instance.html", instance=d)
+    d = query_location(pk)
+    return render_template("location_instance.html", instance=d)
 
 # FOOD TYPES
 
 
 @views.route('/Food_Types/<pk>')
 def food_type(pk):
-    global food_type_db
-    for d in food_type_db:
-        if d["food_type"] == pk:
-            return render_template("food_type_instance.html", instance=d)
+    print(pk)
+    d = query_food_type(pk)
+    return render_template("food_type_instance.html", instance=d)
 
 # REVIEWS
 
 
 @views.route('/Reviews/<pk>')
 def review(pk):
-    global review_db
-    for d in review_db:
-        if d["review_id"] == pk:
-            return render_template("review_instance.html", instance=d)
+    d = query_review(pk)
+    return render_template("review_instance.html", instance=d)
 
 # Tech Report
 

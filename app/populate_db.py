@@ -1,7 +1,6 @@
 from app.insert_records import *
 from os import listdir
 from os.path import isfile, join
-from insert_records import *
 import app
 import json
 
