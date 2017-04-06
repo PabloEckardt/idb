@@ -102,7 +102,7 @@ function getData() {
     })
         .done(function( data ) {
             console.log(data);
-            elements = data["restaurant_db"];
+            elements = data;
             // TODO: review if we need to keep this or remove above
             ReactDOM.render(<RestList elements={elements} />, document.getElementById('restGrid'));
         });
@@ -113,7 +113,7 @@ function sortGrid(e) {
     //getData();
     var sortBy = e.options[e.selectedIndex].value;
     console.log(e.options[e.selectedIndex].value);
-    var url = "http://foodcloseto.me/API/Restaurants?sortby=" + sortBy.toLowerCase();
+    var url = "http://localhost:5000/API/Restaurants?sortby=" + sortBy.toLowerCase();
     $.getJSON( url, {
         tags: "restaurants",
         tagmode: "any",
