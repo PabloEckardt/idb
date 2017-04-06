@@ -7,6 +7,7 @@ import json
 
 def add_restaurants(flask_app):
     session_token = app.Session()
+    default = "static/img/default.jpg"
     with open(flask_app.config["REVIEWS"], "r") as rj:
         r = json.load(rj)
         with open(flask_app.config["RESTAURANTS"], "r") as me:
@@ -23,7 +24,7 @@ def add_restaurants(flask_app):
                 price = None if not "price" in rest_dict.keys() else rest_dict["price"]
                 addr = rest_dict["location"]["address1"] if not rest_dict["location"]["address1"] == "" else "No Entry"
                 phone = rest_dict["display_phone"] if not rest_dict["display_phone"] == "" else "No Entry"
-                img_url = "No Entry" if rest_dict["image_url"] == "" else rest_dict["image_url"]
+                img_url = default if rest_dict["image_url"] == "" else rest_dict["image_url"]
 
                 add_restaurant (
                                 session_token,
@@ -49,6 +50,7 @@ def add_restaurants(flask_app):
 
 def add_reviews(flask_app):
     session_token = app.Session()
+    default = "static/img/default.jpg"
     with open(flask_app.config["REVIEWS"], "r") as rj:
         r = json.load(rj)
         with open(flask_app.config["RESTAURANTS"], "r") as me:
@@ -56,7 +58,7 @@ def add_reviews(flask_app):
             for k in r:
                 rev_list = r[k]
                 for rev_dict in rev_list:
-                    img_url = "default_user_profile" if rev_dict["user"]["image_url"] == None else rev_dict["user"]["image_url"]
+                    img_url = default if rev_dict["user"]["image_url"] == None else rev_dict["user"]["image_url"]
 
                     add_review(
                         session_token,
@@ -190,9 +192,9 @@ def find_avg_rating(l):
 def find_img_url (food_type, img_list):
 
     if food_type in img_list:
-        return "app/static/img/" + food_type + ".jpg"
+        return "static/img/" + food_type + ".jpg"
     else:
-        return "app/static/img/default.jpeg"
+        return "img/default.jpg"
 
 def find_highest_rated_r(rl):
     rating = 1
@@ -251,6 +253,7 @@ def  add_food_types(flask_app):
         for k in ft:
             count += 1
             restaurant_list = ft[k]
+            food_type_display_name = k.split("/")[1]
             k=k.split("/")[0]
             avg_rating = find_avg_rating(restaurant_list)
             avg_price = find_avg_price(restaurant_list)
@@ -262,6 +265,7 @@ def  add_food_types(flask_app):
             add_food_type(
                             session_token,
                             k,
+                            food_type_display_name,
                             avg_price,
                             avg_rating,
                             img_url,

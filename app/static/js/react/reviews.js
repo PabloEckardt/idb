@@ -2,13 +2,14 @@ var ReviewItem = React.createClass({
     render: function () {
         return (
             <a href = {"/Reviews/" + this.props.id}>
-                <div className = "col-sm-4" id = "reviewGrid">
-                    <div className="thumbnail_container">
-                        <div className="thumbnail">
-                            <img className="aboutPic" src = {this.props.img_url} />
-                        </div>
+                <div className = "col-sm-4" id = "reviewItem">
+                    <div className="review_pic">
+                            <img className="aboutPic img-responsive" src = {this.props.img_url} />
                     </div>
                     <h1>{ this.props.name}</h1>
+                    Date of Review: {this.props.date} <br />
+                    Restaurant: {this.props.restaurant} <br />
+                    Rating Given: {this.props.rating}
 
                 </div>
             </a>
@@ -26,6 +27,10 @@ var ReviewList = React.createClass({
                     key={index}
                     name={element.username}
                     img_url={element.profile_picture_url}
+                    restaurant = {element.restaurant_id}
+                    rating = {element.rating}
+                    date = {element.date}
+                    id = {element.id}
                 />
             );
         });
@@ -39,9 +44,9 @@ var ReviewList = React.createClass({
 
         return (
             <div className = "row">
-                <Paginator pageId = {pageId} />
+                <Paginator pageId = {pageId} location = "top"/>
                 {elements}
-                <Paginator pageId = {pageId} />
+                <Paginator pageId = {pageId} location = "bottom"/>
             </div>
         );
     }
@@ -50,7 +55,7 @@ var ReviewList = React.createClass({
 var Paginator = React.createClass({
     render: function () {
         return (
-            <div className="col-sm-12" id = {this.props.pageId} >
+            <div className={"col-sm-12 " + this.props.location} id = {this.props.pageId} >
                 <a href = "javascript:changePage('First')">&lt;&lt;First</a>&nbsp;&nbsp;
                 <a href = "javascript:changePage('Prev')">&lt;&lt;Prev</a>
                 &nbsp;&nbsp;Page: {page + 1} of {pages.length} &nbsp;&nbsp;
