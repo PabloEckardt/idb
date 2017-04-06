@@ -54,11 +54,9 @@
 
 		<div class="collapse" id="foodtypeFilter">
 		  <div class="containerFoodType">
-		    <input type="checkbox" /> American <br />
-		    <input type="checkbox" /> French <br />
-		    <input type="checkbox" /> Italian <br />
-		    <input type="checkbox" /> German <br />
-		    <input type="checkbox" /> Mexican <br />
+			  {% for element in food_types %}
+		    <input type="checkbox" value = {{ element[0] }} /> {{element[1]}} <br />
+			  {% endfor %}
 			</div>
 		</div>
 

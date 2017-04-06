@@ -29,6 +29,7 @@ var ReviewList = React.createClass({
                     restaurant = {element.restaurant_id}
                     rating = {element.rating}
                     date = {element.date}
+                    id = {element.id}
                 />
             );
         });
