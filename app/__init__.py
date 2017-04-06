@@ -21,10 +21,10 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     app.debug = debug
     app.testing = testing
 
-    #populate_db.add_restaurants(app)
-    #populate_db.add_reviews(app)
-    #populate_db.add_food_types(app)
-    #populate_db.add_locations(app)
+    populate_db.add_restaurants(app)
+    populate_db.add_reviews(app)
+    populate_db.add_food_types(app)
+    populate_db.add_locations(app)
 
     if config_overrides:
         app.config.update(config_overrides)

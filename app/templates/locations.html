@@ -88,19 +88,17 @@
 		</select>
 	</div>
 
-	<div class = "col-sm-9">
-		<div class="row">
-		{% for element in model_elements %}
+		<div id = "Grid" class = "col-sm-9">
 
-		<a href = "/Locations/{{ element['zip'] }}">
-		<div class = "col-sm-4" style = "height: 100px;">
-			<h1>{{ element["zip"] }}</h1>
+
+
+			<div id = "locationGrid" class = "col-sm-12">
+			</div>
 		</div>
-		</a>
-		{% endfor %}
-		</div>
+		<br><br><br>
+		<script src="{{ url_for('static', filename='js/react/locations.js') }}" type="text/babel"></script>
+
+
 	</div>
-
-</div>
 
 {% endblock %}
