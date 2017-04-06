@@ -80,7 +80,7 @@ def add_reviews(flask_app):
 # TODO populate all food types
 
 def find_avg_price(l):
-    price = 0
+    price = 0.0
     rest_no = len(l)
     for dict in l:
         if "price" in dict.keys():
@@ -88,17 +88,17 @@ def find_avg_price(l):
         else:
             rest_no = max( 1 ,rest_no - 1)
 
-    total = price / rest_no
-    return 1 if total < 1 else total
+    total = round(price / rest_no,2)
+    return 1.0 if total < 1 else total
 
 def find_avg_rating(l):
 
-    rating = 0
+    rating = 0.0
     rest_no = len(l)
     for dict in l:
-        rating += len(dict["rating"])
+        rating += dict["rating"]
 
-    return rating/ max(rest_no,1)
+    return round(rating/ max(rest_no,1.0),2)
 
 def find_img_url (food_type, img_list):
 
@@ -113,9 +113,35 @@ def find_highest_rated_r(rl):
     best = ""
     for dict in rl:
         if dict["rating"] > rating and dict["review_count"] > highest_rate_no:
-            best = dict["id"]
+            best = dict["key"]
 
-# def find_best_location():
+    return best if not best == "" else rl[0]["key"]
+
+def find_best_location(rl,ft):
+    loc_tally = {}
+    for dict in rl:
+        if "zip_code" in dict["location"].keys():
+            zip = dict["location"]["zip_code"]
+            if not zip in loc_tally:
+                loc_tally[zip] = 1
+            else:
+                loc_tally[zip] += 1
+    if len(loc_tally) > 1:
+        highest = ""
+        count = 0
+        for zip in loc_tally:
+            if loc_tally[zip] > count:
+                highest = zip
+                count = loc_tally[zip]
+        return highest
+    else:
+        for dict in rl:
+            if "zip_code" in dict["location"].keys():
+                return dict["location"]["zip_code"]
+        print ("WARNING: could not determine the best location for food type, FOOD_TYPE:",ft)
+        print ("seting up default 78704 for:", ft)
+        return "78704"
+
 
 
 def  add_food_types(flask_app):
@@ -129,24 +155,21 @@ def  add_food_types(flask_app):
         for k in ft:
             count += 1
             restaurant_list = ft[k]
-            ft_dict = ft[k]
             k=k.split("/")[0]
+            avg_rating = find_avg_rating(restaurant_list)
             avg_price = find_avg_price(restaurant_list)
             img_url = find_img_url(k, img_files_short)
+            best_restaurant = find_highest_rated_r(restaurant_list)
+            best_location = find_best_location(restaurant_list, k)
 
-            print(str(avg_price) + "\n" + img_url)
-
-            """
-            add_restaurant(
+            add_food_type(
                             session_token,
                             k,
                             avg_price,
                             avg_rating,
                             img_url,
                             len(restaurant_list),
-                            highest_restaurant,
+                            best_restaurant,
                             best_location
                             )
-            """
 
-    print(count, "analyzed")

@@ -98,8 +98,8 @@ class Food_Types(Base):
 
     food_type=Column(String(250), primary_key=True)
 
-    average_price=Column(Integer, nullable=False)
-    average_rating=Column(Integer, nullable=False)
+    average_price=Column(Float, nullable=False)
+    average_rating=Column(Float, nullable=False)
     image_url=Column(String(250), nullable=False)
     number_restaurants=Column(Integer, nullable=False)
 
@@ -123,14 +123,10 @@ class Food_Types(Base):
                  best_location
                  ):
 
-        assert (type(food_type) is str)
 
-        assert (type(average_price) is int)
-        assert (type(average_rating) is int)
-        assert (type(image_url) is str)
+        assert (type(average_price) is float)
+        assert (type(average_rating) is float)
 
-        assert (type(highest_rated_restaurant) is int)
-        assert (type(best_location) is int)
 
         self.food_type=food_type
 
