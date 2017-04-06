@@ -7,7 +7,8 @@ var RestItem = React.createClass({
                     <h1>{ this.props.name}</h1>
                     Address: { this.props.address }<br />
                     Rating: { this.props.rating } <br />
-                    Food Type: { this.props.foodtype }
+                    Food Type: { this.props.foodtype } <br />
+                    Price: { this.props.price }
 
                 </div>
             </a>
@@ -139,9 +140,9 @@ function getData() {
 
 function sortGrid(e) {
     //getData();
-    var sortBy = e.options[e.selectedIndex].value;
+    var sortBy = e.options[e.selectedIndex].value.split("-");
     console.log(e.options[e.selectedIndex].value);
-    var url = "/API/Restaurants?sortby=" + sortBy.toLowerCase();
+    var url = "/API/Restaurants?sortby=" + sortBy[0].toLowerCase();
     $.getJSON( url, {
         tags: "restaurants",
         tagmode: "any",
@@ -153,7 +154,9 @@ function sortGrid(e) {
             pages = [];
             page = 0;
             // TODO: get the page number..
-
+            if (sortBy[1] == "H") {
+                elements.reverse();
+            }
             var count = 0;
             for (var i = 0; i < elements.length; i += 45) {
                 pages[count] = elements.slice(i, i + 45);
@@ -162,6 +165,7 @@ function sortGrid(e) {
             console.log(elements.length);
             console.log("SIZE UP PAGES DOWN");
             console.log(pages);
+            console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
             ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
         });

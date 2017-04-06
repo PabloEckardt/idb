@@ -26,6 +26,9 @@ var ReviewList = React.createClass({
                     key={index}
                     name={element.username}
                     img_url={element.profile_picture_url}
+                    restaurant = {element.restaurant_id}
+                    rating = {element.rating}
+                    date = {element.date}
                 />
             );
         });
