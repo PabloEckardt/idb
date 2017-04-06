@@ -1,6 +1,6 @@
 import logging
 import populate_db
-from query_test import query_all_restaurants
+from query_test import *
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session
 from db_manager import setupdb, init_session
@@ -20,6 +20,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     app.testing = testing
 
     populate_db.add_restaurants(app)
+    populate_db.add_reviews(app)
 
     if config_overrides:
         app.config.update(config_overrides)

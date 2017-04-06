@@ -47,10 +47,11 @@ def add_restaurants(flask_app):
 
 # TODO populate all reviews
 
-def add_reviews(app,session_token):
-    with open(app.config["REVIEWS"], "r") as rj:
+def add_reviews(flask_app):
+    session_token = app.Session()
+    with open(flask_app.config["REVIEWS"], "r") as rj:
         r = json.load(rj)
-        with open(app.config["RESTAURANTS"], "r") as me:
+        with open(flask_app.config["RESTAURANTS"], "r") as me:
             m = json.load(me)
             for k in r:
                 rev_list = r[k]
