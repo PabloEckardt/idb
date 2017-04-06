@@ -69,6 +69,15 @@ div#restaurantGrid h1{
     font-size: 2em;
 }
 
+#showPaginator {
+    height: 100px;
+    margin-top: 40px;
+    text-align: center;
+}
+#hidePaginator {
+    display: none;
+}
+
 /* Style for Restaurant instances */
 .flex-container {
     display: -webkit-flex;

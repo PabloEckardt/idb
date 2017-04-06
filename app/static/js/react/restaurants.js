@@ -16,6 +16,8 @@ var RestItem = React.createClass({
 });
 
 var RestList = React.createClass({
+
+
     render: function () {
         var elements = this.props.elements.map(function (element, index) {
             return (
@@ -32,9 +34,24 @@ var RestList = React.createClass({
             );
         });
 
+        var pageId = "";
+        if (pages.length > 0) {
+            pageId = "showPaginator";
+        } else {
+            pageId = "hidePaginator";
+        }
+
         return (
             <div className = "row">
                 {elements}
+                <div className="col-sm-12" id = {pageId} >
+                    <a href = "javascript:changePage('First')">&lt;&lt;First</a>&nbsp;&nbsp;
+                    <a href = "javascript:changePage('Prev')">&lt;&lt;Prev</a>
+                    &nbsp;&nbsp;Goto: .....&nbsp;&nbsp;
+                    &nbsp;&nbsp;Current Page: {page + 1} &nbsp;&nbsp;
+                    <a href = "javascript:changePage('Next')">Next&gt;&gt;</a>&nbsp;&nbsp;
+                    <a href = "javascript:changePage('Last')">Last&gt;&gt;</a>
+                </div>
             </div>
         );
     }
@@ -42,59 +59,48 @@ var RestList = React.createClass({
 
 // Could come from an API, LocalStorage, another component, etc...
 var elements = [];
+var pages = [];
+var page = 0;
+
+function changePage (e) {
+    console.log(e);
+    if (e == "First") {
+        if (page != 0) {
+            page = 0;
+            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+        }
+    } else if (e == "Prev") {
+        if (page != 0) {
+            page -= 1;
+            ReactDOM.render(<RestList elements={pages[page]} />, document.getElementById('restGrid'));
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+        }
+    } else if (e == "Next") {
+        if (page < pages.length - 1) {
+            page += 1;
+            ReactDOM.render(<RestList elements={pages[page]} />, document.getElementById('restGrid'));
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+        }
+    } else if (e == "Last") {
+        if (page < pages.length - 1) {
+            page = pages.length - 1;
+            ReactDOM.render(<RestList elements={pages[page]} />, document.getElementById('restGrid'));
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+        }
+    }
+}
+
 
 function loadRestGrid() {
     console.log(elements);
+    ReactDOM.render(<h2>Loading...</h2>, document.getElementById('restGrid'));
     getData();
-    ReactDOM.render(<RestList elements={elements} />, document.getElementById('restGrid'));
 }
 
 function getData() {
-    // $.ajax({
-    //     type: 'GET',
-    //     url: 'http://foodcloseto.me/API/Restaurants',
-    //     data: data,
-    //     async: false,
-    //     beforeSend: function (xhr) {
-    //         if (xhr && xhr.overrideMimeType) {
-    //             xhr.overrideMimeType('application/json;charset=utf-8');
-    //         }
-    //     },
-    //     error: function(jqXHR, textStatus, errorThrown) {
-    //         alert(textStatus + ': ' + errorThrown);
-    //     },
-    //     dataType: 'json',
-    //     success: function (data) {
-    //         //Do stuff with the JSON data
-    //     }
-    // });
-    // $.ajax({
-    //     type: 'GET',
-    //     url: 'http://localhost:5000/API/Restaurants',
-    //     async: false,
-    //     // data: data,
-    //     // jsonpCallback: 'jsonCallback',
-    //     // contentType: "application/json",
-    //     dataType: 'json',
-    //     success: function(data)
-    //     {
-    //         $('#jsonp-results').html(JSON.stringify(data));
-    //         console.log(json);
-    //     },
-    //     error: function(e)
-    //     {
-    //         alert(e.message);
-    //     }
-    // });
-    // $.ajax({
-    //     dataType: "json",
-    //     url: "http://foodcloseto.me/API/Restaurants",
-    //     data: data,
-    //     success: function (data) {
-    //         console.log(data);
-    //     }
-    // });
-    var url = "http://foodcloseto.me/API/Restaurants";
+    var url = "/API/Restaurants";
+    //console.log("http://"+extractHostname(window.location.href)+"/API/Restaurants");
     $.getJSON( url, {
         tags: "restaurants",
         tagmode: "any",
@@ -103,8 +109,21 @@ function getData() {
         .done(function( data ) {
             console.log(data);
             elements = data;
+            pages = [];
+
+            // TODO: get the page number..
+
+            var count = 0;
+            for (var i = 0; i < elements.length; i += 45) {
+                pages[count] = elements.slice(i, i + 45);
+                count += 1;
+            }
+            console.log(elements.length);
+            console.log("SIZE UP PAGES DOWN");
+            console.log(pages);
+
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={elements} />, document.getElementById('restGrid'));
+            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
         });
 
 }
@@ -113,7 +132,7 @@ function sortGrid(e) {
     //getData();
     var sortBy = e.options[e.selectedIndex].value;
     console.log(e.options[e.selectedIndex].value);
-    var url = "http://foodcloseto.me/API/Restaurants?sortby=" + sortBy.toLowerCase();
+    var url = "/API/Restaurants?sortby=" + sortBy.toLowerCase();
     $.getJSON( url, {
         tags: "restaurants",
         tagmode: "any",
@@ -122,8 +141,20 @@ function sortGrid(e) {
         .done(function( data ) {
             console.log(data);
             elements = data;
+            pages = [];
+            page = 0;
+            // TODO: get the page number..
+
+            var count = 0;
+            for (var i = 0; i < elements.length; i += 45) {
+                pages[count] = elements.slice(i, i + 45);
+                count += 1;
+            }
+            console.log(elements.length);
+            console.log("SIZE UP PAGES DOWN");
+            console.log(pages);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={elements} />, document.getElementById('restGrid'));
+            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
         });
 }
 
@@ -134,6 +165,23 @@ function getFilters() {
 function filterGrid() {
 
 }
+
+function extractHostname(url) {
+    var hostname;
+    //find & remove protocol (http, ftp, etc.) and get the hostname
+    if (url.indexOf("://") > -1) {
+        hostname = url.split('/')[2];
+    }
+    else {
+        hostname = url.split('/')[0];
+    }
+
+    //find & remove port number
+    // hostname = hostname.split(':')[0];
+
+    return hostname;
+}
+
 
 
 // start the display of elements
