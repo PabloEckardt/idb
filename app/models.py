@@ -90,6 +90,8 @@ class Food_Types(Base):
     average_price=Column(Integer, nullable=False)
     average_rating=Column(Integer, nullable=False)
     image_url=Column(String(250), nullable=False)
+    number_restaurants=Column(Integer, nullable=False)
+
 
     highest_rated_restaurant=Column(
         Integer, ForeignKey('restaurants.id'), nullable=False)
@@ -100,9 +102,14 @@ class Food_Types(Base):
         "locations.zipcode"), nullable=False)
     location=relationship("Locations", foreign_keys=[best_location])
 
-    def __init__(self, food_type, average_price, average_rating,
-                  image_url, highest_rated_restaurant,
-                  best_location):
+    def __init__(self,
+                 food_type,
+                 average_price,
+                 average_rating,
+                 image_url,
+                 highest_rated_restaurant,
+                 best_location
+                 ):
 
         assert (type(food_type) is str)
 

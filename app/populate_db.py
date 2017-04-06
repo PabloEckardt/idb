@@ -1,3 +1,5 @@
+from os import listdir
+from os.path import isfile, join
 from insert_records import add_restaurant
 import app
 import json
@@ -76,3 +78,13 @@ def add_reviews(flask_app):
 # TODO populate all Locations (tedious)
 
 # TODO populate all food types
+def  add_food_types(flask_app):
+    session_token = app.Session()
+    p = "app/static/img/"
+    img_files = [f for f in listdir(p) if isfile(join(p, f))]
+    img_files = [e.split(".")[0] for e in img_files]
+    with open (flask_app.config["FOODTYPES"]) f:
+        ft = json.load(f)
+
+
+
