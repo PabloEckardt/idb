@@ -120,6 +120,7 @@ class Food_Types(Base):
 
     def to_dict(self):
         return {"food_type": self.food_type,
+                "food_type_display_name": self.food_type_display_name,
                 "average_price": self.average_price,
                 "average_rating": self.average_rating,
                 "image_url": self.image_url,
