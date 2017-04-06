@@ -1,5 +1,6 @@
 var RestItem = React.createClass({
     render: function () {
+        var food_type = this.props.foodtype.split("||")[1];
         return (
             <a href = {"/Restaurants/" + this.props.id}>
                 <div className = "col-sm-4" id = "restaurantGrid">
@@ -7,7 +8,7 @@ var RestItem = React.createClass({
                     <h1>{ this.props.name}</h1>
                     Address: { this.props.address }<br />
                     Rating: { this.props.rating } <br />
-                    Food Type: { this.props.foodtype } <br />
+                    Food Type: { food_type } <br />
                     Price: { this.props.price }
 
                 </div>
@@ -71,9 +72,10 @@ var Paginator = React.createClass({
 var elements = [];
 var pages = [];
 var page = 0;
+var filters = {"Price" : [], "Rating": [], "FoodType": [], "Distance": ""};
 
 function changePage (e) {
-    console.log(e);
+    //console.log(e);
     if (e == "First") {
         if (page != 0) {
             page = 0;
@@ -103,7 +105,7 @@ function changePage (e) {
 
 
 function loadRestGrid() {
-    console.log(elements);
+    //console.log(elements);
     ReactDOM.render(<h2>Loading...</h2>, document.getElementById('restGrid'));
     getData();
 }
@@ -117,7 +119,7 @@ function getData() {
         format: "json"
     })
         .done(function( data ) {
-            console.log(data);
+            //console.log(data);
             elements = data;
             pages = [];
 
@@ -128,9 +130,9 @@ function getData() {
                 pages[count] = elements.slice(i, i + 45);
                 count += 1;
             }
-            console.log(elements.length);
-            console.log("SIZE UP PAGES DOWN");
-            console.log(pages);
+            //console.log(elements.length);
+            //console.log("SIZE UP PAGES DOWN");
+            //console.log(pages);
 
             // TODO: review if we need to keep this or remove above
             ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
@@ -162,10 +164,10 @@ function sortGrid(e) {
                 pages[count] = elements.slice(i, i + 45);
                 count += 1;
             }
-            console.log(elements.length);
-            console.log("SIZE UP PAGES DOWN");
-            console.log(pages);
-            console.log(sortBy[1]);
+            //console.log(elements.length);
+            //console.log("SIZE UP PAGES DOWN");
+            //console.log(pages);
+            //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
             ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
         });
@@ -177,6 +179,18 @@ function getFilters() {
 
 function filterGrid() {
 
+}
+
+function addFilter(e) {
+    console.log(e);
+    if (e[2]) {
+        filters[e[0]].push(e[1]);
+    } else {
+        var i = filters[e[0]].indexOf(e[1]);
+        filters[e[0]].splice(i, 1);
+    }
+    filters[e[0]].sort();
+    console.log(filters);
 }
 
 function extractHostname(url) {
