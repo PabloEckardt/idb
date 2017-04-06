@@ -290,8 +290,3 @@ def techreport():
 @views.route('/API/Restaurants', methods=['GET'])
 def restaurants_api():
     return jsonify({'restaurant_db': restaurant_db})
-
-
-
-
-
