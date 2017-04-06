@@ -32,23 +32,23 @@ class test_db (TestCase):
         '''
         add_restaurant(
                         self.session_token,
-                        id="0001",
-                        name="Little Italy",
-                        yelp_id="little_italy",
+                        id=u"0001",
+                        name=u"Little Italy",
+                        yelp_id=u"little_italy",
                         location=78701,
                         lat=1.0000,
                         long=1.0000,
-                        city="Austin",
-                        address="123 f",
-                        phone="(512)123123",
-                        price="$",
+                        city=u"Austin",
+                        address=u"123 f",
+                        phone=u"(512)123123",
+                        price=u"$",
                         rating=3.0,
-                        review="test_review",
-                        review_date="Today",
+                        review=u"test_review",
+                        review_date=u"Today",
                         review_count=123,
-                        url="www.web.com",
-                        img_url="www.web.com/img.jpg",
-                        food_type="Italian"
+                        url=u"www.web.com",
+                        img_url=u"www.web.com/img.jpg",
+                        food_types=[u"Italian"]
                       )
 
         assert not (self.session_token.query(Restaurants) is None)
@@ -78,7 +78,6 @@ class test_db (TestCase):
                 img_url="www.web.com/img.jpg",
                 food_type="Italian"
                 )
-
 
         self.session_token.add(new_r)
         self.session_token.commit()
@@ -126,7 +125,7 @@ class test_db (TestCase):
                 food_type="Italian"
         )
 
-
+    """
         self.session_token.add(new_r)
         self.session_token.commit()
 
@@ -510,12 +509,11 @@ class test_db (TestCase):
         r = json.loads(results)
         assert(r is not None)
         assert(len(r) > 0)
-
+"""
 # ----
 # main
 # ----
 
 if __name__ == "__main__":  # pragma: no cover
     main()
-
 
