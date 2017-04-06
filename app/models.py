@@ -41,6 +41,17 @@ class Reviews(Base):
     zipcode = Column(Integer, ForeignKey('locations.zipcode'), nullable=False)
     location = relationship("Locations", foreign_keys=[zipcode])
 
+    def to_dict(self):
+        return {"restaurant_id": self.restaurant_id,
+                "yelp_restaurant_id": self.yelp_restaurant_id,
+                "date": self.date,
+                "rating": self.rating,
+                "username": self.username,
+                "review": self.review,
+                "profile_picture_url": self.profile_picture_url,
+                "review_url": self.review_url,
+                "zipcode": self.zipcode}
+
     def __init__(self,
                  restaurant_id,
                  yelp_restaurant_id,
@@ -158,7 +169,6 @@ class Restaurants(Base):
     review=Column(String(500), nullable=False)
     review_date=Column(String(250), nullable=False)
     review_count=Column(Integer, nullable=False)
-    review_key=Column(String(50), nullable=False)
     # urls
     url = Column(String(400), nullable=False)
     img_url = Column(String(400), nullable=True)
@@ -177,6 +187,28 @@ class Restaurants(Base):
         'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
+    def to_dict(self):
+        return {
+                "name": self.name,
+                "yelp_id": self.yelp_id,
+                "location": self.location,
+                "lat": self.lat,
+                "long": self.long,
+                "city": self.city,
+                "address": self.address,
+                "phone": self.phone,
+                "price": self.price,
+                "rating": self.rating,
+                "review": self.review,
+                "review_date": self.review_date,
+                "review_count": self.review_count,
+                "url": self.url,
+                "img_url": self.img_url,
+                "food_type": self.food_type,
+                "food_type2": self.food_type2,
+                "food_type3": self.food_type3
+                }
+
     def __init__(self,
                  id,
                  name,
@@ -192,7 +224,6 @@ class Restaurants(Base):
                  review,
                  review_date,
                  review_count,
-                 review_key,
                  url,
                  img_url,
                  food_type,
@@ -223,7 +254,6 @@ class Restaurants(Base):
         self.review=review
         self.review_date=review_date
         self.review_count=review_count
-        self.review_key=review_key
 
         self.url=url
         self.img_url=img_url

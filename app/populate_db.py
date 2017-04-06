@@ -1,6 +1,7 @@
 from os import listdir
 from os.path import isfile, join
 from insert_records import add_restaurant
+from insert_records import *
 import app
 import json
 
@@ -43,7 +44,6 @@ def add_restaurants(flask_app):
                                 rest_dict["review_count"],
                                 rest_dict["url"],
                                 img_url,
-                                key,
                                 *l
                                 )
 
