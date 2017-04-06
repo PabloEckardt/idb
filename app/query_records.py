@@ -6,7 +6,7 @@
 import json
 from app import *
 from flask import Flask, request, jsonify
-from models import Restaurants, Locations, Food_Types, Reviews, Base
+from app.models import Restaurants, Locations, Food_Types, Reviews, Base
 
 def query_restaurant_by_id(session_obj, i):
     restaurant = session_obj.query(Restaurants).filter_by(id = i).first()
@@ -100,9 +100,11 @@ def query_review_by_id(session_obj, id):
             }
     return json.dumps(result)
 
-def query_all_reviews():
+def query_all_reviews(sortby):
+    if sortby == None:
+        sortby = "username"
     session = Session()
-    result = session.query(Reviews).order_by(Reviews.username).all()
+    result = session.query(Reviews).order_by(sortby).all()
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)
 

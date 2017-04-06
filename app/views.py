@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, render_template, jsonify
-from query_records import *
+from app.query_records import *
 
 restaurant_db = [
     {"name": "Little Italy",
@@ -294,4 +294,8 @@ def restaurants_api():
 
 @views.route('/API/Reviews', methods=['GET'])
 def reviews_api():
-    return query_all_reviews()
+    return query_all_reviews(request.args.get('sortby'))
+
+@views.route('/API/Food_Types', methods=['GET'])
+def food_types_api():
+    return query_all_food_types(request.args.get('sortby'))

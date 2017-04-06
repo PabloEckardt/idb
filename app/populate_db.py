@@ -1,4 +1,4 @@
-from insert_records import *
+from app.insert_records import *
 import app
 import json
 
