@@ -11,6 +11,7 @@ with open ("restaurants.json", "r") as restaurants_f:
             if not t in food_types:
                 food_types[t] = []
             r = restaurants[key]
+            r["key"] = key
             food_types[t].append(r)
 
 with open ("food_types.json", "w") as f:
