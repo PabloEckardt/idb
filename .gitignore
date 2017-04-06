@@ -97,3 +97,8 @@ ENV/
 
 # temp files
 *.tmp
+
+# Certs
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
