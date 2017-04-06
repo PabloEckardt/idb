@@ -233,7 +233,6 @@ def location(pk):
 
 @views.route('/Food_Types/<pk>')
 def food_type(pk):
-    print(pk)
     d = query_food_type(pk)
     return render_template("food_type_instance.html", instance=d)
 
