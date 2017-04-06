@@ -4,12 +4,11 @@ models.py
 
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, ForeignKey, Integer, String, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
-
-Base = declarative_base()
+from sqlalchemy.ext.declarative import declarative_base
+from db_manager import Base
 
 # -------------
 # Reviews
@@ -125,27 +124,33 @@ class Restaurants(Base):
 
     name=Column(String(250), nullable=False)
     location=Column(Integer, nullable=False)
-    price=Column(Integer, nullable=False)
-    rating=Column(Integer, nullable=False)
+    price=Column(String(40), nullable=True)
+    rating=Column(Float, nullable=False)
+    Review=Column(String(500), nullable=False)
+    Review_Date=Column(String(250), nullable=False)
 
     food_type=Column(String(250), ForeignKey(
-        'food_types.food_type'), nullable=False)
+        'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
-    Recent_Review=Column(Integer, ForeignKey(
-        'reviews.review_id'), nullable=False)
-    review=relationship("Reviews", foreign_keys=[Recent_Review])
+    food_type2=Column(String(250), ForeignKey(
+        'food_types.food_type'), nullable=True)
+    food=relationship("Food_Types", foreign_keys=[food_type])
 
-    def __init__(self, name, location, price, rating, food_type,
-                 Recent_Review):
+    food_type3=Column(String(250), ForeignKey(
+        'food_types.food_type'), nullable=True)
+    food=relationship("Food_Types", foreign_keys=[food_type])
 
-        assert (type(name) is str)
+    def __init__(self, name, location, price, rating, Review,
+                 Review_Date,
+                 food_type, food_type2 = None, food_type3 = None):
+
+        assert (type(name) is unicode)
         assert (type(location) is int)
-        assert (type(price) is int)
-        assert (type(rating) is int)
+        assert (type(rating) is float)
 
-        assert (type(Recent_Review) is int)
-        assert (type(food_type) is str)
+        assert (type(Review) is unicode)
+        assert (type(Review_Date) is unicode)
 
         self.name=name
         self.location=location
@@ -153,7 +158,10 @@ class Restaurants(Base):
         self.rating=rating
 
         self.food_type=food_type
-        self.Recent_Review=Recent_Review
+        self.food_type2=food_type2
+        self.food_type3=food_type3
+        self.Review=Review
+        self.Review_Date=Review_Date
 # -------------
 # Locations
 # -------------
@@ -206,10 +214,3 @@ class Locations(Base):
 
         self.highest_rated_restaurant=highest_rated_restaurant
         self.popular_food_type=popular_food_type
-
-# create an engine that stores data in the local directory's db file
-db_name = 'sqlite:///sql_example.db'
-engine = create_engine(db_name)
-
-# Create all tables in the engine. Equivalent to Create Table in sql
-Base.metadata.create_all(engine)

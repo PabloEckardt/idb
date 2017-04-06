@@ -1,0 +1,1282 @@
+{
+    "0": {
+        "phone": "+15125208630",
+        "price": "$$",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/je6nQicu2ebBIM648ZQ21g/o.jpg",
+        "display_phone": "(512) 520-8630",
+        "coordinates": {
+            "latitude": 30.28003,
+            "longitude": -97.7413399
+        },
+        "is_closed": false,
+        "id": "lavaca-teppan-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1712 Lavaca St",
+                "Austin, TX 78701"
+            ],
+            "address1": "1712 Lavaca St",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 124.5482549126,
+        "name": "Lavaca Teppan",
+        "categories": [
+            {
+                "title": "Japanese",
+                "alias": "japanese"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/lavaca-teppan-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 4.0,
+        "review_count": 132,
+        "transactions": []
+    },
+    "1": {
+        "phone": "+15123225131",
+        "price": "$$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/cmqeQqqjiHT6jPbMEYj0aw/o.jpg",
+        "display_phone": "(512) 322-5131",
+        "coordinates": {
+            "latitude": 30.279073,
+            "longitude": -97.74232
+        },
+        "is_closed": false,
+        "id": "clay-pit-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1601 Guadalupe St",
+                "Austin, TX 78701"
+            ],
+            "address1": "1601 Guadalupe St",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 245.3210464654,
+        "name": "Clay Pit",
+        "categories": [
+            {
+                "title": "Indian",
+                "alias": "indpak"
+            },
+            {
+                "title": "Desserts",
+                "alias": "desserts"
+            },
+            {
+                "title": "Seafood",
+                "alias": "seafood"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/clay-pit-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 4.0,
+        "review_count": 1104,
+        "transactions": [
+            "delivery"
+        ]
+    },
+    "2": {
+        "phone": "",
+        "price": "$",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/cNMyF3SuzRW8OFI_KCLacQ/o.jpg",
+        "display_phone": "",
+        "coordinates": {
+            "latitude": 30.2778797,
+            "longitude": -97.7420578
+        },
+        "is_closed": false,
+        "id": "k-ts-snack-bar-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "300 W 15th St",
+                "Austin, TX 78701"
+            ],
+            "address1": "300 W 15th St",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 314.4568766462,
+        "name": "K T's Snack Bar",
+        "categories": [
+            {
+                "title": "American (New)",
+                "alias": "newamerican"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/k-ts-snack-bar-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 5.0,
+        "review_count": 4,
+        "transactions": []
+    },
+    "3": {
+        "phone": "+15124690380",
+        "price": "$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/iKl5zz_bzEQt_rYiR6zMzg/o.jpg",
+        "display_phone": "(512) 469-0380",
+        "coordinates": {
+            "latitude": 30.2797094,
+            "longitude": -97.74192
+        },
+        "is_closed": false,
+        "id": "arturos-underground-cafe-austin-2",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "314 W 17th St",
+                "Austin, TX 78701"
+            ],
+            "address1": "314 W 17th St",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 187.4114571358,
+        "name": "Arturo's Underground Cafe",
+        "categories": [
+            {
+                "title": "Bakeries",
+                "alias": "bakeries"
+            },
+            {
+                "title": "Breakfast & Brunch",
+                "alias": "breakfast_brunch"
+            },
+            {
+                "title": "Coffee & Tea",
+                "alias": "coffee"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/arturos-underground-cafe-austin-2?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 4.0,
+        "review_count": 371,
+        "transactions": []
+    },
+    "4": {
+        "phone": "+17374841378",
+        "price": "$",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/31RZ_Ho4w93s_swcUwk9CA/o.jpg",
+        "display_phone": "(737) 484-1378",
+        "coordinates": {
+            "latitude": 30.2826886194536,
+            "longitude": -97.7423645964411
+        },
+        "is_closed": false,
+        "id": "look-noodles-and-more-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "Unit A",
+            "address3": null,
+            "display_address": [
+                "1914 Guadalupe St",
+                "Unit A",
+                "Austin, TX 78705"
+            ],
+            "address1": "1914 Guadalupe St",
+            "state": "TX",
+            "zip_code": "78705",
+            "country": "US"
+        },
+        "distance": 375.50485600319996,
+        "name": "LooK Noodles & More",
+        "categories": [
+            {
+                "title": "Taiwanese",
+                "alias": "taiwanese"
+            },
+            {
+                "title": "Noodles",
+                "alias": "noodles"
+            },
+            {
+                "title": "Ramen",
+                "alias": "ramen"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/look-noodles-and-more-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 4.0,
+        "review_count": 21,
+        "transactions": [
+            "pickup"
+        ]
+    },
+    "5": {
+        "phone": "+15124742751",
+        "price": "$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/M1Jt2JHJv_mBBoe8hFT4KA/o.jpg",
+        "display_phone": "(512) 474-2751",
+        "coordinates": {
+            "latitude": 30.2816065314078,
+            "longitude": -97.7424277990738
+        },
+        "is_closed": false,
+        "id": "raising-canes-chicken-fingers-austin-3",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "415 W Martin Luther King Blvd",
+                "Austin, TX 78701"
+            ],
+            "address1": "415 W Martin Luther King Blvd",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 293.66621552119994,
+        "name": "Raising Cane's Chicken Fingers",
+        "categories": [
+            {
+                "title": "Fast Food",
+                "alias": "hotdogs"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/raising-canes-chicken-fingers-austin-3?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.5,
+        "review_count": 102,
+        "transactions": []
+    },
+    "6": {
+        "phone": "+15124749003",
+        "price": "$",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/u_WS4vkdkDItKOelNMoVFQ/o.jpg",
+        "display_phone": "(512) 474-9003",
+        "coordinates": {
+            "latitude": 30.278966,
+            "longitude": -97.741752
+        },
+        "is_closed": false,
+        "id": "chicken-bowl-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1610 Lavaca St",
+                "Austin, TX 78701"
+            ],
+            "address1": "1610 Lavaca St",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 201.7084152674,
+        "name": "Chicken Bowl",
+        "categories": [
+            {
+                "title": "Tex-Mex",
+                "alias": "tex-mex"
+            },
+            {
+                "title": "Fast Food",
+                "alias": "hotdogs"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/chicken-bowl-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.5,
+        "review_count": 28,
+        "transactions": []
+    },
+    "7": {
+        "phone": "+15124043655",
+        "price": "$$$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/mJTkxuubiiiRKI8B22Uetw/o.jpg",
+        "display_phone": "(512) 404-3655",
+        "coordinates": {
+            "latitude": 30.2818694031,
+            "longitude": -97.7400357374344
+        },
+        "is_closed": false,
+        "id": "the-carillon-austin-2",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1900 University Ave",
+                "Austin, TX 78705"
+            ],
+            "address1": "1900 University Ave",
+            "state": "TX",
+            "zip_code": "78705",
+            "country": "US"
+        },
+        "distance": 208.089834609,
+        "name": "The Carillon",
+        "categories": [
+            {
+                "title": "American (New)",
+                "alias": "newamerican"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/the-carillon-austin-2?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 4.5,
+        "review_count": 243,
+        "transactions": []
+    },
+    "8": {
+        "phone": "+15122369398",
+        "price": "$",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/IE5WJXIq_Bp2Fr05-1K_Nw/o.jpg",
+        "display_phone": "(512) 236-9398",
+        "coordinates": {
+            "latitude": 30.2825503330558,
+            "longitude": -97.7422962817638
+        },
+        "is_closed": false,
+        "id": "cocos-cafe-austin-4",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1910 Guadalupe St",
+                "Austin, TX 78705"
+            ],
+            "address1": "1910 Guadalupe St",
+            "state": "TX",
+            "zip_code": "78705",
+            "country": "US"
+        },
+        "distance": 359.37844843979997,
+        "name": "Coco's Cafe",
+        "categories": [
+            {
+                "title": "Coffee & Tea",
+                "alias": "coffee"
+            },
+            {
+                "title": "Taiwanese",
+                "alias": "taiwanese"
+            },
+            {
+                "title": "Bubble Tea",
+                "alias": "bubbletea"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/cocos-cafe-austin-4?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.5,
+        "review_count": 315,
+        "transactions": []
+    },
+    "9": {
+        "phone": "+15123222428",
+        "price": "$$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/iWCKL53SsZzMKU6NzaXYrw/o.jpg",
+        "display_phone": "(512) 322-2428",
+        "coordinates": {
+            "latitude": 30.279049,
+            "longitude": -97.741722
+        },
+        "is_closed": false,
+        "id": "sushi-junai-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "1612 Lavaca St",
+            "address3": "",
+            "display_address": [
+                "1612 Lavaca St",
+                "Austin, TX 78701"
+            ],
+            "address1": null,
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 196.39023858359997,
+        "name": "Sushi Junai",
+        "categories": [
+            {
+                "title": "Sushi Bars",
+                "alias": "sushi"
+            },
+            {
+                "title": "Japanese",
+                "alias": "japanese"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/sushi-junai-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.5,
+        "review_count": 333,
+        "transactions": []
+    },
+    "10": {
+        "phone": "+15122437679",
+        "price": "$",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/eqHUychbfi0tmXDldtKgdw/o.jpg",
+        "display_phone": "(512) 243-7679",
+        "coordinates": {
+            "latitude": 30.2826460443367,
+            "longitude": -97.742511850271
+        },
+        "is_closed": false,
+        "id": "3-woks-down-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "Ste B",
+            "address3": "",
+            "display_address": [
+                "1914 Guadalupe",
+                "Ste B",
+                "Austin, TX 78705"
+            ],
+            "address1": "1914 Guadalupe",
+            "state": "TX",
+            "zip_code": "78705",
+            "country": "US"
+        },
+        "distance": 380.9263201282,
+        "name": "3 Woks Down",
+        "categories": [
+            {
+                "title": "Cafes",
+                "alias": "cafes"
+            },
+            {
+                "title": "Cantonese",
+                "alias": "cantonese"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/3-woks-down-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.5,
+        "review_count": 28,
+        "transactions": [
+            "pickup"
+        ]
+    },
+    "11": {
+        "phone": "+15124787000",
+        "price": "$$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/lF0z0VIvO-zsE3_He7UrkQ/o.jpg",
+        "display_phone": "(512) 478-7000",
+        "coordinates": {
+            "latitude": 30.2774658203125,
+            "longitude": -97.7425537109375
+        },
+        "is_closed": false,
+        "id": "15th-street-cafe-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "303 W 15th St",
+                "Austin, TX 78701"
+            ],
+            "address1": "303 W 15th St",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 378.224189988,
+        "name": "15th Street Cafe",
+        "categories": [
+            {
+                "title": "Cafes",
+                "alias": "cafes"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/15th-street-cafe-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 8,
+        "transactions": []
+    },
+    "12": {
+        "phone": "",
+        "price": "$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/gk0JH1Ov-1ho9YPeNnptww/o.jpg",
+        "display_phone": "",
+        "coordinates": {
+            "latitude": 30.2823941491806,
+            "longitude": -97.7371261829726
+        },
+        "is_closed": false,
+        "id": "j2-jester-second-floor-dining-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "201 E 21st St",
+                "Austin, TX 78712"
+            ],
+            "address1": "201 E 21st St",
+            "state": "TX",
+            "zip_code": "78712",
+            "country": "US"
+        },
+        "distance": 383.1922386614,
+        "name": "J2 Jester second Floor Dining",
+        "categories": [
+            {
+                "title": "Buffets",
+                "alias": "buffets"
+            },
+            {
+                "title": "Cafeteria",
+                "alias": "cafeteria"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/j2-jester-second-floor-dining-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 8,
+        "transactions": []
+    },
+    "13": {
+        "phone": "+15124041900",
+        "price": "$$",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/SLMvL3Zb8TnhSRIzNdSW4A/o.jpg",
+        "display_phone": "(512) 404-1900",
+        "coordinates": {
+            "latitude": 30.2819952450039,
+            "longitude": -97.7400703200354
+        },
+        "is_closed": false,
+        "id": "gabriels-cafe-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "1900 University Ave",
+            "address3": null,
+            "display_address": [
+                "AT&T Executive Education & Conference Center",
+                "1900 University Ave",
+                "Austin, TX 78705"
+            ],
+            "address1": "AT&T Executive Education & Conference Center",
+            "state": "TX",
+            "zip_code": "78705",
+            "country": "US"
+        },
+        "distance": 222.15322922639996,
+        "name": "Gabriel's Cafe",
+        "categories": [
+            {
+                "title": "American (Traditional)",
+                "alias": "tradamerican"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/gabriels-cafe-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 37,
+        "transactions": []
+    },
+    "14": {
+        "phone": "+15124715482",
+        "price": "$$",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/8MyH2gBcyqGVH7YkhEmNtw/o.jpg",
+        "display_phone": "(512) 471-5482",
+        "coordinates": {
+            "latitude": 30.2806280961406,
+            "longitude": -97.7378708795944
+        },
+        "is_closed": false,
+        "id": "the-blanton-cafe-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "Blanton Art Museum",
+            "address3": "",
+            "display_address": [
+                "The University of Texas at Austin",
+                "Blanton Art Museum",
+                "Austin, TX 78701"
+            ],
+            "address1": "The University of Texas at Austin",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 216.0481335628,
+        "name": "The Blanton Cafe",
+        "categories": [
+            {
+                "title": "Pizza",
+                "alias": "pizza"
+            },
+            {
+                "title": "Sandwiches",
+                "alias": "sandwiches"
+            },
+            {
+                "title": "Coffee & Tea",
+                "alias": "coffee"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/the-blanton-cafe-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 29,
+        "transactions": []
+    },
+    "15": {
+        "phone": "+15124783281",
+        "price": "$",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/LtVMf7q4lVRMpMFN40H2Ag/o.jpg",
+        "display_phone": "(512) 478-3281",
+        "coordinates": {
+            "latitude": 30.27895,
+            "longitude": -97.74163
+        },
+        "is_closed": false,
+        "id": "thundercloud-subs-austin-18",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1608 Lavaca St",
+                "Austin, TX 78701"
+            ],
+            "address1": "1608 Lavaca St",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 202.9213748254,
+        "name": "Thundercloud Subs",
+        "categories": [
+            {
+                "title": "Sandwiches",
+                "alias": "sandwiches"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/thundercloud-subs-austin-18?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 31,
+        "transactions": []
+    },
+    "16": {
+        "phone": "+15124777689",
+        "price": "$",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/YXmAU7PcsLnsFj_-GJxXpw/o.jpg",
+        "display_phone": "(512) 477-7689",
+        "coordinates": {
+            "latitude": 30.279733,
+            "longitude": -97.741477
+        },
+        "is_closed": false,
+        "id": "el-mercado-austin-2",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1702 Lavaca St",
+                "Austin, TX 78701"
+            ],
+            "address1": "1702 Lavaca St",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 145.151765889,
+        "name": "El Mercado",
+        "categories": [
+            {
+                "title": "Sports Bars",
+                "alias": "sportsbars"
+            },
+            {
+                "title": "Tex-Mex",
+                "alias": "tex-mex"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/el-mercado-austin-2?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 174,
+        "transactions": []
+    },
+    "17": {
+        "phone": "+15124940043",
+        "price": "$",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/S5m6PITW6XQXpxFxhm-Ydg/o.jpg",
+        "display_phone": "(512) 494-0043",
+        "coordinates": {
+            "latitude": 30.28223,
+            "longitude": -97.7429
+        },
+        "is_closed": false,
+        "id": "mcdonalds-austin-12",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "414 W Martin Luther King Jr Blvd",
+                "Austin, TX 78701"
+            ],
+            "address1": "414 W Martin Luther King Jr Blvd",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 383.5719946212,
+        "name": "McDonald's",
+        "categories": [
+            {
+                "title": "Fast Food",
+                "alias": "hotdogs"
+            },
+            {
+                "title": "Burgers",
+                "alias": "burgers"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/mcdonalds-austin-12?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 2.0,
+        "review_count": 47,
+        "transactions": [
+            "delivery"
+        ]
+    },
+    "18": {
+        "phone": "+15124718611",
+        "price": "$$",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/Z6_PKIUE_t3ML96Ok6SpuA/o.jpg",
+        "display_phone": "(512) 471-8611",
+        "coordinates": {
+            "latitude": 30.2815780639648,
+            "longitude": -97.7402191162109
+        },
+        "is_closed": false,
+        "id": "campus-club-austin",
+        "location": {
+            "city": "Austin",
+            "address2": null,
+            "address3": "",
+            "display_address": [
+                "1900 University Ave",
+                "Austin, TX 78705"
+            ],
+            "address1": "1900 University Ave",
+            "state": "TX",
+            "zip_code": "78705",
+            "country": "US"
+        },
+        "distance": 176.888755359,
+        "name": "Campus Club",
+        "categories": [
+            {
+                "title": "American (New)",
+                "alias": "newamerican"
+            },
+            {
+                "title": "Burgers",
+                "alias": "burgers"
+            },
+            {
+                "title": "Sandwiches",
+                "alias": "sandwiches"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/campus-club-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 4.5,
+        "review_count": 3,
+        "transactions": []
+    },
+    "19": {
+        "phone": "+15124760901",
+        "price": "$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/lY5oc9EXcmXQuRKz9onwSg/o.jpg",
+        "display_phone": "(512) 476-0901",
+        "coordinates": {
+            "latitude": 30.279383,
+            "longitude": -97.739357
+        },
+        "is_closed": false,
+        "id": "home-run-cafe-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1700 Congress Ave",
+                "Austin, TX 78701"
+            ],
+            "address1": "1700 Congress Ave",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 92.086515267,
+        "name": "Home Run Cafe",
+        "categories": [
+            {
+                "title": "Cafes",
+                "alias": "cafes"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/home-run-cafe-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 2,
+        "transactions": []
+    },
+    "20": {
+        "phone": "+15124829880",
+        "price": "$",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/W6Wkmbhz_yBHVoX2sUOajQ/o.jpg",
+        "display_phone": "(512) 482-9880",
+        "coordinates": {
+            "latitude": 30.2825202941895,
+            "longitude": -97.7424240112305
+        },
+        "is_closed": false,
+        "id": "tapioca-house-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1906 Guadalupe St",
+                "Austin, TX 78705"
+            ],
+            "address1": "1906 Guadalupe St",
+            "state": "TX",
+            "zip_code": "78705",
+            "country": "US"
+        },
+        "distance": 355.3431088568,
+        "name": "Tapioca House",
+        "categories": [
+            {
+                "title": "Taiwanese",
+                "alias": "taiwanese"
+            },
+            {
+                "title": "Bubble Tea",
+                "alias": "bubbletea"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/tapioca-house-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 166,
+        "transactions": []
+    },
+    "21": {
+        "phone": "+15124738651",
+        "price": "$",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/IllEsa4tWCShRoMNQ-bc2Q/o.jpg",
+        "display_phone": "(512) 473-8651",
+        "coordinates": {
+            "latitude": 30.281719,
+            "longitude": -97.743155
+        },
+        "is_closed": false,
+        "id": "chick-fil-a-austin-18",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "503 W Martin Luther King Jr Blvd",
+                "Austin, TX 78701"
+            ],
+            "address1": "503 W Martin Luther King Jr Blvd",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 358.5894212246,
+        "name": "Chick-fil-A",
+        "categories": [
+            {
+                "title": "Fast Food",
+                "alias": "hotdogs"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/chick-fil-a-austin-18?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.5,
+        "review_count": 75,
+        "transactions": []
+    },
+    "22": {
+        "phone": "+15124820146",
+        "price": "$",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/3FFOR5UorGu_3ibKRf5omw/o.jpg",
+        "display_phone": "(512) 482-0146",
+        "coordinates": {
+            "latitude": 30.28263,
+            "longitude": -97.74241
+        },
+        "is_closed": false,
+        "id": "pho-thai-son-austin-4",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1908 Guadalupe St",
+                "Austin, TX 78705"
+            ],
+            "address1": "1908 Guadalupe St",
+            "state": "TX",
+            "zip_code": "78705",
+            "country": "US"
+        },
+        "distance": 357.067243079,
+        "name": "Pho Thai Son",
+        "categories": [
+            {
+                "title": "Vietnamese",
+                "alias": "vietnamese"
+            },
+            {
+                "title": "Sushi Bars",
+                "alias": "sushi"
+            },
+            {
+                "title": "Thai",
+                "alias": "thai"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/pho-thai-son-austin-4?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 155,
+        "transactions": [
+            "pickup"
+        ]
+    },
+    "23": {
+        "phone": "+15123200403",
+        "price": "$",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/RBlvIMQZJO2NjB6sSWSoTQ/o.jpg",
+        "display_phone": "(512) 320-0403",
+        "coordinates": {
+            "latitude": 30.2797190845013,
+            "longitude": -97.7385196834803
+        },
+        "is_closed": false,
+        "id": "the-story-of-texas-cafe-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "2nd Fl",
+            "address3": "",
+            "display_address": [
+                "1800 North Congress Ave",
+                "2nd Fl",
+                "Austin, TX 78701"
+            ],
+            "address1": "1800 North Congress Ave",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 199.2197318914,
+        "name": "The Story of Texas Cafe",
+        "categories": [
+            {
+                "title": "American (Traditional)",
+                "alias": "tradamerican"
+            },
+            {
+                "title": "Sandwiches",
+                "alias": "sandwiches"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/the-story-of-texas-cafe-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.5,
+        "review_count": 22,
+        "transactions": []
+    },
+    "24": {
+        "phone": "+15123208030",
+        "price": "$",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/AMcDTYFuXhEP0pR0rN04Xg/o.jpg",
+        "display_phone": "(512) 320-8030",
+        "coordinates": {
+            "latitude": 30.2812614440918,
+            "longitude": -97.7414779663086
+        },
+        "is_closed": false,
+        "id": "pizza-hut-austin-15",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1811 Guadalupe",
+                "Austin, TX 78701"
+            ],
+            "address1": "1811 Guadalupe",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 196.3583575582,
+        "name": "Pizza Hut",
+        "categories": [
+            {
+                "title": "Pizza",
+                "alias": "pizza"
+            },
+            {
+                "title": "Italian",
+                "alias": "italian"
+            },
+            {
+                "title": "Chicken Wings",
+                "alias": "chicken_wings"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/pizza-hut-austin-15?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 2.0,
+        "review_count": 39,
+        "transactions": []
+    },
+    "25": {
+        "phone": "+15124823483",
+        "price": "$",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/rbS3CzpPMkKwgmxDM02nVA/o.jpg",
+        "display_phone": "(512) 482-3483",
+        "coordinates": {
+            "latitude": 30.2798841,
+            "longitude": -97.7421312
+        },
+        "is_closed": false,
+        "id": "dive-bar-and-lounge-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1703 Guadalupe St",
+                "Austin, TX 78701"
+            ],
+            "address1": "1703 Guadalupe St",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 205.52528694539998,
+        "name": "Dive Bar and Lounge",
+        "categories": [
+            {
+                "title": "Dive Bars",
+                "alias": "divebars"
+            },
+            {
+                "title": "Lounges",
+                "alias": "lounges"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/dive-bar-and-lounge-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 4.5,
+        "review_count": 117,
+        "transactions": []
+    },
+    "26": {
+        "phone": "+15124637326",
+        "price": "$",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/m325-IxhfJd4Jya8KfIXHg/o.jpg",
+        "display_phone": "(512) 463-7326",
+        "coordinates": {
+            "latitude": 30.2789440155029,
+            "longitude": -97.7379608154297
+        },
+        "is_closed": false,
+        "id": "william-b-travis-building-cafeteria-austin",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1701 Congress Ave",
+                "Austin, TX 78701"
+            ],
+            "address1": "1701 Congress Ave",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 228.07469919599998,
+        "name": "William B. Travis Building Cafeteria",
+        "categories": [
+            {
+                "title": "Fast Food",
+                "alias": "hotdogs"
+            },
+            {
+                "title": "Breakfast & Brunch",
+                "alias": "breakfast_brunch"
+            },
+            {
+                "title": "American (Traditional)",
+                "alias": "tradamerican"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/william-b-travis-building-cafeteria-austin?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.0,
+        "review_count": 20,
+        "transactions": []
+    },
+    "27": {
+        "phone": "+15124767272",
+        "price": "$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/lzUXMsasZPKnNTxftlCpuQ/o.jpg",
+        "display_phone": "(512) 476-7272",
+        "coordinates": {
+            "latitude": 30.28139,
+            "longitude": -97.74206
+        },
+        "is_closed": false,
+        "id": "papa-johns-pizza-austin-26",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "411 W Martin Luther King Jr Blvd",
+                "Austin, TX 78701"
+            ],
+            "address1": "411 W Martin Luther King Jr Blvd",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 258.942564599,
+        "name": "Papa John's Pizza",
+        "categories": [
+            {
+                "title": "Pizza",
+                "alias": "pizza"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/papa-johns-pizza-austin-26?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 2.0,
+        "review_count": 26,
+        "transactions": [
+            "delivery"
+        ]
+    },
+    "28": {
+        "phone": "+15124770101",
+        "price": "$",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/N6ioJ6TWEAPdvR6KurVugg/o.jpg",
+        "display_phone": "(512) 477-0101",
+        "coordinates": {
+            "latitude": 30.2821235656738,
+            "longitude": -97.7424468994141
+        },
+        "is_closed": false,
+        "id": "dominos-pizza-austin-17",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1900 Guadalupe St",
+                "Austin, TX 78705"
+            ],
+            "address1": "1900 Guadalupe St",
+            "state": "TX",
+            "zip_code": "78705",
+            "country": "US"
+        },
+        "distance": 334.4707093532,
+        "name": "Domino's Pizza",
+        "categories": [
+            {
+                "title": "Pizza",
+                "alias": "pizza"
+            },
+            {
+                "title": "Chicken Wings",
+                "alias": "chicken_wings"
+            },
+            {
+                "title": "Sandwiches",
+                "alias": "sandwiches"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/dominos-pizza-austin-17?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 2.5,
+        "review_count": 44,
+        "transactions": []
+    },
+    "29": {
+        "phone": "+15124746641",
+        "price": "$",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/jKjQmytrnRBwuwQbz-CbMA/o.jpg",
+        "display_phone": "(512) 474-6641",
+        "coordinates": {
+            "latitude": 30.2813124360349,
+            "longitude": -97.7421017947567
+        },
+        "is_closed": false,
+        "id": "7-eleven-austin-8",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "1814 Guadalupe",
+                "Austin, TX 78701"
+            ],
+            "address1": "1814 Guadalupe",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 249.47521971399996,
+        "name": "7 Eleven",
+        "categories": [
+            {
+                "title": "Convenience Stores",
+                "alias": "convenience"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/7-eleven-austin-8?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.5,
+        "review_count": 6,
+        "transactions": []
+    },
+    "30": {
+        "phone": "+15123208229",
+        "price": "$",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/xs8RnlwqcQ4TaLUgHZkMqg/o.jpg",
+        "display_phone": "(512) 320-8229",
+        "coordinates": {
+            "latitude": 30.2812548,
+            "longitude": -97.7407907
+        },
+        "is_closed": false,
+        "id": "tcby-austin-2",
+        "location": {
+            "city": "Austin",
+            "address2": "",
+            "address3": "",
+            "display_address": [
+                "303 W Martin Luther King Jr Blvd",
+                "Austin, TX 78701"
+            ],
+            "address1": "303 W Martin Luther King Jr Blvd",
+            "state": "TX",
+            "zip_code": "78701",
+            "country": "US"
+        },
+        "distance": 155.1030714988,
+        "name": "TCBY",
+        "categories": [
+            {
+                "title": "Ice Cream & Frozen Yogurt",
+                "alias": "icecream"
+            }
+        ],
+        "url": "https://www.yelp.com/biz/tcby-austin-2?adjust_creative=oQeTOrWw-rVtEKjG6sA2ew&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=oQeTOrWw-rVtEKjG6sA2ew",
+        "rating": 3.5,
+        "review_count": 52,
+        "transactions": []
+    }
+}
