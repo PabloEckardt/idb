@@ -17,7 +17,7 @@ SQLALCHEMY_DATABASE = 'sqlite:///app/db/food_close_to.db'
 
 RESTAURANTS = 'app/db/restaurants.json'
 
-ZIP_CODES = 'app/db/zip_codes.json'
+LOCATIONS = 'app/db/locations.json'
 
 FOOD_TYPES = 'app/db/food_types.json'
 
