@@ -47,3 +47,8 @@ def query_all_reviews(sortby):
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)
 
+def query_restaurant(id):
+    session = Session()
+    result = session.query(Restaurants).filter(Restaurants.id == id).all()
+    result2 = [e.to_dict() for e in result]  
+    return jsonify(result2)

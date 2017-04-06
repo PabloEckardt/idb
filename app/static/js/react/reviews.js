@@ -1,13 +1,14 @@
-var RestItem = React.createClass({
+var ReviewItem = React.createClass({
     render: function () {
         return (
-            <a href = {"/Restaurants/" + this.props.id}>
-                <div className = "col-sm-4" id = "restaurantGrid">
-                    <img src = {this.props.img_url} />
+            <a href = {"/Reviews/" + this.props.id}>
+                <div className = "col-sm-4" id = "reviewGrid">
+                    <div className="thumbnail_container">
+                        <div className="thumbnail">
+                            <img className="aboutPic" src = {this.props.img_url} />
+                        </div>
+                    </div>
                     <h1>{ this.props.name}</h1>
-                    Address: { this.props.address }<br />
-                    Rating: { this.props.rating } <br />
-                    Food Type: { this.props.foodtype }
 
                 </div>
             </a>
@@ -15,21 +16,16 @@ var RestItem = React.createClass({
     }
 });
 
-var RestList = React.createClass({
+var ReviewList = React.createClass({
 
 
     render: function () {
         var elements = this.props.elements.map(function (element, index) {
             return (
-                <RestItem
+                <ReviewItem
                     key={index}
-                    name={element.name}
-                    rating={element.rating}
-                    address={element.address}
-                    foodtype={element.food_type}
-                    img_url={element.img_url}
-                    id={element.id}
-                    price = {element.price}
+                    name={element.username}
+                    img_url={element.profile_picture_url}
                 />
             );
         });
@@ -76,42 +72,42 @@ function changePage (e) {
     if (e == "First") {
         if (page != 0) {
             page = 0;
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<ReviewList elements={pages[0]} />, document.getElementById('reviewGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Prev") {
         if (page != 0) {
             page -= 1;
-            ReactDOM.render(<RestList elements={pages[page]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<ReviewList elements={pages[page]} />, document.getElementById('reviewGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Next") {
         if (page < pages.length - 1) {
             page += 1;
-            ReactDOM.render(<RestList elements={pages[page]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<ReviewList elements={pages[page]} />, document.getElementById('reviewGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Last") {
         if (page < pages.length - 1) {
             page = pages.length - 1;
-            ReactDOM.render(<RestList elements={pages[page]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<ReviewList elements={pages[page]} />, document.getElementById('reviewGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     }
 }
 
 
-function loadRestGrid() {
+function loadReviewGrid() {
     console.log(elements);
-    ReactDOM.render(<h2>Loading...</h2>, document.getElementById('restGrid'));
+    ReactDOM.render(<h2>Loading...</h2>, document.getElementById('reviewGrid'));
     getData();
 }
 
 function getData() {
-    var url = "/API/Restaurants";
+    var url = "/API/Reviews";
     //console.log("http://"+extractHostname(window.location.href)+"/API/Restaurants");
     $.getJSON( url, {
-        tags: "restaurants",
+        tags: "Reviews",
         tagmode: "any",
         format: "json"
     })
@@ -132,7 +128,7 @@ function getData() {
             console.log(pages);
 
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<ReviewList elements={pages[0]} />, document.getElementById('reviewGrid'));
         });
 
 }
@@ -141,9 +137,9 @@ function sortGrid(e) {
     //getData();
     var sortBy = e.options[e.selectedIndex].value;
     console.log(e.options[e.selectedIndex].value);
-    var url = "/API/Restaurants?sortby=" + sortBy.toLowerCase();
+    var url = "/API/Reviews?sortby=" + sortBy.toLowerCase();
     $.getJSON( url, {
-        tags: "restaurants",
+        tags: "Reviews",
         tagmode: "any",
         format: "json"
     })
@@ -163,7 +159,7 @@ function sortGrid(e) {
             console.log("SIZE UP PAGES DOWN");
             console.log(pages);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<ReviewList elements={pages[0]} />, document.getElementById('reviewGrid'));
         });
 }
 
@@ -194,4 +190,4 @@ function extractHostname(url) {
 
 
 // start the display of elements
-loadRestGrid();
+loadReviewGrid();

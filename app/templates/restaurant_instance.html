@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<body>
 <div class="flex-container">
 <header>
   <h1 class = "detailView">{{ instance["name"] }}</h1>
@@ -14,7 +13,7 @@
 <div class = "col-sm-4">
  <div class="thumbnail_container">
   <div class="thumbnail">
-  <img style = "position:relative; top:0;" src="{{ url_for('static', filename='img/' + instance['img'])}}" align="right">
+  <img style = "position:relative; top:0;" src="{{ url_for('static', filename='img/' + instance['img_url'])}}" align="right">
   </div>
  </div>
  </div>
@@ -50,6 +49,6 @@
 <footer></footer>
 </div>
 
-</body>
+
 
 {% endblock %}

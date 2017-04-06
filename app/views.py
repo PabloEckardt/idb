@@ -242,13 +242,10 @@ def About():
 
 # RESTAURANTS
 
-
 @views.route('/Restaurants/<pk>')
 def restaurant(pk):
-    global restaurant_db
-    for d in restaurant_db:
-        if d["id"] == pk:
-            return render_template("restaurant_instance.html", instance=d)
+    d = query_restaurant(pk)
+    return render_template("restaurant_instance.html", instance=d)
 
 # LOCATIONS
 

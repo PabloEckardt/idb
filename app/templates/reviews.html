@@ -88,26 +88,13 @@
 		</select>
 	</div>
 
-	<div class = "col-sm-9">
-		<div class="row">
-		{% for element in model_elements %}
-		<a href = "/Reviews/{{ element['review_id'] }}">
-		<div class = "col-sm-4" style = "height: 200px; text-align: center;">
-		<div class="thumbnail_container" style = "padding-bottom: 100%;">
-                  <div class="thumbnail" style = "height: 150px;">
-            <img class = "aboutPic" src = "{{ url_for('static', filename='img/' +
-            element['img']) }}">
-            </div>
-            
-            </div>
-			<p style = "position:absolute;font-size: 2em; bottom:0; left: 35%;">{{ element["username"] }}<p>
-		</div>
-		</a>
+		<div id = "reviewGrid" class = "col-sm-9">
 
-		{% endfor %}
 		</div>
+		<br><br><br><br>
+		<script src="{{ url_for('static', filename='js/react/reviews.js') }}" type="text/babel"></script>
+
+
 	</div>
-	
-</div>
 
 {% endblock %}
