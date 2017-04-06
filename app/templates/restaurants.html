@@ -70,21 +70,24 @@
 
 
 		<br><br><br>
-		Sort By:<br>
-		<select onChange = "sortGrid(this);">
-		  	<option value="Name-L">Name - A to Z</option>
+
+	</div>
+
+	<div id = "Grid" class = "col-sm-9">
+		<select onChange = "sortGrid(this);" class = "pull-right">
+			<option value="Name-L">Name - A to Z</option>
 			<option value="Name-H">Name - Z to A</option>
-		  	<option value="Rating-L">Rating - Low to High</option>
+			<option value="Rating-L">Rating - Low to High</option>
 			<option value="Rating-H">Rating - High to Low</option>
 			<option value="Price-L">Price - Low to High</option>
 			<option value="Price-H">Price - High to Low</option>
 		</select>
-	</div>
+		<p class = "pull-right">Sort By:</p>
 
-	<div id = "restGrid" class = "col-sm-9">
-
+		<div id = "restGrid" class = "col-sm-12">
+		</div>
 	</div>
-	<br><br><br><br>
+	<br><br><br>
 		<script src="{{ url_for('static', filename='js/react/restaurants.js') }}" type="text/babel"></script>
 	
 </div>

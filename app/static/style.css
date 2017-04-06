@@ -84,8 +84,14 @@ div#reviewGrid div.thumbnail_container div.thumbnail {
 
 #showPaginator {
     height: 40px;
-    margin-top: 40px;
     text-align: center;
+}
+
+#showPaginator.top {
+    margin-top: 5px;
+}
+#showPaginator.bottom {
+    margin-top: 20px;
 }
 #hidePaginator {
     display: none;

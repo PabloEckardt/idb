@@ -44,9 +44,9 @@ var RestList = React.createClass({
 
         return (
             <div className = "row">
-                <Paginator pageId = {pageId} />
+                <Paginator pageId = {pageId} location = "top"/>
                 {elements}
-                <Paginator pageId = {pageId} />
+                <Paginator pageId = {pageId} location = "bottom"/>
             </div>
         );
     }
@@ -55,7 +55,7 @@ var RestList = React.createClass({
 var Paginator = React.createClass({
     render: function () {
         return (
-            <div className="col-sm-12" id = {this.props.pageId} >
+            <div className={"col-sm-12 " + this.props.location} id = {this.props.pageId} >
                 <a href = "javascript:changePage('First')">&lt;&lt;First</a>&nbsp;&nbsp;
                 <a href = "javascript:changePage('Prev')">&lt;&lt;Prev</a>
                 &nbsp;&nbsp;Page: {page + 1} of {pages.length} &nbsp;&nbsp;
