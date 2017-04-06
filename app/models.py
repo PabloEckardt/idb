@@ -102,7 +102,7 @@ class Food_Types(Base):
     average_rating=Column(Float, nullable=False)
     image_url=Column(String(250), nullable=False)
     number_restaurants=Column(Integer, nullable=False)
-    # TODO add most popular restaurant
+    most_popular_restaurant=Column(String(250), nullable=False)
 
     highest_rated_restaurant=Column(
         Integer, ForeignKey('restaurants.id'), nullable=False)
@@ -119,6 +119,7 @@ class Food_Types(Base):
                  average_rating,
                  image_url,
                  number_restaurants,
+                 most_popular_restaurant,
                  highest_rated_restaurant,
                  best_location
                  ):
@@ -135,6 +136,7 @@ class Food_Types(Base):
         self.image_url=image_url
         self.number_restaurants=number_restaurants
 
+        self.most_popular_restaurant=most_popular_restaurant
         self.highest_rated_restaurant=highest_rated_restaurant
         self.best_location=best_location
 
@@ -278,6 +280,7 @@ class Locations(Base):
     highest_price=Column(String(250), nullable=False)
     lowest_price=Column(String(250), nullable=False)
     most_popular_restaurant=Column(String(250),nullable=False)
+    number_restaurants=Column(Integer, nullable=False)
 
     popular_food_type=Column(String(250), ForeignKey(
         'food_types.food_type'), nullable=False)
@@ -289,14 +292,16 @@ class Locations(Base):
                             highest_rated_restaurant])
 
     def __init__(
-                 self,
-                 zipcode,
-                 average_rating,
-                 average_price,
-                 highest_price,
-                 lowest_price,
-                 popular_food_type,
-                 highest_rated_restaurant
+                    self,
+                    zipcode,
+                    average_rating,
+                    average_price,
+                    highest_price,
+                    lowest_price,
+                    popular_food_type,
+                    highest_rated_restaurant,
+                    most_popular_restaurant,
+                    number_restaurants
                  ):
 
 
@@ -305,6 +310,9 @@ class Locations(Base):
         self.average_rating=average_rating
         self.average_price=average_price
         self.highest_price=highest_price
+        self.lowest_price=lowest_price
 
-        self.highest_rated_restaurant=highest_rated_restaurant
         self.popular_food_type=popular_food_type
+        self.highest_rated_restaurant=highest_rated_restaurant
+        self.most_popular_restaurant=most_popular_restaurant
+        self.number_restaurants=number_restaurants

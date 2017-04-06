@@ -1,6 +1,5 @@
 from os import listdir
 from os.path import isfile, join
-from insert_records import add_restaurant
 from insert_records import *
 import app
 import json
@@ -74,10 +73,94 @@ def add_reviews(flask_app):
 
 
 
-# TODO populate all Locations (tedious)
+def loc_find_avg_rating (l):
+    avg = 0.0
+    rest_no = len(l)
+    for rest_key in l:
+        avg += l[rest_key]["rating"]
+
+    return round(avg/rest_no, 2)
+
+def loc_find_avg_price (l):
+    avg = 0.0
+    rest_no = len(l)
+    for id in l:
+        if "price" in l[id]:
+            avg += len(l[id]["price"])
+        else:
+            rest_no = max( 1 ,rest_no - 1)
+
+    total = round(avg / rest_no, 2)
+    return 1.0 if total < 1 else total
+
+def loc_find_hi_lo_price (l):
+
+    hi = 1
+    lo = 4
+    prices = {1:"$",2:"$$",3:"$$$",4:"$$$$"}
+
+    hi_rating = 1.0
+    hi_rating_id = ""
+
+    hi_review_count = 0
+    popular = ""
+
+    for key in l.keys():
+        if "price" in l[key].keys():
+            price = len(l[key]["price"])
+            hi = hi if hi > price else price
+            lo = lo if lo < price else price
+
+        if l[key]["rating"] > hi_rating:
+            hi_rating = l[key]["rating"]
+            hi_rating_id = key
+
+        if l[key]["review_count"] > hi_review_count:
+            hi_review_count = l[key]["review_count"]
+            popular = key
+
+    return (prices[hi], prices[lo], popular, hi_rating_id)
+
+def loc_find_popular_food_type (l):
+    cats = {}
+    cat = l[l.keys()[0]]["categories"][0]["alias"]
+    highest = 0
+
+    for key in l:
+        for dict in l[key]["categories"]:
+            alias = dict["alias"]
+            if not alias in cats:
+                cats[alias] = 1
+            else:
+                cats[alias] += 1
+                if cats[alias] > highest:
+                    highest = cats[alias]
+                    cat = alias
+
+    return cat
+
 def add_locations(flask_app):
     session_token = app.Session()
+    with open (flask_app.config["LOCATIONS"], "r") as l:
+        locs = json.load(l)
+        for zip in locs:
+            avg_rating = loc_find_avg_rating(locs[zip])
+            avg_price = loc_find_avg_price(locs[zip])
+            hi_lo_pop_rate = loc_find_hi_lo_price(locs[zip])
+            popular_food_type = loc_find_popular_food_type(locs[zip])
 
+            add_location(
+                session_token,
+                zip,
+                avg_rating,
+                avg_price,
+                hi_lo_pop_rate[0],
+                hi_lo_pop_rate[1],
+                popular_food_type,
+                hi_lo_pop_rate[2],
+                hi_lo_pop_rate[3],
+                len(locs[zip])
+            )
 
 
 
@@ -146,6 +229,15 @@ def find_best_location(rl,ft):
         print ("seting up default 78704 for:", ft)
         return "78704"
 
+def find_most_popular_restaurant(rl):
+    n = 0
+    id = ""
+    for dict in rl:
+        if n < dict["review_count"]:
+            n = dict["review_count"]
+            id = dict["key"]
+
+    return id
 
 
 def  add_food_types(flask_app):
@@ -165,6 +257,7 @@ def  add_food_types(flask_app):
             img_url = find_img_url(k, img_files_short)
             best_restaurant = find_highest_rated_r(restaurant_list)
             best_location = find_best_location(restaurant_list, k)
+            most_popular_restaurant = find_most_popular_restaurant(restaurant_list)
 
             add_food_type(
                             session_token,
@@ -173,6 +266,7 @@ def  add_food_types(flask_app):
                             avg_rating,
                             img_url,
                             len(restaurant_list),
+                            most_popular_restaurant,
                             best_restaurant,
                             best_location
                             )

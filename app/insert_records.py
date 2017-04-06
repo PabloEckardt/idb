@@ -49,16 +49,29 @@ def add_restaurant(session_obj,
     session_obj.commit()
 
 
-def add_location(session_obj, average_rating, average_price,
-                zipcode, highest_price, popular_food_type, highest_rated_restaurant):
+def add_location(
+                session_obj,
+                zipcode,
+                average_rating,
+                average_price,
+                highest_price,
+                lowest_price,
+                popular_food_type,
+                highest_rated_restaurant,
+                most_popular_restaurant,
+                number_restaurants
+                ):
 
     new_location = Locations(
+        zipcode=zipcode,
         average_rating=average_rating,
         average_price=average_price,
-        zipcode=zipcode,
         highest_price=highest_price,
+        lowest_price=lowest_price,
         popular_food_type=popular_food_type,
-        highest_rated_restaurant=highest_rated_restaurant
+        highest_rated_restaurant=highest_rated_restaurant,
+        most_popular_restaurant=most_popular_restaurant,
+        number_restaurants=number_restaurants
     )
 
     session_obj.add(new_location)
@@ -71,6 +84,7 @@ def add_food_type(session_obj,
                   average_rating,
                   image_url,
                   number_restaurants,
+                  most_popular_restaurant,
                   highest_rated_restaurant,
                   best_location
                   ):
@@ -81,6 +95,7 @@ def add_food_type(session_obj,
         average_rating=average_rating,
         image_url=image_url,
         number_restaurants=number_restaurants,
+        most_popular_restaurant=most_popular_restaurant,
         highest_rated_restaurant=highest_rated_restaurant,
         best_location=best_location
     )
