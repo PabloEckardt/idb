@@ -1,4 +1,5 @@
-from flask import render_template, Blueprint, render_template
+from flask import render_template, Blueprint, render_template, jsonify
+
 restaurant_db = [
     {"name": "Little Italy",
      "img": "italy.jpeg",
@@ -284,3 +285,8 @@ def review(pk):
 @views.route('/About/TechReport')
 def techreport():
     return render_template("techreport.html")
+
+# API
+@views.route('/API/Restaurants', methods=['GET'])
+def restaurants_api():
+    return jsonify({'restaurant_db': restaurant_db})

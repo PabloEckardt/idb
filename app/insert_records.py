@@ -1,29 +1,49 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 # import our models
 from models import Restaurants, Locations, Food_Types, Reviews, Base
 
-db_name = 'sqlite:///sql_example.db'
-
-# Bind the engine to the metadata of the Base class so that the
-# declaratives can be accessed through a DBSession instance
-def init_session():
-    engine = create_engine(db_name)
-    Base.metadata.bind = engine
-    DBSession = sessionmaker(bind=engine)
-    session_obj = DBSession()
-    return session_obj
 
 
-def add_restaurant(session_obj, name, location, price, rating,
-                   food_type, Recent_Review):
+def add_restaurant(session_obj,
+                   name,
+                   yelp_id,
+                   location,
+                   lat,
+                   long,
+                   city,
+                   address,
+                   phone,
+                   price,
+                   rating,
+                   review,
+                   review_date,
+                   review_count,
+                   review_key,
+                   url,
+                   img_url,
+                   *food_types):
 
-    new_restaurant = Restaurants(name=name,
-                                 location=location,
-                                 price=price,
-                                 rating=rating,
-                                 food_type=food_type,
-                                 Recent_Review=Recent_Review)
+
+    new_restaurant = Restaurants(
+                                name=name,
+                                yelp_id=yelp_id,
+                                location=location,
+                                lat=lat,
+                                long=long,
+                                city=city,
+                                address=address,
+                                phone=phone,
+                                price=price,
+                                rating=rating,
+                                review=review,
+                                review_date=review_date,
+                                review_count=review_count,
+                                review_key=review_key,
+                                url=url,
+                                img_url=img_url,
+                                food_type=food_types[0],
+                                food_type2=food_types[1],
+                                food_type3=food_types[2]
+                                )
 
     session_obj.add(new_restaurant)
     session_obj.commit()

@@ -4,12 +4,11 @@ models.py
 
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, ForeignKey, Integer, String, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
-
-Base = declarative_base()
+from sqlalchemy.ext.declarative import declarative_base
+from db_manager import Base
 
 # -------------
 # Reviews
@@ -121,39 +120,93 @@ class Restaurants(Base):
     """
     __tablename__='restaurants'
 
+    # pk
     id=Column(Integer, primary_key=True)
-
+    # identifiers
     name=Column(String(250), nullable=False)
+    yelp_id = Column(String(250), nullable=False)
+    # location data
     location=Column(Integer, nullable=False)
-    price=Column(Integer, nullable=False)
-    rating=Column(Integer, nullable=False)
+    lat = Column(Float, nullable=False)
+    long = Column(Float, nullable=False)
+    city = Column(String(250), nullable=False)
+    address = Column(String(250), nullable=True)
+    phone = Column(String(250), nullable=False)
+    # business data
+    price=Column(String(40), nullable=True)
+    rating=Column(Float, nullable=False)
+    review=Column(String(500), nullable=False)
+    review_date=Column(String(250), nullable=False)
+    review_count=Column(Integer, nullable=False)
+    review_key=Column(String(50), nullable=False)
+    # urls
+    url = Column(String(400), nullable=False)
+    img_url = Column(String(400), nullable=True)
+
+
 
     food_type=Column(String(250), ForeignKey(
-        'food_types.food_type'), nullable=False)
+        'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
-    Recent_Review=Column(Integer, ForeignKey(
-        'reviews.review_id'), nullable=False)
-    review=relationship("Reviews", foreign_keys=[Recent_Review])
+    food_type2=Column(String(250), ForeignKey(
+        'food_types.food_type'), nullable=True)
+    food=relationship("Food_Types", foreign_keys=[food_type])
 
-    def __init__(self, name, location, price, rating, food_type,
-                 Recent_Review):
+    food_type3=Column(String(250), ForeignKey(
+        'food_types.food_type'), nullable=True)
+    food=relationship("Food_Types", foreign_keys=[food_type])
 
-        assert (type(name) is str)
+    def __init__(self,
+                 name,
+                 yelp_id,
+                 location,
+                 lat,
+                 long,
+                 city,
+                 address,
+                 phone,
+                 price,
+                 rating,
+                 review,
+                 review_date,
+                 review_count,
+                 review_key,
+                 url,
+                 img_url,
+                 food_type,
+                 food_type2 = None,
+                 food_type3 = None):
+
+        assert (type(name) is unicode)
         assert (type(location) is int)
-        assert (type(price) is int)
-        assert (type(rating) is int)
+        assert (type(rating) is float)
 
-        assert (type(Recent_Review) is int)
-        assert (type(food_type) is str)
+        assert (type(review) is unicode)
+        assert (type(review_date) is unicode)
 
         self.name=name
+        self.yelp_id=yelp_id
+
         self.location=location
+        self.lat=lat
+        self.long=long
+        self.city=city
+        self.address=address
+        self.phone=phone
+
         self.price=price
         self.rating=rating
+        self.review=review
+        self.review_date=review_date
+        self.review_count=review_count
+        self.review_key=review_key
 
+        self.url=url
+        self.img_url=img_url
         self.food_type=food_type
-        self.Recent_Review=Recent_Review
+        self.food_type2=food_type2
+        self.food_type3=food_type3
 # -------------
 # Locations
 # -------------
@@ -206,10 +259,3 @@ class Locations(Base):
 
         self.highest_rated_restaurant=highest_rated_restaurant
         self.popular_food_type=popular_food_type
-
-# create an engine that stores data in the local directory's db file
-db_name = 'sqlite:///sql_example.db'
-engine = create_engine(db_name)
-
-# Create all tables in the engine. Equivalent to Create Table in sql
-Base.metadata.create_all(engine)

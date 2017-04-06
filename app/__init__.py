@@ -1,9 +1,16 @@
-#from flask import Flask
-#app = Flask(__name__)
-
 import logging
+import populate_db
+from query_test import query_all_restaurants
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session
+from db_manager import setupdb, init_session
 from flask import current_app, Flask, redirect, url_for
 
+db_name = "sqlite:///app/db/food_close_to.db"
+db_engine = create_engine(db_name)
+setupdb(db_engine)
+session_factory = init_session(db_engine)
+Session = scoped_session(session_factory)
 
 def create_app(config, debug=False, testing=False, config_overrides=None):
     app = Flask(__name__)
@@ -11,6 +18,8 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
 
     app.debug = debug
     app.testing = testing
+
+    populate_db.add_restaurants(app)
 
     if config_overrides:
         app.config.update(config_overrides)
