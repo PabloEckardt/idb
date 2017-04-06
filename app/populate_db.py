@@ -10,28 +10,45 @@ def add_restaurants(app, session_token):
         with open(app.config["RESTAURANTS"], "r") as me:
             m = json.load(me)
             for key in m:
-                cat_len = len(m[key]["categories"])
+
+                rest_dict=m[key]
+
+                cat_len = len(rest_dict["categories"])
                 l = [None] * 3
                 for i in range(cat_len):
-                    l[i] = (m[key]["categories"][i]["alias"] + "-" + m[key]["categories"][i]["title"])
-                price = None
-                if "price" in m[key].keys():
-                    price = m[key]["price"]
+                    l[i] = (rest_dict["categories"][i]["alias"] + "-" + rest_dict["categories"][i]["title"])
+
+                price = None if not "price" in rest_dict.keys() else rest_dict["price"]
+                addr = rest_dict["location"]["address1"] if not rest_dict["location"]["address1"] == "" else "No Entry"
+                phone = rest_dict["display_phone"] if not rest_dict["display_phone"] == "" else "No Entry"
+                img_url = "No Entry" if rest_dict["image_url"] == "" else rest_dict["image_url"]
 
                 add_restaurant (
                                 session_token,
-                                m[key]["name"],
-                                int(m[key]["location"]["zip_code"]),
+                                rest_dict["name"],
+                                rest_dict["id"],
+                                int(rest_dict["location"]["zip_code"]),
+                                rest_dict["coordinates"]["latitude"],
+                                rest_dict["coordinates"]["longitude"],
+                                rest_dict["location"]["city"],
+                                addr,
+                                phone,
                                 price,
-                                float(m[key]["rating"]),
+                                float(rest_dict["rating"]),
                                 r[key][0]["text"],
                                 r[key][0]["time_created"],
+                                rest_dict["review_count"],
+                                rest_dict["url"],
+                                img_url,
+                                key,
                                 *l
                                 )
 
-
-
 # TODO populate all reviews
+
+#def add_reviews(app,session_token):
+
+
 
 # TODO populate all Locations (tedious)
 
