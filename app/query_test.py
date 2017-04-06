@@ -9,8 +9,8 @@
 import pprint
 import json
 from flask import Flask, jsonify
-from models import Restaurants, Locations, Food_Types, Reviews
-from db_manager import *
+from app.models import Restaurants, Locations, Food_Types, Reviews
+from app.db_manager import *
 
 #db_name = 'sqlite:///food_close_to.db'
 #db_engine = create_engine(db_name)

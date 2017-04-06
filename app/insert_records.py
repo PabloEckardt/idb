@@ -1,5 +1,5 @@
 # import our models
-from models import Restaurants, Locations, Food_Types, Reviews, Base
+from app.models import Restaurants, Locations, Food_Types, Reviews, Base
 
 
 

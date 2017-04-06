@@ -1,9 +1,9 @@
 import logging
-import populate_db
-from query_test import *
+from app import populate_db
+from app.query_test import *
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session
-from db_manager import setupdb, init_session
+from app.db_manager import setupdb, init_session
 from flask import current_app, Flask, redirect, url_for
 from flask_cors import CORS
 
