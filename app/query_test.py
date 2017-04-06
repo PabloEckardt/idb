@@ -12,9 +12,9 @@ from flask import Flask, jsonify
 from models import Restaurants, Locations, Food_Types, Reviews
 from db_manager import *
 
-db_name = 'sqlite:///food_close_to.db'
-db_engine = create_engine(db_name)
-session_token = init_session(db_engine)
+#db_name = 'sqlite:///food_close_to.db'
+#db_engine = create_engine(db_name)
+#session_token = init_session(db_engine)
 
 def query_all_restaurants(session_obj):
     result = session_obj.query(Restaurants).order_by(Restaurants.name).all()
@@ -34,7 +34,7 @@ def query_all_restaurants(session_obj):
         ret.append(conv)
     return ret
 
-l = query_all_restaurants(session_token)
-
-print (type(l))
-pprint.pprint(l, indent=4)
+#l = query_all_restaurants(session_token)
+#
+#print (type(l))
+#pprint.pprint(l, indent=4)

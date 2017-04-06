@@ -8,9 +8,7 @@ Base = declarative_base()
 # declaratives can be accessed through a DBSession instance
 def init_session(engine):
     Base.metadata.bind = engine
-    DBSession = sessionmaker(bind=engine)
-    session_obj = DBSession()
-    return session_obj
+    return sessionmaker(bind=engine)
 
 def setupdb(engine):
     Base.metadata.create_all(engine)
