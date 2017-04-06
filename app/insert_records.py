@@ -70,14 +70,17 @@ def add_food_type(session_obj,
                   average_price,
                   average_rating,
                   image_url,
+                  number_restaurants,
                   highest_rated_restaurant,
-                  best_location,):
+                  best_location
+                  ):
 
     new_food_type = Food_Types(
         food_type=food_type,
         average_price=average_price,
         average_rating=average_rating,
         image_url=image_url,
+        number_restaurants=number_restaurants,
         highest_rated_restaurant=highest_rated_restaurant,
         best_location=best_location
     )

@@ -23,6 +23,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
 
     #populate_db.add_restaurants(app)
     #populate_db.add_reviews(app)
+    #populate_db.add_food_types(app)
 
     if config_overrides:
         app.config.update(config_overrides)

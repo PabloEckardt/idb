@@ -98,9 +98,11 @@ class Food_Types(Base):
 
     food_type=Column(String(250), primary_key=True)
 
-    average_price=Column(Integer, nullable=False)
-    average_rating=Column(Integer, nullable=False)
+    average_price=Column(Float, nullable=False)
+    average_rating=Column(Float, nullable=False)
     image_url=Column(String(250), nullable=False)
+    number_restaurants=Column(Integer, nullable=False)
+
 
     highest_rated_restaurant=Column(
         Integer, ForeignKey('restaurants.id'), nullable=False)
@@ -111,24 +113,27 @@ class Food_Types(Base):
         "locations.zipcode"), nullable=False)
     location=relationship("Locations", foreign_keys=[best_location])
 
-    def __init__(self, food_type, average_price, average_rating,
-                  image_url, highest_rated_restaurant,
-                  best_location):
+    def __init__(self,
+                 food_type,
+                 average_price,
+                 average_rating,
+                 image_url,
+                 number_restaurants,
+                 highest_rated_restaurant,
+                 best_location
+                 ):
 
-        assert (type(food_type) is str)
 
-        assert (type(average_price) is int)
-        assert (type(average_rating) is int)
-        assert (type(image_url) is str)
+        assert (type(average_price) is float)
+        assert (type(average_rating) is float)
 
-        assert (type(highest_rated_restaurant) is int)
-        assert (type(best_location) is int)
 
         self.food_type=food_type
 
         self.average_price=average_price
         self.average_rating=average_rating
         self.image_url=image_url
+        self.number_restaurants=number_restaurants
 
         self.highest_rated_restaurant=highest_rated_restaurant
         self.best_location=best_location

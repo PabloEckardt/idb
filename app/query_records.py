@@ -71,21 +71,14 @@ def query_food_type_by_name(session_obj, n):
             }
     return json.dumps(result)
 
-def query_all_food_types(session_obj):
-    food_types = session_obj.query(Food_Types).all()
-    ret = []
-    for food_type in food_types :
-        conv = {"food_type": food_type.food_type,
-            "average_price":food_type.average_price,
-            "average_rating":food_type.average_rating,
-            "country_of_origin":food_type.country_of_origin,
-            "image_url":food_type.image_url,
-            "open_restaurants":food_type.open_restaurants,
-            "highest_rated_restaurant":food_type.highest_rated_restaurant,
-            "best_location":food_type.best_location
-            }
-        ret.append(conv)
-    return json.dumps(ret)
+def query_all_food_types(sortby):
+    session = Session()
+    if sortby == None:
+        sortby = "food_type"
+    result = session.query(Food_Types).order_by(sortby).all()
+    # TODO: Figure out more efficient way to do this
+    result2 = [e.to_dict() for e in result]
+    return jsonify(result2)
 
 def query_review_by_id(session_obj, id):
     review = session_obj.query(Reviews).filter_by(review_id = id).first()
