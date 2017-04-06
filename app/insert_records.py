@@ -1,6 +1,8 @@
 # import our models
-from app.models import Restaurants, Locations, Food_Types, Reviews, Base
-
+try:
+    from app.models import Restaurants, Locations, Food_Types, Reviews, Base
+except ImportError:
+    from models import *
 
 
 def add_restaurant(session_obj,

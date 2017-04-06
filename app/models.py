@@ -8,7 +8,10 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from app.db_manager import Base
+try:
+    from app.db_manager import Base, init_session, setupdb
+except ImportError:
+    from db_manager import *
 
 # -------------
 # Reviews

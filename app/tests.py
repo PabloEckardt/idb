@@ -13,8 +13,9 @@ from io import StringIO
 from unittest import main, TestCase
 from models import Restaurants, Locations, Food_Types, Reviews
 from insert_records import add_restaurant, add_location, add_food_type, add_review
-from db_manager import setupdb, init_session
 from sqlalchemy import create_engine
+from db_manager import *
+
 
 
 class test_db (TestCase):
@@ -31,12 +32,22 @@ class test_db (TestCase):
         '''
         add_restaurant(
                         self.session_token,
+                        id="0001",
                         name="Little Italy",
+                        yelp_id="little_italy",
                         location=78701,
+                        lat=1.0000,
+                        long=1.0000,
+                        city="Austin",
+                        address="123 f",
+                        phone="(512)123123",
                         price="$",
                         rating=3.0,
-                        Review="test",
-                        Review_Date="date",
+                        review="test_review",
+                        review_date="Today",
+                        review_count=123,
+                        url="www.web.com",
+                        img_url="www.web.com/img.jpg",
                         food_type="Italian"
                       )
 
@@ -48,15 +59,24 @@ class test_db (TestCase):
 
         '''
         
-        n = "Little Italy 2"
         new_r = Restaurants(
-                name= n,
+                id="0002",
+                name="Little Italy2",
+                yelp_id="little_italy",
                 location=78701,
+                lat=1.0000,
+                long=1.0000,
+                city="Austin",
+                address="123 f",
+                phone="(512)123123",
                 price="$",
                 rating=3.0,
-                food_type="Italian",
-                Review="test",
-                Review_Date="date"
+                review="test_review",
+                review_date="Today",
+                review_count=123,
+                url="www.web.com",
+                img_url="www.web.com/img.jpg",
+                food_type="Italian"
                 )
 
 
@@ -64,17 +84,20 @@ class test_db (TestCase):
         self.session_token.commit()
 
         restaurant_1=self.session_token.query(Restaurants).filter_by(
-            name = "Little Italy 2").first()
+            name = "Little Italy2").first()
 
         assert not (self.session_token.query(Restaurants) is None)
-
-        assert restaurant_1.name == n
+        assert restaurant_1.id == "0002"
+        assert restaurant_1.name == "Little Italy2"
         assert restaurant_1.location == 78701
+        assert restaurant_1.lat==1.0000
+        assert restaurant_1.long==1.0000
+        assert restaurant_1.city=="Austin"
         assert restaurant_1.price == "$"
         assert restaurant_1.rating == 3.0
         assert restaurant_1.food_type == "Italian"
-        assert restaurant_1.Review == "test"
-        assert restaurant_1.Review_Date == "date"
+        assert restaurant_1.Review == "test_review"
+        assert restaurant_1.Review_Date == "Today"
 
     def test_3_Restaurants_delete(self):
         global session_token
@@ -82,16 +105,27 @@ class test_db (TestCase):
         Testing Deletion of Records on Restaurants
 
         '''
-        
-        new_r=Restaurants(
-                name = "Little Italy 3",
-                location = 78701,
+
+        new_r = Restaurants(
+                id="0003",
+                name="Little Italy3",
+                yelp_id="little_italy",
+                location=78701,
+                lat=1.0000,
+                long=1.0000,
+                city="Austin",
+                address="123 f",
+                phone="(512)123123",
                 price="$",
-                rating = 3.0,
-                food_type = "Italian",
-                Review = "test",
-                Review_Date ="date"
-                )
+                rating=3.0,
+                review="test_review",
+                review_date="Today",
+                review_count=123,
+                url="www.web.com",
+                img_url="www.web.com/img.jpg",
+                food_type="Italian"
+        )
+
 
         self.session_token.add(new_r)
         self.session_token.commit()
