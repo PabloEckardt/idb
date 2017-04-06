@@ -25,6 +25,7 @@ def add_restaurants(flask_app):
 
                 add_restaurant (
                                 session_token,
+                                key,
                                 rest_dict["name"],
                                 rest_dict["id"],
                                 int(rest_dict["location"]["zip_code"]),
@@ -46,7 +47,28 @@ def add_restaurants(flask_app):
 
 # TODO populate all reviews
 
-#def add_reviews(app,session_token):
+def add_reviews(app,session_token):
+    with open(app.config["REVIEWS"], "r") as rj:
+        r = json.load(rj)
+        with open(app.config["RESTAURANTS"], "r") as me:
+            m = json.load(me)
+            for k in r:
+                rev_list = r[k]
+                for rev_dict in rev_list:
+                    img_url = "default_user_profile" if rev_dict["user"]["image_url"] == None else rev_dict["user"]["image_url"]
+
+                    add_review(
+                        session_token,
+                        k,
+                        m[k]["id"],
+                        rev_dict["time_created"],
+                        rev_dict["rating"],
+                        rev_dict["user"]["name"],
+                        rev_dict["text"],
+                        img_url,
+                        rev_dict["url"],
+                        m[k]["location"]["zip_code"]
+                    )
 
 
 

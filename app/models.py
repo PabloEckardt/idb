@@ -22,43 +22,56 @@ class Reviews(Base):
     """
     __tablename__ = 'reviews'
 
-    review_id = Column(Integer, primary_key=True)
+    # pk
+    id = Column(Integer, primary_key=True)
+    restaurant_id = Column(String(250), nullable=False)
+    # identifiers
+    yelp_restaurant_id = Column(String(250), nullable=False)
 
+    # Review Data
     date = Column(String(250), nullable=False)
     rating = Column(Integer, nullable=False)
     username = Column(String(250), nullable=False)
+    review = Column(String(900), nullable=False)
+
+    # urls
     profile_picture_url = Column(String(250), nullable=True)
     review_url = Column(String(350), nullable=False)
-
-
-    restaurant_id = Column(Integer, ForeignKey(
-        'restaurants.id'), nullable=False)
-    restaurant = relationship("Restaurants", foreign_keys=[restaurant_id])
 
     zipcode = Column(Integer, ForeignKey('locations.zipcode'), nullable=False)
     location = relationship("Locations", foreign_keys=[zipcode])
 
-    def __init__(self, date, rating, username, profile_picture_url,
-                  review_url, restaurant_id, zipcode):
+    def __init__(self,
+                 restaurant_id,
+                 yelp_restaurant_id,
+                 date,
+                 rating,
+                 username,
+                 review,
+                 profile_picture_url,
+                 review_url,
+                 zipcode
+                 ):
 
-        assert (type(date) is str)
+        assert (type(date) is unicode)
         assert (type(rating) is int)
-        assert (type(username) is str)
+        assert (type(username) is unicode)
 
-        assert (type(profile_picture_url) is str or None)
-        assert (type(review_url) is str)
+        assert (type(review_url) is unicode)
 
-        assert (type(restaurant_id) is int)
-        assert (type(zipcode) is int)
+        assert (type(zipcode) is unicode)
 
+        self.restaurant_id=restaurant_id
+        self.yelp_restaurant_id=yelp_restaurant_id
 
         self.date=date
         self.rating=rating
         self.username=username
+        self.review=review
+
         self.profile_picture_url=profile_picture_url
         self.review_url=review_url
 
-        self.restaurant_id=restaurant_id
         self.zipcode=zipcode
 
 # -------------
@@ -121,7 +134,7 @@ class Restaurants(Base):
     __tablename__='restaurants'
 
     # pk
-    id=Column(Integer, primary_key=True)
+    id=Column(String(250), primary_key=True)
     # identifiers
     name=Column(String(250), nullable=False)
     yelp_id = Column(String(250), nullable=False)
@@ -158,6 +171,7 @@ class Restaurants(Base):
     food=relationship("Food_Types", foreign_keys=[food_type])
 
     def __init__(self,
+                 id,
                  name,
                  yelp_id,
                  location,
@@ -184,6 +198,8 @@ class Restaurants(Base):
 
         assert (type(review) is unicode)
         assert (type(review_date) is unicode)
+
+        self.id=id
 
         self.name=name
         self.yelp_id=yelp_id
