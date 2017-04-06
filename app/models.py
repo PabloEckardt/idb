@@ -98,11 +98,14 @@ class Food_Types(Base):
 
     food_type=Column(String(250), primary_key=True)
 
+    food_type_display_name=Column(String(250),nullable=False)
+
     average_price=Column(Float, nullable=False)
     average_rating=Column(Float, nullable=False)
     image_url=Column(String(250), nullable=False)
     number_restaurants=Column(Integer, nullable=False)
     most_popular_restaurant=Column(String(250), nullable=False)
+    food_type_display_name=Column(String(250),nullable=False)
 
     highest_rated_restaurant=Column(
         Integer, ForeignKey('restaurants.id'), nullable=False)
@@ -115,6 +118,7 @@ class Food_Types(Base):
 
     def __init__(self,
                  food_type,
+                 food_type_display_name,
                  average_price,
                  average_rating,
                  image_url,
@@ -130,6 +134,7 @@ class Food_Types(Base):
 
 
         self.food_type=food_type
+        self.food_type_display_name=food_type_display_name
 
         self.average_price=average_price
         self.average_rating=average_rating

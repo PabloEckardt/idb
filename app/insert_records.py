@@ -80,6 +80,7 @@ def add_location(
 
 def add_food_type(session_obj,
                   food_type,
+                  food_type_display_name,
                   average_price,
                   average_rating,
                   image_url,
@@ -91,6 +92,7 @@ def add_food_type(session_obj,
 
     new_food_type = Food_Types(
         food_type=food_type,
+        food_type_display_name=food_type_display_name,
         average_price=average_price,
         average_rating=average_rating,
         image_url=image_url,
