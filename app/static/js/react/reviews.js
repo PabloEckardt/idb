@@ -2,13 +2,14 @@ var ReviewItem = React.createClass({
     render: function () {
         return (
             <a href = {"/Reviews/" + this.props.id}>
-                <div className = "col-sm-4" id = "reviewGrid">
-                    <div className="thumbnail_container">
-                        <div className="thumbnail">
-                            <img className="aboutPic" src = {this.props.img_url} />
-                        </div>
+                <div className = "col-sm-4" id = "reviewItem">
+                    <div className="review_pic">
+                            <img className="aboutPic img-responsive" src = {this.props.img_url} />
                     </div>
                     <h1>{ this.props.name}</h1>
+                    Date of Review: {this.props.date} <br />
+                    Restaurant: {this.props.restaurant} <br />
+                    Rating Given: {this.props.rating}
 
                 </div>
             </a>
