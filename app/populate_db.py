@@ -78,13 +78,75 @@ def add_reviews(flask_app):
 # TODO populate all Locations (tedious)
 
 # TODO populate all food types
+
+def find_avg_price(l):
+    price = 0
+    rest_no = len(l)
+    for dict in l:
+        if "price" in dict.keys():
+            price += len(dict["price"])
+        else:
+            rest_no = max( 1 ,rest_no - 1)
+
+    total = price / rest_no
+    return 1 if total < 1 else total
+
+def find_avg_rating(l):
+
+    rating = 0
+    rest_no = len(l)
+    for dict in l:
+        rating += len(dict["rating"])
+
+    return rating/ max(rest_no,1)
+
+def find_img_url (food_type, img_list):
+
+    if food_type in img_list:
+        return "app/static/img/" + food_type + ".jpg"
+    else:
+        return "app/static/img/default.jpeg"
+
+def find_highest_rated_r(rl):
+    rating = 1
+    highest_rate_no = 1
+    best = ""
+    for dict in rl:
+        if dict["rating"] > rating and dict["review_count"] > highest_rate_no:
+            best = dict["id"]
+
+# def find_best_location():
+
+
 def  add_food_types(flask_app):
     session_token = app.Session()
     p = "app/static/img/"
     img_files = [f for f in listdir(p) if isfile(join(p, f))]
-    img_files = [e.split(".")[0] for e in img_files]
-    with open (flask_app.config["FOODTYPES"]) f:
+    img_files_short = [e.split(".")[0] for e in img_files]
+    count = 0
+    with open (flask_app.config["FOOD_TYPES"]) as f:
         ft = json.load(f)
+        for k in ft:
+            count += 1
+            restaurant_list = ft[k]
+            ft_dict = ft[k]
+            k=k.split("/")[0]
+            avg_price = find_avg_price(restaurant_list)
+            img_url = find_img_url(k, img_files_short)
 
+            print(str(avg_price) + "\n" + img_url)
 
+            """
+            add_restaurant(
+                            session_token,
+                            k,
+                            avg_price,
+                            avg_rating,
+                            img_url,
+                            len(restaurant_list),
+                            highest_restaurant,
+                            best_location
+                            )
+            """
 
+    print(count, "analyzed")

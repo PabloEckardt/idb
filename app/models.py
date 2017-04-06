@@ -118,6 +118,7 @@ class Food_Types(Base):
                  average_price,
                  average_rating,
                  image_url,
+                 number_restaurants,
                  highest_rated_restaurant,
                  best_location
                  ):
@@ -136,6 +137,7 @@ class Food_Types(Base):
         self.average_price=average_price
         self.average_rating=average_rating
         self.image_url=image_url
+        self.number_restaurants=number_restaurants
 
         self.highest_rated_restaurant=highest_rated_restaurant
         self.best_location=best_location
