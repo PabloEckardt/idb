@@ -9,7 +9,7 @@ restaurant_db = [
      "zip": "78701",
      "price": "$$",
      "hours": "11:00am to 11:00pm",
-     "food_type": "Italian",
+     "food_type": "italian",
      "rating": "3.4",
      "img": "italy.jpg",
      "id": "1"
@@ -21,7 +21,7 @@ restaurant_db = [
      "zip": "78702",
      "price": "$$$",
      "hours": "11:00am to 9:00pm",
-     "food_type": "Mediterranean",
+     "food_type": "mediterranean",
      "rating": "4",
      "id": "2"
      },
@@ -32,7 +32,7 @@ restaurant_db = [
      "zip": "78703",
      "price": "$",
      "hours": "11:00am to 11:00am",
-     "food_type": "American",
+     "food_type": "american",
      "rating": "5",
      "id": "3"
      },
@@ -43,7 +43,7 @@ restaurant_db = [
      "zip": "78704",
      "price": "$$",
      "hours": "11:00am to 10:00am",
-     "food_type": "Indian",
+     "food_type": "indian",
      "rating": "5",
      "id": "4"
      },
@@ -54,7 +54,7 @@ restaurant_db = [
      "zip": "78705",
      "price": "$$",
      "hours": "11:00am to 9:30am",
-     "food_type": "Chinese",
+     "food_type": "chinese",
      "rating": "5",
      "id": "5"
      }]
@@ -102,7 +102,7 @@ location_db = [
      }]
 
 food_type_db = [
-    {"food_type": "Chinese",
+    {"food_type": "chinese",
      "average_price": "$",
      "average_rating": "3",
      "highest_rated_restaurant": "Ho Ho chinese BBQ",
@@ -110,7 +110,7 @@ food_type_db = [
      "best_location": "78705",
      "img": "chinese.jpg"
      },
-    {"food_type": "Mediterranean",
+    {"food_type": "mediterranean",
      "average_price": "$$$",
      "average_rating": "4.2",
      "highest_rated_restaurant": "Gato",
@@ -118,7 +118,7 @@ food_type_db = [
      "best_location": "78702",
      "img": "mediterranean.jpg"
      },
-    {"food_type": "Italian",
+    {"food_type": "italian",
      "average_price": "$$$",
      "average_rating": "4.8",
      "highest_rated_restaurant": "Little Italy",
@@ -126,7 +126,7 @@ food_type_db = [
      "best_location": "78701",
      "img": "italian.jpg"
      },
-    {"food_type": "Indian",
+    {"food_type": "indian",
      "average_price": "$$",
      "average_rating": "3.8",
      "highest_rated_restaurant": "Biryani",
@@ -134,7 +134,7 @@ food_type_db = [
      "best_location": "78704",
      "img": "indian.jpg"
      },
-    {"food_type": "American",
+    {"food_type": "american",
      "average_price": "$",
      "average_rating": "3.1",
      "highest_rated_restaurant": "Stack Burgers",
@@ -252,30 +252,25 @@ def restaurant(pk):
 
 @views.route('/Locations/<pk>')
 def location(pk):
-    global location_db
-    for d in location_db:
-        if d["zip"] == pk:
-            return render_template("location_instance.html", instance=d)
+    d = query_location(pk)
+    return render_template("location_instance.html", instance=d)
 
 # FOOD TYPES
 
 
 @views.route('/Food_Types/<pk>')
 def food_type(pk):
-    global food_type_db
-    for d in food_type_db:
-        if d["food_type"] == pk:
-            return render_template("food_type_instance.html", instance=d)
+    print(pk)
+    d = query_food_type(pk)
+    return render_template("food_type_instance.html", instance=d)
 
 # REVIEWS
 
 
 @views.route('/Reviews/<pk>')
 def review(pk):
-    global review_db
-    for d in review_db:
-        if d["review_id"] == pk:
-            return render_template("review_instance.html", instance=d)
+    d = query_review(pk)
+    return render_template("review_instance.html", instance=d)
 
 # Tech Report
 
