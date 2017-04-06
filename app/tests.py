@@ -7,13 +7,14 @@
 # -------
 # imports
 # -------
+import json
+from flask import current_app as app
 from io import StringIO
 from unittest import main, TestCase
 from models import Restaurants, Locations, Food_Types, Reviews
 from insert_records import add_restaurant, add_location, add_food_type, add_review
 from db_manager import setupdb, init_session
 from sqlalchemy import create_engine
-
 
 
 class test_db (TestCase):
@@ -76,6 +77,7 @@ class test_db (TestCase):
         assert restaurant_1.Review_Date == "date"
 
     def test_3_Restaurants_delete(self):
+        global session_token
         '''
         Testing Deletion of Records on Restaurants
 
@@ -111,6 +113,7 @@ class test_db (TestCase):
         Testing our Wrapper to add records on Locations
 
         '''
+        global session_token
         add_location(
                         self.session_token,
                         average_rating=3,
@@ -218,7 +221,7 @@ class test_db (TestCase):
                     profile_picture_url="/review_profiles/pebs",
                     review_url="/review/1",
                     restaurant_id=1,
-                    zipcode=67777
+                    zipcode=67778
                 )
 
         self.session_token.add(new_r)
@@ -228,7 +231,7 @@ class test_db (TestCase):
 
         assert not (self.session_token.query(Reviews) is None)
 
-        assert (rev.zipcode == 67777)
+        assert (rev.zipcode == 67778)
         assert (rev.date == "12/1/2014")
         assert (rev.rating == 4)
         assert (rev.username == "pebs")
@@ -272,6 +275,7 @@ class test_db (TestCase):
         Testing our Wrapper to add records on Food Types
 
         '''
+        global session_token
         add_food_type(
                         self.session_token,
                         food_type="Italian",
@@ -346,6 +350,133 @@ class test_db (TestCase):
             food_type="Italian3").first()
 
         assert (f is None)
+
+    def test_13_restaurant_query_by_id(self):
+        global session_token
+        new_r1 = Restaurants(
+                            name= "Little Italy16",
+                            location=78701,
+                            price=2,
+                            rating=3,
+                            hours="9 to 5",
+                            food_type="Italian",
+                            Recent_Review=1
+                            )
+
+        new_r2 = Restaurants(
+                            name= "Not-So-Little Italy",
+                            location=78701,
+                            price=2,
+                            rating=3,
+                            hours="9 to 5",
+                            food_type="Italian",
+                            Recent_Review=1
+                            )
+
+        session_token.add(new_r1)
+        session_token.commit()
+        session_token.add(new_r2)
+        session_token.commit()
+        results = query_restaurant_by_id(session_token, 1)
+
+        r = json.loads(results)
+
+        assert(r is not None)
+        assert(r["id"] == 1)
+
+    def test_14_restaurant_query_all(self):
+        global session_token
+        results = query_all_restaurants(session_token)
+        r = json.loads(results)
+
+        assert(r is not None)
+        assert(len(r) > 1)
+
+    def test_15_location_query_by_zip(self):
+        global session_token
+        new_l=Locations(
+                zipcode=77779,
+                average_rating=3,
+                average_price=2,
+                adjacent_location=77778,
+                average_health_rating=88,
+                highest_price= 2,
+                popular_food_type="Italian",
+                highest_rated_restaurant="Little Italy17"
+                )
+
+        session_token.add(new_l)
+        session_token.commit()
+
+        result = query_location_by_zip(session_token, 77779)
+        r = json.loads(result)
+        assert (r is not None)
+        assert (r["zipcode"] == 77779)
+
+    def test_16_location_query_all(self) :
+        global session_token
+        results = query_all_locations(session_token)
+        r = json.loads(results)
+        assert (r is not None)
+        assert (len(r) == 1)
+
+    def test_17_food_type_query_by_name(self):
+        global session_token
+        new_f=Food_Types(
+                        food_type="Chinese",
+                        average_price=3,
+                        average_rating=3,
+                        country_of_origin="China",
+                        image_url="/food_types/Chinese/",
+                        open_restaurants=1,
+                        highest_rated_restaurant=123,
+                        best_location=78787
+                        )
+
+        session_token.add(new_f)
+        session_token.commit()
+        
+        result = query_food_type_by_name(session_token, "Chinese")
+        r = json.loads(result)
+
+        assert (r is not None)
+        assert (r["food_type"] == "Chinese")
+
+    def test_18_food_type_query_all(self):
+        global session_token
+        results = query_all_food_types(session_token)
+        r = json.loads(results)
+        assert (r is not None)
+        assert (len(r) > 0)
+
+    def test_19_review_query_by_id(self):
+        global session_token
+        new_r=Reviews(
+                    date="12/1/2014",
+                    rating=5,
+                    username="bob",
+                    profile_picture_url="/review_profiles/pebs",
+                    restaurant_pictures_url="/reviews_images/pebs/1",
+                    restaurant_id=2,
+                    zipcode=67778
+                )
+
+        session_token.add(new_r)
+        session_token.commit()
+
+        result = query_review_by_id(session_token, 1)
+        r = json.loads(result)
+
+        assert(r is not None)
+        assert(r["review_id"] == 1)
+
+    def test_20_review_query_all(self):
+        global session_token
+        results = query_all_reviews(session_token)
+        r = json.loads(results)
+        assert(r is not None)
+        assert(len(r) > 0)
+
 # ----
 # main
 # ----

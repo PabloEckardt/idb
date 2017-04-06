@@ -1,4 +1,4 @@
-from insert_records import add_restaurant
+from insert_records import *
 import app
 import json
 
