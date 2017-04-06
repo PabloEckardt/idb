@@ -4,6 +4,7 @@ from models import Restaurants, Locations, Food_Types, Reviews, Base
 
 
 def add_restaurant(session_obj,
+                   id,
                    name,
                    yelp_id,
                    location,
@@ -24,6 +25,7 @@ def add_restaurant(session_obj,
 
 
     new_restaurant = Restaurants(
+                                id=id,
                                 name=name,
                                 yelp_id=yelp_id,
                                 location=location,
@@ -65,9 +67,13 @@ def add_location(session_obj, average_rating, average_price,
     session_obj.commit()
 
 
-def add_food_type(session_obj, food_type, average_price,
-                  average_rating,image_url,
-                  highest_rated_restaurant, best_location,):
+def add_food_type(session_obj,
+                  food_type,
+                  average_price,
+                  average_rating,
+                  image_url,
+                  highest_rated_restaurant,
+                  best_location,):
 
     new_food_type = Food_Types(
         food_type=food_type,
@@ -82,17 +88,29 @@ def add_food_type(session_obj, food_type, average_price,
     session_obj.commit()
 
 
-def add_review(session_obj, date, rating, username, profile_picture_url,
-               restaurant_id, review_url, zipcode):
+def add_review(
+                session_obj,
+                restaurant_id,
+                yelp_restaurant_id,
+                date,
+                rating,
+                username,
+                review,
+                profile_picture_url,
+                review_url,
+                zipcode
+               ):
 
     # I realized that having zipcode and restaurant id is wasteful.
     new_review = Reviews(
+        restaurant_id=restaurant_id,
+        yelp_restaurant_id=yelp_restaurant_id,
         date=date,
         rating=rating,
         username=username,
+        review=review,
         profile_picture_url=profile_picture_url,
         review_url=review_url,
-        restaurant_id=restaurant_id,
         zipcode=zipcode
     )
 
