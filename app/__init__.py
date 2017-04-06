@@ -1,9 +1,10 @@
-#from flask import Flask
-#app = Flask(__name__)
-
 import logging
+import populate_db
+from sqlalchemy import create_engine
+from db_manager import setupdb, init_session
 from flask import current_app, Flask, redirect, url_for
 
+db_engine = None
 
 def create_app(config, debug=False, testing=False, config_overrides=None):
     app = Flask(__name__)
@@ -11,6 +12,12 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
 
     app.debug = debug
     app.testing = testing
+
+    db_name = app.config["SQLALCHEMY_DATABASE"]
+    db_engine = create_engine(db_name)
+    setupdb(db_engine)
+    session_token = init_session(db_engine)
+    populate_db.add_restaurants(app, session_token)
 
     if config_overrides:
         app.config.update(config_overrides)
