@@ -299,3 +299,7 @@ def reviews_api():
 @views.route('/API/Food_Types', methods=['GET'])
 def food_types_api():
     return query_all_food_types(request.args.get('sortby'))
+
+@views.route('/API/Locations', methods=['GET'])
+def locations_api():
+    return query_all_locations(request.args.get('sortby'))
