@@ -42,7 +42,8 @@ class Reviews(Base):
     location = relationship("Locations", foreign_keys=[zipcode])
 
     def to_dict(self):
-        return {"restaurant_id": self.restaurant_id,
+        return {"id": self.id,
+                "restaurant_id": self.restaurant_id,
                 "yelp_restaurant_id": self.yelp_restaurant_id,
                 "date": self.date,
                 "rating": self.rating,
