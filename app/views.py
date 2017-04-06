@@ -198,13 +198,13 @@ def Locations():
 @views.route('/Food_Types')
 def Food_Types():
     return render_template(
-        "food_types.html", food_types=food_type)
+        "food_types.html", food_types=food_types)
 
 
 @views.route('/Reviews')
 def Reviews():
     return render_template(
-        "reviews.html", food_type=food_type)
+        "reviews.html", food_types=food_types)
 
 
 @views.route('/About')
