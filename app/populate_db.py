@@ -254,8 +254,8 @@ def  add_food_types(flask_app):
         for k in ft:
             count += 1
             restaurant_list = ft[k]
-            k=k.split("/")[0]
             food_type_display_name = k.split("/")[1]
+            k=k.split("/")[0]
             avg_rating = find_avg_rating(restaurant_list)
             avg_price = find_avg_price(restaurant_list)
             img_url = find_img_url(k, img_files_short)
