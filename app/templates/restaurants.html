@@ -70,17 +70,10 @@
 		  <input type = "text" size = "2" > miles from <input type = "text" size = "5">
 		</div>
 
-		<a role="button" data-toggle="collapse" href="#hoursFilter" aria-expanded="false" aria-controls="hoursFilter">
-		  Hours
-		</a> <br>
-
-		<div class="collapse" id="hoursFilter">
-		  <input type = "text" size = "2" > to <input type = "text" size = "5">
-		</div>
 
 		<br><br><br>
 		Sort By:<br>
-		<select>
+		<select onChange = "sortGrid(this);">
 		  <option value="Name">Name</option>
 		  <option value="Rating">Rating</option>
 		  <option value="Distance">Distance</option>
@@ -88,23 +81,10 @@
 		</select>
 	</div>
 
-	<div class = "col-sm-9">
-		<div class="row">
-		{% for element in model_elements %}
+	<div id = "restGrid" class = "col-sm-9">
 
-		<a href = "/Restaurants/{{ element['id'] }}">
-		<div class = "col-sm-4" style = "height: 300px;">
-            <img style = "width:100%; height: 150px;" src = "{{ url_for('static', filename='img/' +
-            element['img']) }}">
-			<p style = "font-size: 2em;">{{ element["name"] }}</p>
-			Address: {{element["location"]}}<br>
-			Rating: {{element["rating"]}} <br>
-			Food Type: {{element["food_type"]}}
-		</div>
-		</a>
-		{% endfor %}
-		</div>
 	</div>
+		<script src="{{ url_for('static', filename='js/react/restaurants.js') }}" type="text/babel"></script>
 	
 </div>
 

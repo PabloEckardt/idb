@@ -54,6 +54,21 @@ input[type=text]:focus {
   display:block;                        /* SHOW LIST (IF CHECKED) */
 }
 
+/* GRIDS */
+
+div#restaurantGrid {
+    height: 300px;
+}
+
+div#restaurantGrid img{
+    width:100%;
+    height: 150px;
+}
+
+div#restaurantGrid h1{
+    font-size: 2em;
+}
+
 /* Style for Restaurant instances */
 .flex-container {
     display: -webkit-flex;
