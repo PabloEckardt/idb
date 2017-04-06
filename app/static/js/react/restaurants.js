@@ -94,7 +94,7 @@ function getData() {
     //         console.log(data);
     //     }
     // });
-    var url = "http://localhost:5000/API/Restaurants";
+    var url = "http://foodcloseto.me/API/Restaurants";
     $.getJSON( url, {
         tags: "restaurants",
         tagmode: "any",
@@ -113,7 +113,7 @@ function sortGrid(e) {
     //getData();
     var sortBy = e.options[e.selectedIndex].value;
     console.log(e.options[e.selectedIndex].value);
-    var url = "http://localhost:5000/API/Restaurants?sortby=" + sortBy.toLowerCase();
+    var url = "http://foodcloseto.me/API/Restaurants?sortby=" + sortBy.toLowerCase();
     $.getJSON( url, {
         tags: "restaurants",
         tagmode: "any",
