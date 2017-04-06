@@ -65,6 +65,7 @@ class Reviews(Base):
                  zipcode
                  ):
 
+
         assert (type(date) is unicode)
         assert (type(rating) is int)
         assert (type(username) is unicode)

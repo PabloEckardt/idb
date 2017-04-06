@@ -19,7 +19,7 @@ def add_restaurants(flask_app):
                 cat_len = len(rest_dict["categories"])
                 l = [None] * 3
                 for i in range(cat_len):
-                    l[i] = (rest_dict["categories"][i]["alias"] + "-" + rest_dict["categories"][i]["title"])
+                    l[i] = (rest_dict["categories"][i]["alias"] + "||" + rest_dict["categories"][i]["title"])
 
                 price = None if not "price" in rest_dict.keys() else rest_dict["price"]
                 addr = rest_dict["location"]["address1"] if not rest_dict["location"]["address1"] == "" else "No Entry"

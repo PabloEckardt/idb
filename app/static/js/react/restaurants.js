@@ -4,7 +4,7 @@ var RestItem = React.createClass({
         return (
             <a href = {"/Restaurants/" + this.props.id}>
                 <div className = "col-sm-4" id = "restaurantGrid">
-                    <img src = {this.props.img_url} />
+                    <img src = {this.props.img_url} className="img-responsive"/>
                     <h1>{ this.props.name}</h1>
                     Address: { this.props.address }<br />
                     Rating: { this.props.rating } <br />
