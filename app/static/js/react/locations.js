@@ -1,13 +1,12 @@
-var LocItem = React.createClass({
+var LocationItem = React.createClass({
     render: function () {
         return (
             <a href = {"/Locations/" + this.props.id}>
-                <div className = "col-sm-4" id = "locationsGrid">
-                    <img src = {this.props.img_url} />
+                <div className = "col-sm-4" id = "locationItem">
                     <h1>{ this.props.name}</h1>
-                    Address: { this.props.address }<br />
-                    Rating: { this.props.rating } <br />
-                    Food Type: { this.props.foodtype }
+                    Restaurant Count: { this.props.address }<br />
+                    Average Rating: { this.props.rating } <br />
+                    Price Ranges: { this.props.Hprice + " - " + this.props.Lprice }
 
                 </div>
             </a>
@@ -15,21 +14,20 @@ var LocItem = React.createClass({
     }
 });
 
-var LocList = React.createClass({
+var LocationList = React.createClass({
 
 
     render: function () {
         var elements = this.props.elements.map(function (element, index) {
             return (
-                <LocItem
+                <LocationItem
                     key={index}
-                    name={element.name}
-                    rating={element.rating}
-                    address={element.address}
-                    foodtype={element.food_type}
-                    img_url={element.img_url}
-                    id={element.id}
-                    price = {element.price}
+                    name={element.zipcode}
+                    rating={element.average_rating}
+                    numRest={element.number_restaurants}
+                    id={element.zipcode}
+                    Lprice = {element.lowest_price}
+                    Hprice = {element.highest_price}
                 />
             );
         });
@@ -43,9 +41,9 @@ var LocList = React.createClass({
 
         return (
             <div className = "row">
-                <Paginator pageId = {pageId} />
+                <Paginator pageId = {pageId} location = "top"/>
                 {elements}
-                <Paginator pageId = {pageId} />
+                <Paginator pageId = {pageId} location = "bottom"/>
             </div>
         );
     }
@@ -54,10 +52,10 @@ var LocList = React.createClass({
 var Paginator = React.createClass({
     render: function () {
         return (
-            <div className="col-sm-12" id = {this.props.pageId} >
+            <div className={"col-sm-12 " + this.props.location} id = {this.props.pageId} >
                 <a href = "javascript:changePage('First')">&lt;&lt;First</a>&nbsp;&nbsp;
                 <a href = "javascript:changePage('Prev')">&lt;&lt;Prev</a>
-                &nbsp;&nbsp;Page: {page + 1} &nbsp;&nbsp;
+                &nbsp;&nbsp;Page: {page + 1} of {pages.length} &nbsp;&nbsp;
                 <a href = "javascript:changePage('Next')">Next&gt;&gt;</a>&nbsp;&nbsp;
                 <a href = "javascript:changePage('Last')">Last&gt;&gt;</a>
             </div>
@@ -70,40 +68,41 @@ var Paginator = React.createClass({
 var elements = [];
 var pages = [];
 var page = 0;
+var filters = {"Price" : [], "Rating": [], "FoodType": [], "Distance": ""};
 
 function changePage (e) {
-    console.log(e);
+    //console.log(e);
     if (e == "First") {
         if (page != 0) {
             page = 0;
-            ReactDOM.render(<LocList elements={pages[0]} />, document.getElementById('locGrid'));
+            ReactDOM.render(<LocationList elements={pages[0]} />, document.getElementById('locationGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Prev") {
         if (page != 0) {
             page -= 1;
-            ReactDOM.render(<LocList elements={pages[page]} />, document.getElementById('locGrid'));
+            ReactDOM.render(<LocationList elements={pages[page]} />, document.getElementById('locationGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Next") {
         if (page < pages.length - 1) {
             page += 1;
-            ReactDOM.render(<LocList elements={pages[page]} />, document.getElementById('locGrid'));
+            ReactDOM.render(<LocationList elements={pages[page]} />, document.getElementById('locationGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Last") {
         if (page < pages.length - 1) {
             page = pages.length - 1;
-            ReactDOM.render(<LocList elements={pages[page]} />, document.getElementById('locGrid'));
+            ReactDOM.render(<LocationList elements={pages[page]} />, document.getElementById('locationGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     }
 }
 
 
-function loadLocGrid() {
-    console.log(elements);
-    ReactDOM.render(<h2>Loading...</h2>, document.getElementById('locGrid'));
+function loadLocationGrid() {
+    //console.log(elements);
+    ReactDOM.render(<h2>Loading...</h2>, document.getElementById('locationGrid'));
     getData();
 }
 
@@ -111,12 +110,12 @@ function getData() {
     var url = "/API/Locations";
     //console.log("http://"+extractHostname(window.location.href)+"/API/Restaurants");
     $.getJSON( url, {
-        tags: "restaurants",
+        tags: "locations",
         tagmode: "any",
         format: "json"
     })
         .done(function( data ) {
-            console.log(data);
+            //console.log(data);
             elements = data;
             pages = [];
 
@@ -127,23 +126,23 @@ function getData() {
                 pages[count] = elements.slice(i, i + 45);
                 count += 1;
             }
-            console.log(elements.length);
-            console.log("SIZE UP PAGES DOWN");
-            console.log(pages);
+            //console.log(elements.length);
+            //console.log("SIZE UP PAGES DOWN");
+            //console.log(pages);
 
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<LocationList elements={pages[0]} />, document.getElementById('locationGrid'));
         });
 
 }
 
 function sortGrid(e) {
     //getData();
-    var sortBy = e.options[e.selectedIndex].value;
+    var sortBy = e.options[e.selectedIndex].value.split("-");
     console.log(e.options[e.selectedIndex].value);
-    var url = "/API/Locations?sortby=" + sortBy.toLowerCase();
+    var url = "/API/Locations?sortby=" + sortBy[0].toLowerCase();
     $.getJSON( url, {
-        tags: "restaurants",
+        tags: "locations",
         tagmode: "any",
         format: "json"
     })
@@ -153,17 +152,20 @@ function sortGrid(e) {
             pages = [];
             page = 0;
             // TODO: get the page number..
-
+            if (sortBy[1] == "H") {
+                elements.reverse();
+            }
             var count = 0;
             for (var i = 0; i < elements.length; i += 45) {
                 pages[count] = elements.slice(i, i + 45);
                 count += 1;
             }
-            console.log(elements.length);
-            console.log("SIZE UP PAGES DOWN");
-            console.log(pages);
+            //console.log(elements.length);
+            //console.log("SIZE UP PAGES DOWN");
+            //console.log(pages);
+            //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<LocationList elements={pages[0]} />, document.getElementById('locationGrid'));
         });
 }
 
@@ -173,6 +175,18 @@ function getFilters() {
 
 function filterGrid() {
 
+}
+
+function addFilter(e) {
+    console.log(e);
+    if (e[2]) {
+        filters[e[0]].push(e[1]);
+    } else {
+        var i = filters[e[0]].indexOf(e[1]);
+        filters[e[0]].splice(i, 1);
+    }
+    filters[e[0]].sort();
+    console.log(filters);
 }
 
 function extractHostname(url) {
@@ -194,4 +208,4 @@ function extractHostname(url) {
 
 
 // start the display of elements
-loadLocGrid();
+loadLocationGrid();

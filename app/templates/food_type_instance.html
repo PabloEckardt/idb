@@ -10,12 +10,12 @@
 <nav class="nav">
 <ul>
   <li><a href="/Locations/{{ instance['best_location'] }}">Go to {{ instance["best_location"] }}</a></li>
-  <li><a href="/Restaurants/{{ instance['highest_rated_restaurant_id'] }}">Go to {{ instance["highest_rated_restaurant"] }}</a></li>
+  <li><a href="/Restaurants/{{ instance['highest_rated_restaurant_id'] }}">Go to Highest Rated Restaurant </a></li>
 </ul>
 </nav>
 
 <article class="article">
-    <p> <img src="{{ url_for('static', filename='img/' + 'temp_image.png')}}" align="right">
+    <p> <img src="../{{ instance['image_url']}}" align="right">
     </p>
 
   <h2> Average Price </h2>
@@ -27,8 +27,7 @@
   <h2> Best Location </h2>
   <p> {{ instance["best_location"] }} </p>
 
-  <h2> Highest Rated Restaurant </h2>
-  <p> {{ instance["highest_rated_restaurant"] }} </p>
+  <a href = "Restaurants/{{ instance['highest_rated_restaurant'] }}"><h2> Highest Rated Restaurant </h2> </a></p>
 
 </article>
 

@@ -121,6 +121,17 @@ class Food_Types(Base):
         "locations.zipcode"), nullable=False)
     location=relationship("Locations", foreign_keys=[best_location])
 
+    def to_dict(self):
+        return {"food_type": self.food_type,
+                "food_type_display_name": self.food_type_display_name,
+                "average_price": self.average_price,
+                "average_rating": self.average_rating,
+                "image_url": self.image_url,
+                "number_restaurants": self.number_restaurants,
+                "most_popular_restaurant": self.most_popular_restaurant,
+                "highest_rated_restaurant": self.highest_rated_restaurant,
+                "best_location": self.best_location}
+
     def __init__(self,
                  food_type,
                  food_type_display_name,
@@ -300,6 +311,16 @@ class Locations(Base):
         Integer, ForeignKey('restaurants.id'), nullable=False)
     restaurant=relationship("Restaurants", foreign_keys=[
                             highest_rated_restaurant])
+    def to_dict(self):
+        return {"zipcode": self.zipcode,
+                "average_rating": self.average_rating,
+                "average_price": self.average_price,
+                "highest_price": self.highest_price,
+                "lowest_price": self.lowest_price,
+                "popular_food_type": self.popular_food_type,
+                "highest_rated_restaurant": self.highest_rated_restaurant,
+                "most_popular_restaurant": self.most_popular_restaurant,
+                "number_restaurants": self.number_restaurants}
 
     def __init__(
                     self,
