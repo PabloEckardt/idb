@@ -8,7 +8,7 @@ import json
 
 def add_restaurants(flask_app):
     session_token = app.Session()
-    default = "app/static/img/default.jpeg"
+    default = "static/img/default.jpeg"
     with open(flask_app.config["REVIEWS"], "r") as rj:
         r = json.load(rj)
         with open(flask_app.config["RESTAURANTS"], "r") as me:
