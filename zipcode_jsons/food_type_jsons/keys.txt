@@ -1,0 +1,168 @@
+hotpot/Hot Pot /
+cantonese/Cantonese /
+pizza/Pizza /
+izakaya/Izakaya /
+chocolate/Chocolatiers & Shops /
+coffeeroasteries/Coffee Roasteries /
+african/African /
+mediterranean/Mediterranean /
+donuts/Donuts /
+meats/Meat Shops /
+coffee/Coffee & Tea /
+ramen/Ramen /
+salvadoran/Salvadoran /
+raw_food/Live/Raw Food /
+acaibowls/Acai Bowls /
+halal/Halal /
+smokehouse/Smokehouse /
+sushi/Sushi Bars /
+scandinavian/Scandinavian /
+wine_bars/Wine Bars /
+brazilian/Brazilian /
+comfortfood/Comfort Food /
+winetastingroom/Wine Tasting Room /
+desserts/Desserts /
+icecream/Ice Cream & Frozen Yogurt /
+modern_european/Modern European /
+burgers/Burgers /
+poolhalls/Pool Halls /
+indpak/Indian /
+fondue/Fondue /
+bistros/Bistros /
+shavedice/Shaved Ice /
+falafel/Falafel /
+himalayan/Himalayan/Nepalese /
+beergardens/Beer Gardens /
+gelato/Gelato /
+hookah_bars/Hookah Bars /
+dominican/Dominican /
+hotdog/Hot Dogs /
+fishnchips/Fish & Chips /
+persian/Persian/Iranian /
+mongolian/Mongolian /
+beer_and_wine/Beer, Wine & Spirits /
+sportsbars/Sports Bars /
+tuscan/Tuscan /
+lebanese/Lebanese /
+taiwanese/Taiwanese /
+candy/Candy Stores /
+cupcakes/Cupcakes /
+burmese/Burmese /
+delis/Delis /
+southern/Southern /
+localflavor/Local Flavor
+pubs/Pubs /
+newamerican/American (New) /
+italian/Italian /
+chickenshop/Chicken Shop /
+bakeries/Bakeries /
+bagels/Bagels /
+cuban/Cuban /
+argentine/Argentine /
+sud_ouest/French Southwest /
+soulfood/Soul Food /
+cafes/Cafes /
+foodstands/Food Stands /
+greek/Greek /
+moroccan/Moroccan /
+gourmet/Specialty Food /
+importedfood/Imported Food
+tacos/Tacos /
+salad/Salad /
+distilleries/Distilleries /
+food/Food
+empanadas/Empanadas /
+hawaiian/Hawaiian /
+creperies/Creperies /
+colombian/Colombian /
+cideries/Cideries /
+popcorn/Popcorn Shops /
+restaurants/Restaurants
+tapasmallplates/Tapas/Small Plates /
+seafood/Seafood /
+soup/Soup /
+noodles/Noodles /
+diners/Diners /
+juicebars/Juice Bars & Smoothies /
+diyfood/Do-It-Yourself Food /
+cheesesteaks/Cheesesteaks /
+food_court/Food Court /
+brasseries/Brasseries /
+cafeteria/Cafeteria /
+karaoke/Karaoke /
+venezuelan/Venezuelan
+mideastern/Middle Eastern
+japanese/Japanese
+turkish/Turkish
+provencal/Provencal
+breakfast_brunch/Breakfast & Brunch
+breweries/Breweries
+gluten_free/Gluten-Free
+customcakes/Custom Cakes
+markets/Fruits & Veggies
+vegan/Vegan
+caribbean/Caribbean
+spanish/Spanish
+cocktailbars/Cocktail Bars
+bbq/Barbeque
+macarons/Macarons
+korean/Korean
+latin/Latin American
+peruvian/Peruvian
+streetvendors/Street Vendors
+wineries/Wineries
+lounges/Lounges
+cheese/Cheese Shops
+buffets/Buffets
+puertorican/Puerto Rican
+bubbletea/Bubble Tea
+beerbar/Beer Bar
+indonesian/Indonesian
+supperclubs/Supper Clubs
+german/German
+french/French
+asianfusion/Asian Fusion
+kombucha/Kombucha
+ethiopian/Ethiopian
+delicatessen/Delicatessen
+beertours/Beer Tours
+vegetarian/Vegetarian
+british/British
+winetours/Wine Tours
+teppanyaki/Teppanyaki
+szechuan/Szechuan
+russian/Russian
+poke/Poke
+bars/Bars
+oliveoil/Olive Oil
+tradamerican/American (Traditional)
+wraps/Wraps
+international/International
+irish/Irish
+beverage_stores/Beverage Store
+sandwiches/Sandwiches
+steak/Steakhouses
+mexican/Mexican
+cakeshop/Patisserie/Cake Shop
+gastropubs/Gastropubs
+herbsandspices/Herbs & Spices
+dimsum/Dim Sum
+pretzels/Pretzels
+tapas/Tapas Bars
+thai/Thai
+vietnamese/Vietnamese
+waffles/Waffles
+tea/Tea Rooms
+hotdogs/Fast Food
+seafoodmarkets/Seafood Markets
+panasian/Pan Asian
+kosher/Kosher
+irish_pubs/Irish Pub
+filipino/Filipino
+divebars/Dive Bars
+foodtrucks/Food Trucks
+chinese/Chinese
+pakistani/Pakistani
+chicken_wings/Chicken Wings
+cajun/Cajun/Creole
+tex-mex/Tex-Mex
