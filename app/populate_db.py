@@ -131,7 +131,7 @@ def loc_find_hi_lo_price(l):
 
 def loc_find_popular_food_type(l):
     cats = {}
-    cat = l[l.keys()[0]]["categories"][0]["alias"]
+    cat = l[list(l.keys())[0]]["categories"][0]["alias"]
     highest = 0
 
     for key in l:

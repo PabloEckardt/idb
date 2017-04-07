@@ -3,16 +3,12 @@ sudo: false
 language: python
 
 python:
-    - "2.7"
+    - "3.5"
     
 before_install:
     - pip install --upgrade pip
     
 install:
-    - pip install autopep8
-    - pip install coverage
-    - pip install numpy
-    - pip install pylint
     - pip install -r requirements.txt
     
 before_script:

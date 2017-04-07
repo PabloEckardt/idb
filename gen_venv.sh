@@ -1,6 +1,6 @@
 #!/bin/sh
 # Create virtualenv
-virtualenv venv
+virtualenv -p python3 venv
 # Source it
 . ./venv/bin/activate
 # Install requirements for the virtualenv

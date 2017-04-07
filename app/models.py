@@ -77,13 +77,13 @@ class Reviews(Base):
                  zipcode
                  ):
 
-        assert (type(date) is unicode)
+        assert (type(date) is str)
         assert (type(rating) is int)
-        assert (type(username) is unicode)
+        assert (type(username) is str)
 
-        assert (type(review_url) is unicode)
+        assert (type(review_url) is str)
 
-        assert (type(zipcode) is unicode)
+        assert (type(zipcode) is str)
 
         self.restaurant_id = restaurant_id
         self.restaurant_name = restaurant_name
@@ -115,7 +115,6 @@ class Food_Types(Base):
 
     food_type = Column(String(250), primary_key=True)
 
-    food_type_display_name = Column(String(250), nullable=False)
 
     average_price = Column(Float, nullable=False)
     average_rating = Column(Float, nullable=False)
@@ -271,12 +270,12 @@ class Restaurants(Base):
                  food_type_disp2=None,
                  food_type_disp3=None):
 
-        assert (type(name) is unicode)
+        assert (type(name) is str)
         assert (type(location) is int)
         assert (type(rating) is float)
 
-        assert (type(review) is unicode)
-        assert (type(review_date) is unicode)
+        assert (type(review) is str)
+        assert (type(review_date) is str)
 
         self.id = id
 
