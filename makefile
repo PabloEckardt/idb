@@ -6,6 +6,10 @@ FILES :=		\
     IDB1.html           \
     IDB1.log            \
     IDB1.pdf            \
+    IDB2.html			\
+    IDB2.log			\
+    IDB2.pdf			\
+    app/tests.py		\
     .travis.yml         
 
 ifeq ($(shell uname), Darwin)          # Apple
@@ -41,11 +45,16 @@ endif
 .pylintrc:
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
-IDB1.html: app/models.py
+IDB2.html: app/models.py
 	python -m pydoc -w app/models.py > IDB1.html
 
-IDB1.log:
-	git log > IDB1.log
+IDB2.log:
+	git log > IDB2.log
+
+tests.py: app/tests.py
+	-$(PYLINT) app/tests.py
+	$(COVERAGE) run --branch app/tests.py > app/tests.out
+	$(COVERAGE) report -m >> app/tests.out
 
 check:
 	@	not_found=0;                                 \
@@ -72,7 +81,7 @@ clean:
 	rm -f  *.pyc
 	rm -f  *.tmp
 
-test: IDB1.html IDB1.log
+test: IDB2.html IDB2.log
 	ls -al
 	make check
 
