@@ -268,8 +268,8 @@ class Restaurants(Base):
         assert(type(city) is unicode)\
         #print(type(address))
         #assert(type(address) is unicode)
-        #print(type(phone))
-        #assert(type(phone) is unicode or phone is None)
+        print(type(phone))
+        assert(type(phone) is unicode or phone is None)
         assert(type(price) is unicode or price is None)
         assert(type(review_count) is int)
         assert(type(url) is unicode)

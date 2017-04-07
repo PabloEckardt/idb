@@ -1,0 +1,251 @@
+hotpot/Hot Pot
+butcher/Butcher
+pizza/Pizza
+tcm/Traditional Chinese Medicine
+csa/CSA
+education/Education
+desserts/Desserts
+foodstands/Food Stands
+intlgrocery/International Grocery
+airportlounges/Airport Lounges
+musicvenues/Music Venues
+homedecor/Home Decor
+pastashops/Pasta Shops
+cheesesteaks/Cheesesteaks
+mediterranean/Mediterranean
+donuts/Donuts
+meats/Meat Shops
+coffee/Coffee & Tea
+salvadoran/Salvadoran
+raw_food/Live/Raw Food
+preschools/Preschools
+acaibowls/Acai Bowls
+halal/Halal
+smokehouse/Smokehouse
+toys/Toy Stores
+sushi/Sushi Bars
+dog_parks/Dog Parks
+scandinavian/Scandinavian
+wine_bars/Wine Bars
+parks/Parks
+izakaya/Izakaya
+brazilian/Brazilian
+jazzandblues/Jazz & Blues
+healthmarkets/Health Markets
+comfortfood/Comfort Food
+winetastingroom/Wine Tasting Room
+chocolate/Chocolatiers & Shops
+icecream/Ice Cream & Frozen Yogurt
+modern_european/Modern European
+burgers/Burgers
+poolhalls/Pool Halls
+indpak/Indian
+fondue/Fondue
+golf/Golf
+shavedice/Shaved Ice
+bowling/Bowling
+falafel/Falafel
+fooddeliveryservices/Food Delivery Services
+brewingsupplies/Brewing Supplies
+himalayan/Himalayan/Nepalese
+partysupplies/Party Supplies
+beergardens/Beer Gardens
+giftshops/Gift Shops
+waterparks/Water Parks
+gelato/Gelato
+hookah_bars/Hookah Bars
+dominican/Dominican
+coffeeroasteries/Coffee Roasteries
+hotdog/Hot Dogs
+fishnchips/Fish & Chips
+persian/Persian/Iranian
+creperies/Creperies
+cocktailbars/Cocktail Bars
+beer_and_wine/Beer, Wine & Spirits
+internetcafe/Internet Cafes
+tuscan/Tuscan
+lebanese/Lebanese
+taiwanese/Taiwanese
+candy/Candy Stores
+cupcakes/Cupcakes
+burmese/Burmese
+delis/Delis
+eventplanning/Party & Event Planning
+catering/Caterers
+southern/Southern
+spas/Day Spas
+convenience/Convenience Stores
+interiordesign/Interior Design
+bookstores/Bookstores
+danceclubs/Dance Clubs
+pubs/Pubs
+newamerican/American (New)
+italian/Italian
+chickenshop/Chicken Shop
+bakeries/Bakeries
+bagels/Bagels
+beerbar/Beer Bar
+cuban/Cuban
+waterstores/Water Stores
+argentine/Argentine
+sud_ouest/French Southwest
+bedbreakfast/Bed & Breakfast
+soulfood/Soul Food
+cafes/Cafes
+furniture/Furniture Stores
+waffles/Waffles
+german/German
+moroccan/Moroccan
+gourmet/Specialty Food
+importedfood/Imported Food
+tacos/Tacos
+salad/Salad
+distilleries/Distilleries
+fitness/Fitness & Instruction
+empanadas/Empanadas
+karaoke/Karaoke
+landmarks/Landmarks & Historical Buildings
+hawaiian/Hawaiian
+mongolian/Mongolian
+colombian/Colombian
+asianfusion/Asian Fusion
+cideries/Cideries
+popcorn/Popcorn Shops
+flowers/Flowers & Gifts
+restaurants/Restaurants
+movietheaters/Cinema
+tapasmallplates/Tapas/Small Plates
+seafood/Seafood
+soup/Soup
+noodles/Noodles
+diners/Diners
+wraps/Wraps
+farmersmarket/Farmers Market
+polish/Polish
+diyfood/Do-It-Yourself Food
+tours/Tours
+cosmetics/Cosmetics & Beauty Supply
+drugstores/Drugstores
+food_court/Food Court
+brasseries/Brasseries
+beaches/Beaches
+venues/Venues & Event Spaces
+artsandcrafts/Arts & Crafts
+cafeteria/Cafeteria
+localflavor/Local Flavor
+tabletopgames/Tabletop Games
+tea/Tea Rooms
+mideastern/Middle Eastern
+japanese/Japanese
+turkish/Turkish
+provencal/Provencal
+breakfast_brunch/Breakfast & Brunch
+breweries/Breweries
+gluten_free/Gluten-Free
+customcakes/Custom Cakes
+psychic_astrology/Psychics & Astrologers
+vintage/Used, Vintage & Consignment
+markets/Fruits & Veggies
+vegan/Vegan
+carwash/Car Wash
+caribbean/Caribbean
+herbalshops/Herbal Shops
+grocery/Grocery
+spanish/Spanish
+galleries/Art Galleries
+bbq/Barbeque
+macarons/Macarons
+sportsbars/Sports Bars
+korean/Korean
+latin/Latin American
+peruvian/Peruvian
+beertours/Beer Tours
+streetvendors/Street Vendors
+wineries/Wineries
+boating/Boating
+lounges/Lounges
+cheese/Cheese Shops
+buffets/Buffets
+puertorican/Puerto Rican
+beverage_stores/Beverage Store
+bubbletea/Bubble Tea
+hotelstravel/Hotels & Travel
+leather/Leather Goods
+arcades/Arcades
+lasertag/Laser Tag
+indonesian/Indonesian
+supperclubs/Supper Clubs
+greek/Greek
+tex-mex/Tex-Mex
+french/French
+tradamerican/American (Traditional)
+kombucha/Kombucha
+vitaminssupplements/Vitamins & Supplements
+servicestations/Gas & Service Stations
+teppanyaki/Teppanyaki
+delicatessen/Delicatessen
+thai/Thai
+winetasteclasses/Wine Tasting Classes
+cantonese/Cantonese
+vegetarian/Vegetarian
+british/British
+winetours/Wine Tours
+ramen/Ramen
+african/African
+szechuan/Szechuan
+russian/Russian
+foodtrucks/Food Trucks
+poke/Poke
+bars/Bars
+oliveoil/Olive Oil
+social_clubs/Social Clubs
+herbsandspices/Herbs & Spices
+juicebars/Juice Bars & Smoothies
+international/International
+wholesale_stores/Wholesale Stores
+irish/Irish
+kitchenincubators/Kitchen Incubators
+sandwiches/Sandwiches
+steak/Steakhouses
+mexican/Mexican
+cakeshop/Patisserie/Cake Shop
+swimmingpools/Swimming Pools
+gastropubs/Gastropubs
+healthtrainers/Trainers
+cookingschools/Cooking Schools
+pakistani/Pakistani
+dimsum/Dim Sum
+pretzels/Pretzels
+tapas/Tapas Bars
+festivals/Festivals
+vietnamese/Vietnamese
+organic_stores/Organic Stores
+kitchenandbath/Kitchen & Bath
+venezuelan/Venezuelan
+fleamarkets/Flea Markets
+hotdogs/Fast Food
+bistros/Bistros
+seafoodmarkets/Seafood Markets
+deptstores/Department Stores
+panasian/Pan Asian
+kosher/Kosher
+cookingclasses/Cooking Classes
+weightlosscenters/Weight Loss Centers
+travelservices/Travel Services
+irish_pubs/Irish Pub
+filipino/Filipino
+divebars/Dive Bars
+acupuncture/Acupuncture
+nutritionists/Nutritionists
+food/Food
+hotels/Hotels
+chinese/Chinese
+rafting/Rafting/Kayaking
+vapeshops/Vape Shops
+tobaccoshops/Tobacco Shops
+chicken_wings/Chicken Wings
+florists/Florists
+gardening/Nurseries & Gardening
+cajun/Cajun/Creole
+ethiopian/Ethiopian
+personalchefs/Personal Chefs
