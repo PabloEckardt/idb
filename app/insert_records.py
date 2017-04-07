@@ -46,7 +46,10 @@ def add_restaurant(
                                 img_url=img_url,
                                 food_type=food_types[0],
                                 food_type2=food_types[1],
-                                food_type3=food_types[2]
+                                food_type3=food_types[2],
+                                food_type_disp= food_types[3],
+                                food_type_disp2= food_types[4],
+                                food_type_disp3= food_types[5],
                                 )
 
     session_obj.add(new_restaurant)

@@ -1,6 +1,5 @@
 var RestItem = React.createClass({
     render: function () {
-        var food_type = this.props.foodtype.split("||")[1];
         return (
             <a href = {"/Restaurants/" + this.props.id}>
                 <div className = "col-sm-4" id = "restaurantGrid">
@@ -8,7 +7,7 @@ var RestItem = React.createClass({
                     <h1>{ this.props.name}</h1>
                     Address: { this.props.address }<br />
                     Rating: { this.props.rating } <br />
-                    Food Type: { food_type } <br />
+                    Food Type: { this.props.foodtypeD } <br />
                     Price: { this.props.price }
 
                 </div>
@@ -29,6 +28,7 @@ var RestList = React.createClass({
                     rating={element.rating}
                     address={element.address}
                     foodtype={element.food_type}
+                    foodtypeD = {element.food_type_disp}
                     img_url={element.img_url}
                     id={element.id}
                     price = {element.price}
@@ -174,11 +174,62 @@ function sortGrid(e) {
 }
 
 function getFilters() {
-
+    var e = document.getElementById("sortOptions");
+    var sortBy = e.options[e.selectedIndex].value.split("-");
+    console.log(e.options[e.selectedIndex].value);
+    var url = "/API/Restaurants?sortby=" + sortBy[0].toLowerCase();
+    if (filters["Price"].length > 0) {
+        url += "&price=";
+        filters["Price"].forEach(function(element) {
+            url += element + ",";
+        });
+        url = url.substring(0, url.length-1);
+    }
+    if (filters["Rating"].length > 0) {
+        url += "&rating=";
+        filters["Rating"].forEach(function(element) {
+            url += element + ",";
+        });
+        url = url.substring(0, url.length-1);
+    }
+    if (filters["FoodType"].length > 0) {
+        url += "&food_types=";
+        filters["FoodType"].forEach(function(element) {
+            url += element + ",";
+        });
+        url = url.substring(0, url.length-1);
+    }
+    console.log(url);
+    $.getJSON( url, {
+        tags: "restaurants",
+        tagmode: "any",
+        format: "json"
+    })
+        .done(function( data ) {
+            console.log(data);
+            elements = data;
+            pages = [];
+            page = 0;
+            // TODO: get the page number..
+            if (sortBy[1] == "H") {
+                elements.reverse();
+            }
+            var count = 0;
+            for (var i = 0; i < elements.length; i += 45) {
+                pages[count] = elements.slice(i, i + 45);
+                count += 1;
+            }
+            //console.log(elements.length);
+            //console.log("SIZE UP PAGES DOWN");
+            //console.log(pages);
+            //console.log(sortBy[1]);
+            // TODO: review if we need to keep this or remove above
+            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+        });
 }
 
 function filterGrid() {
-
+    getFilters();
 }
 
 function addFilter(e) {

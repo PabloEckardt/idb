@@ -40,7 +40,7 @@ class test_db (TestCase):
         Testing our Wrapper to add records on Restaurants
 
         '''
-        food_types = ["Italian",None,None]
+        food_types = ["hot_pot",None,None,"Hot Pot",None,None]
         add_restaurant(
                         self.session_token,
                         u"0001",
@@ -63,13 +63,14 @@ class test_db (TestCase):
                       )
 
         assert not (self.session_token.query(Restaurants) is None)
+        print("Passed Test1")
 
     def test_2_Restaurants_manual_integrity(self):
         '''
         Testing query data on Restaurants
 
         '''
-        food_types = ["Italian",None,None]
+        food_types = ["Italian","Italian",None,None,None,None]
         new_r = Restaurants(
                 u"0002",
                 u"Little Italy2",
@@ -108,6 +109,7 @@ class test_db (TestCase):
         assert restaurant_1.food_type == "Italian"
         assert restaurant_1.review == "test_review"
         assert restaurant_1.review_date == "Today"
+        print("Passed Test2")
 
     def test_3_Restaurants_delete(self):
         global session_token
@@ -116,7 +118,7 @@ class test_db (TestCase):
 
         '''
 
-        food_types = ["Italian",None,None]
+        food_types = ["Italian","Italian",None,None,None,None]
         new_r = Restaurants(
             u"0003",
             u"Little Italy 3",
@@ -150,6 +152,7 @@ class test_db (TestCase):
             name="Little Italy 3").first()
 
         assert (rst is None)
+        print("Passed Test3")
 
     def test_4_Locations_addition(self):
         
@@ -172,6 +175,7 @@ class test_db (TestCase):
                      )
 
         assert not (self.session_token.query(Locations) is None)
+        print("Passed Test4")
 
     def test_5_Locations_manual_integrity(self):
         
@@ -206,6 +210,7 @@ class test_db (TestCase):
         assert (loc.highest_price == "$$$$")
         assert (loc.popular_food_type == "Italian")
         assert (loc.highest_rated_restaurant == "Little Italy")
+        print("Passed Test5")
 
 
     def test_6_Locations_delete(self):
@@ -239,6 +244,7 @@ class test_db (TestCase):
         l=self.session_token.query(Locations).filter_by(zipcode="00003").first()
 
         assert (l is None)
+        print("Passed Test6")
 
     def test_7_Reviews_addition(self):
         
@@ -261,6 +267,7 @@ class test_db (TestCase):
                     )
 
         assert not (self.session_token.query(Reviews) is None)
+        print("Passed Test7")
 
     def test_8_Reviews__manual_integrity(self):
         
@@ -296,6 +303,7 @@ class test_db (TestCase):
         assert (rev.profile_picture_url == u"/review_profiles/pebs")
         assert (rev.review_url == u"/review/1")
         assert (rev.restaurant_id == u"009")
+        print("Passed Test8")
 
     def test_9_Reviews_delete(self):
         
@@ -328,6 +336,7 @@ class test_db (TestCase):
         r=self.session_token.query(Reviews).filter_by(restaurant_id=u"0010").first()
 
         assert (r is None)
+        print("Passed Test9")
 
     def test_10_Food_Type_addition(self):
         
@@ -351,6 +360,7 @@ class test_db (TestCase):
                       )
 
         assert not (self.session_token.query(Food_Types) is None)
+        print("Passed Test10")
 
     def test_11_Food_Type_manual_Integrity(self):
         
@@ -386,6 +396,7 @@ class test_db (TestCase):
         assert (food.image_url == u"/food_types/italian/img.jpg")
         assert (food.highest_rated_restaurant == u"Large Italy")
         assert (food.best_location == u"00001")
+        print("Passed Test11")
 
     def test_12_Food_Type_delete(self):
         
@@ -419,7 +430,10 @@ class test_db (TestCase):
             food_type=u"French").first()
 
         assert f is None
+        print("Passed Test12")
 
 if __name__ == "__main__":  # pragma: no cover
+    print("............")
+    print("----------------------------------------------------------------------")
     main()
     # clean test db

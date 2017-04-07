@@ -7,7 +7,7 @@ import json
 
 def add_restaurants(flask_app):
     session_token = app.Session()
-    default = "static/img/default.jpg"
+    default = "/static/img/default.jpg"
     with open(flask_app.config["REVIEWS"], "r") as rj:
         r = json.load(rj)
         with open(flask_app.config["RESTAURANTS"], "r") as me:
@@ -17,9 +17,10 @@ def add_restaurants(flask_app):
                 rest_dict=m[key]
 
                 cat_len = len(rest_dict["categories"])
-                l = [None] * 3
+                l = [None] * 6
                 for i in range(cat_len):
-                    l[i] = (rest_dict["categories"][i]["alias"] + "||" + rest_dict["categories"][i]["title"])
+                    l[i] = rest_dict["categories"][i]["alias"]
+                    l[i+3] = rest_dict["categories"][i]["title"]
 
                 price = None if not "price" in rest_dict.keys() else rest_dict["price"]
                 addr = rest_dict["location"]["address1"] if not rest_dict["location"]["address1"] == "" else "No Entry"
@@ -50,7 +51,7 @@ def add_restaurants(flask_app):
 
 def add_reviews(flask_app):
     session_token = app.Session()
-    default = "static/img/default.jpg"
+    default = "/static/img/default.jpg"
     with open(flask_app.config["REVIEWS"], "r") as rj:
         r = json.load(rj)
         with open(flask_app.config["RESTAURANTS"], "r") as me:
@@ -193,7 +194,7 @@ def find_avg_rating(l):
 def find_img_url (food_type, img_list):
 
     if food_type in img_list:
-        return "static/img/" + food_type + ".jpg"
+        return "/static/img/" + food_type + ".jpg"
     else:
         return "/static/img/default.jpg"
 

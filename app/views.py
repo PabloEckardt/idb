@@ -1,6 +1,8 @@
 from flask import render_template, Blueprint, render_template, jsonify
 from app.query_records import *
-
+import os
+import tests
+import subprocess
 
 food_types = [
      ["acaibowls","Acai Bowls"],
@@ -211,6 +213,15 @@ def Reviews():
 def About():
     return render_template("about.html")
 
+
+@views.route('/TestAbout')
+def testAbout():
+    os.system('coverage report -m app/tests.py > app/static/test.txt')
+    os.system('python app/tests.py >> app/static/test.txt')
+
+    return render_template("testabout.html")
+
+
 # Model Elements Views
 
 # RESTAURANTS
@@ -255,7 +266,7 @@ def techreport():
 # API
 @views.route('/API/Restaurants', methods=['GET'])
 def restaurants_api():
-    return query_all_restaurants(request.args.get('sortby'))
+    return query_all_restaurants(request.args.get('sortby'), request.args.get('rating'))
 
 @views.route('/API/Reviews', methods=['GET'])
 def reviews_api():

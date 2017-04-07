@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="title" style = "text-align: center; margin-bottom: 30px;">
+    <h1 id="title1">Meet the Appetizers</h1>
+    <br>
+    <p id="description" style = "margin:0 auto; max-width: 400px;">Welcome to FoodCloseTo.me! This site is intended for foodies looking to find the best restaurants and locations for whatever your palette desires, allowing searches for restaurant, food type, location, and review.</p> <br>
+    <a href = "/About/TechReport" target = "_blank"> Full Tech Report </a>
+</div>
+<div class = "container">
+    <div class="row" style = "text-align: center; margin-bottom: 30px;">
+
+        <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+
+            <div class="thumbnail_container">
+                <div class="thumbnail">
+                    <img class = "aboutPic" src = "{{ url_for('static', filename='img/edwin.jpg') }}">
+                </div>
+            </div>
+            <h2>Edwin Bejarano</h2>
+            <p>Senior Computer Science major. I like long walks on the beach while not coding. Other than that you will find me watching Netflix or at the gym.</p>
+            <p><strong>Front end</strong></p>
+            <p><strong>Commits: 28</strong></p>
+            <p><strong>Issues: 6</strong></p>
+            <p><strong>Unit tests: 3</strong></p>
+        </div>
+        <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+            <div class="thumbnail_container">
+                <div class="thumbnail">
+                    <img class = "aboutPic" src = "{{ url_for('static', filename='img/pablo.jpeg') }}">
+                </div>
+            </div>
+            <h2>Pablo Eckardt Salazar</h2>
+            <p>I am a clever clever good looking engineer into backend and I like things like OpenCV. Oh and I like corgis.</p>
+            <p><strong>Backend</strong></p>
+            <p><strong>Commits: 35 </strong></p>
+            <p><strong>Issues: 7</strong></p>
+            <p><strong>Unit tests: 3</strong></p>
+        </div>
+        <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+            <div class="thumbnail_container">
+                <div class="thumbnail">
+                    <img class = "aboutPic" src = "{{ url_for('static', filename='img/parker.jpg') }}">
+                </div>
+            </div>
+            <h2>Parker Kruzel</h2>
+            <p>I am a junior Computer Science student. I am an avid eSports enthusiast (with a particular love of Pokemon and Dota 2), and I am currently preparing to study in Sweden this fall.</p>
+            <p><strong>Front end</strong></p>
+            <p><strong>Commits: 11</strong></p>
+            <p><strong>Issues: 5</strong></p>
+            <p><strong>Unit tests: 3</strong></p>
+        </div>
+        <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
+            <div class="thumbnail_container">
+                <div class="thumbnail">
+                    <img class = "aboutPic" src = "{{ url_for('static', filename='img/audric.jpg') }}">
+                </div>
+            </div>
+            <h2>Audric Terry</h2>
+            <p>I like soccer and juice, that's it.</p>
+            <p><strong>Backend</strong></p>
+            <p><strong>Commits: 27</strong></p>
+            <p><strong>Issues: 5</strong></p>
+            <p><strong>Unit tests: 3</strong></p>
+        </div>
+    </div>
+    <div class="row" style = "text-align: center; margin-bottom: 30px;">
+        <div class="col-sm-4">
+            <div class="title">
+                <h1>Stats</h1>
+            </div>
+            <p>No. of commits: 133</p>
+            <p>No. of issues: 23</p>
+            <p>No. of unit tests: 12</p>
+            <p><a href = "http://docs.foodclosetome.apiary.io/#" target = "_blank">Apiary</a></p>
+            <p><a class="stats_link" href="https://github.com/PabloEckardt/idb/issues">GitHub Issue Tracker</a></p>
+            <p><a class="stats_link" href="https://github.com/PabloEckardt/idb">GitHub Repo</a></p>
+        </div>
+
+        <div class="col-sm-8">
+            <div class="title">
+                <h1>Data</h1>
+            </div>
+            <p><a class="stats_link" href ="https://www.yelp.com/developers">yelp Fusion</a>- API from which data was obtained.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 stats" id="tools">
+            <div class="title">
+                <h1>Test Results:</h1>
+            </div>
+            <iframe src = "/static/test.txt" width = "100%">
+
+            </iframe>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 stats" id="tools">
+            <div class="title">
+                <h1>Tools</h1>
+            </div>
+            <p>Bootstrap: An HTML, CSS, and JavaScript framework used heavily to design and style all of the pages of the site.</p>
+            <p>Flask: A Python web framework powering this web application.</p>
+            <p>Slack: A messaging application used for communication, with integration to our GitHub repositories.</p>
+            <p>GitHub: A web-based git repository hosting service that hosts the repository for this project.</p>
+            <p>Apiary: An API documentation tool.</p>
+            <p>Trello: A web application used for organizing projects and delegating tasks.</p>
+        </div>
+    </div> <!-- end of row for info -->
+</div>
+{% endblock %}
+
+
+}
