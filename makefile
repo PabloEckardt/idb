@@ -70,6 +70,7 @@ check:
 		exit 1;                                   \
 	fi;                                           \
 	echo "success";
+	python app/tests.py
 
 clean:
 	rm -f  .coverage
