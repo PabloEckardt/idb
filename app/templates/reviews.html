@@ -9,15 +9,12 @@
 			<div class = "collapse" id = "allFilters">
 				<br>
 				<a role="button" data-toggle="collapse" href="#priceFilter" aria-expanded="false" aria-controls="priceFilter">
-					Price
+					Profile Image
 				</a><br>
 
 				<div class="collapse" id="priceFilter">
 					<div class="btn-group" data-toggle="buttons">
-						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$" />  $ <br />
-						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$" />  $$ <br />
-						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$$" />  $$$ <br />
-						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$$$" />  $$$$ <br />
+						<input type="checkbox" onchange = "addFilter(['Img', this.value, this.checked])" value = "true" /> has profile image <br />
 					</div>
 				</div>
 
@@ -56,7 +53,7 @@
 		</div>
 		<div style = "text-align: right;">
 			Sort By:
-			<select onChange = "sortGrid(this);" >
+			<select onChange = "sortGrid(this);" id = "sortOptions" >
 				<option value="username-L">Name - A to Z</option>
 				<option value="username-H">Name - Z to A</option>
 				<option value="Rating-L">Rating - Low to High</option>

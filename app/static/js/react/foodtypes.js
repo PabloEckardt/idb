@@ -8,7 +8,8 @@ var FoodTypeItem = React.createClass({
                     Best Zip: { this.props.best_location }<br />
                     Average Rating: { this.props.rating } <br />
                     Restaurant Count: { this.props.numRest} <br />
-                    Average Price: {this.props.price}/5
+                    Average Price: {this.props.price}/5 <br />
+
                 </div>
             </a>
         );

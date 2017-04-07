@@ -39,7 +39,7 @@ def query_all_restaurants(sortby, rating, price, foodtype, name, id):
             queries.append(or_(*fQ))        
 
     if name != None:
-        fQ = [Restaurants.name == name]
+        fQ = [Restaurants.name.like('%'+name+'%')]
         queries.append(*fQ)
 
     if id != None:
@@ -122,18 +122,42 @@ def query_all_food_types(sortby, avgrating, avgprice, foodtype):
             fQ.append(Food_Types.popular_food_type == a)
         if len(fQ) > 0:
             queries.append(or_(*fQ)) 
-    
+
+
     result = session.query(Food_Types).filter(*queries).order_by(sortby).all()
     # TODO: Figure out more efficient way to do this
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)
 
 
-def query_all_reviews(sortby):
+def query_all_reviews(sortby, rating, hasimg, foodtype, id):
     if sortby == None:
         sortby = "username"
     session = Session()
-    result = session.query(Reviews).order_by(sortby).all()
+
+    queries = []
+
+    if rating != None:
+        ratings = rating.split(",")
+        rQ = []
+        for a in ratings:
+            rQ.append(Reviews.rating == int(a))
+        if len(rQ) > 0:
+            queries.append(or_(*rQ))
+    if foodtype != None:
+        foodtypes = foodtype.split(",")
+        fQ = []
+        for a in foodtypes:
+            fQ.append(Reviews.food_type == a)
+        if len(fQ) > 0:
+            queries.append(or_(*fQ))
+    if hasimg != None:
+         queries.append(Reviews.profile_picture_url != "/static/img/default.jpg")
+    if id != None:
+        tQ = [Reviews.id == int(id)]
+        queries.append(*tQ)
+        
+    result = session.query(Reviews).filter(*queries).order_by(sortby).all()
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)
 

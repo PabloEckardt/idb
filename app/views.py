@@ -276,7 +276,8 @@ def restaurants_api():
 
 @views.route('/API/Reviews', methods=['GET'])
 def reviews_api():
-    return query_all_reviews(request.args.get('sortby'))
+    return query_all_reviews(request.args.get('sortby'), request.args.get('rating'),
+            request.args.get('hasimg'), request.args.get('foodtype'), request.args.get('id'))
 
 @views.route('/API/Food_Types', methods=['GET'])
 def food_types_api():
