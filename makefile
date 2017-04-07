@@ -3,9 +3,6 @@
 FILES :=		\
     app/models.py       \
     app/tests.py        \
-    IDB1.html           \
-    IDB1.log            \
-    IDB1.pdf            \
     IDB2.html			\
     IDB2.log			\
     IDB2.pdf			\
@@ -46,7 +43,7 @@ endif
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
 IDB2.html: app/models.py
-	python -m pydoc -w app/models.py > IDB1.html
+	python -m pydoc -w app/models.py > IDB2.html
 
 IDB2.log:
 	git log > IDB2.log
