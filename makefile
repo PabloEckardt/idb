@@ -11,17 +11,17 @@ FILES :=					\
     .travis.yml         
 
 ifeq ($(shell uname), Darwin)          # Apple
-    PYTHON   := python2.7
+    PYTHON   := python2
     PIP      := pip3.5
     PYLINT   := pylint
     COVERAGE := coverage-3.5
     PYDOC    := pydoc
     AUTOPEP8 := autopep8
 else ifeq ($(CI), true)                # Travis CI
-    PYTHON   := python2.7
+    PYTHON   := python2
     PIP      := pip
     PYLINT   := pylint
-    COVERAGE := coverage
+    COVERAGE := coverage2
     PYDOC    := pydoc3
     AUTOPEP8 := autopep8
 else ifeq ($(shell uname -p), unknown) # Docker
