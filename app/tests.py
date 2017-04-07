@@ -40,7 +40,7 @@ class test_db (TestCase):
         Testing our Wrapper to add records on Restaurants
 
         '''
-        food_types = ["Italian",None,None]
+        food_types = ["hot_pot",None,None,"Hot Pot",None,None]
         add_restaurant(
                         self.session_token,
                         u"0001",
@@ -70,7 +70,7 @@ class test_db (TestCase):
         Testing query data on Restaurants
 
         '''
-        food_types = ["Italian",None,None]
+        food_types = ["Italian","Italian",None,None,None,None]
         new_r = Restaurants(
                 u"0002",
                 u"Little Italy2",
@@ -118,7 +118,7 @@ class test_db (TestCase):
 
         '''
 
-        food_types = ["Italian",None,None]
+        food_types = ["Italian","Italian",None,None,None,None]
         new_r = Restaurants(
             u"0003",
             u"Little Italy 3",
