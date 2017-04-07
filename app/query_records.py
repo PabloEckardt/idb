@@ -11,6 +11,7 @@ from sqlalchemy import or_
 
 # Query all instances
 
+
 def query_all_restaurants(sortby, rating, price, foodtype, name, id):
     session = Session()
     if sortby == None:
@@ -36,21 +37,21 @@ def query_all_restaurants(sortby, rating, price, foodtype, name, id):
         for a in foodtypes:
             fQ.append(Restaurants.food_type == a)
         if len(fQ) > 0:
-            queries.append(or_(*fQ))        
+            queries.append(or_(*fQ))
 
     if name != None:
-        fQ = [Restaurants.name.like('%'+name+'%')]
+        fQ = [Restaurants.name.like('%' + name + '%')]
         queries.append(*fQ)
 
     if id != None:
         fQ = [Restaurants.id == id]
         queries.append(*fQ)
-    #queries.append(or_(*price))
+    # queries.append(or_(*price))
 
     #ratings = [Restaurants.rating == 1]
     #ratings.append(Restaurants.rating ==2)
 
-    #queries.append(or_(*ratings))
+    # queries.append(or_(*ratings))
 
     result = session.query(Restaurants).filter(*queries).order_by(sortby).all()
 
@@ -86,13 +87,13 @@ def query_all_locations(sortby, avgrating, avgprice, foodtype):
         for a in foodtypes:
             fQ.append(Locations.popular_food_type == a)
         if len(fQ) > 0:
-            queries.append(or_(*fQ)) 
+            queries.append(or_(*fQ))
 
     result = session.query(Locations).filter(*queries).order_by(sortby).all()
     # TODO: Figure out more efficient way to do this
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)
-	
+
 
 def query_all_food_types(sortby, avgrating, avgprice, foodtype):
     session = Session()
@@ -121,8 +122,7 @@ def query_all_food_types(sortby, avgrating, avgprice, foodtype):
         for a in foodtypes:
             fQ.append(Food_Types.popular_food_type == a)
         if len(fQ) > 0:
-            queries.append(or_(*fQ)) 
-
+            queries.append(or_(*fQ))
 
     result = session.query(Food_Types).filter(*queries).order_by(sortby).all()
     # TODO: Figure out more efficient way to do this
@@ -152,16 +152,18 @@ def query_all_reviews(sortby, rating, hasimg, foodtype, id):
         if len(fQ) > 0:
             queries.append(or_(*fQ))
     if hasimg != None:
-         queries.append(Reviews.profile_picture_url != "/static/img/default.jpg")
+        queries.append(Reviews.profile_picture_url !=
+                       "/static/img/default.jpg")
     if id != None:
         tQ = [Reviews.id == int(id)]
         queries.append(*tQ)
-        
+
     result = session.query(Reviews).filter(*queries).order_by(sortby).all()
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)
 
 # Query one instance by id
+
 
 def query_restaurant(id):
     session = Session()
@@ -169,32 +171,38 @@ def query_restaurant(id):
     assert (len(result) == 1)
     return result[0].to_dict()
 
+
 def query_review(id):
     session = Session()
     result = session.query(Reviews).filter(Reviews.id == id).all()
     assert (len(result) == 1)
     return result[0].to_dict()
 
+
 def query_restaurant_reviews(id):
     session = Session()
     result = session.query(Reviews).filter(Reviews.restaurant_id == id).all()
     result2 = [e.to_dict() for e in result]
     print(result2)
-    return result2   
+    return result2
+
 
 def query_food_type(food_type):
     session = Session()
-    result = session.query(Food_Types).filter(Food_Types.food_type == food_type).all()
+    result = session.query(Food_Types).filter(
+        Food_Types.food_type == food_type).all()
     #result = session.query(Food_Types).all()
     #result2 = [e.to_dict() for e in result]
-    #print(result[0].to_dict())
+    # print(result[0].to_dict())
     assert (len(result) == 1)
     print(result[0].to_dict())
-    #return result2[0]
+    # return result2[0]
     return result[0].to_dict()
+
 
 def query_location(zipcode):
     session = Session()
-    result = session.query(Locations).filter(Locations.zipcode == zipcode).all()
+    result = session.query(Locations).filter(
+        Locations.zipcode == zipcode).all()
     assert (len(result) == 1)
     return result[0].to_dict()
