@@ -10,12 +10,12 @@
 <nav class="nav">
 <ul>
   <li><a href="/Restaurants/{{instance['restaurant_id']}}">Go to {{instance["restaurant"] }}</a></li>
-  <li><a href="/Locations/{{instance['location']}}">Go to {{instance["location"] }}</a></li>
+  <li><a href="/Locations/{{instance['zipcode']}}">Go to {{instance["zipcode"] }}</a></li>
 </ul>
 </nav>
 
 <article class="article">
-  <p> <img src="{{ url_for('static', filename='img/' + 'temp_image.png')}}" align="right"> </p>
+  <p> <img src="{{ instance['profile_picture_url']}}" align="right"> </p>
 
   <h2> Username </h2>
   <p> {{ instance["username"] }} </p>

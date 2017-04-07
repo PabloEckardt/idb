@@ -8,6 +8,7 @@ var FoodTypeItem = React.createClass({
                     Best Zip: { this.props.best_location }<br />
                     Average Rating: { this.props.rating } <br />
                     Restaurant Count: { this.props.numRest} <br />
+                    Average Price: {this.props.price}/5
                 </div>
             </a>
         );
@@ -28,6 +29,7 @@ var FoodTypeList = React.createClass({
                     img_url={element.image_url}
                     id={element.food_type}
                     numRest = {element.number_restaurants}
+                    price = {element.average_price}
                 />
             );
         });

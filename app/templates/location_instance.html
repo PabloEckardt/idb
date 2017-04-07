@@ -4,12 +4,12 @@
 <body>
 <div class="flex-container">
 <header>
-  <h1 class = "detailView">{{ instance["zip"] }}</h1>
+  <h1 class = "detailView">{{ instance["zipcode"] }}</h1>
 </header>
 
 <nav class="nav">
 <ul>
-  <li><a href="/Food_Types/{{ instance['popular_food_type'] }}"> Go to {{ instance["popular_food_type"] }}</a></li>
+  <li><a href="/Food_Types/{{ instance['popular_food_type'] }}"> Go to Popular Food Type </a></li>
   <li><a href="/Restaurants/{{ instance['highest_rated_restaurant_id'] }}">Go to Highest Rated Restaurant </a></li>
   <li><a href="#">Go to {{ instance["cheapest_restaurant"] }}</a></li>
 </ul>

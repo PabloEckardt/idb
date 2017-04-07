@@ -140,11 +140,11 @@ function getData() {
 
 function sortGrid(e) {
     //getData();
-    var sortBy = e.options[e.selectedIndex].value;
+    var sortBy = e.options[e.selectedIndex].value.split("-");
     console.log(e.options[e.selectedIndex].value);
-    var url = "/API/Reviews?sortby=" + sortBy.toLowerCase();
+    var url = "/API/Reviews?sortby=" + sortBy[0].toLowerCase();
     $.getJSON( url, {
-        tags: "Reviews",
+        tags: "restaurants",
         tagmode: "any",
         format: "json"
     })
@@ -154,19 +154,23 @@ function sortGrid(e) {
             pages = [];
             page = 0;
             // TODO: get the page number..
-
+            if (sortBy[1] == "H") {
+                elements.reverse();
+            }
             var count = 0;
             for (var i = 0; i < elements.length; i += 45) {
                 pages[count] = elements.slice(i, i + 45);
                 count += 1;
             }
-            console.log(elements.length);
-            console.log("SIZE UP PAGES DOWN");
-            console.log(pages);
+            //console.log(elements.length);
+            //console.log("SIZE UP PAGES DOWN");
+            //console.log(pages);
+            //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
             ReactDOM.render(<ReviewList elements={pages[0]} />, document.getElementById('reviewGrid'));
         });
 }
+
 
 function getFilters() {
 

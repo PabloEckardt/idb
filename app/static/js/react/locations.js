@@ -4,7 +4,7 @@ var LocationItem = React.createClass({
             <a href = {"/Locations/" + this.props.id}>
                 <div className = "col-sm-4" id = "locationItem">
                     <h1>{ this.props.name}</h1>
-                    Restaurant Count: { this.props.address }<br />
+                    Restaurant Count: { this.props.numRest }<br />
                     Average Rating: { this.props.rating } <br />
                     Price Ranges: { this.props.Hprice + " - " + this.props.Lprice }
 

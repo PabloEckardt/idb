@@ -3,91 +3,68 @@
 
 <div class = "container" style = "margin:auto;">
 	<div class="row">
-	<div class = "col-sm-3">
-		Filters:
-		<br>
-		<a role="button" data-toggle="collapse" href="#priceFilter" aria-expanded="false" aria-controls="priceFilter">
-		  Price
-		</a><br>
+		<div class = "col-sm-3">
+			<input class = "filterMainButton" type ="button" value = "Filters" role="button" data-toggle="collapse" href="#allFilters" aria-expanded="false" aria-controls="allFilter" />
+			<br>
+			<div class = "collapse" id = "allFilters">
+				<br>
+				<a role="button" data-toggle="collapse" href="#priceFilter" aria-expanded="false" aria-controls="priceFilter">
+					Price
+				</a><br>
 
-		<div class="collapse" id="priceFilter">
-		  <div class="btn-group" data-toggle="buttons">
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> $
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> $$
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> $$$
-		  		</label>
-			  </div>
-		</div>
+				<div class="collapse" id="priceFilter">
+					<div class="btn-group" data-toggle="buttons">
+						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$" />  $ <br />
+						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$" />  $$ <br />
+						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$$" />  $$$ <br />
+						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$$$" />  $$$$ <br />
+					</div>
+				</div>
 
-		<a role="button" data-toggle="collapse" href="#reviewFilter" aria-expanded="false" aria-controls="reviewFilter">
-		  Rating
-		</a> <br>
+				<a role="button" data-toggle="collapse" href="#reviewFilter" aria-expanded="false" aria-controls="reviewFilter">
+					Rating
+				</a> <br>
 
-		<div class="collapse" id="reviewFilter">
-		  <div class="btn-group" data-toggle="buttons">
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;	
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;
-		  		</label>
-		  		<label class="btn btn-primary">
-		    		<input type="checkbox" autocomplete="off"> 	&#9734;
-		  		</label>
-			  </div>
-		</div>
+				<div class="collapse" id="reviewFilter">
+					<div class="btn-group" data-toggle="buttons">
+						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "1" />  &#9733;&#9734;&#9734;&#9734;&#9734;<br />
+						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "2" />  &#9733;&#9733;&#9734;&#9734;&#9734;<br />
+						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "3" />  &#9733;&#9733;&#9733;&#9734;&#9734;<br />
+						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "4" />  &#9733;&#9733;&#9733;&#9733;&#9734;<br />
+						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "5" />  &#9733;&#9733;&#9733;&#9733;&#9733;<br />
+					</div>
+				</div>
 
-		<a role="button" data-toggle="collapse" href="#foodtypeFilter" aria-expanded="false" aria-controls="foodtypeFilter">
-		  Food Type
-		</a> <br>
+				<a role="button" data-toggle="collapse" href="#foodtypeFilter" aria-expanded="false" aria-controls="foodtypeFilter">
+					Food Type
+				</a> <br>
 
-		<div class="collapse" id="foodtypeFilter">
-		  <div class="containerFoodType">
-		    <input type="checkbox" /> American <br />
-		    <input type="checkbox" /> French <br />
-		    <input type="checkbox" /> Italian <br />
-		    <input type="checkbox" /> German <br />
-		    <input type="checkbox" /> Mexican <br />
+				<div class="collapse" id="foodtypeFilter">
+					<div class="containerFoodType">
+						{% for element in food_types %}
+						<input type="checkbox" onchange = "addFilter(['FoodType', this.value, this.checked])" value = {{ element[0] }} /> {{element[1]}} <br />
+						{% endfor %}
+					</div>
+				</div>
+
+
+				<br>
+				<input type = "button"  onclick="filterGrid()" value = "Filter!" />
+
 			</div>
+			<br>
 		</div>
-
-		<a role="button" data-toggle="collapse" href="#distanceFilter" aria-expanded="false" aria-controls="distanceFilter">
-		  Distance
-		</a> <br>
-
-		<div class="collapse" id="distanceFilter">
-		  <input type = "text" size = "2" > miles from <input type = "text" size = "5">
+		<div style = "text-align: right;">
+			Sort By:
+			<select onChange = "sortGrid(this);" >
+				<option value="food_type-L">Food Type - A to Z</option>
+				<option value="food_type-H">Food Type - Z to A</option>
+				<option value="average_rating-L">Avg Rating - Low to High</option>
+				<option value="average_rating-H">Avg Rating - High to Low</option>
+				<option value="number_restaurants-L">Restaurant# - Low to High</option>
+				<option value="number_restaurants-H">Restaurant# - High to Low</option>
+			</select>
 		</div>
-
-		<a role="button" data-toggle="collapse" href="#hoursFilter" aria-expanded="false" aria-controls="hoursFilter">
-		  Hours
-		</a> <br>
-
-		<div class="collapse" id="hoursFilter">
-		  <input type = "text" size = "2" > to <input type = "text" size = "5">
-		</div>
-
-		<br><br><br>
-		Sort By:<br>
-		<select>
-		  <option value="Name">Name</option>
-		  <option value="Rating">Rating</option>
-		  <option value="Distance">Distance</option>
-		  <option value="Price">Price</option>
-		</select>
-	</div>
-
 		<div id = "Grid" class = "col-sm-9">
 
 
