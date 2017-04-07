@@ -36,7 +36,7 @@ var FoodTypeList = React.createClass({
         });
 
         var pageId = "";
-        if (pages.length > 0) {
+        if (pages.length > 1) {
             pageId = "showPaginator";
         } else {
             pageId = "hidePaginator";
