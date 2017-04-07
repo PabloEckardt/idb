@@ -11,18 +11,36 @@ from sqlalchemy import or_
 
 # Query all instances
 
-def query_all_restaurants(sortby, rating):
+def query_all_restaurants(sortby, rating, price, foodtype):
     session = Session()
     if sortby == None:
         sortby = "name"
     queries = [Restaurants.price != ""]
+    if price != None:
+        prices = price.split(",")
+        pQ = []
+        for a in prices:
+            pQ.append(Restaurants.price == a)
+        if len(pQ) > 0:
+            queries.append(or_(*pQ))
+    if rating != None:
+        ratings = rating.split(",")
+        rQ = []
+        for a in ratings:
+            rQ.append(Restaurants.rating == a)
+        if len(rQ) > 0:
+            queries.append(or_(*rQ))
+    if foodtype != None:
+        foodtypes = foodtype.split(",")
+        fQ = []
+        for a in foodtypes:
+            fQ.append(Restaurants.food_type == a)
+        if len(fQ) > 0:
+            queries.append(or_(*fQ))        
+    #queries.append(or_(*price))
 
-    price = [Restaurants.price == "$$$"]
-    price.append(Restaurants.price == "$$$$")
-    queries.append(or_(*price))
-
-    ratings = [Restaurants.rating == 1]
-    ratings.append(Restaurants.rating ==2)
+    #ratings = [Restaurants.rating == 1]
+    #ratings.append(Restaurants.rating ==2)
 
     #queries.append(or_(*ratings))
 
@@ -33,21 +51,71 @@ def query_all_restaurants(sortby, rating):
     return jsonify(result2)
 
 
-def query_all_locations(sortby):
+def query_all_locations(sortby, avgrating, avgprice, foodtype):
     session = Session()
     if sortby == None:
         sortby = "zipcode"
-    result = session.query(Locations).order_by(sortby).all()
+
+    queries = []
+
+    if avgprice != None:
+        prices = avgprice.split(",")
+        pQ = []
+        for a in prices:
+            pQ.append(Locations.average_price == a)
+        if len(pQ) > 0:
+            queries.append(or_(*pQ))
+    if avgrating != None:
+        ratings = avgrating.split(",")
+        rQ = []
+        for a in ratings:
+            rQ.append(Locations.average_rating == int(a))
+        if len(rQ) > 0:
+            queries.append(or_(*rQ))
+    if foodtype != None:
+        foodtypes = foodtype.split(",")
+        fQ = []
+        for a in foodtypes:
+            fQ.append(Locations.popular_food_type == a)
+        if len(fQ) > 0:
+            queries.append(or_(*fQ)) 
+
+    result = session.query(Locations).filter(*queries).order_by(sortby).all()
     # TODO: Figure out more efficient way to do this
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)
 	
 
-def query_all_food_types(sortby):
+def query_all_food_types(sortby, avgrating, avgprice, foodtype):
     session = Session()
     if sortby == None:
         sortby = "food_type"
-    result = session.query(Food_Types).order_by(sortby).all()
+
+    queries = []
+
+    if avgprice != None:
+        prices = avgprice.split(",")
+        pQ = []
+        for a in prices:
+            pQ.append(Food_Types.average_price == a)
+        if len(pQ) > 0:
+            queries.append(or_(*pQ))
+    if avgrating != None:
+        ratings = avgrating.split(",")
+        rQ = []
+        for a in ratings:
+            rQ.append(Food_Types.average_rating == int(a))
+        if len(rQ) > 0:
+            queries.append(or_(*rQ))
+    if foodtype != None:
+        foodtypes = foodtype.split(",")
+        fQ = []
+        for a in foodtypes:
+            fQ.append(Food_Types.popular_food_type == a)
+        if len(fQ) > 0:
+            queries.append(or_(*fQ)) 
+    
+    result = session.query(Food_Types).filter(*queries).order_by(sortby).all()
     # TODO: Figure out more efficient way to do this
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)

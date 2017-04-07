@@ -178,21 +178,21 @@ function filterGrid() {
     console.log(e.options[e.selectedIndex].value);
     var url = "/API/Food_Types?sortby=" + sortBy[0].toLowerCase();
     if (filters["avgPrice"].length > 0) {
-        url += "&average_price=";
+        url += "&avgprice=";
         filters["avgPrice"].forEach(function(element) {
             url += element + ",";
         });
         url = url.substring(0, url.length-1);
     }
     if (filters["avgRating"].length > 0) {
-        url += "&average_rating=";
+        url += "&avgrating=";
         filters["avgRating"].forEach(function(element) {
             url += element + ",";
         });
         url = url.substring(0, url.length-1);
     }
     if (filters["FoodType"].length > 0) {
-        url += "&food_types=";
+        url += "&foodtype=";
         filters["FoodType"].forEach(function(element) {
             url += element + ",";
         });

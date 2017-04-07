@@ -177,21 +177,21 @@ function getFilters() {
     console.log(e.options[e.selectedIndex].value);
     var url = "/API/Locations?sortby=" + sortBy[0].toLowerCase();
     if (filters["avgPrice"].length > 0) {
-        url += "&average_price=";
+        url += "&avgprice=";
         filters["avgPrice"].forEach(function(element) {
             url += element + ",";
         });
         url = url.substring(0, url.length-1);
     }
     if (filters["avgRating"].length > 0) {
-        url += "&average_rating=";
+        url += "&avgrating=";
         filters["avgRating"].forEach(function(element) {
             url += element + ",";
         });
         url = url.substring(0, url.length-1);
     }
     if (filters["FoodType"].length > 0) {
-        url += "&food_types=";
+        url += "&foodtype=";
         filters["FoodType"].forEach(function(element) {
             url += element + ",";
         });
@@ -222,7 +222,11 @@ function getFilters() {
             //console.log(pages);
             //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<LocationList elements={pages[0]} />, document.getElementById('locationGrid'));
+            if (elements.length >0) {
+                ReactDOM.render(<LocationList elements={pages[0]}/>, document.getElementById('locationGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('locationGrid'));
+            }
         });
 }
 
