@@ -62,8 +62,9 @@ def add_reviews(flask_app):
 
                     add_review(
                         session_token,
-                        k,
-                        m[k]["id"],
+                        k, # rest id
+                        m[k]["name"], # rest name
+                        m[k]["id"], # yelp id
                         rev_dict["time_created"],
                         rev_dict["rating"],
                         rev_dict["user"]["name"],
@@ -194,7 +195,7 @@ def find_img_url (food_type, img_list):
     if food_type in img_list:
         return "static/img/" + food_type + ".jpg"
     else:
-        return "img/default.jpg"
+        return "/static/img/default.jpg"
 
 def find_highest_rated_r(rl):
     rating = 1

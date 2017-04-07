@@ -111,6 +111,7 @@ def add_food_type(session_obj,
 def add_review(
                 session_obj,
                 restaurant_id,
+                restaurant_name,
                 yelp_restaurant_id,
                 date,
                 rating,
@@ -124,6 +125,7 @@ def add_review(
     # I realized that having zipcode and restaurant id is wasteful.
     new_review = Reviews(
         restaurant_id=restaurant_id,
+        restaurant_name=restaurant_name,
         yelp_restaurant_id=yelp_restaurant_id,
         date=date,
         rating=rating,
