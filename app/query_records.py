@@ -11,7 +11,7 @@ from sqlalchemy import or_
 
 # Query all instances
 
-def query_all_restaurants(sortby, rating, price, foodtype):
+def query_all_restaurants(sortby, rating, price, foodtype, name, id):
     session = Session()
     if sortby == None:
         sortby = "name"
@@ -37,6 +37,14 @@ def query_all_restaurants(sortby, rating, price, foodtype):
             fQ.append(Restaurants.food_type == a)
         if len(fQ) > 0:
             queries.append(or_(*fQ))        
+
+    if name != None:
+        fQ = [Restaurants.name == name]
+        queries.append(*fQ)
+
+    if id != None:
+        fQ = [Restaurants.id == id]
+        queries.append(*fQ)
     #queries.append(or_(*price))
 
     #ratings = [Restaurants.rating == 1]
