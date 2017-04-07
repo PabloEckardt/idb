@@ -25,6 +25,8 @@ class Reviews(Base):
     """
     __tablename__ = 'reviews'
 
+    __table_args__ = {'extend_existing': True}
+
     # pk
     id = Column(Integer, primary_key=True)
     # identifiers
@@ -112,6 +114,8 @@ class Food_Types(Base):
     Foreign Keys: to Locations Table, and Restaurants Table
     """
     __tablename__ = 'food_types'
+    
+    __table_args__ = {'extend_existing': True}
 
     food_type = Column(String(250), primary_key=True)
 
@@ -181,6 +185,8 @@ class Restaurants(Base):
     Foreign Keys: to Food_Types Table, and Reviews Table
     """
     __tablename__ = 'restaurants'
+    
+    __table_args__ = {'extend_existing': True}
 
     # pk
     id = Column(String(250), primary_key=True)
@@ -315,6 +321,8 @@ class Locations(Base):
     Foreign Keys: to Food_Types Table, and Restaurants Table
     """
     __tablename__ = 'locations'
+    
+    __table_args__ = {'extend_existing': True}
 
     # columns
     zipcode = Column(String(250), primary_key=True)

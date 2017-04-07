@@ -16,4 +16,3 @@ flask-cors
 coverage
 numpy
 pylint
-pydoc3

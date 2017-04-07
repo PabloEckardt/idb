@@ -44,7 +44,8 @@ endif
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
 IDB2.html: app/models.py
-	python3 -m pydoc -w app/models.py > IDB2.html
+	python3 -m pydoc -w app/models.py
+	mv models.html IDB2.html
 
 IDB2.log:
 	git log > IDB2.log
