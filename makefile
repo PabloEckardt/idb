@@ -50,8 +50,7 @@ IDB2.log:
 	git log > IDB2.log
 
 tests.out: app/tests.py app/insert_records.py app/db_manager.py
-	-$(PYLINT) app/tests.py
-	-$(COVERAGE) run --branch app/tests.py
+	-$(COVERAGE) run --branch app/tests.py > tests.out
 
 check:
 	@	not_found=0;                                 \
