@@ -250,6 +250,10 @@ def food_type(pk):
 
 # REVIEWS
 
+@views.route('/Restaurant/Reviews/<pk>')
+def restReview(pk):
+    d = query_restaurant_reviews(pk)
+    return render_template("restaurant_reviews_instance.html", instance=d)
 
 @views.route('/Reviews/<pk>')
 def review(pk):

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<body>
+<div class="flex-container">
+    <header>
+        <h1 class = "detailView">Reviews for {{instance[0]['restaurant_name']}} </h1>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="/Restaurants/{{instance[0].restaurant_id}}">Go to {{instance[0]['restaurant_name']}}</a></li>
+        </ul>
+    </nav>
+
+    <article class="article">
+
+    {% for element in instance %}
+        <h2>Review</h2>
+        <p>{{element.review}}</p>
+        <a href ="/Reviews/{{element['id']}}">Link to Review</a> <br />
+        <a href ="{{element['review_url']}}" target ="_blank">Link to Yelp Review</a> <br />
+        <hr>
+    {% endfor %}
+    </article>
+
+</div>
+
+</body>
+
+{% endblock %}

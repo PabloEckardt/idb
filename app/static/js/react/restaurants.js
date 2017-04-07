@@ -145,6 +145,27 @@ function sortGrid(e) {
     var sortBy = e.options[e.selectedIndex].value.split("-");
     console.log(e.options[e.selectedIndex].value);
     var url = "/API/Restaurants?sortby=" + sortBy[0].toLowerCase();
+    if (filters["Price"].length > 0) {
+        url += "&price=";
+        filters["Price"].forEach(function(element) {
+            url += element + ",";
+        });
+        url = url.substring(0, url.length-1);
+    }
+    if (filters["Rating"].length > 0) {
+        url += "&rating=";
+        filters["Rating"].forEach(function(element) {
+            url += element + ",";
+        });
+        url = url.substring(0, url.length-1);
+    }
+    if (filters["FoodType"].length > 0) {
+        url += "&foodtype=";
+        filters["FoodType"].forEach(function(element) {
+            url += element + ",";
+        });
+        url = url.substring(0, url.length-1);
+    }
     $.getJSON( url, {
         tags: "restaurants",
         tagmode: "any",
@@ -193,7 +214,7 @@ function getFilters() {
         url = url.substring(0, url.length-1);
     }
     if (filters["FoodType"].length > 0) {
-        url += "&food_types=";
+        url += "&foodtype=";
         filters["FoodType"].forEach(function(element) {
             url += element + ",";
         });

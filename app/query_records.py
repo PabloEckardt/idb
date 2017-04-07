@@ -143,6 +143,13 @@ def query_review(id):
     assert (len(result) == 1)
     return result[0].to_dict()
 
+def query_restaurant_reviews(id):
+    session = Session()
+    result = session.query(Reviews).filter(Reviews.restaurant_id == id).all()
+    result2 = [e.to_dict() for e in result]
+    print(result2)
+    return result2   
+
 def query_food_type(food_type):
     session = Session()
     result = session.query(Food_Types).filter(Food_Types.food_type == food_type).all()
