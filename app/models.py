@@ -31,6 +31,8 @@ class Reviews(Base):
     restaurant_id = Column(String(250), nullable=False)
     restaurant_name = Column(String(250), nullable=False)
     yelp_restaurant_id = Column(String(250), nullable=False)
+    food_type=Column(String(250), nullable=False)
+    food_type_disp=Column(String(250), nullable=False)
 
     # Review Data
     date = Column(String(250), nullable=False)
@@ -50,6 +52,8 @@ class Reviews(Base):
                 "restaurant_id": self.restaurant_id,
                 "restaurant_name": self.restaurant_name,
                 "yelp_restaurant_id": self.yelp_restaurant_id,
+                "food_type": self.food_type,
+                "food_type_disp": self.food_type_disp,
                 "date": self.date,
                 "rating": self.rating,
                 "username": self.username,
@@ -62,6 +66,8 @@ class Reviews(Base):
                  restaurant_id,
                  restaurant_name,
                  yelp_restaurant_id,
+                 food_type,
+                 food_type_disp,
                  date,
                  rating,
                  username,
@@ -83,6 +89,8 @@ class Reviews(Base):
         self.restaurant_id=restaurant_id
         self.restaurant_name=restaurant_name
         self.yelp_restaurant_id=yelp_restaurant_id
+        self.food_type=food_type
+        self.food_type_disp=food_type_disp
 
         self.date=date
         self.rating=rating
