@@ -1,37 +1,33 @@
-var RestItem = React.createClass({
+var FoodTypeItem = React.createClass({
     render: function () {
-        var food_type = this.props.foodtype.split("||")[1];
         return (
-            <a href = {"/Restaurants/" + this.props.id}>
-                <div className = "col-sm-4" id = "restaurantGrid">
+            <a href = {"/Food_Types/" + this.props.id}>
+                <div className = "col-sm-4" id = "foodGrid">
                     <img src = {this.props.img_url} className="img-responsive"/>
                     <h1>{ this.props.name}</h1>
-                    Address: { this.props.address }<br />
-                    Rating: { this.props.rating } <br />
-                    Food Type: { food_type } <br />
-                    Price: { this.props.price }
-
+                    Best Zip: { this.props.best_location }<br />
+                    Average Rating: { this.props.rating } <br />
+                    Restaurant Count: { this.props.numRest} <br />
                 </div>
             </a>
         );
     }
 });
 
-var RestList = React.createClass({
+var FoodTypeList = React.createClass({
 
 
     render: function () {
         var elements = this.props.elements.map(function (element, index) {
             return (
-                <RestItem
+                <FoodTypeItem
                     key={index}
-                    name={element.name}
-                    rating={element.rating}
-                    address={element.address}
-                    foodtype={element.food_type}
-                    img_url={element.img_url}
-                    id={element.id}
-                    price = {element.price}
+                    name={element.food_type_display_name}
+                    rating={element.average_rating}
+                    best_location={element.best_location}
+                    img_url={element.image_url}
+                    id={element.food_type}
+                    numRest = {element.number_restaurants}
                 />
             );
         });
@@ -79,42 +75,42 @@ function changePage (e) {
     if (e == "First") {
         if (page != 0) {
             page = 0;
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<FoodTypeList elements={pages[0]} />, document.getElementById('foodTypeGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Prev") {
         if (page != 0) {
             page -= 1;
-            ReactDOM.render(<RestList elements={pages[page]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<FoodTypeList elements={pages[page]} />, document.getElementById('foodTypeGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Next") {
         if (page < pages.length - 1) {
             page += 1;
-            ReactDOM.render(<RestList elements={pages[page]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<FoodTypeList elements={pages[page]} />, document.getElementById('foodTypeGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Last") {
         if (page < pages.length - 1) {
             page = pages.length - 1;
-            ReactDOM.render(<RestList elements={pages[page]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<FoodTypeList elements={pages[page]} />, document.getElementById('foodTypeGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     }
 }
 
 
-function loadRestGrid() {
+function loadFoodTypeGrid() {
     //console.log(elements);
-    ReactDOM.render(<h2>Loading...</h2>, document.getElementById('restGrid'));
+    ReactDOM.render(<h2>Loading...</h2>, document.getElementById('foodTypeGrid'));
     getData();
 }
 
 function getData() {
-    var url = "/API/Restaurants";
-    //console.log("http://"+extractHostname(window.location.href)+"/API/Restaurants");
+    var url = "/API/Food_Types";
+    //console.log("http://"+extractHostname(window.location.href)+"/API/FoodTypeaurants");
     $.getJSON( url, {
-        tags: "restaurants",
+        tags: "FoodTypeaurants",
         tagmode: "any",
         format: "json"
     })
@@ -135,7 +131,7 @@ function getData() {
             //console.log(pages);
 
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<FoodTypeList elements={pages[0]} />, document.getElementById('foodTypeGrid'));
         });
 
 }
@@ -144,9 +140,9 @@ function sortGrid(e) {
     //getData();
     var sortBy = e.options[e.selectedIndex].value.split("-");
     console.log(e.options[e.selectedIndex].value);
-    var url = "/API/Restaurants?sortby=" + sortBy[0].toLowerCase();
+    var url = "/API/Food_Types?sortby=" + sortBy[0].toLowerCase();
     $.getJSON( url, {
-        tags: "restaurants",
+        tags: "Food Type",
         tagmode: "any",
         format: "json"
     })
@@ -169,13 +165,10 @@ function sortGrid(e) {
             //console.log(pages);
             //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<FoodTypeList elements={pages[0]} />, document.getElementById('foodTypeGrid'));
         });
 }
 
-function getFilters() {
-
-}
 
 function filterGrid() {
 
@@ -212,4 +205,4 @@ function extractHostname(url) {
 
 
 // start the display of elements
-loadRestGrid();
+loadFoodTypeGrid();

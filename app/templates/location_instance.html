@@ -10,7 +10,7 @@
 <nav class="nav">
 <ul>
   <li><a href="/Food_Types/{{ instance['popular_food_type'] }}"> Go to {{ instance["popular_food_type"] }}</a></li>
-  <li><a href="/Restaurants/{{ instance['highest_rated_restaurant_id'] }}">Go to {{ instance["highest_rated_restaurant"] }}</a></li>
+  <li><a href="/Restaurants/{{ instance['highest_rated_restaurant_id'] }}">Go to Highest Rated Restaurant </a></li>
   <li><a href="#">Go to {{ instance["cheapest_restaurant"] }}</a></li>
 </ul>
 </nav>
@@ -18,17 +18,17 @@
 <article class="article">
   <!-- <p> <img src="{{ url_for('static', filename='img/' + 'temp_image.png')}}" align="right"> </p>
   -->
-  <h2> Average Price </h2>
-  <p> {{ instance["average_price"] }} </p>
+  <h2> Price Range </h2>
+  <p> {{ instance["highest_price"] }} - {{ instance["lowest_price"] }} </p>
 
   <h2> Average Rating </h2>
   <p> {{ instance["average_rating"] }} </p>
 
-  <h2> Popular Food Type </h2>
-  <a href="/Food_Types/{{ instance['popular_food_type'] }}"> {{ instance["popular_food_type"] }} </a>
 
-  <h2> Highest Rated Restaurant </h2>
-  <a href="/Restaurants/{{ instance['highest_rated_restaurant_id'] }}">{{ instance["highest_rated_restaurant"] }} </a>
+  <a href="/Food_Types/{{ instance['popular_food_type'] }}"> <h2> Popular Food Type </h2> </a> <br>
+
+
+  <a href="/Restaurants/{{ instance['highest_rated_restaurant'] }}"><h2> Highest Rated Restaurant </h2></a><br>
 
    <h2> Cheapest Restaurant </h2>
    <p> {{ instance["cheapest_restaurant"] }} </p>

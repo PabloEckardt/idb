@@ -1,7 +1,6 @@
 from app.insert_records import *
 from os import listdir
 from os.path import isfile, join
-from insert_records import *
 import app
 import json
 
@@ -20,7 +19,7 @@ def add_restaurants(flask_app):
                 cat_len = len(rest_dict["categories"])
                 l = [None] * 3
                 for i in range(cat_len):
-                    l[i] = (rest_dict["categories"][i]["alias"] + "-" + rest_dict["categories"][i]["title"])
+                    l[i] = (rest_dict["categories"][i]["alias"] + "||" + rest_dict["categories"][i]["title"])
 
                 price = None if not "price" in rest_dict.keys() else rest_dict["price"]
                 addr = rest_dict["location"]["address1"] if not rest_dict["location"]["address1"] == "" else "No Entry"
@@ -63,8 +62,9 @@ def add_reviews(flask_app):
 
                     add_review(
                         session_token,
-                        k,
-                        m[k]["id"],
+                        k, # rest id
+                        m[k]["name"], # rest name
+                        m[k]["id"], # yelp id
                         rev_dict["time_created"],
                         rev_dict["rating"],
                         rev_dict["user"]["name"],
@@ -195,7 +195,7 @@ def find_img_url (food_type, img_list):
     if food_type in img_list:
         return "static/img/" + food_type + ".jpg"
     else:
-        return "img/default.jpg"
+        return "/static/img/default.jpg"
 
 def find_highest_rated_r(rl):
     rating = 1
