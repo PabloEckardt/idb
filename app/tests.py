@@ -23,32 +23,35 @@ class test_db (TestCase):
     db_name = 'sqlite:///testdb.db'
     testEngine = create_engine(db_name)
     setupdb(testEngine)
-    session_token = init_session(testEngine)
+    Session = init_session(testEngine)
+    session_token = Session()
 
     def test_1_restaurant_addition(self):
         '''
         Testing our Wrapper to add records on Restaurants
 
         '''
+
+        food_types = ["Italian",None,None]
         add_restaurant(
                         self.session_token,
-                        id=u"0001",
-                        name=u"Little Italy",
-                        yelp_id=u"little_italy",
-                        location=78701,
-                        lat=1.0000,
-                        long=1.0000,
-                        city=u"Austin",
-                        address=u"123 f",
-                        phone=u"(512)123123",
-                        price=u"$",
-                        rating=3.0,
-                        review=u"test_review",
-                        review_date=u"Today",
-                        review_count=123,
-                        url=u"www.web.com",
-                        img_url=u"www.web.com/img.jpg",
-                        food_types=[u"Italian"]
+                        u"0001",
+                        u"Little Italy",
+                        u"little_italy",
+                        78701,
+                        1.0000,
+                        1.0000,
+                        u"Austin",
+                        u"123 f",
+                        u"(512)123123",
+                        u"$",
+                        3.0,
+                        u"test_review",
+                        u"Today",
+                        123,
+                        u"www.web.com",
+                        u"www.web.com/img.jpg",
+                        *food_types
                       )
 
         assert not (self.session_token.query(Restaurants) is None)
@@ -58,25 +61,26 @@ class test_db (TestCase):
         Testing query data on Restaurants
 
         '''
-        
+
+        food_types = ["Italian",None,None]
         new_r = Restaurants(
-                id="0002",
-                name="Little Italy2",
-                yelp_id="little_italy",
-                location=78701,
-                lat=1.0000,
-                long=1.0000,
-                city="Austin",
-                address="123 f",
-                phone="(512)123123",
-                price="$",
-                rating=3.0,
-                review="test_review",
-                review_date="Today",
-                review_count=123,
-                url="www.web.com",
-                img_url="www.web.com/img.jpg",
-                food_type="Italian"
+                u"0002",
+                u"Little Italy2",
+                u"little_italy",
+                78701,
+                1.0000,
+                1.0000,
+                u"Austin",
+                u"123 f",
+                u"(512)123123",
+                u"$",
+                3.0,
+                u"test_review",
+                u"Today",
+                123,
+                u"www.web.com",
+                u"www.web.com/img.jpg",
+                *food_types
                 )
 
         self.session_token.add(new_r)
@@ -95,8 +99,8 @@ class test_db (TestCase):
         assert restaurant_1.price == "$"
         assert restaurant_1.rating == 3.0
         assert restaurant_1.food_type == "Italian"
-        assert restaurant_1.Review == "test_review"
-        assert restaurant_1.Review_Date == "Today"
+        assert restaurant_1.review == "test_review"
+        assert restaurant_1.review_date == "Today"
 
     def test_3_Restaurants_delete(self):
         global session_token
@@ -105,27 +109,27 @@ class test_db (TestCase):
 
         '''
 
+        food_types = ["Italian",None,None]
         new_r = Restaurants(
-                id="0003",
-                name="Little Italy3",
-                yelp_id="little_italy",
-                location=78701,
-                lat=1.0000,
-                long=1.0000,
-                city="Austin",
-                address="123 f",
-                phone="(512)123123",
-                price="$",
-                rating=3.0,
-                review="test_review",
-                review_date="Today",
-                review_count=123,
-                url="www.web.com",
-                img_url="www.web.com/img.jpg",
-                food_type="Italian"
+            u"0003",
+            u"Little Italy 3",
+            u"little_italy",
+            78701,
+            1.0000,
+            1.0000,
+            u"Austin",
+            u"123 f",
+            u"(512)123123",
+            u"$",
+            3.0,
+            u"test_review",
+            u"Today",
+            123,
+            u"www.web.com",
+            u"www.web.com/img.jpg",
+            *food_types
         )
 
-    """
         self.session_token.add(new_r)
         self.session_token.commit()
 
@@ -149,12 +153,15 @@ class test_db (TestCase):
         global session_token
         add_location(
                         self.session_token,
-                        average_rating=3,
-                        average_price=2,
-                        zipcode=77777,
-                        highest_price=2,
-                        popular_food_type="Italian",
-                        highest_rated_restaurant="Little Italy"
+                        "00001",
+                        3.0,
+                        3.0,
+                        "$$$$",
+                        "$",
+                        "Italian", #popular food type
+                        "Little Italy", # highest rated restaurant
+                        "Pizza Joint", # most popular restaurant
+                        40
                      )
 
         assert not (self.session_token.query(Locations) is None)
@@ -168,25 +175,28 @@ class test_db (TestCase):
         
 
         new_l=Locations(
-                zipcode=77776,
-                average_rating=3,
-                average_price=2,
-                highest_price=2,
-                popular_food_type="Italian",
-                highest_rated_restaurant="Little Italy"
+                "00002", # zip
+                3.0, # avg rate
+                3.0, # avg price
+                "$$$$", #high price
+                "$", #low price
+                "Italian", #popular food type
+                "Little Italy", # highest rated restaurant
+                "Pizza Joint", # most popular restaurant
+                40 # number restaurants
                 )
 
         self.session_token.add(new_l)
         self.session_token.commit()
 
-        loc=self.session_token.query(Locations).filter_by(zipcode = 77777).first()
+        loc=self.session_token.query(Locations).filter_by(zipcode = "00002").first()
 
         assert not (self.session_token.query(Locations) is None)
 
-        assert (loc.zipcode == 77777)
-        assert (loc.average_rating == 3)
-        assert (loc.average_price == 2)
-        assert (loc.highest_price == 2)
+        assert (loc.zipcode == "00002")
+        assert (loc.average_rating == 3.0)
+        assert (loc.average_price == 3.0)
+        assert (loc.highest_price == "$$$$")
         assert (loc.popular_food_type == "Italian")
         assert (loc.highest_rated_restaurant == "Little Italy")
 
@@ -197,26 +207,29 @@ class test_db (TestCase):
         Testing Deletion of Records on Locations
 
         '''
-        
+
 
         new_l=Locations(
-                zipcode=11111,
-                average_rating=3,
-                average_price=2,
-                highest_price= 2,
-                popular_food_type="Italian",
-                highest_rated_restaurant="Little Italy"
-                )
+                "00003", # zip
+                3.0, # avg rate
+                3.0, # avg price
+                "$$$$", #high price
+                "$", #low price
+                "Italian", #popular food type
+                "Little Italy", # highest rated restaurant
+                "Pizza Joint", # most popular restaurant
+                40 # number restaurants
+        )
 
         self.session_token.add(new_l)
         self.session_token.commit()
 
-        l=self.session_token.query(Locations).filter_by(zipcode=11111).first()
+        l=self.session_token.query(Locations).filter_by(zipcode="00003").first()
 
         self.session_token.delete(l)
         self.session_token.commit()
 
-        l=self.session_token.query(Locations).filter_by(zipcode=11111).first()
+        l=self.session_token.query(Locations).filter_by(zipcode="00003").first()
 
         assert (l is None)
 
@@ -301,7 +314,7 @@ class test_db (TestCase):
         r=self.session_token.query(Reviews).filter_by(review_id=3).first()
 
         assert (r is None)
-
+    """
     def test_10_Food_Type_addition(self):
         
         '''
