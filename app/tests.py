@@ -15,23 +15,31 @@ from models import Restaurants, Locations, Food_Types, Reviews
 from insert_records import add_restaurant, add_location, add_food_type, add_review
 from sqlalchemy import create_engine
 from db_manager import *
-
+import os
 
 
 class test_db (TestCase):
 
-    db_name = 'sqlite:///testdb.db'
-    testEngine = create_engine(db_name)
-    setupdb(testEngine)
-    Session = init_session(testEngine)
-    session_token = Session()
+    session_token = None
+
+    def setUp(self) :
+        if os.path.isfile("testdb.db"):
+            os.remove("testdb.db")
+
+        db_name = 'sqlite:///testdb.db'
+        testEngine = create_engine(db_name)
+        setupdb(testEngine)
+        Session = init_session(testEngine)
+        session_token = Session()
+        self.session_token = session_token
+
+
 
     def test_1_restaurant_addition(self):
         '''
         Testing our Wrapper to add records on Restaurants
 
         '''
-
         food_types = ["Italian",None,None]
         add_restaurant(
                         self.session_token,
@@ -61,7 +69,6 @@ class test_db (TestCase):
         Testing query data on Restaurants
 
         '''
-
         food_types = ["Italian",None,None]
         new_r = Restaurants(
                 u"0002",
@@ -413,10 +420,6 @@ class test_db (TestCase):
 
         assert f is None
 
-# ----
-# main
-# ----
-
 if __name__ == "__main__":  # pragma: no cover
     main()
-
+    # clean test db
