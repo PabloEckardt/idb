@@ -13,4 +13,4 @@ Werkzeug==0.12.1
 sqlalchemy==1.1.6
 autopep8
 flask-cors
-coverage2.7
+coverage-2.7
