@@ -6,7 +6,8 @@ var LocationItem = React.createClass({
                     <h1>{ this.props.name}</h1>
                     Restaurant Count: { this.props.numRest }<br />
                     Average Rating: { this.props.rating } <br />
-                    Price Ranges: { this.props.Hprice + " - " + this.props.Lprice }
+                    Price Ranges: { this.props.Hprice + " - " + this.props.Lprice } <br />
+                    Average Price: { this.props.avgPrice}/5
 
                 </div>
             </a>
@@ -28,6 +29,7 @@ var LocationList = React.createClass({
                     id={element.zipcode}
                     Lprice = {element.lowest_price}
                     Hprice = {element.highest_price}
+                    avgPrice = {element.average_price}
                 />
             );
         });
@@ -68,7 +70,7 @@ var Paginator = React.createClass({
 var elements = [];
 var pages = [];
 var page = 0;
-var filters = {"Price" : [], "Rating": [], "FoodType": [], "Distance": ""};
+var filters = {"avgPrice" : [], "avgRating": [], "FoodType": [], "Distance": ""};
 
 function changePage (e) {
     //console.log(e);
@@ -170,11 +172,62 @@ function sortGrid(e) {
 }
 
 function getFilters() {
-
+    var e = document.getElementById("sortOptions");
+    var sortBy = e.options[e.selectedIndex].value.split("-");
+    console.log(e.options[e.selectedIndex].value);
+    var url = "/API/Locations?sortby=" + sortBy[0].toLowerCase();
+    if (filters["avgPrice"].length > 0) {
+        url += "&average_price=";
+        filters["avgPrice"].forEach(function(element) {
+            url += element + ",";
+        });
+        url = url.substring(0, url.length-1);
+    }
+    if (filters["avgRating"].length > 0) {
+        url += "&average_rating=";
+        filters["avgRating"].forEach(function(element) {
+            url += element + ",";
+        });
+        url = url.substring(0, url.length-1);
+    }
+    if (filters["FoodType"].length > 0) {
+        url += "&food_types=";
+        filters["FoodType"].forEach(function(element) {
+            url += element + ",";
+        });
+        url = url.substring(0, url.length-1);
+    }
+    console.log(url);
+    $.getJSON( url, {
+        tags: "locations",
+        tagmode: "any",
+        format: "json"
+    })
+        .done(function( data ) {
+            console.log(data);
+            elements = data;
+            pages = [];
+            page = 0;
+            // TODO: get the page number..
+            if (sortBy[1] == "H") {
+                elements.reverse();
+            }
+            var count = 0;
+            for (var i = 0; i < elements.length; i += 45) {
+                pages[count] = elements.slice(i, i + 45);
+                count += 1;
+            }
+            //console.log(elements.length);
+            //console.log("SIZE UP PAGES DOWN");
+            //console.log(pages);
+            //console.log(sortBy[1]);
+            // TODO: review if we need to keep this or remove above
+            ReactDOM.render(<LocationList elements={pages[0]} />, document.getElementById('locationGrid'));
+        });
 }
 
 function filterGrid() {
-
+    getFilters();
 }
 
 function addFilter(e) {

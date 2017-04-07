@@ -99,6 +99,23 @@
           <p>The front end was designed using a basic bootstrap enabled theme and Flask. Flask templates were used to render each page with “layout.html” template as the base template. All the templates used by Flask are found within the “app/template” folder. These templates use Flask syntax to help populate the pages, especially when dealing with the grids found on each main model page. The grid is filled in depending on the size of the passed data, which it will iterated through and display each instance on the page. Each page will have a navbar at the top to allow users to easily navigate to the different areas of the site. Aside from the navbar each page will have a different template used to show the content. “app/template/layout.html” inside the “app/template” folder will be the main layout of the website. Each other template will be extending “app/template/layout.html” and including a block named “body” to render that page properly through the rendering function for each view in “app/views.py”.</p>
           <p>The majority of the CSS is managed by the bootstrap included css but for the rest of the designs, the CSS is in “static/style.css”. The CSS found in this file will be a little more specific to the needs of the website and pages, such as certain CSS classes found in the about.html or restaurants.html web pages.</p>
           <p>The instance pages are pages that will hold more details about a specific restaurant, location, or food type. The middle column within each instance page will have information such as: Best Restaurant, Reviews, Name of Restaurant, Hours of Operation, Price, Popular Food Type, or Cheapest Restaurant. On the left hand side (right hand side for the restaurants instance page) there will be links that the user will be able to click that will send them to a restaurant or location.</p>
+            <p><strong>React:</strong><br>
+            We are using React in our website to help with the population of the Grid system and for the AJAX calls to the API for sorting and
+            filtering. That being said, React does not do any actual filtering or sorting (apart from reversing the results if Rating Low to High
+            or Rating High to Low is selected). We are not housing any of the react node modules within our servers, but instead relying on CDN
+            links to activate React within our website. Each "template" (i.e. Restaurants, Locations, Food Types, and Reviews) has their own
+            React file that populates the grid with corresponding information that is pulled from the database using an AJAX call. This AJAX call
+            is using the API urls that were created in "app/views.py".</p>
+            <p>The main React components are RestList, RestItem, FoodTypeList, FoodTypeItem, LocationList, LocationItem, ReviewList, ReviewItem. Each
+            List component has many Items, depending on the number of instances of that model within the database. Before the components are rendered,
+            the query to the database is done to see how many elements will be returned. At this point we will know just how many elements we will
+            need to display and how many pages we will need (depending on the number of elements per page). Within the ajax call (since it is async) we
+            will be creating the pages data structure which each index of that array will have X number of elements. When rendering the pages, since
+            the initial render will be page 1, we send pages[0] to be rendered which has 45 elements (or less if there weren't 45 returned elements).
+            For pagination, if a user clicks on Next, Last, Prev, or First, the page index will be either increased or decreased and then the
+            grid div will be re-rendered using the new page[pageIndex]. This drastically speeds up rendering speed of the React components. Initially
+            we were rendering all 4k restaurants and it was taking approximately 8 seconds to render. After this implementation it was reduced to about
+            1 sec.</p>
           <h2>Back End:</h2> <br>
           <p>At this point of the development of foodcloseto.me we have 4 models:  Reviews,  Food_Types,  Locations, Restaurants. </p>
           <ul>
@@ -164,6 +181,45 @@
           </ul>
           <p><strong>config.py:</strong> This is the last configuration file. It doesn’t exactly interact with GCP directly, but, rather, interacts with it indirectly. Essentially, that file contains the GCP Project ID which then goes in our main Flask object. This Project ID is how the local version of the Google Cloud SDK authenticates the user when utilizing their provided command line interface (CLI).  This CLI is what we use to deploy our application to the App Engine and is by far the easiest way to do so.</p>
        </div>
+        <div class="row" style = "margin-bottom: 30px;">
+            <div class="col-sm-12">
+                <div class="title">
+                    <h1 id = "API">API Calls</h1><br>
+                </div>
+                <h2>Restaurants:</h2>
+                <p><strong>All Restaurants URL:</strong> "http://foodcloseto.me/API/Restaurants"</p>
+                <p> This returns a JSON that will have important information about each restaurant, such as: address, food type,
+                    rating, price, name, and location. An example of a return JSON is found <a href = "/API/Restaurants" target = "_blank">here.</a></p>
+                <p><strong>Sorted Restaurants by Attribute:</strong> "http://foodcloseto.me/API/Restaurants?sortby=XXX"</p>
+                <p>If you replace XXX with an attribute of Restaurants, then this will return a sorted JSON by the assigned attribute. An
+                    example can be found <a href = "/API/Restaurants?sortby=rating" target = "_blank">here</a> using rating as an attribute.</p>
+                <hr />
+                <h2>Locations:</h2>
+                <p><strong>All Locations URL:</strong> "http://foodcloseto.me/API/Locations"</p>
+                <p> This returns a JSON that will have important information about each location, such as: average price, average rating,
+                    average price, and number of restaurants. An example of a return JSON is found <a href = "/API/Locations" target = "_blank">here.</a></p>
+                <p><strong>Sorted Restaurants by Attribute:</strong> "http://foodcloseto.me/API/Locations?sortby=XXX"</p>
+                <p>If you replace XXX with an attribute of Location, then this will return a sorted JSON by the assigned attribute. An
+                    example can be found <a href = "/API/Locations?sortby=rating" target = "_blank">here</a> using rating as an attribute.</p>
+                <hr />
+                <h2>Food Types:</h2>
+                <p><strong>All Food Types URL:</strong> "http://foodcloseto.me/API/Food_Types"</p>
+                <p> This returns a JSON that will have important information about each food type, such as: average price, average rating, best location,
+                    number of restaurants, and best restaurant. An example of a return JSON is found <a href = "/API/Food_Types" target = "_blank">here.</a></p>
+                <p><strong>Sorted Restaurants by Attribute:</strong> "http://foodcloseto.me/API/Food_Types?sortby=XXX"</p>
+                <p>If you replace XXX with an attribute of Food Types, then this will return a sorted JSON by the assigned attribute. An
+                    example can be found <a href = "/API/Food_Types?sortby=rating" target = "_blank">here</a> using rating as an attribute.</p>
+                <hr />
+                <h2>Reviews:</h2>
+                <p><strong>All Reviews URL:</strong> "http://foodcloseto.me/API/Reviews"</p>
+                <p> This returns a JSON that will have important information about each review, such as: name of user, review rating,
+                    restaurant reviewed, and date of review. An example of a return JSON is found <a href = "/API/Reviews" target = "_blank">here.</a></p>
+                <p><strong>Sorted Restaurants by Attribute:</strong> "http://foodcloseto.me/API/Reviews?sortby=XXX"</p>
+                <p>If you replace XXX with an attribute of Reviews, then this will return a sorted JSON by the assigned attribute. An
+                    example can be found <a href = "/API/Reviews?sortby=rating" target = "_blank">here</a> using rating as an attribute.</p>
+
+
+                </div>
     </div>
     {% endblock %}
 

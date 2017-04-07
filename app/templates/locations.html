@@ -3,35 +3,36 @@
 
 <div class = "container" style = "margin:auto;">
 	<div class="row">
-		<div class = "col-sm-3">
+		<div class = "col-sm-2">
 			<input class = "filterMainButton" type ="button" value = "Filters" role="button" data-toggle="collapse" href="#allFilters" aria-expanded="false" aria-controls="allFilter" />
 			<br>
 			<div class = "collapse" id = "allFilters">
 				<br>
 				<a role="button" data-toggle="collapse" href="#priceFilter" aria-expanded="false" aria-controls="priceFilter">
-					Price
+					Avg Price
 				</a><br>
 
 				<div class="collapse" id="priceFilter">
 					<div class="btn-group" data-toggle="buttons">
-						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$" />  $ <br />
-						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$" />  $$ <br />
-						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$$" />  $$$ <br />
-						<input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$$$" />  $$$$ <br />
+						<input type="checkbox" onchange = "addFilter(['avgPrice', this.value, this.checked])" value = "1" />  1/5 <br />
+						<input type="checkbox" onchange = "addFilter(['avgPrice', this.value, this.checked])" value = "2" />  2/5 <br />
+						<input type="checkbox" onchange = "addFilter(['avgPrice', this.value, this.checked])" value = "3" />  3/5 <br />
+						<input type="checkbox" onchange = "addFilter(['avgPrice', this.value, this.checked])" value = "4" />  4/5 <br />
+						<input type="checkbox" onchange = "addFilter(['avgPrice', this.value, this.checked])" value = "5" />  5/5 <br />
 					</div>
 				</div>
 
 				<a role="button" data-toggle="collapse" href="#reviewFilter" aria-expanded="false" aria-controls="reviewFilter">
-					Rating
+					Avg Rating
 				</a> <br>
 
 				<div class="collapse" id="reviewFilter">
 					<div class="btn-group" data-toggle="buttons">
-						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "1" />  &#9733;&#9734;&#9734;&#9734;&#9734;<br />
-						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "2" />  &#9733;&#9733;&#9734;&#9734;&#9734;<br />
-						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "3" />  &#9733;&#9733;&#9733;&#9734;&#9734;<br />
-						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "4" />  &#9733;&#9733;&#9733;&#9733;&#9734;<br />
-						<input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "5" />  &#9733;&#9733;&#9733;&#9733;&#9733;<br />
+						<input type="checkbox" onchange = "addFilter(['avgRating', this.value, this.checked])" value = "1" />  &#9733;&#9734;&#9734;&#9734;&#9734;<br />
+						<input type="checkbox" onchange = "addFilter(['avgRating', this.value, this.checked])" value = "2" />  &#9733;&#9733;&#9734;&#9734;&#9734;<br />
+						<input type="checkbox" onchange = "addFilter(['avgRating', this.value, this.checked])" value = "3" />  &#9733;&#9733;&#9733;&#9734;&#9734;<br />
+						<input type="checkbox" onchange = "addFilter(['avgRating', this.value, this.checked])" value = "4" />  &#9733;&#9733;&#9733;&#9733;&#9734;<br />
+						<input type="checkbox" onchange = "addFilter(['avgRating', this.value, this.checked])" value = "5" />  &#9733;&#9733;&#9733;&#9733;&#9733;<br />
 					</div>
 				</div>
 
@@ -65,7 +66,7 @@
 				<option value="number_restaurants-H">Restaurant# - High to Low</option>
 			</select>
 		</div>
-		<div id = "Grid" class = "col-sm-9">
+		<div id = "Grid" class = "col-sm-10">
 
 
 
