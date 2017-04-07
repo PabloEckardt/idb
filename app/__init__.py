@@ -1,6 +1,5 @@
 import logging
 from app import populate_db
-from app.query_test import *
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session
 from app.db_manager import setupdb, init_session
