@@ -257,6 +257,8 @@ class test_db (TestCase):
                     u"001",
                     u"Little Italy",
                     u"yelp_italy",
+                    u"italian",
+                    u"Italian",
                     u"12/1/2014",
                     4,
                     u"pebs",
@@ -281,6 +283,8 @@ class test_db (TestCase):
                 u"009", # rest id
                 u"Little_Italy", #name
                 u"italy", # yelp id
+                u"italian",
+                u"Italian",
                 u"12/1/2014", # date
                 4, #rating
                 u"pebs", #username
@@ -316,6 +320,8 @@ class test_db (TestCase):
                 u"0010", # rest id
                 u"Little_Italy", #name
                 u"italy", # yelp id
+                u"italian",
+                u"Italian",
                 u"12/1/2014", # date
                 4, #rating
                 u"pebs", #username
