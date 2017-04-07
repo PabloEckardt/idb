@@ -24,8 +24,9 @@ class Reviews(Base):
 
     # pk
     id = Column(Integer, primary_key=True)
-    restaurant_id = Column(String(250), nullable=False)
     # identifiers
+    restaurant_id = Column(String(250), nullable=False)
+    restaurant_name = Column(String(250), nullable=False)
     yelp_restaurant_id = Column(String(250), nullable=False)
 
     # Review Data
@@ -44,6 +45,7 @@ class Reviews(Base):
     def to_dict(self):
         return {"id": self.id,
                 "restaurant_id": self.restaurant_id,
+                "restaurant_name": self.restaurant_name,
                 "yelp_restaurant_id": self.yelp_restaurant_id,
                 "date": self.date,
                 "rating": self.rating,
@@ -55,6 +57,7 @@ class Reviews(Base):
 
     def __init__(self,
                  restaurant_id,
+                 restaurant_name,
                  yelp_restaurant_id,
                  date,
                  rating,
@@ -75,6 +78,7 @@ class Reviews(Base):
         assert (type(zipcode) is unicode)
 
         self.restaurant_id=restaurant_id
+        self.restaurant_name=restaurant_name
         self.yelp_restaurant_id=yelp_restaurant_id
 
         self.date=date

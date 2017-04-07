@@ -62,8 +62,9 @@ def add_reviews(flask_app):
 
                     add_review(
                         session_token,
-                        k,
-                        m[k]["id"],
+                        k, # rest id
+                        m[k]["name"], # rest name
+                        m[k]["id"], # yelp id
                         rev_dict["time_created"],
                         rev_dict["rating"],
                         rev_dict["user"]["name"],
