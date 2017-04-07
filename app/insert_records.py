@@ -1,9 +1,12 @@
 # import our models
-from app.models import Restaurants, Locations, Food_Types, Reviews, Base
+try:
+    from app.models import Restaurants, Locations, Food_Types, Reviews, Base
+except ImportError:
+    from models import *
 
 
-
-def add_restaurant(session_obj,
+def add_restaurant(
+                   session_obj,
                    id,
                    name,
                    yelp_id,
@@ -20,7 +23,8 @@ def add_restaurant(session_obj,
                    review_count,
                    url,
                    img_url,
-                   *food_types):
+                   *food_types
+                    ):
 
 
     new_restaurant = Restaurants(

@@ -8,7 +8,10 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from app.db_manager import Base
+try:
+    from app.db_manager import Base, init_session, setupdb
+except ImportError:
+    from db_manager import *
 
 # -------------
 # Reviews
@@ -114,11 +117,11 @@ class Food_Types(Base):
     food_type_display_name=Column(String(250),nullable=False)
 
     highest_rated_restaurant=Column(
-        Integer, ForeignKey('restaurants.id'), nullable=False)
+        String(250), ForeignKey('restaurants.id'), nullable=False)
     restaurant=relationship("Restaurants", foreign_keys=[
                             highest_rated_restaurant])
 
-    best_location=Column(Integer, ForeignKey(
+    best_location=Column(String(250), ForeignKey(
         "locations.zipcode"), nullable=False)
     location=relationship("Locations", foreign_keys=[best_location])
 
