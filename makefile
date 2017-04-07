@@ -1,12 +1,13 @@
 .DEFAULT_GOAL := test
 
-FILES :=		\
-    app/models.py       \
-    app/tests.py        \
-    IDB2.html			\
-    IDB2.log			\
-    IDB2.pdf			\
-    app/tests.py		\
+FILES :=					\
+    app/models.py       	\
+    app/tests.py        	\
+    app/insert_records.py	\
+    app/db_manager.py		\
+    IDB2.html				\
+    IDB2.log				\
+    IDB2.pdf				\
     .travis.yml         
 
 ifeq ($(shell uname), Darwin)          # Apple
@@ -34,7 +35,7 @@ else                                   # UTCS
     PYTHON   := python2.7
     PIP      := pip3
     PYLINT   := pylint
-    COVERAGE := coverage-3.5
+    COVERAGE := coverage
     PYDOC    := pydoc
     AUTOPEP8 := autopep8
 endif
@@ -48,10 +49,9 @@ IDB2.html: app/models.py
 IDB2.log:
 	git log > IDB2.log
 
-tests.py: app/tests.py
+tests.out: app/tests.py app/insert_records.py app/db_manager.py
 	-$(PYLINT) app/tests.py
-	$(COVERAGE) run --branch app/tests.py > app/tests.out
-	$(COVERAGE) report -m >> app/tests.out
+	-$(COVERAGE) run --branch app/tests.py
 
 check:
 	@	not_found=0;                                 \
@@ -78,7 +78,7 @@ clean:
 	rm -f  *.pyc
 	rm -f  *.tmp
 
-test: IDB2.html IDB2.log
+test: IDB2.html IDB2.log tests.out
 	ls -al
 	make check
 
