@@ -117,11 +117,11 @@ class Food_Types(Base):
     food_type_display_name=Column(String(250),nullable=False)
 
     highest_rated_restaurant=Column(
-        Integer, ForeignKey('restaurants.id'), nullable=False)
+        String(250), ForeignKey('restaurants.id'), nullable=False)
     restaurant=relationship("Restaurants", foreign_keys=[
                             highest_rated_restaurant])
 
-    best_location=Column(Integer, ForeignKey(
+    best_location=Column(String(250), ForeignKey(
         "locations.zipcode"), nullable=False)
     location=relationship("Locations", foreign_keys=[best_location])
 
