@@ -212,6 +212,10 @@ class Restaurants(Base):
         'food_types.food_type'), nullable=True)
     food=relationship("Food_Types", foreign_keys=[food_type])
 
+    food_type_disp=Column(String(250), nullable= False)
+    food_type_disp2=Column(String(250), nullable= True)
+    food_type_disp3=Column(String(250), nullable= True)
+
     def to_dict(self):
         return {
                 "id": self.id,
@@ -232,7 +236,10 @@ class Restaurants(Base):
                 "img_url": self.img_url,
                 "food_type": self.food_type,
                 "food_type2": self.food_type2,
-                "food_type3": self.food_type3
+                "food_type3": self.food_type3,
+                "food_type_disp": self.food_type_disp,
+                "food_type_disp2": self.food_type_disp2,
+                "food_type_disp3": self.food_type_disp3
                 }
 
     def __init__(self,
@@ -253,8 +260,11 @@ class Restaurants(Base):
                  url,
                  img_url,
                  food_type,
+                 food_type_disp,
                  food_type2 = None,
-                 food_type3 = None):
+                 food_type3 = None,
+                 food_type_disp2 = None,
+                 food_type_disp3 = None):
 
         assert (type(name) is unicode)
         assert (type(location) is int)
@@ -286,6 +296,10 @@ class Restaurants(Base):
         self.food_type=food_type
         self.food_type2=food_type2
         self.food_type3=food_type3
+
+        self.food_type_disp=food_type_disp
+        self.food_type_disp2=food_type_disp2
+        self.food_type_disp3=food_type_disp3
 # -------------
 # Locations
 # -------------
