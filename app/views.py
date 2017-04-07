@@ -266,7 +266,7 @@ def techreport():
 # API
 @views.route('/API/Restaurants', methods=['GET'])
 def restaurants_api():
-    return query_all_restaurants(request.args.get('sortby'))
+    return query_all_restaurants(request.args.get('sortby'), request.args.get('rating'))
 
 @views.route('/API/Reviews', methods=['GET'])
 def reviews_api():

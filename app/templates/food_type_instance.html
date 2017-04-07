@@ -4,7 +4,7 @@
 <body>
 <div class="flex-container">
 <header>
-  <h1 class = "detailView">{{ instance["food_type_display_name"] }}</h1>
+  <h1 class = "detailView">Food Type: {{ instance["food_type_display_name"] }}</h1>
 </header>
 
 <nav class="nav">
@@ -15,7 +15,7 @@
 </nav>
 
 <article class="article">
-    <p> <img src="../{{ instance['image_url']}}" align="right">
+    <p> <img src="{{ instance['image_url']}}" align="right">
     </p>
 
   <h2> Average Price </h2>
@@ -27,7 +27,7 @@
   <h2> Best Location </h2>
   <p> {{ instance["best_location"] }} </p>
 
-  <a href = "Restaurants/{{ instance['highest_rated_restaurant'] }}"><h2> Highest Rated Restaurant </h2> </a></p>
+  <a href = "/Restaurants/{{ instance['highest_rated_restaurant'] }}"><h2> Highest Rated Restaurant </h2> </a></p>
 
 </article>
 

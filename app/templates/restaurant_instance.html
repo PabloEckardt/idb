@@ -3,7 +3,7 @@
 
 <div class="flex-container">
 <header>
-  <h1 class = "detailView">{{ instance["name"] }}</h1>
+  <h1 class = "detailView">Restaurant: {{ instance["name"] }}</h1>
 </header>
 <div class="col-sm-12">
 
@@ -20,13 +20,13 @@
  <div class = "col-sm-8">
  <nav class="nav">
 <ul>
-  <li><a href="/Food_Types/{{ instance['food_type'].split('||')[0] }}">Go to {{instance["food_type"].split("||")[1] }}</a></li>
+  <li><a href="/Food_Types/{{ instance['food_type']}}">Go to {{instance["food_type_disp"] }}</a></li>
   <li><a href="/Locations/{{instance['location'] }}">Go to {{instance["location"] }}</a></li>
   <li><a href="/Reviews/{{instance['id']}}">Go to a Review</a></li>
 </ul>
 </nav>
   <h2> Food Type </h2>
-  <a href="/Food_Types/{{instance['food_type'].split('||')[0] }}"> {{ instance["food_type"].split("||")[1] }} </a>
+  <a href="/Food_Types/{{instance['food_type'] }}"> {{ instance["food_type_disp"] }} </a>
 
   <h2> Rating </h2>
   <p> {{ instance["rating"] }} </p>

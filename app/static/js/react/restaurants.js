@@ -1,6 +1,5 @@
 var RestItem = React.createClass({
     render: function () {
-        var food_type = this.props.foodtype.split("||")[1];
         return (
             <a href = {"/Restaurants/" + this.props.id}>
                 <div className = "col-sm-4" id = "restaurantGrid">
@@ -8,7 +7,7 @@ var RestItem = React.createClass({
                     <h1>{ this.props.name}</h1>
                     Address: { this.props.address }<br />
                     Rating: { this.props.rating } <br />
-                    Food Type: { food_type } <br />
+                    Food Type: { this.props.foodtypeD } <br />
                     Price: { this.props.price }
 
                 </div>
@@ -29,6 +28,7 @@ var RestList = React.createClass({
                     rating={element.rating}
                     address={element.address}
                     foodtype={element.food_type}
+                    foodtypeD = {element.food_type_disp}
                     img_url={element.img_url}
                     id={element.id}
                     price = {element.price}

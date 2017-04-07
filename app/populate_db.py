@@ -7,7 +7,7 @@ import json
 
 def add_restaurants(flask_app):
     session_token = app.Session()
-    default = "static/img/default.jpg"
+    default = "/static/img/default.jpg"
     with open(flask_app.config["REVIEWS"], "r") as rj:
         r = json.load(rj)
         with open(flask_app.config["RESTAURANTS"], "r") as me:
@@ -51,7 +51,7 @@ def add_restaurants(flask_app):
 
 def add_reviews(flask_app):
     session_token = app.Session()
-    default = "static/img/default.jpg"
+    default = "/static/img/default.jpg"
     with open(flask_app.config["REVIEWS"], "r") as rj:
         r = json.load(rj)
         with open(flask_app.config["RESTAURANTS"], "r") as me:
@@ -194,7 +194,7 @@ def find_avg_rating(l):
 def find_img_url (food_type, img_list):
 
     if food_type in img_list:
-        return "static/img/" + food_type + ".jpg"
+        return "/static/img/" + food_type + ".jpg"
     else:
         return "/static/img/default.jpg"
 

@@ -4,14 +4,13 @@
 <body>
 <div class="flex-container">
 <header>
-  <h1 class = "detailView">{{ instance["zipcode"] }}</h1>
+  <h1 class = "detailView">Location: {{ instance["zipcode"] }}</h1>
 </header>
 
 <nav class="nav">
 <ul>
   <li><a href="/Food_Types/{{ instance['popular_food_type'] }}"> Go to Popular Food Type </a></li>
   <li><a href="/Restaurants/{{ instance['highest_rated_restaurant'] }}">Go to Highest Rated Restaurant </a></li>
-  <li><a href="#">Go to {{ instance["cheapest_restaurant"] }}</a></li>
 </ul>
 </nav>
 
@@ -30,8 +29,6 @@
 
   <a href="/Restaurants/{{ instance['highest_rated_restaurant'] }}"><h2> Highest Rated Restaurant </h2></a><br>
 
-   <h2> Cheapest Restaurant </h2>
-   <p> {{ instance["cheapest_restaurant"] }} </p>
 </article>
 
 <footer></footer>

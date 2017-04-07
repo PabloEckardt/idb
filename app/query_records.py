@@ -7,15 +7,27 @@ import json
 from app import *
 from flask import Flask, request, jsonify
 from app.models import Restaurants, Locations, Food_Types, Reviews, Base
-
+from sqlalchemy import or_
 
 # Query all instances
 
-def query_all_restaurants(sortby):
+def query_all_restaurants(sortby, rating):
     session = Session()
     if sortby == None:
         sortby = "name"
-    result = session.query(Restaurants).filter(Restaurants.price != "").order_by(sortby).all()
+    queries = [Restaurants.price != ""]
+
+    price = [Restaurants.price == "$$$"]
+    price.append(Restaurants.price == "$$$$")
+    queries.append(or_(*price))
+
+    ratings = [Restaurants.rating == 1]
+    ratings.append(Restaurants.rating ==2)
+
+    #queries.append(or_(*ratings))
+
+    result = session.query(Restaurants).filter(*queries).order_by(sortby).all()
+
     # TODO: Figure out more efficient way to do this
     result2 = [e.to_dict() for e in result]
     return jsonify(result2)
