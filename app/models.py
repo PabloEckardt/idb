@@ -20,10 +20,33 @@ except ImportError:
 
 class Reviews(Base):
     """
-    Primary Key = review_id (Surrogate key)
-    Foreign Keys: to Locations Table, and Restaurants Table
+    Primary Key = id (Surrogate key)
+    Foreign Keys: to Locations
+
+    restaurant_id = a unique number different from the pk to id restaurants
+    associaed with this review
+
+    restaurant_name = name of restaurant associated with review
+
+    yelp_restaurant_id = the string yelp would require to get detail info
+    in Yelp API
+
+    food_type = category associated with the restaurant in the review
+    food_type_display = a presentable version of the food_type
+
+    date/rating/username/review = review specific information
+
+    review_url/profile_picture_url = yelp links to the review in
+    and user profile picture in yelp.com
+
+    zipcode = zipcode associated with restaurant associated with review
+
+    to_dict is a "serialize' type function that allows this object
+    to become a json in a much more efficient way
+
     """
     __tablename__ = 'reviews'
+    __table_args__ = {'extend_existing': True}
 
     # pk
     id = Column(Integer, primary_key=True)
@@ -77,13 +100,21 @@ class Reviews(Base):
                  zipcode
                  ):
 
-        assert (type(date) is unicode)
+        assert (type(restaurant_id) is str)
+        assert (type(restaurant_name) is str)
+        assert (type(yelp_restaurant_id) is str)
+        assert (type(food_type) is str)
+        assert (type(food_type_disp) is str)
+
+        assert (type(date) is str)
         assert (type(rating) is int)
-        assert (type(username) is unicode)
+        assert (type(username) is str)
+        assert (type(review) is str)
 
-        assert (type(review_url) is unicode)
+        assert (type(profile_picture_url) is str)
+        assert (type(review_url) is str)
 
-        assert (type(zipcode) is unicode)
+        assert (type(zipcode) is str)
 
         self.restaurant_id = restaurant_id
         self.restaurant_name = restaurant_name
@@ -110,12 +141,33 @@ class Food_Types(Base):
     """
     Primary Key = food_type (Natural Key)
     Foreign Keys: to Locations Table, and Restaurants Table
+
+    average_price = average price of restaurants of a certain food type
+    ex: average price of American is 2 where American is a set of
+    2 restaurants, one with $ as price, another is $$$
+
+    average_rating = similar to above, average_rating represents how
+    is a food type represented as a whole. ex: American 3/5, etc
+
+    number_restaurants = restaurant instances from the Restaurant table
+    associated with this food type. ex: 2 American food Restaurants
+
+    most_popular_restaurant = most reviewed restaurant in set of
+    restaurants associated with food type
+
+    food_type_display_name = printable version of the food type string
+
+    best_location = zipcode associated with the best and most numerous
+    instances of restaurants associated with each specific food type
+
+    to_dict is a "serialize' type function that allows this object
+    to become a json in a much more efficient way
     """
     __tablename__ = 'food_types'
 
-    food_type = Column(String(250), primary_key=True)
+    __table_args__ = {'extend_existing': True}
 
-    food_type_display_name = Column(String(250), nullable=False)
+    food_type = Column(String(250), primary_key=True)
 
     average_price = Column(Float, nullable=False)
     average_rating = Column(Float, nullable=False)
@@ -179,9 +231,39 @@ class Food_Types(Base):
 class Restaurants(Base):
     """
     Primary Key = id (Surrogate key)
-    Foreign Keys: to Food_Types Table, and Reviews Table
+    Foreign Keys: to Food_Types
+
+    name = restaurant name
+
+    yelp_id = id granted by yelp to use in yelp_fusion API
+
+    location = zip where restaurant is located
+
+    lat/long = lat/long of the address of the restaurant
+
+    price = restaurant's user reported rating
+
+    rating = restaurant's performance as far as user ratings
+
+    review = latest or a relevant recent review associated with
+    the restaurant.
+
+    review_count = number of reviews given to restaurant
+
+    review_date = date associate with review above.
+
+    url/img_url = links to yelp.com associated with this restaurant
+
+    food_types#/food_type_disp#: restaurants can have up to
+    3 food types, and at least one. ex: American Food, Bar.
+    Each food_type needs an associated printable format string.
+
+    to_dict is a "serialize' type function that allows this object
+    to become a json in a much more efficient way.
     """
     __tablename__ = 'restaurants'
+
+    __table_args__ = {'extend_existing': True}
 
     # pk
     id = Column(String(250), primary_key=True)
@@ -271,12 +353,25 @@ class Restaurants(Base):
                  food_type_disp2=None,
                  food_type_disp3=None):
 
-        assert (type(name) is unicode)
+        assert (type(id) is str)
+        assert (type(name) is str)
+        assert (type(yelp_id) is str)
         assert (type(location) is int)
+        assert (type(lat) is float)
+        assert (type(long) is float)
+        assert (type(city) is str)
+
         assert (type(rating) is float)
 
-        assert (type(review) is unicode)
-        assert (type(review_date) is unicode)
+        assert (type(review) is str)
+        assert (type(review_date) is str)
+        assert (type(review_count) is int)
+        assert (type(url) is str)
+        assert (type(img_url) is str)
+
+        assert (type(food_type) is str)
+        t = type(food_type_disp)
+        assert (t is str or t is None)
 
         self.id = id
 
@@ -314,8 +409,36 @@ class Locations(Base):
     """
     Primary Key = Zipcode (Natural Key)
     Foreign Keys: to Food_Types Table, and Restaurants Table
+
+    average_rating = averaged ratings of all restaurants associated
+    with the zipcode
+
+    average_price = averaged price of all restaurants associated
+    with the zipcode
+
+    highest_price = highest price found among set of restaurants
+    associated with the zipcode
+
+    lowest_price = lowest price found amoung set of restaurants
+    associated with the zipcode
+
+    most_popular_restaurant = restaurant key to restaurant
+    associated with the zipcode that has the largest number of revies
+
+    number_of_restuarants = number of restaurants associated with zipcode
+
+    popular_food_type = food_type with best performing reviews in quality
+    and number in the zipcode. ex: 78704, Tex-Mex
+
+    highest_restaurant = restaurant associated with zipcode with highest
+    number of reviews and ratings.
+
+    to_dict is a "serialize' type function that allows this object
+    to become a json in a much more efficient way.
     """
     __tablename__ = 'locations'
+
+    __table_args__ = {'extend_existing': True}
 
     # columns
     zipcode = Column(String(250), primary_key=True)
@@ -359,6 +482,14 @@ class Locations(Base):
         most_popular_restaurant,
         number_restaurants
     ):
+        assert (type(zipcode) is str)
+        assert (type(average_rating) is float)
+        assert (type(average_price) is float)
+        assert (type(highest_price) is str)
+        assert (type(lowest_price) is str)
+        assert (type(most_popular_restaurant) is str)
+        assert (type(number_restaurants) is int)
+        assert (type(popular_food_type) is str)
 
         self.zipcode = zipcode
 

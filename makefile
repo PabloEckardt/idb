@@ -18,8 +18,8 @@ ifeq ($(shell uname), Darwin)          # Apple
     PYDOC    := pydoc
     AUTOPEP8 := autopep8
 else ifeq ($(CI), true)                # Travis CI
-    PYTHON   := python2
-    PIP      := pip
+    PYTHON   := python3.5
+    PIP      := pip3
     PYLINT   := pylint
     COVERAGE := coverage
     PYDOC    := pydoc3
@@ -44,7 +44,8 @@ endif
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
 IDB2.html: app/models.py
-	python -m pydoc -w app/models.py > IDB2.html
+	python3 -m pydoc -w app/models.py
+	mv models.html IDB2.html
 
 IDB2.log:
 	git log > IDB2.log
