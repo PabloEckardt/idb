@@ -17,6 +17,7 @@ ifeq ($(shell uname), Darwin)          # Apple
     COVERAGE := coverage-3.5
     PYDOC    := pydoc
     AUTOPEP8 := autopep8
+	VENV="venv/lib*"
 else ifeq ($(CI), true)                # Travis CI
     PYTHON   := python3.5
     PIP      := pip3
@@ -24,6 +25,7 @@ else ifeq ($(CI), true)                # Travis CI
     COVERAGE := coverage
     PYDOC    := pydoc3
     AUTOPEP8 := autopep8
+	VENV="/home/travis/virtualenv/*"
 else ifeq ($(shell uname -p), unknown) # Docker
     PYTHON   := python2.7
     PIP      := pip3.5
@@ -31,13 +33,15 @@ else ifeq ($(shell uname -p), unknown) # Docker
     COVERAGE := coverage-3.5
     PYDOC    := pydoc
     AUTOPEP8 := autopep8
+	VENV="venv/lib*"
 else                                   # UTCS
-    PYTHON   := python2.7
+    PYTHON   := python3.5
     PIP      := pip3
     PYLINT   := pylint
     COVERAGE := coverage
-    PYDOC    := pydoc
+    PYDOC    := pydoc3
     AUTOPEP8 := autopep8
+	VENV="venv/lib*"
 endif
 
 .pylintrc:
@@ -70,7 +74,7 @@ check:
 	fi;                                           \
 	echo "success";
 	coverage run app/tests.py > tests.out 
-	coverage report --omit="venv/lib*" -m >> tests.out
+	coverage report --omit=$(VENV) -m >> tests.out
 	cat tests.out
 
 clean:
