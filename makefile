@@ -13,7 +13,7 @@ FILES :=					\
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python2
     PIP      := pip3.5
-    PYLINT   := pylint
+    PYLINT   := pylint3
     COVERAGE := coverage-3.5
     PYDOC    := pydoc
     AUTOPEP8 := autopep8
@@ -37,7 +37,7 @@ else ifeq ($(shell uname -p), unknown) # Docker
 else                                   # UTCS
     PYTHON   := python3.5
     PIP      := pip3
-    PYLINT   := pylint
+    PYLINT   := pylint3
     COVERAGE := coverage
     PYDOC    := pydoc3
     AUTOPEP8 := autopep8
@@ -73,6 +73,7 @@ check:
 		exit 1;                                   \
 	fi;                                           \
 	echo "success";
+	-$(PYLINT) app/tests.py
 	coverage run app/tests.py > tests.out 
 	coverage report --omit=$(VENV) -m >> tests.out
 	cat tests.out

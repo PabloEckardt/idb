@@ -3,19 +3,17 @@
 # pylint: disable = bad-whitespace
 # pylint: disable = invalid-name
 # pylint: disable = missing-docstring
-
+# pylint: disable = bad-continuation
+# pylint: disable = superfluous-parens
+# pylint: disable = import-error
 # -------
 # imports
 # -------
-import json
-from flask import current_app as app
-from io import StringIO
 from unittest import main, TestCase
+import os
 from models import Restaurants, Locations, Food_Types, Reviews
 from insert_records import add_restaurant, add_location, add_food_type, add_review
-from sqlalchemy import create_engine
-from db_manager import *
-import os
+from db_manager import setupdb, init_session, create_engine
 
 
 class test_db (TestCase):
@@ -61,12 +59,11 @@ class test_db (TestCase):
         )
 
         assert not (self.session_token.query(Restaurants) is None)
-        print("Passed Test1")
+        print ("Passed Test1")
 
     def test_2_Restaurants_manual_integrity(self):
         '''
         Testing query data on Restaurants
-
         '''
         food_types = ["Italian", "Italian", None, None, None, None]
         new_r = Restaurants(
@@ -95,6 +92,10 @@ class test_db (TestCase):
         restaurant_1 = self.session_token.query(Restaurants).filter_by(
             name="Little Italy2").first()
 
+        # test serialize
+        assert (isinstance(restaurant_1.to_dict(), dict))
+
+        # test data types
         assert not (self.session_token.query(Restaurants) is None)
         assert restaurant_1.id == "0002"
         assert restaurant_1.name == "Little Italy2"
@@ -110,7 +111,6 @@ class test_db (TestCase):
         print("Passed Test2")
 
     def test_3_Restaurants_delete(self):
-        global session_token
         '''
         Testing Deletion of Records on Restaurants
 
@@ -157,7 +157,6 @@ class test_db (TestCase):
         Testing our Wrapper to add records on Locations
 
         '''
-        global session_token
         add_location(
             self.session_token,
             "00001",
@@ -166,9 +165,9 @@ class test_db (TestCase):
             "$$$$",
             "$",
             "Italian",  # popular food type
-                        "Little Italy",  # highest rated restaurant
-                        "Pizza Joint",  # most popular restaurant
-                        40
+            "Little Italy",  # highest rated restaurant
+            "Pizza Joint",  # most popular restaurant
+            40
         )
 
         assert not (self.session_token.query(Locations) is None)
@@ -200,6 +199,10 @@ class test_db (TestCase):
 
         assert not (self.session_token.query(Locations) is None)
 
+        # test serialize
+        assert isinstance(loc.to_dict(), dict)
+
+        # test query
         assert (loc.zipcode == "00002")
         assert (loc.average_rating == 3.0)
         assert (loc.average_price == 3.0)
@@ -294,6 +297,10 @@ class test_db (TestCase):
 
         assert not (self.session_token.query(Reviews) is None)
 
+        # test serialize
+        assert isinstance(rev.to_dict(), dict)
+
+        # test query
         assert (rev.date == u"12/1/2014")
         assert (rev.rating == 4)
         assert (rev.username == u"pebs")
@@ -343,7 +350,6 @@ class test_db (TestCase):
         Testing our Wrapper to add records on Food Types
 
         '''
-        global session_token
 
         add_food_type(
             self.session_token,
@@ -387,6 +393,10 @@ class test_db (TestCase):
 
         assert not (self.session_token.query(Food_Types) is None)
 
+        # test serialize
+        assert isinstance(food.to_dict(), dict)
+
+        # test query
         assert (food.food_type == u"Italian")
         assert (food.average_price == 3.0)
         assert (food.average_rating == 3.0)
@@ -430,7 +440,4 @@ class test_db (TestCase):
 
 
 if __name__ == "__main__":  # pragma: no cover
-    print("............")
-    print("----------------------------------------------------------------------")
     main()
-    # clean test db
