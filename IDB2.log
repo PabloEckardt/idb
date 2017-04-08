@@ -1,0 +1,2513 @@
+commit 711ce5435f3c7657f8ee24a69ffa17e7bec47aab
+Merge: fe503aa 42d6afa
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Fri Apr 7 21:49:55 2017 -0500
+
+    Merge pull request #58 from PabloEckardt/python3
+    
+    Python3
+
+commit 42d6afafdeb18a5db5592bdf333583022cda6a4f
+Merge: 9d5099a fe503aa
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 21:48:33 2017 -0500
+
+    conflicts
+
+commit 9d5099af2b343b8fd5ece4cc3bd745ba81cba990
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 21:37:58 2017 -0500
+
+    merge
+
+commit cd295109a0c9ebe321a2e347550287e95a3b6fd3
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 21:00:53 2017 -0500
+
+    added comments and asserts, passing tests locally
+
+commit d9c950255a760d0f8d2c6c699db97e40bf6da80d
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 20:15:40 2017 -0500
+
+    comments in reviews
+
+commit a4abb59488d93e89e8bb886a2ef926992448b917
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Fri Apr 7 10:10:03 2017 -0700
+
+    Adding IDB2.html back again, updating requirements.txt, fixing models.py so it works with pydoc, also edited makefile
+
+commit 16c3eb70bab6fbea44e82507b15fc02631eb0171
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Fri Apr 7 10:07:00 2017 -0700
+
+    Removing IDB2.html temporarily
+
+commit 2dc4dcad0393c17568c652b4319c5cd7a6c377c8
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 11:38:16 2017 -0500
+
+    python3
+
+commit fe503aad8d8569c9be202bc1fe5ed2e2e7bf98c7
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 02:46:55 2017 -0500
+
+    food type filter fixed
+
+commit a03886e824d367b3076cfc113924515b96713119
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 02:24:04 2017 -0500
+
+    fixed paginator
+
+commit cdd2627dffd89c864f23f76ac32c702ed4a0313e
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 02:20:27 2017 -0500
+
+    fixed sort with filters
+
+commit b517256a9fd162ca223b093b3af31bbc8ca927a4
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 02:13:21 2017 -0500
+
+    import error
+
+commit 8628cc960bda7c666dd41593f3aee59fdecbfebb
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 02:06:34 2017 -0500
+
+    autopep8 stuff
+
+commit 0c89b25d376f2bfa566cd2116dba4bda2502aa21
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:53:34 2017 -0500
+
+    attempt 7
+
+commit c57d49d2a41a9f2548a16fb7987aed23a5a7cf26
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:51:35 2017 -0500
+
+    attempt 6
+
+commit f87bfb7d85e0595ca221de5b5be63cb41f559a77
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:50:52 2017 -0500
+
+    attempt 5
+
+commit a3ed1d32449e6481423243826e2ad4441684d921
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:49:12 2017 -0500
+
+    attempt 4
+
+commit 931596f57f9de2114a2452d00ac44b272e9c8e99
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:46:25 2017 -0500
+
+    travis ci attemp 3
+
+commit 365cc37d7868c7007d681081d0833fe6c604acbd
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:43:02 2017 -0500
+
+    trying to make travis ci run in python2
+
+commit 41fa120be1d079d5356514adc971374c6cb011a5
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:36:41 2017 -0500
+
+    travis ci settings
+
+commit ec96b04681c2a2478e255b305ee5e2810ec682ef
+Merge: ab00dec efc9219
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:31:27 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit ab00dec2b0aec5016e55e0d6191b0bbb7b3807e7
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:31:21 2017 -0500
+
+    running tests
+
+commit efc92192d050caaab684a3e9411a5b843d68c287
+Merge: 897124a 6601797
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 01:29:32 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 897124a5f81391367ea3d270233ac62cd1898b35
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 01:29:26 2017 -0500
+
+    tech report edited
+
+commit 660179765d9ba2a1233fa5dd58999a9f9d19856f
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:19:24 2017 -0500
+
+    populate all models
+
+commit 367d3e6e0e96e55f6c4442776022c501acc074a9
+Merge: 2c6c89d 35cf3c5
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:17:56 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 2c6c89d1bb008aaa9eaf9c5580f6fea0c021f47f
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 01:17:45 2017 -0500
+
+    fixed the tests for the 99 billionth time
+
+commit 35cf3c51d79a5aaa5a7a55235a52de5ee9a503b1
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 01:12:49 2017 -0500
+
+    added circle pictures in about
+
+commit 79feb00fb66d9a20f2e2ad97f449e0345d5ade71
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 01:11:24 2017 -0500
+
+    about edited
+
+commit 56f8ad27821508f5b28de5906822eb043ebaf1a8
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 01:06:56 2017 -0500
+
+    food type changed in locations
+
+commit a6e00173eb74dc465bf3285cbcfc5006d3ec100e
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 01:03:23 2017 -0500
+
+    food types working for reviews
+
+commit 206292bf0742f9ad3ef2e47f27e8ad64e785dcb5
+Merge: 606828d c43b016
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 00:50:23 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 606828d14ba70723fe59f60287e3cc28262a9300
+Author: pablo <pablo0168@hotmail.com>
+Date:   Fri Apr 7 00:50:18 2017 -0500
+
+    added food types to review
+
+commit c43b016f8530573ba1ed3af82711cbe64a114dda
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 22:43:15 2017 -0700
+
+    Adding api call for restaurant names and id
+
+commit be130c58428d78903c55b9e49b314601b09edc0b
+Author: Edwin <edbeej@gmail.com>
+Date:   Fri Apr 7 00:04:23 2017 -0500
+
+    final?
+
+commit b2798362d803ca41d747a6df2b4272fdfde6d6ef
+Merge: dba63e4 e9ef8db
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 23:30:49 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit dba63e42c59dd3d232c296bf07e41be3a684cfcf
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 23:30:37 2017 -0500
+
+    filtering needed for review
+
+commit e9ef8dbd5b19f2b97e68dcc3584ac2e7a271ea6a
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Thu Apr 6 23:21:37 2017 -0500
+
+    Updated makefile to output to tests.out
+
+commit d3b6ca89aa3294aa30fa43932e5628b3a9694e5a
+Merge: 0f4a2e4 4547ea9
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Thu Apr 6 23:16:31 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 0f4a2e454d8777a67f6b4b6b3bfb903c0f13a407
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Thu Apr 6 23:16:20 2017 -0500
+
+    Updated UML
+
+commit 4547ea93c8005fa5f2e3f75bb92d36647eab70c8
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 23:02:19 2017 -0500
+
+    fixed unit test
+
+commit 92b7cf3e87a2d88c2b8ccc695f73e2880a22359a
+Merge: 6169f23 6128e06
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 22:38:32 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 6169f231394b77cc59cf5bd2c1711401434620f6
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 22:38:08 2017 -0500
+
+    image links fixed
+
+commit 6128e069d4abbdeb5331c592698c74a5d63c40c2
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Thu Apr 6 22:30:31 2017 -0500
+
+    Updated makefile, not passing all tests
+
+commit d21b7760361a4fdc03856e6cf7a361ee02918dac
+Merge: 1be87fb 855d758
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Thu Apr 6 22:17:37 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 855d758a32232372fb9578a9c3c2c99d16a6ee65
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 22:16:41 2017 -0500
+
+    split food type delimitted attribute into two
+
+commit 1be87fb0fcfb9a224b6052c60493e25a5f7f8764
+Merge: 23e1101 2d0efa7
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Thu Apr 6 22:01:45 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 23e110176c0d99978a6ee0db02dff35c88e51c34
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Thu Apr 6 22:01:09 2017 -0500
+
+    Updated makefile
+
+commit 2d0efa7ce80f8ea4abe326b2175d12989765e5f1
+Merge: e8a4239 e64ad82
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 21:54:13 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit e8a42397e44822e9c43dca44d643e98836818d9e
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 21:54:05 2017 -0500
+
+    about and test results
+
+commit e64ad8228eb54c1e7a039fc1686403159850a121
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Thu Apr 6 21:50:10 2017 -0500
+
+    Updated tests
+
+commit 045fbf2ab5d4ecf4867ee4738d1e9958d33218f3
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Thu Apr 6 21:17:54 2017 -0500
+
+    Added IDB2.txt
+
+commit 36d4d1ea398ff7a3b7e37032a313ee48a2cd1978
+Merge: c7a5aef 3f510e3
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Thu Apr 6 20:55:22 2017 -0500
+
+    Merge pull request #54 from PabloEckardt/fixTests
+    
+    Fix tests
+
+commit 3f510e3fc60ce6acfe1c0a55414a95061da8fa37
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 20:54:09 2017 -0500
+
+    run tests.py multiple times
+
+commit 9ba1c84fa2e22ec7de171f06272623958516d0b3
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 20:18:53 2017 -0500
+
+    finished fixing tests
+
+commit 7fb6d58639f42b3052f73f4e98cc5c07b91639b8
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 19:43:09 2017 -0500
+
+    passing 6/however many
+
+commit c7a5aef3fb7537ad741bccec0ef4580aacc62363
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 19:21:41 2017 -0500
+
+    link updates in instances
+
+commit 3b4ebe2891103979698e049e5631147a6a418004
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 19:11:13 2017 -0500
+
+    sorting for all pages done
+
+commit 1efd276e0e57b61d3e376dc8321f45b654e0c795
+Merge: 30cf763 a4f6e21
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 19:02:08 2017 -0500
+
+    Merge branch 'master' into fixTests
+
+commit a4f6e21242950fec03b006ad8c164bd69ed2cb0e
+Merge: 05062e8 d58d63f
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 19:00:53 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 05062e856173f751fa8b0a00ddb29170ec9ff895
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 19:00:47 2017 -0500
+
+    please don't ask me to change the db again
+
+commit d58d63fc47cdda695690715f6121787ea74f34a4
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 16:59:53 2017 -0700
+
+    fixing an issue in views.py
+
+commit 30cf763b70278b036b634fa19e1290a4d0ed488f
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 18:44:45 2017 -0500
+
+    hold on a minute
+
+commit da09fda937640eb90125b9ada10ab616ecd795ee
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 16:38:56 2017 -0700
+
+    Fixing default image locations
+
+commit 209399459b4e057102d2663f7ed00572444c3af7
+Merge: 5c4eaa1 f4327ed
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 18:32:57 2017 -0500
+
+    Merge branch 'master' into fixTests
+
+commit 5c4eaa1441a500ec44a4a8d6c2283a155777e37e
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 18:31:50 2017 -0500
+
+    fixed import issue
+
+commit f4327ed4a5d5a8a2794765d7b5ce7568a0abf321
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 18:31:43 2017 -0500
+
+    instance pages updated
+
+commit b479748617788ce9294e30b38055a4309a8081ea
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 18:14:31 2017 -0500
+
+    initial layout pages done
+
+commit 53a25a94a457bbc4c7e1ab82c5858e17b4888eb3
+Merge: acce5cb fd24418
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Thu Apr 6 17:59:29 2017 -0500
+
+    Merge pull request #52 from PabloEckardt/instance_queries
+    
+    Adding food type display names
+
+commit fd244183bc7b23a94623edf52cc3988fd2ff3c77
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 15:58:27 2017 -0700
+
+    Adding food type display names
+
+commit acce5cb90b13467f2023a06867b3907c6be15d2c
+Merge: 29b6a8d 9361104
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Thu Apr 6 17:54:41 2017 -0500
+
+    Merge pull request #51 from PabloEckardt/instance_queries
+    
+    Instance queries
+
+commit 93611040cb8d7c7a9a83c35d70e4c9fc7018d257
+Merge: 72d2ee6 29b6a8d
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 15:44:26 2017 -0700
+
+    Merging master again
+
+commit 72d2ee698f37d8266889ce326da460d9f90b87a3
+Merge: 0c15036 fdcaafd
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 15:41:28 2017 -0700
+
+    merging master
+
+commit 0c1503611932b25706557e65b763e0375b470aee
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 15:33:17 2017 -0700
+
+    Working on food_types api
+
+commit 29b6a8d848b340e4db9100da2412ac10259e3655
+Merge: 5792f02 877de53
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 17:32:58 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 5792f02266ed3e54c4da13173cc7b6628769bfbb
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 17:32:20 2017 -0500
+
+    styling
+
+commit 877de53f52ddff70ebb39b0d0e429ccca4b25e36
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Apr 6 17:30:04 2017 -0500
+
+    changed delimeter
+
+commit fdcaafd57c56cb3b40f6db64e01fa2a931fda8ec
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 16:37:15 2017 -0500
+
+    grid cosmetic change
+
+commit 3176a691d7d32bb9492004a4909c4d3732b24024
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 16:10:06 2017 -0500
+
+    default pic fix for review
+
+commit 599df6c49ff903e878091a7210b0e41b449f7531
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 16:04:53 2017 -0500
+
+    optimized filters
+
+commit 9bb34c6cbfa11da4ae80d6af61032bb8f377b522
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 15:32:16 2017 -0500
+
+    sort on the right working for mobile
+
+commit 5398b0235346ab14ea286a3076c979bfa3f788f5
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 15:03:29 2017 -0500
+
+    sortby changed location
+
+commit 29ad9f75ac0fa26193f5158d25bf5bc4ad136626
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 14:52:19 2017 -0500
+
+    all food types added
+
+commit 91849137623fbe7999613c808f0e9c72daa12e11
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 12:38:45 2017 -0700
+
+    Restaurant instance query working
+
+commit dc4c61e4b916d64a10be781fd97af2c84b51e6e6
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 14:32:46 2017 -0500
+
+    restaurant high to low sort
+
+commit d32aab42119fbf80aa311a553d231c749f0bf77e
+Merge: dedadf6 e0be38f
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 12:27:02 2017 -0700
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit dedadf63b124e37d33036972f89196ff95d88e1f
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 12:26:57 2017 -0700
+
+    Adding id to reviews query
+
+commit e0be38f86152075c7e9fbd81de67fcb1a2210184
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 14:17:14 2017 -0500
+
+    wrong extension for default
+
+commit 6663859eb4441df38dcc100b213ce13e156cba8b
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 14:14:32 2017 -0500
+
+    default img link
+
+commit 4a8bfe4309571dd68c1f13e2d29320e8650c534f
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 14:07:29 2017 -0500
+
+    stupid error
+
+commit ebfca898f1520c6e9974c8b91664c3463ffbbb71
+Merge: 191e867 14ddb3a
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Thu Apr 6 14:05:52 2017 -0500
+
+    Merge pull request #50 from PabloEckardt/linkfix
+    
+    pickupfrom here
+
+commit 14ddb3a93379c5d5663f9e4980407031318d1a61
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 14:02:42 2017 -0500
+
+    pickupfrom here
+
+commit 191e86786cb1ced529b24f0c5a9e3e1747c8cc38
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 07:09:58 2017 -0500
+
+    reviews grid, but needs better styling
+
+commit 69fa198f1889f48b36defa70b911008b9bccd5d9
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 06:03:48 2017 -0500
+
+    pagination
+
+commit c43d848e2e6db65e18101377d2a310e00568334f
+Merge: cc57b3b d324613
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Thu Apr 6 05:58:27 2017 -0500
+
+    Merge pull request #48 from PabloEckardt/locationsdb
+    
+    Locationsdb
+
+commit d324613568fa962a17ad927c51c6a9882cc11cfb
+Merge: f3b45f6 cc57b3b
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 05:56:23 2017 -0500
+
+    conflicts
+
+commit f3b45f660b48c9defbf2700432363f839806091e
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 05:54:41 2017 -0500
+
+    haven't tested querying, but im kinda confident, also completed all models!
+
+commit cc57b3b5b115064e6411c5e5da1f049faf591eed
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 02:33:02 2017 -0700
+
+    Basic api's set up for querying/sorting modules
+
+commit c6233c9f7fce459acff25500f75949a317974482
+Merge: 212aac3 edcf76f
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 02:26:26 2017 -0700
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 212aac35c3fc4ed3fd10254fc2e07e0178e2de70
+Merge: 835d798 7f438d5
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 02:26:24 2017 -0700
+
+    Working on getting all base query/sorts working
+
+commit 1bf12fb45dff0ae8a4191e65901f4361a827a22e
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 04:18:26 2017 -0500
+
+    progress on locationsdb
+
+commit edcf76f77fcc8512de2a7ce0ed5f0caa48bb82ab
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 04:17:47 2017 -0500
+
+    restaurant check
+
+commit 835d79854253e10cc9a55128f6c37c9a63382d50
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 02:17:40 2017 -0700
+
+    Fixing deployment issues
+
+commit 7f438d5b1dbdffdab7e8e8892300e4e53a175808
+Merge: ef4bcdc a35fc39
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Thu Apr 6 03:50:48 2017 -0500
+
+    Merge pull request #47 from PabloEckardt/foodtypesdb
+    
+    Foodtypesdb
+
+commit a35fc393f577aaed8a8cf79fa7a2096a102ab53b
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 03:49:44 2017 -0500
+
+    food types done probably
+
+commit 3cfdeb72ca062dccdb44a90040fe5b11fb6b8b99
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 03:13:33 2017 -0500
+
+    added keys to restaurants so we can find them in their table later
+
+commit 96832a68915f446743e85ec409e8312b6b10ab94
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 03:11:50 2017 -0500
+
+    close to completion, need to edit foot_types json
+
+commit ef4bcdc6126a15ed9e52aad4a3138b29cc62d9b4
+Merge: bfa3fa5 2129139
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 00:07:45 2017 -0700
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit bfa3fa596b9c8bc31a359ffc6f57316dcc36f639
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Apr 6 00:07:35 2017 -0700
+
+    Adding id's to restaurant api call
+
+commit 6efb1833e126b997fee27b89ac1d84f7694adb67
+Merge: e7b6f39 03e4aa1
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 02:05:56 2017 -0500
+
+    catching up with master
+
+commit 2129139536eea0d276c2c5fd1a65a13393e8bfb2
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 02:05:09 2017 -0500
+
+    restaurants js
+
+commit e7b6f39ee2238aad6cc2bc98b0d3fcda549ae67a
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 01:56:18 2017 -0500
+
+    working on foodtypes db
+
+commit 03e4aa1b3f57d1d60beaf3cdb2051eb0ebcdf9eb
+Merge: 0b0620c 0d46943
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 01:54:40 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 0b0620c7eb2a77e40728bbeb5c4eadd4573365da
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Apr 6 01:54:34 2017 -0500
+
+    fixed issue with pop database parameters
+
+commit 0d46943cc70da969d81e74a37e6824efe96e5ec7
+Merge: ebd90b6 e2a38a7
+Author: edbeej <edbeej@gmail.com>
+Date:   Thu Apr 6 01:53:32 2017 -0500
+
+    Merge pull request #46 from PabloEckardt/reactInit
+    
+    React init
+
+commit e2a38a7482e0e54cc45df34fcbc5d766193df13c
+Merge: 47327e5 ebd90b6
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 01:51:13 2017 -0500
+
+    Merge branch 'master' into reactInit
+
+commit 47327e5af3483f3575611c6615c0daf0c20489d9
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 01:50:11 2017 -0500
+
+    deleting certs
+
+commit ebd90b623905b043d02a8fd553e24cc51123db50
+Merge: 4fbbecb e4ca909
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Thu Apr 6 01:32:54 2017 -0500
+
+    Merge pull request #45 from PabloEckardt/db_queries
+    
+    Db queries
+
+commit e4ca90966155003701937aca71b3d36f9faa29ec
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 23:31:36 2017 -0700
+
+    Restaurants and Rviews api working
+
+commit e72d62e6174d25a0dfcf393ea58292e0b10f7e1b
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Apr 6 00:26:37 2017 -0500
+
+    react working and looks the same
+
+commit 685e8d9748988bbea166dbf48ffa1da218246b0d
+Merge: 3c1bcce 4fbbecb
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 22:26:33 2017 -0700
+
+    Merge branch 'master' into db_queries
+
+commit 4fbbecbb7d06471291b8a66adb61834cf21b1636
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 22:26:01 2017 -0700
+
+    Updating init and populate
+
+commit 3c1bcceaa54504791af71ac18ee408034233915e
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 22:15:12 2017 -0700
+
+    First api call is working
+
+commit 53163349c7e754f7adb876eed77cc69a91f6d597
+Merge: 3674990 cef43ec
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Wed Apr 5 23:51:44 2017 -0500
+
+    Merge pull request #44 from PabloEckardt/reviewsdb
+    
+    Reviewsdb
+
+commit cef43ec5fe1147ab1c887b015281521653e92d34
+Merge: 4b23bca 3674990
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 23:51:01 2017 -0500
+
+    conflicts
+
+commit b4b88b6e7e499dcf3aa7da19addef52bca59d3af
+Merge: f6042b6 31a18d9
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 21:48:18 2017 -0700
+
+    Trying to get db to build to test new query
+
+commit 4b23bca8bcb5d5f658c44d331ca09ceca8066def
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 23:48:12 2017 -0500
+
+    second model builds the table
+
+commit f6042b6f189a0bb8a073fb41efd3bf24a921d4d6
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 21:44:00 2017 -0700
+
+    Updating api to use new query
+
+commit 31a18d9a3cae79b642df1b28ae34d907b1f0f3fc
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 23:41:30 2017 -0500
+
+    reloader off
+
+commit baac83b413935f0bc3c2d5d71b035698fbbb6f9f
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 23:35:33 2017 -0500
+
+    changing primary keys to something more sane
+
+commit 2b2f84c5acf3b088a4265cc0392f0699fe2428b1
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 20:59:34 2017 -0700
+
+    deleting old dir
+
+commit 74e98b359cf457ec9f6f782c883507e5292ca698
+Merge: ab7404c 3674990
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 20:52:42 2017 -0700
+
+    Updating from master
+
+commit 3674990fb51aa095658a23c6f4982495393c0cc7
+Merge: d9b5fc4 2f845a1
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 20:50:13 2017 -0700
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit d9b5fc409deaf1a5127a99eb6f1f3562fe96dcac
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 20:49:51 2017 -0700
+
+    Working on the api calls - just added a scoped session
+
+commit 2f845a1a8844debfa8b3c81d18dc6ee42f946516
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Wed Apr 5 22:49:29 2017 -0500
+
+    Add images
+
+commit 56e6e7411c40c4468b2b063d77f498e7415a150b
+Merge: 481285e 0dfac16
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Wed Apr 5 22:30:37 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 481285e4a404cbf4cc8f1d026df345c8236684e2
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Wed Apr 5 22:30:17 2017 -0500
+
+    more images
+
+commit 0dfac16eaac9cbfe783ea80268b4621c18d9a089
+Merge: 7c59b0a 6578a59
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 22:22:31 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 7c59b0a95f04d19e2b7c75f87a36dac4309d13d7
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 22:21:38 2017 -0500
+
+    extended Restaurants model
+
+commit 6578a59e27a0d1a48d21b59c7aa423968be3a7ab
+Merge: 703eb4c aa1c55a
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Wed Apr 5 22:05:17 2017 -0500
+
+    Merge pull request #43 from PabloEckardt/making_db
+    
+    images
+
+commit aa1c55a048c003e0875b0bb3ccf9d4e975b57364
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Wed Apr 5 22:01:58 2017 -0500
+
+    Added more images
+
+commit ae6c35c050f364d9c623e7fa2172e61c2fedfd63
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Wed Apr 5 21:28:57 2017 -0500
+
+    Added images
+
+commit 703eb4c304e5b662f5a739dca1298fb4dab20e7f
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 18:43:39 2017 -0700
+
+    Updating food_types.json and locations.json
+
+commit 981e55dbe33e0b4305bc0f40631a5c741dc19620
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 18:26:53 2017 -0700
+
+    Deleting db and updating .gitignore
+
+commit 04cae05264f47505c4fadfab81f4f71da0824553
+Merge: 846c2f3 5b1c6a7
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Wed Apr 5 20:23:27 2017 -0500
+
+    Merge pull request #42 from PabloEckardt/making_db
+    
+    Making db
+
+commit 5b1c6a7b1da10e7d4f99c9fff3a6f355801eeba6
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 18:21:59 2017 -0700
+
+    Restructured database part of project
+
+commit 1db70463199ab893bb678b3591bcd21001ac9885
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 14:05:00 2017 -0700
+
+    Relocating db dir
+
+commit 600c2989a8ea9a255e3875fedf0c00c1d11c63d1
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 12:50:47 2017 -0700
+
+    deleting blank file
+
+commit 90e8052944164226f2fa5de1ad5e9067e8eaa1f6
+Merge: 2a4b4d1 846c2f3
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 12:48:00 2017 -0700
+
+    Merge branch 'master' into making_db
+
+commit 846c2f3735ba73edc2bf62d7a8f715a3714bba73
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Apr 5 12:39:43 2017 -0700
+
+    Adding data quality assurance info
+
+commit 2a4b4d14baf4e731d2ceab82ce3b9aa6c66d31c9
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 03:49:00 2017 -0500
+
+    for api work
+
+commit 8b4c99b81918b2799feff611ed2175602ab22cdf
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 03:09:23 2017 -0500
+
+    able to query
+
+commit 1b08f58c46f5246e24ead6ca5bff0de61d6a6fa7
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 00:54:07 2017 -0500
+
+    fixed function interfaces
+
+commit 011783f7e24c2e5de3f342d77b52457c3381e17a
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Apr 5 00:05:27 2017 -0500
+
+    improvements on restaurant models
+
+commit bce4150d55c266174c9cb6d8587eb760bb609a53
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Apr 4 23:43:12 2017 -0500
+
+    tested creating separate dbs
+
+commit 04020958d4f7ac8e768e0f08705d6115d47037d7
+Merge: 4d2230e 52a3140
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Apr 4 21:28:07 2017 -0700
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 4d2230edabd3adb4f6d86f13f3f3fbc39ca3c2dc
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Apr 4 21:27:56 2017 -0700
+
+    Cleaning up all the db stuff
+
+commit a7597a3ac1b0cff12605904f61cef9df88279463
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Apr 4 23:25:38 2017 -0500
+
+    better management of sessions
+
+commit ab7404c76815bd80e0e065e557e670b09592b7d3
+Merge: 6e44c87 52a3140
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 22:29:04 2017 -0500
+
+    Merge pull request #41 from PabloEckardt/master
+    
+    Updating models for query
+
+commit 52a31405407e899eb3258f34cccee2baf2be7342
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Apr 4 22:22:18 2017 -0500
+
+    passing all tests again, after having deleted attributes
+
+commit 93be2c541be2b460eb95f997aa65252fc79b032a
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Apr 4 22:19:29 2017 -0500
+
+    progress updating tests
+
+commit 080785102073a0fb06f9795f12efa8cf916b6f16
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Apr 4 22:13:57 2017 -0500
+
+    uhmm
+
+commit 546fdb9f18abe4f2892726c77b93943cf9c5315f
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Apr 4 21:04:14 2017 -0500
+
+    initial
+
+commit f8b57c15274fe4263dd15a3f93c04a8d48c0ec69
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Apr 4 21:03:18 2017 -0500
+
+    initial
+
+commit 05fd46bf545dd4d41033adc178808c8ca06703e1
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Apr 4 20:48:46 2017 -0500
+
+    todos
+
+commit f16ef1c81324a1e111b6be780a95df7831cd6d49
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Apr 4 18:41:51 2017 -0500
+
+    need to test integrity, but it seems like its almost done. Its time to start adding these jsons to the db
+
+commit edd2e0ddc727f068471e7a88a1d616d7ab9dfb82
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Apr 4 17:56:10 2017 -0500
+
+    reviews we mined, need refining
+
+commit 3471eee63dfcf7c87abb28d294730e6d1f2a273b
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Apr 4 17:00:59 2017 -0500
+
+    about to mine reviews
+
+commit b810aabaa475622556a18ea7680964342cc44e2b
+Merge: cf3c365 ecdc218
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Tue Apr 4 16:53:22 2017 -0500
+
+    Merge pull request #37 from PabloEckardt/mine_reviews
+    
+    Mine reviews
+
+commit ecdc218d8b9e8022bdbfbb3e233dee8ae62298dd
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Apr 4 13:30:30 2017 -0500
+
+    we need to run this miner for a long time
+
+commit d380bb8129db5b64bc4c9c61cd6c67eb788dba29
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Apr 4 13:17:47 2017 -0500
+
+    trouble
+
+commit cf3c3650b29dc9277e59cf1ea8d5f993e262b25c
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Apr 4 12:36:08 2017 -0500
+
+    deleted badly named folder
+
+commit ac2c7d68598c047afe60e66b19d676c3dc339395
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Apr 4 12:35:22 2017 -0500
+
+    about to branch out
+
+commit a15d3869efdedde69debb20eb6a3fd06c608dc88
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Apr 4 12:23:40 2017 -0500
+
+    added clarification, deleted file
+
+commit 79bb620449197565329a0fee090a476a65a19d91
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Apr 4 12:20:07 2017 -0500
+
+    basic cleanup of our data, use data from this folder
+
+commit 6e44c8700d10a1af0e1554dcd40ce5af65b7b6ea
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 04:32:03 2017 -0500
+
+    removed db file
+
+commit 2c860b16715d08db5a96b8f4466fea22e8fe844b
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 04:31:43 2017 -0500
+
+    Updated tests and query functions
+
+commit 7539c945cc0ae424a9a104a4c44722de67fd2d0f
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 04:26:31 2017 -0500
+
+    Updated tests
+
+commit 03f342301f2d8d584c314894435e064b3c763353
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:39:33 2017 -0500
+
+    Random stuff is breaking
+
+commit 1b597454f82edf42f086415cce317c39d76f9d75
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:31:39 2017 -0500
+
+    Revert "Revert "removed extra files""
+    
+    This reverts commit 2453a39c004afb19ea05b63377a2e150bdcaa473.
+    
+    nope
+
+commit 2599736fd590b49e8868e3b9414b994b8bef3426
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:30:47 2017 -0500
+
+    Revert "Revert "Updated tests""
+    
+    This reverts commit bc44983e12b0d4788460cd6eec4a4208528b2132.
+    
+    nope
+
+commit bc44983e12b0d4788460cd6eec4a4208528b2132
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:29:59 2017 -0500
+
+    Revert "Updated tests"
+    
+    This reverts commit a560a6db7417447fef9898220dfcdfefb2a47f49.
+
+commit 2453a39c004afb19ea05b63377a2e150bdcaa473
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:29:57 2017 -0500
+
+    Revert "removed extra files"
+    
+    This reverts commit 5f8f90bd234e2af8046e8c2f6502ebfa887c69aa.
+
+commit 1f0b23bb4b43fac7a3e2e1042cc32c873981aa12
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:29:55 2017 -0500
+
+    Revert "Yeah, this isn't working."
+    
+    This reverts commit c0154ba04dcbdc63f3dc46a21a6fca48642dfcdd.
+
+commit 3c4a37f60b8c35848fcbd2e6f2ccd316db04d071
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:29:38 2017 -0500
+
+    Revert "removed extra file"
+    
+    This reverts commit 792fd94980e4429e3d314f62291134b60d0e1ba3.
+
+commit 792fd94980e4429e3d314f62291134b60d0e1ba3
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:24:38 2017 -0500
+
+    removed extra file
+
+commit c0154ba04dcbdc63f3dc46a21a6fca48642dfcdd
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:21:36 2017 -0500
+
+    Yeah, this isn't working.
+
+commit 5f8f90bd234e2af8046e8c2f6502ebfa887c69aa
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 01:00:21 2017 -0500
+
+    removed extra files
+
+commit a560a6db7417447fef9898220dfcdfefb2a47f49
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Tue Apr 4 00:59:40 2017 -0500
+
+    Updated tests
+
+commit eacf666543409d791d0e1474d0cea2a9478a4b2e
+Author: Parker Kruzel <pak215@cs.utexas.edu>
+Date:   Tue Apr 4 15:25:01 2017 -0500
+
+    Updated tests
+
+commit 765d31f3b54c390624df78b3632a4201b719364a
+Author: Parker Kruzel <pak215@cs.utexas.edu>
+Date:   Tue Apr 4 15:12:13 2017 -0500
+
+    removed generated db file
+
+commit 1e09e127a8a4cda17b1290b496cf87fee76d3018
+Author: Parker Kruzel <pak215@cs.utexas.edu>
+Date:   Tue Apr 4 15:11:37 2017 -0500
+
+    Updated query/tests
+
+commit b39f78e00e4aea69955f20ac8ee521daa4827a78
+Author: Parker Kruzel <pak215@cs.utexas.edu>
+Date:   Tue Apr 4 14:48:14 2017 -0500
+
+    Updated indentation
+
+commit af24b8cd8a787932982aa95f16d3de80c3266e06
+Author: Parker Kruzel <pak215@cs.utexas.edu>
+Date:   Tue Apr 4 14:17:51 2017 -0500
+
+    fixed indentation
+
+commit b824810e1725075f9ba426a090b05a0592fec078
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Mon Apr 3 22:25:15 2017 -0500
+
+    Updated query tests
+
+commit ff5c98831468e08ee93ebf45851e0ac31cc403b0
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Mon Apr 3 21:36:46 2017 -0500
+
+    Updated query functions
+
+commit 63fa7c7782a548e8cce93c281f83d411d1710853
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Mon Apr 3 20:50:52 2017 -0500
+
+    Fixed typo in tests
+
+commit f8beead2fc7145af8872528b74af90a0237c53c6
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Mon Apr 3 20:48:43 2017 -0500
+
+    more updates to queries
+
+commit 6c9c223eaf9e05ebcb89ca4e1c65df984c003621
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Mon Apr 3 20:07:07 2017 -0500
+
+    updated query_records
+
+commit daff29361eed9844830a55cb8e4807f1a5f7e381
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Mon Apr 3 19:37:23 2017 -0500
+
+    Began making query_records.py
+
+commit 278efff86d2510d48d554790f264a58eb9b007b3
+Merge: aa934f2 b4c8c25
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Mon Apr 3 13:02:11 2017 -0500
+
+    Merge pull request #36 from PabloEckardt/data_mining
+    
+    Data mining
+
+commit b4c8c25797bcae71aa68ba94870504ad1dd266d8
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Mon Apr 3 10:59:05 2017 -0700
+
+    Adding updated db_miner.py and a bash script
+
+commit c5accf699fdb0d55e5b69b89f36e49430e30e726
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Apr 2 19:51:58 2017 -0500
+
+    passing all db tests
+
+commit 9418f6f4870213bcb14d2dcbf77c9d4daec23323
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Apr 2 19:33:37 2017 -0500
+
+    7/12 passing tests
+
+commit 8be7371aecff44fbd55b831467c2262830682534
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Apr 2 18:45:06 2017 -0500
+
+    tests update
+
+commit 06abaed3093333ac8dd122664b757d38de1a3890
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Apr 2 18:44:25 2017 -0500
+
+    passing test2
+
+commit c274d5d68454110a105b0b477ddf82e65259fd96
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Apr 2 18:19:59 2017 -0500
+
+    fixed all errors, time to make tests pass
+
+commit 5680410c081d85b9a99a5065ae66a2304460d552
+Merge: 8f41e7c e1a75ae
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Apr 2 17:23:17 2017 -0500
+
+    Merge branch 'data_mining' of https://github.com/PabloEckardt/idb into data_mining
+
+commit 8f41e7c049ed1b92e03cfe4d655d76b0e9b05de4
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Apr 2 17:22:57 2017 -0500
+
+    fixing tests, making db run
+
+commit e1a75ae2614e62d4516535c72747c9bad42b53b5
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Sat Apr 1 23:08:51 2017 -0700
+
+    Adding zips json for our zip codes model
+
+commit 1bca893d2a82de825873f8fb7b49ad0d1872f4c0
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Sat Apr 1 20:57:36 2017 -0700
+
+    Adding script to merge individual zipcode files as well as the output from it
+
+commit 5a0faf2470def19d36f0f3ad1204c59a6542a983
+Merge: 73c1edc aab6ab0
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sat Apr 1 22:46:14 2017 -0500
+
+    jsons
+
+commit 73c1edc2ff6fddf954bb7f04f6c33e9f8d69c1b7
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sat Apr 1 22:42:52 2017 -0500
+
+    jsons with resturants
+
+commit aab6ab0425c52bb91feaf207512c3e1c6b36ab56
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Sat Apr 1 20:16:29 2017 -0700
+
+    Fixing a bug in db_miner
+
+commit 8aaacca5bf746a4f4d13f29dba6b97a1783f5fa3
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sat Apr 1 22:02:14 2017 -0500
+
+    issues saving to files
+
+commit b04b25d2223d3cba0f76d654be850085b85b6809
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sat Apr 1 21:31:44 2017 -0500
+
+    mining code
+
+commit 3ba4a233aad9b3df060a62d514269dda62a7ba53
+Author: root <root@DESKTOP-L7QEI7M.localdomain>
+Date:   Sat Apr 1 21:19:40 2017 -0500
+
+    mining attempt 1
+
+commit 62bf1c0312dd91d125ca170e3f25ff36c2f62fd4
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Sat Apr 1 15:27:19 2017 -0700
+
+    Adding messy db_miner
+
+commit aa934f23b3f1df40f5dfab7577f3d7955bb28c24
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Sat Apr 1 14:20:04 2017 -0700
+
+    Updating app.yaml to use less gcp instances to save money
+
+commit f0238bb1913f373d36078799a7a6794833fda581
+Author: root <root@DESKTOP-L7QEI7M.localdomain>
+Date:   Sat Apr 1 16:17:41 2017 -0500
+
+    yelp sample code for api calls
+
+commit 30e46074e927f0d809bb83cba2a2651d0d5e9d13
+Author: root <root@DESKTOP-L7QEI7M.localdomain>
+Date:   Sat Apr 1 16:14:32 2017 -0500
+
+    added list of zipcodes
+
+commit 210537bde59f131740a39470404fd6aedc5533d8
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 19:55:08 2017 -0700
+
+    Fix to makefile #2
+
+commit 989172da5804b79c6f9b9dc23d5231e9a244469c
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 19:51:03 2017 -0700
+
+    Fixing makefile
+
+commit e83ef704a2169441fa6fac7a7eef31ffd23b0d7e
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 19:47:50 2017 -0700
+
+    autopep8-ing the python files
+
+commit 6161e648988d99e06a73aaed63bb18bd6eb9058e
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 21:26:17 2017 -0500
+
+    about and techreport finalized
+
+commit 74fbb94f27048ba64bd1d4be55f30d9441e75432
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Thu Mar 23 21:15:39 2017 -0500
+
+    Updated json file, still needs final rev-parse.
+
+commit 90f7ccad3f9daaf1ade2b027550a80728c4ceca6
+Merge: 6351b08 4b7827f
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Thu Mar 23 20:46:57 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 6351b08d7385a1432510becec2eb7eeb6a60f107
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Thu Mar 23 20:46:43 2017 -0500
+
+    Added incomplete json file
+
+commit 4b7827fc984b28d18b118296ac11320b9ebe8fd8
+Merge: 668ba34 df9d4f3
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 20:38:56 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 668ba34252635d3a396079cec7af27f01a77c2c1
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 20:38:49 2017 -0500
+
+    added comments and asserts
+
+commit df9d4f3d26c7ae4a6a7a551618dd65cc5049e77b
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 18:19:19 2017 -0700
+
+    removing empty file
+
+commit 7a6f3dc84f4d052fb91110df63ab6ec978bde220
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 20:14:25 2017 -0500
+
+    carousel and tech report base
+
+commit 572481dae369564b16762b3e95b5d682426983c8
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 18:05:15 2017 -0700
+
+    cleaning up makefile and deleting yUML.png
+
+commit eef4b999ca3851e4d9cdc270e68ee156d071f870
+Merge: 8823c3a b974997
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Thu Mar 23 19:59:37 2017 -0500
+
+    Merge pull request #35 from PabloEckardt/fix-cti
+    
+    Fix cti
+
+commit b974997927c48209ec4ef5d984f535caf007ee33
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 17:53:39 2017 -0700
+
+    Fixing more errors...
+
+commit 6f8fd2fd61715bf4814a8443ad4fe9af828319d0
+Merge: d6e270a 8823c3a
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 17:48:51 2017 -0700
+
+    Final test
+
+commit 8823c3a50f2f3aaaca7e1ff3f93a06b0e67cdebb
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 19:45:42 2017 -0500
+
+    updated yuml, and pdf
+
+commit d6e270ae4c7d5fc60bb114008a1f9bc03941eeea
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 17:39:43 2017 -0700
+
+    fixing file name of IDB1.html
+
+commit ea85a432489090764f19b88ba8678edfc1ce1b4a
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 17:24:20 2017 -0700
+
+    attempt 20
+
+commit 08b9f28756b394812dee6fdef1efc26b5531faf4
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 17:20:16 2017 -0700
+
+    attempt 18
+
+commit e24c2fc5061fb50a0c276a5526d854d5f10ae743
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 17:16:10 2017 -0700
+
+    attempt 17
+
+commit 3c95f77372a71ff7c66577abb9ca59555364b2a0
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 17:14:05 2017 -0700
+
+    attempt 16
+
+commit 13a366f5e0cdf568d03dba4de7820a684971d8ee
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 17:02:41 2017 -0700
+
+    attempt 16
+
+commit ccbeb1a05916484084e4fdb4ea46417cb241f914
+Merge: f0df6a1 ebd8fa6
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 18:55:04 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit f0df6a192555ecc75fee3f95a01f6626ada7d304
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 18:54:55 2017 -0500
+
+    comments on models.py
+
+commit ebd8fa630e4a8a3ac042107f9443a9f029debc1f
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 18:54:49 2017 -0500
+
+    local bootstrap/js
+
+commit c04d52d1b0724d312ec1e7d1214f77677442de56
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 16:51:41 2017 -0700
+
+    attempt 15
+
+commit 364501fabd94a2ab08bd90181aa06bcc4c413744
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 16:35:12 2017 -0700
+
+    attempt 14
+
+commit 0af7a508b9d0a0a945b53417bebff1d0919027ff
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 16:25:56 2017 -0700
+
+    Attempt 13
+
+commit 5f978cff73bab8159504086c80b8ca5966215d31
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 18:23:26 2017 -0500
+
+    formatting and auto pep requiredment
+
+commit 25bed31b21591567dc892a0b150adc0f8d2206ea
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 16:20:01 2017 -0700
+
+    fixing typo
+
+commit c5d2a3036dc6b5570b62e5cdef1da6c6d882be62
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 18:17:07 2017 -0500
+
+    deleted db prototyping files
+
+commit 85d3b9f0fdf1958da265b6a6f937210574f6f3e8
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 16:17:05 2017 -0700
+
+    attempt 12
+
+commit 30154ecd315002558110a20466e5dc3705a51925
+Merge: 18fd981 514c689
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Thu Mar 23 18:05:50 2017 -0500
+
+    Merge pull request #34 from PabloEckardt/tests
+    
+    Tests
+
+commit 514c689e0374ce38d6fb25553a5a1d842d4e3ecb
+Merge: de5488b 18fd981
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 18:02:39 2017 -0500
+
+    Merge branch 'master' into tests
+
+commit de5488b364b1d1cc9a1e7ee52b294ad1e0621f09
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 17:56:39 2017 -0500
+
+    12/12
+
+commit 48c518e53760a4c8e61bb673784e485c11b69311
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 17:54:14 2017 -0500
+
+    11/12 tests
+
+commit b7510ae85d9cb6a8f558f2e9a186a0352c89dae8
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:53:23 2017 -0700
+
+    fixing typo
+
+commit 2b18b357f5d15d42edd498d316458c8217415ef7
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:50:09 2017 -0700
+
+    attempt 11
+
+commit f7308d29c19da9abf3195f00887424ffed4fddd5
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:44:51 2017 -0700
+
+    attempt 10
+
+commit 18fd98135c038636cb9afc3f189cc7e26f5dd89f
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 17:44:12 2017 -0500
+
+    pictures added for reviews
+
+commit 6d127c71b45b03c2efff764ae04752f09e744fc1
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:39:36 2017 -0700
+
+    Attempt 9
+
+commit 0d36c1f41e9f6699ab8167e1b99a98692b65e723
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:32:16 2017 -0700
+
+    fixing typo
+
+commit 1686d1053d031658685437f294850f720a193c45
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:29:08 2017 -0700
+
+    attempt 8
+
+commit b9b766a2e12aadabbbeb2413d8acad0f57a8bd19
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:25:56 2017 -0700
+
+    This is the one I can feel it. Attempt 7
+
+commit bf0381bc550d1437d1668a9321f88bcd350c256e
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:22:14 2017 -0700
+
+    attempt 6
+
+commit 831fc6a306e0215ab42361e10ed62f73898c9c10
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:15:44 2017 -0700
+
+    attempt 4
+
+commit 1b709a018c87918b4bbc332779e66e6440c197ab
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:12:37 2017 -0700
+
+    attempt 3
+
+commit 1070475c678002f6ed193dfc20d68e87e89750bf
+Merge: a1e3497 24ddb1c
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 17:12:13 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit a1e3497d9899130592db8a24e93bc394f21b7b47
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 17:12:05 2017 -0500
+
+    pictures for food type and header change
+
+commit f1aa01454bef85902de6f81b4b326707fcce9dd5
+Merge: b7b687a 24ddb1c
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:10:40 2017 -0700
+
+    Merge branch 'master' into fix-cti
+
+commit 24ddb1c088793592303254cc0909ffa6f90640e5
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 15:10:22 2017 -0700
+
+    commenting out some code that was breaking the CI build
+
+commit c8f6915edfb4fd66c2159cc22ed72a820c2e533f
+Merge: 7b767b8 77d1a27
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 17:06:35 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 7b767b88571c323f0dec75e80a99e4f5bee2955e
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 17:06:10 2017 -0500
+
+    fixing models
+
+commit 77d1a271f112b15732c7146972e6de1a6cc098b7
+Merge: 3345c25 53435db
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 16:58:15 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 3345c258401a0f78839981acb92fac64aba19e04
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 16:58:10 2017 -0500
+
+    fixed picture dimension for mobile
+
+commit 1173fca96bfe6d7cc17e04e9e2efc129301261c6
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 16:45:29 2017 -0500
+
+    5/12 tests done
+
+commit 9da0429ad56308c7c669cda20872bf74a7109644
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 16:32:17 2017 -0500
+
+    cleanup model of tests
+
+commit fc5f7628c65c13e4e18af3f195273c091f5893b1
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 15:45:50 2017 -0500
+
+    labor intensive test making
+
+commit b7b687a0454a1740df23136876ad2d6d1b0c7d1d
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 13:44:54 2017 -0700
+
+    attempt to fix 2
+
+commit a36af24af30aa9f76824af466f1fbb3826ff9dfc
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 13:41:19 2017 -0700
+
+    attempt to fix 1
+
+commit 53435dbbfa49f71cfb4b2bf2edfe9ef011e1ee66
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Thu Mar 23 13:33:20 2017 -0700
+
+    Updating UML fig and tweaking the Hours Filter
+
+commit 6321352bf65d1506e357843d15bad0f6940bc367
+Merge: 8dfcaf0 6559a52
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 15:06:54 2017 -0500
+
+    Merge branch 'master' into tests
+
+commit 8dfcaf0adafcde84e9329a679dfd06383ca22787
+Author: pablo <pablo0168@hotmail.com>
+Date:   Thu Mar 23 15:01:37 2017 -0500
+
+    added more attributes to the db instances
+
+commit 6559a5262e9bc4a39f9bb2bd8cf0020bd257a251
+Merge: f70ba6c f4e8b59
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 22:14:30 2017 -0700
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit f70ba6c1588242624d91e4b977660e79bb8cf867
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 22:12:37 2017 -0700
+
+    adding figures for food types and reviews...
+
+commit 722220ff1b3104439ef1fd8368b4063cb5e41805
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Mar 23 00:08:27 2017 -0500
+
+    added short hand tests as guidelines for the test_db class
+
+commit f4e8b599ec8b76c08310d43878ed689ca451fe2c
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 00:03:38 2017 -0500
+
+    reviews_instance links fixed
+
+commit f287c67110dc3f59343c760afe48d3fc0d4643df
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Thu Mar 23 00:01:38 2017 -0500
+
+    verified adding and querying, fixed foreign keys issues
+
+commit 298372bb8c6df1ce502130f978204e51a1a73269
+Merge: e86b3f3 bfc5502
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 00:00:27 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit e86b3f366382b268452c10405f6ffb4c915d5782
+Author: Edwin <edbeej@gmail.com>
+Date:   Thu Mar 23 00:00:17 2017 -0500
+
+    links working in instances
+
+commit bfc55022626e9770137cbdfce887f35524404893
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 23:59:20 2017 -0500
+
+    Updated travis yml file
+
+commit badd328f500b4f603523a892480d56af91852cf9
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 23:44:05 2017 -0500
+
+    Updated makefile
+
+commit c4d5e5608d811ecb9592bb503d6b198fd820264c
+Merge: 814217b dd9cbb8
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Wed Mar 22 23:34:58 2017 -0500
+
+    Merge pull request #31 from PabloEckardt/fix_models
+    
+    Fix models
+
+commit dd9cbb811a63c90b99b82d57d354a49a2e4465e3
+Merge: f53e939 814217b
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 21:34:23 2017 -0700
+
+    Merge branch 'master' into fix_models
+
+commit f53e93994073f21f725205ec36a2a44995148b8e
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 21:04:25 2017 -0700
+
+    Finished organizing and updating models and yuml file/figure
+
+commit 814217b3aadea92b110204f136b2726ab16ba90a
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 22:47:03 2017 -0500
+
+    removed extra file
+
+commit 408de48bd7c1bd2e67abce84759c50d7acb94aa2
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 22:46:41 2017 -0500
+
+    Updated .gitignore
+
+commit af739d9cdcfe2c127c0702bf6c8c65a4d68f3883
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 22:27:51 2017 -0500
+
+    Removed extra file, updated makefile
+
+commit a1ae0068e12996ae160747c7b0d6bfc8093336fb
+Author: Parker Kruzel <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 22:25:48 2017 -0500
+
+    Updated makefile, make test now runs
+
+commit 3d4c444afa6d985c4af8e9ed433904f2fa83a59f
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 21:57:20 2017 -0500
+
+    Updated makefile and travis file
+
+commit 3d0dd5498d60896c287eff08d424efa9d5b41264
+Author: Edwin <edbeej@gmail.com>
+Date:   Wed Mar 22 21:51:58 2017 -0500
+
+    change picture size to reduce space
+
+commit bfbb71c5467235a567d70a1753adb57e437571bf
+Author: Edwin <edbeej@gmail.com>
+Date:   Wed Mar 22 21:49:27 2017 -0500
+
+    intial about page css and pictures
+
+commit 564697a0a8c50d32e6e97d801abbe7abad7e25e2
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Mar 22 21:26:04 2017 -0500
+
+    Started test.py
+
+commit 71523aaeef972c371e47c18f36f288c737ca9cbd
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 20:36:36 2017 -0500
+
+    updated .travis.yml file
+
+commit 273f3ca91d42ee12cd0cc357a04b4340bf3e50e8
+Merge: c346236 a400dd1
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Wed Mar 22 20:03:00 2017 -0500
+
+    Merge pull request #23 from PabloEckardt/instancepages
+    
+    Instancepages
+
+commit c3462361114726eb0c0b8b9b78f77d0a62ccb328
+Merge: 5f48e76 a77a064
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 20:02:17 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 5f48e76d457f7d34bbacf20c65f89ae66a4cc565
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Wed Mar 22 20:02:02 2017 -0500
+
+    Added a .travis.yml file
+
+commit a400dd1bb847234180d80a663f99d7eb32518348
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 17:36:10 2017 -0700
+
+    Major restructuring/organizing, as well as fixing all model instance errors
+
+commit 15395e4c8f3e567742107d3f1a9ea243d8e3c047
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:44:06 2017 -0700
+
+    location_instance is renderring but still needs work. Closes #21
+
+commit dc13bd68c29dd60fab6b799642adf459a35934c3
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:35:41 2017 -0700
+
+    Fixing some syntax in views.py
+
+commit 68a2bc60c68ed1954edae305653a6b3fddb744b6
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:32:11 2017 -0700
+
+    Changing all 'restaurant_id' to 'restaurant_id'
+
+commit d296609646b3bb65bc2d30ca0f40aea0b6e4837d
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:30:34 2017 -0700
+
+    Changing all 'review id' to 'review_id'
+
+commit 36b488a5e2a2f5d906226c9649777069a9683c5c
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:28:45 2017 -0700
+
+    Changing all 'average rating' to 'average_rating'
+
+commit e9ebff961a0351b63ee722c22690777614bfa651
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:27:46 2017 -0700
+
+    Changing all 'average price' to 'average_price'
+
+commit b74cbb32e6387c5daa05c868dc9262bf37e12434
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:24:53 2017 -0700
+
+    Changing all 'Location_db' to 'location_db'
+
+commit 9fae3b5f87ae85d5ab2f8172510e04de6b159bf9
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:23:27 2017 -0700
+
+    Changing all 'spoof_db' to 'restaurant_db'
+
+commit b929c4f4ecd7d0e989cb65a5f99ec22f68082be0
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:21:23 2017 -0700
+
+    Changing all 'last review' to 'last_review'
+
+commit 4a5ad3a10e46374760d5bd0734e566d0c6cb49fb
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 16:20:01 2017 -0700
+
+    Changing all 'food type' to 'food_type'
+
+commit a2a6eb4007a53d0adb30d57153a2bae77068967a
+Merge: 46279f7 a77a064
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 14:21:15 2017 -0700
+
+    Merge branch 'master' into instancepages
+
+commit a77a064aaf423b2b99484ff59f24f5ac621b93ea
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 14:15:43 2017 -0700
+
+    Adding a .png of our beautiful UML diagram
+
+commit 64d4ad197d7d9f9b3a894b98c71ab15d4b96aa86
+Author: Edwin <edbeej@gmail.com>
+Date:   Wed Mar 22 16:00:53 2017 -0500
+
+    more responsive for mobile
+
+commit 46279f7813c50126f55739fdea7aecc88798f0eb
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Mar 22 15:37:24 2017 -0500
+
+    more instance templates
+
+commit 1a1f86c5e2bfa0d968791321fc68fee048f6d62f
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Mar 22 15:21:27 2017 -0500
+
+    spoofed dbs
+
+commit ae1361edc5df70041c2f504855475a9e44eeae46
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Mar 22 15:07:31 2017 -0500
+
+    template for locations
+
+commit 62a149d939b99ad60e915a866eb5ab683c482e46
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Mar 22 14:10:21 2017 -0500
+
+    groundwork for each individual instance page
+
+commit 9d211f652e43ca6d62b6452ea603b3b1968b809d
+Merge: 411eb4f 4be36b3
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Mar 22 02:38:51 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 411eb4f9c02689d993300903e5c649604b7e26fe
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Mar 22 02:38:38 2017 -0500
+
+    spoof db #2
+
+commit 4be36b351fe44186b07b336199535ea9b9af4117
+Merge: 3d5af39 a9a7d60
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Wed Mar 22 02:35:17 2017 -0500
+
+    Merge pull request #18 from PabloEckardt/spoof
+    
+    Spoof
+
+commit a9a7d605994c94e5d873a4e4fc5c707f4b6823d6
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 00:34:30 2017 -0700
+
+    Adding images and merging master
+
+commit 2f9331881634b0578156caab431f97d867defc24
+Merge: e873398 3d5af39
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 00:34:07 2017 -0700
+
+    Merge branch 'master' into spoof
+
+commit e87339810768f0058685d34ca13005aa2419c514
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 00:34:03 2017 -0700
+
+    Updating views.py to have two more restaurants
+
+commit 3d5af3971afb7822f1e114c4e5dc85cada2de357
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Wed Mar 22 00:06:42 2017 -0700
+
+    Fixing two tabs I found
+
+commit 072e367205c7045a01274104d61c31de8d4701e1
+Author: Edwin <edbeej@gmail.com>
+Date:   Wed Mar 22 02:01:34 2017 -0500
+
+    basic template for all views
+
+commit 089addaa58cd7341aa7ae4595d32d7803bb0848c
+Author: Edwin <edbeej@gmail.com>
+Date:   Wed Mar 22 01:39:07 2017 -0500
+
+    removed search
+
+commit 69120ccdb648f74fd36e5af1a3758cf24b90b827
+Author: Edwin <edbeej@gmail.com>
+Date:   Wed Mar 22 01:35:21 2017 -0500
+
+    sort by and about link added
+
+commit 26d55b9934e0b24af6f4d894b113f5bc9b255236
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Mar 22 01:27:17 2017 -0500
+
+    made restaurants spoof db global, and made details for restaurantss in /Restaurants available
+
+commit 90af29cecdf0eff26406deb593750fa5dcd93a8d
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Wed Mar 22 00:05:40 2017 -0500
+
+    Moved CSS from restaurant_instance
+
+commit ca3d5b1ee26e35da4e29f8f769035a5db714b963
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 23:56:28 2017 -0500
+
+    new h1 class
+
+commit eb927dfd29d86038c18aa37e58c003a81376df77
+Merge: 0dcaa65 511b60c
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 23:52:59 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 0dcaa653fea91dafc9c28aa3943bf160176e9753
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 23:52:49 2017 -0500
+
+    made grid bigger for more info
+
+commit 511b60c948e72d3fbe9f0b3ff2ce56c50dea1e55
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Mar 21 23:45:13 2017 -0500
+
+    fixed array out of bounds bug
+
+commit 624aa92d26d9218df0c747dbc59be8e226a1a104
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 23:40:17 2017 -0500
+
+    added data place holders
+
+commit b08ced03ceae41442e75ea84ac272ca68aca6611
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 23:37:27 2017 -0500
+
+    add link to detail
+
+commit 7118d372c1d3ca0b299c851a973049eeb7c3ca80
+Merge: 4dc1464 b0668e8
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Tue Mar 21 23:29:21 2017 -0500
+
+    Merge pull request #17 from PabloEckardt/deployment
+    
+    Deployment
+
+commit b0668e852c8d1fb093dc302802af64187eacb790
+Merge: 542f28d 4dc1464
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 21:28:30 2017 -0700
+
+    Merge branch 'master' into deployment
+
+commit 542f28d24e51a0e983c2fa772677df849b360d0e
+Merge: 2374e8f 3efcc8a
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 21:27:51 2017 -0700
+
+    Fixing more conflicts
+
+commit 4dc14647303b1fd9e78c0e02f36b00dee6330b5e
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 23:25:57 2017 -0500
+
+    links fixed
+
+commit 2374e8f9d04d1a0f1942750cae2bb1c87e42fb0b
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 21:19:39 2017 -0700
+
+    Fixing small bug in last commit
+
+commit 207b23d03d7dd6d69aeb5a1a562353ef1ad5b170
+Merge: b42e19f fbc6718
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 21:15:04 2017 -0700
+
+    Merged master into deployment branch and resolved conflicts
+
+commit b42e19f64230475b30436abeee7d5e8e4fa6bc26
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 21:10:32 2017 -0700
+
+    Deployment successful - adding deployment notes
+
+commit 3efcc8a9adaf11d5584b3fa82101dfbd1c94e5c4
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Mar 21 23:10:12 2017 -0500
+
+    added dynamic url
+
+commit 5d983c95c2169e7868b348a4bdd0b66e0529f4c4
+Merge: fbf0fcb 62bfb46
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Mar 21 22:55:50 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit fbf0fcb0d8543f5e16f32845be63c05d4f2173d5
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Mar 21 22:55:44 2017 -0500
+
+    polished restaurants instance view
+
+commit 62bfb468c3e9536ca8aa7d01484a06a7c940383e
+Merge: ea06162 fbc6718
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Tue Mar 21 22:51:44 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit ea0616226aa854ace0a0511b8091cc1c5afe5ba7
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Tue Mar 21 22:51:24 2017 -0500
+
+    Updated tools on About page to include Trello.
+
+commit cbbec22cd9ad62148da3f95ebff63dc0c0d3c3ae
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 20:51:13 2017 -0700
+
+    Local version is working with new structure...
+
+commit fbc6718309fbe9c82b05fdc6aee38a12a2b10dcf
+Merge: 9c62ea9 f1a7a75
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 20:15:33 2017 -0700
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 13facd089a0fca2f1cd17050ae7b6e3703191909
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 20:15:11 2017 -0700
+
+    Initial broken version of new project layout
+
+commit f1a7a75d54fed49654e61823927c381a6cd3e044
+Merge: 166807d a7c7bf6
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Tue Mar 21 22:05:05 2017 -0500
+
+    Merge pull request #15 from PabloEckardt/badTemplate
+    
+    Bad template
+
+commit a7c7bf6948d393748cdd7a8d2f5f06ebd0dd7ead
+Merge: 7b8a083 166807d
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Tue Mar 21 22:04:20 2017 -0500
+
+    Merge pull request #14 from PabloEckardt/master
+    
+    Fixing template bugs
+
+commit 7b8a083e0b1c1539d579c3fd10914b6380c499c8
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Mar 21 22:00:27 2017 -0500
+
+    fixed issue where values were not being rendered
+
+commit 166807da3468a321bfd5ac80a8b0285997f38860
+Merge: 6b44931 6d0f28a
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 21:56:58 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 6b44931a5965ac27f9af8c232968df403b01f8f1
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 21:56:35 2017 -0500
+
+    navbar change
+
+commit df133451714d352e99b4f6155c25ae38b8c0b528
+Author: pabloeckardt <pablo0168@hotmail.com>
+Date:   Tue Mar 21 21:49:14 2017 -0500
+
+    why this no worky
+
+commit 513a3b9c2177b874d5af985e5ddcc47a171a713c
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 21:38:20 2017 -0500
+
+    food type checkbox box fixed
+
+commit b58393ea8c91862b8db3959a5aac8e6216858215
+Author: Edwin <edbeej@gmail.com>
+Date:   Tue Mar 21 21:36:44 2017 -0500
+
+    filter with grid for restaurants
+
+commit 6d0f28ac23351c67f70360ea0ee5c6ce889fa1af
+Author: pak215 <pak215.izzle@gmail.com>
+Date:   Tue Mar 21 21:25:38 2017 -0500
+
+    Added very basic skeleton for the HTML page of About.
+
+commit 3ba8584bc8f52837c54b2dd598bf69b1b25a85fa
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 19:11:35 2017 -0700
+
+    Deleted flask dir
+
+commit 9c62ea9cb3de8c9e0d588f8e30af171b6e285418
+Merge: 5e9e6be b77936d
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 18:45:19 2017 -0700
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit 5e9e6be9d02953be2daf54736569d93dbc2734f3
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Tue Mar 21 18:44:23 2017 -0700
+
+    Deleting flask dir
+
+commit b77936dbb290846fdb49bb1f7a48a8d02ae870a0
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Mar 21 12:06:08 2017 -0500
+
+    adjusted variable names to generalize grid template rendering, made other views for models available
+
+commit 547c0d193311b74220d075cd81bdf4f5b92b62d2
+Author: pablo <pablo0168@hotmail.com>
+Date:   Tue Mar 21 11:45:03 2017 -0500
+
+    added more links and made a link consistent to naming
+
+commit b2d9a9ddb1d72976fe640d2a3fd13b2578e13d8c
+Author: AudiBeFree <audric_terry@hotmail.com>
+Date:   Mon Mar 20 22:54:41 2017 -0500
+
+    Update README.md
+    
+    Fixed a typo
+
+commit 1ce9bf79cf4f53e09cfeecc0e7a6bdffe77bfbf0
+Author: Audric Terry <audric_terry@hotmail.com>
+Date:   Mon Mar 20 19:48:45 2017 -0700
+
+    Adding propper instructions/reqs for local deployment of the app. See the README for more details
+
+commit 3685ed43ab823f1d3cd4d778d2b6cb8d834d6bc7
+Merge: ef7b98a 6b57d12
+Author: pablo <pablo0168@hotmail.com>
+Date:   Mon Mar 20 15:32:53 2017 -0500
+
+    Merge branch 'master' of https://github.com/PabloEckardt/idb
+
+commit ef7b98a2298d2ab91ac3eb6728ea3990ab6cd77c
+Author: pablo <pablo0168@hotmail.com>
+Date:   Mon Mar 20 15:32:38 2017 -0500
+
+    in progress, needs refining
+
+commit 6b57d1226416bbd08571efe3aa59df040b60d0b3
+Merge: 104cf58 a6d608c
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Mon Mar 20 13:35:52 2017 -0500
+
+    Merge pull request #13 from PabloEckardt/db
+    
+    Db
+
+commit a6d608c278da1f4fae6cd11864902610ac3dd865
+Merge: 32189f9 104cf58
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Mon Mar 20 13:34:01 2017 -0500
+
+    Merge pull request #12 from PabloEckardt/master
+    
+    Adding models.py
+
+commit 104cf586517336f320acf840e2e4bb5ae3d83c68
+Author: Edwin <edbeej@gmail.com>
+Date:   Mon Mar 20 00:08:41 2017 -0500
+
+    search bar 70% width
+
+commit 2e5dd9042f1573b81b803068007506a0bd8f3785
+Author: Edwin <edbeej@gmail.com>
+Date:   Mon Mar 20 00:07:28 2017 -0500
+
+    search bar added
+
+commit 2b36279eb5bc94500e6c00b5c999eca67241580c
+Author: Edwin <edbeej@gmail.com>
+Date:   Sun Mar 19 23:53:15 2017 -0500
+
+    font color changes
+
+commit d1a1c916833a5f18414be64e23b1da64845b26b6
+Author: Edwin <edbeej@gmail.com>
+Date:   Sun Mar 19 23:47:28 2017 -0500
+
+    images added
+
+commit 264db7506ee9b6e5702e9f4a9f3242fe68cffeab
+Author: Edwin <edbeej@gmail.com>
+Date:   Sun Mar 19 23:23:26 2017 -0500
+
+    basic grid set
+
+commit ba91f9ee561231a4e2768296771c5e85b16ad0c3
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Mar 19 22:07:45 2017 -0600
+
+    Basic flask setup and 3 pages/vies for prototyping. Restaurants - for the table, restaurant1, representative of a Restaurants model-instance, and splash screen
+
+commit 77cbb9079b7def22d69781ce9e398e9255e12e95
+Author: Edwin <edbeej@gmail.com>
+Date:   Sun Mar 19 22:50:55 2017 -0500
+
+    basic style.css
+
+commit 275fe484cfc24a1078039fa89ecf3ce0ca9b3205
+Author: Edwin <edbeej@gmail.com>
+Date:   Sun Mar 19 22:45:01 2017 -0500
+
+    layout.html
+
+commit f0c127d17ec5f24c7452c70e6ff6ab4bf4dd135b
+Author: Edwin <edbeej@gmail.com>
+Date:   Sun Mar 19 22:34:22 2017 -0500
+
+    initial grid flask template
+
+commit 32189f926f91e978adb8c0102e03168ebb26d201
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Mar 19 14:32:08 2017 -0600
+
+    insert records into databse
+
+commit d1290b3c7cd858880fcca0ac119f231e79f4e98f
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sun Mar 19 11:03:23 2017 -0600
+
+    made the models in sqlalchemy to try out the db.
+
+commit ee8e9c3c2e2913e448fd80f34839a38e37c1eebf
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sat Mar 18 18:16:09 2017 -0600
+
+    placeholder files for project structure check http://flask.pocoo.org/docs/0.12/patterns/packages/
+
+commit 93540abd0bf3a4acca1a5c8f596c0dab53df192d
+Author: pablo <pablo0168@hotmail.com>
+Date:   Sat Mar 18 18:13:26 2017 -0600
+
+    project directory structure
+
+commit 69675aff0c3824275d48ed6482fb60201fb5bf5a
+Author: PabloEckardt <PabloEckardt@users.noreply.github.com>
+Date:   Sun Mar 12 21:02:46 2017 -0500
+
+    Initial commit
