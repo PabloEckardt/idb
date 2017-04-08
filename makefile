@@ -73,8 +73,8 @@ check:
 		exit 1;                                   \
 	fi;                                           \
 	echo "success";
-	-$(PYLINT) app/tests.py
-	coverage run app/tests.py > tests.out 
+	-$(PYLINT) app/tests.py > tests.out
+	coverage run app/tests.py >> tests.out 
 	coverage report --omit=$(VENV) -m >> tests.out
 	cat tests.out
 
