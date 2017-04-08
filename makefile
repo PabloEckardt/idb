@@ -50,8 +50,6 @@ IDB2.html: app/models.py
 IDB2.log:
 	git log > IDB2.log
 
-tests.out: app/tests.py app/insert_records.py app/db_manager.py
-	-$(COVERAGE) run --branch app/tests.py > tests.out
 
 check:
 	@	not_found=0;                                 \
@@ -71,7 +69,9 @@ check:
 		exit 1;                                   \
 	fi;                                           \
 	echo "success";
-	python app/tests.py
+	coverage run app/tests.py > tests.out 
+	coverage report --omit="venv/lib*" -m >> tests.out
+	cat tests.out
 
 clean:
 	rm -f  .coverage

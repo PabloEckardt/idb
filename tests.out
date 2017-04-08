@@ -12,3 +12,11 @@ Passed Test6
 Passed Test7
 Passed Test8
 Passed Test9
+Name                    Stmts   Miss  Cover   Missing
+-----------------------------------------------------
+app/db_manager.py           9      0   100%
+app/insert_records.py      20      0   100%
+app/models.py             185      4    98%   74, 189, 307, 463
+app/tests.py              136      0   100%
+-----------------------------------------------------
+TOTAL                     350      4    99%
