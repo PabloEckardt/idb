@@ -103,7 +103,7 @@ class Reviews(Base):
         assert (type(restaurant_id) is str)
         assert (type(restaurant_name) is str)
         assert (type(yelp_restaurant_id) is str)
-        assert (type(food_type) is str )
+        assert (type(food_type) is str)
         assert (type(food_type_disp) is str)
 
         assert (type(date) is str)
@@ -164,11 +164,10 @@ class Food_Types(Base):
     to become a json in a much more efficient way
     """
     __tablename__ = 'food_types'
-    
+
     __table_args__ = {'extend_existing': True}
 
     food_type = Column(String(250), primary_key=True)
-
 
     average_price = Column(Float, nullable=False)
     average_rating = Column(Float, nullable=False)
@@ -263,7 +262,7 @@ class Restaurants(Base):
     to become a json in a much more efficient way.
     """
     __tablename__ = 'restaurants'
-    
+
     __table_args__ = {'extend_existing': True}
 
     # pk
@@ -354,7 +353,7 @@ class Restaurants(Base):
                  food_type_disp2=None,
                  food_type_disp3=None):
 
-        assert (type(id) is str )
+        assert (type(id) is str)
         assert (type(name) is str)
         assert (type(yelp_id) is str)
         assert (type(location) is int)
@@ -373,7 +372,6 @@ class Restaurants(Base):
         assert (type(food_type) is str)
         t = type(food_type_disp)
         assert (t is str or t is None)
-
 
         self.id = id
 
@@ -439,7 +437,7 @@ class Locations(Base):
     to become a json in a much more efficient way.
     """
     __tablename__ = 'locations'
-    
+
     __table_args__ = {'extend_existing': True}
 
     # columns
