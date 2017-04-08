@@ -120,7 +120,7 @@ def query_all_food_types(sortby, avgrating, avgprice, foodtype):
         foodtypes = foodtype.split(",")
         fQ = []
         for a in foodtypes:
-            fQ.append(Food_Types.popular_food_type == a)
+            fQ.append(Food_Types.food_type == a)
         if len(fQ) > 0:
             queries.append(or_(*fQ))
 
