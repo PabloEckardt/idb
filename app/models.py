@@ -21,7 +21,15 @@ except ImportError:
 class Reviews(Base):
     """
     Primary Key = review_id (Surrogate key)
-    Foreign Keys: to Locations Table, and Restaurants Table
+    Foreign Keys: to Locations
+
+    RestaurantID = a unique number different from the pk to id restaurants
+
+    Yelp_restaurant_id = the string yelp would require to get detail info
+    in Yelp API
+
+    food_type = category associated with the restaurant in the review
+    food_type_display
     """
     __tablename__ = 'reviews'
 
