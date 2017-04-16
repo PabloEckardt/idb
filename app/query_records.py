@@ -207,10 +207,7 @@ def query_location(zipcode):
     assert (len(result) == 1)
     return result[0].to_dict()
 
-
 def rest_build_query(param):
-    print ("param")
-    print (param)
     rest_queries = []
     if (param.isdigit()):
         rest_queries.append(Restaurants.location == int(param))
@@ -233,31 +230,28 @@ def rest_build_query(param):
     rest_queries.append(Restaurants.food_type_disp == param)
     rest_queries.append(Restaurants.food_type_disp2 == param)
     rest_queries.append(Restaurants.food_type_disp3 == param)
-    for c in rest_queries:
-        print (str(c))
     return or_(*rest_queries)
 
 def merge_rests(search_output, candidate_output): # Eliminate duplicates
     # TODO make a dictionary so we can reduce the O(n^2) to O(n)
     f = True
     for r in candidate_output:
-        for r2 in search_output[0]:
-            if r.id == r2.id:
-                f = False
-                break
-        if f:
-            search_output[0][r.id] = r
-        else:
-            f = True
+        if not r["id"] in search_output[0]:
+            search_output[0][r["id"]] = r
 
 def search_rests(param, search_output, session_token):
+    # TODO for every element in query check where is the match and mark it.
     query = rest_build_query(param)
-    restaurants = session_token.query(Restaurants).filter(*query).all()
-    print (restaurants)
+    restaurants = session_token.query(Restaurants).filter(query).all()
+    restaurants = [r.to_dict() for r in restaurants]
     merge_rests(search_output, restaurants)
-
-def search_locs(parameter, model_idx, search_output, session_token):
-    pass
+"""
+def search_locs(param, search_output, session_token):
+    query = loc_build_query(param)
+    locs = session_token.query(Locations).filter(query).all()
+    locs = [r.to_dict() for r in locs]
+    merge_locs(search_output, locs)
+"""
 
 def search_foods(parameter, model_idx, search_output, session_token):
     pass
@@ -277,24 +271,20 @@ def search_query(*params):
             search_func(param,search_output, session) # this line searches a given parameter in all attributes
                                                             # to in a model and places all results without
                                                             # duplicates inside of search output
-    """
-    for param in params:
-        for model in models:
-            for attribute in model:
-                if param == attribute:
-                   if instance_id not in search_output[model]:
-                       search_output[model][instance_id] = instance
-    """
     return search_output
+"""
 print ("test #####################")
-print (search_query('1234'))
+p = ["360 Pizza", "3 Woks Down", "Milto's"]
+print (search_query(*p))
 print( "end test ##################")
-print ("search 2")
-s = Session
-result = s.query(Reviews).filter(Reviews.restaurant_id == 1234).all()
-result2 = [e.to_dict() for e in result]
-print(result2)
-print ("end test2")
-
-
-
+print ("test 2#####################")
+print("end test ####################")
+print ("test 3#####################")
+print("end test ####################")
+print ("test 4#####################")
+print("end test ####################")
+print ("test 5#####################")
+print("end test ####################")
+print ("test 6#####################")
+print("end test ####################")
+"""
