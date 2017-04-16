@@ -334,7 +334,7 @@ def search_revs(param, search_output, session_token):
 
 def search_query(params):
     # for every param we want to build 4 jsons.
-
+    params = [str(p) for p in params] # make sure its always strings
     search_output = [{},{},{},{}] #restaurants, locations, foodtypes, reviews
     # TODO make a list of dictionaries of pks to reduce search time in merge funcs
     model_searches = [search_rests, search_locs, search_foods, search_revs]
@@ -348,7 +348,7 @@ def search_query(params):
 
 # un comment to see a how to use
 print ("test #####################")
-p = ["Stack", "Burger"] # test with a reviewer id
+p = ["Stack", "Burger", "1234"] # test with a reviewer id
 results = search_query(p)
 print ("testing query:", p)
 print()
