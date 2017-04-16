@@ -11,7 +11,7 @@ FILES :=					\
     .travis.yml         
 
 ifeq ($(shell uname), Darwin)          # Apple
-    PYTHON   := python2
+    PYTHON   := python3.5
     PIP      := pip3.5
     PYLINT   := pylint
     COVERAGE := coverage-3.5
@@ -37,7 +37,7 @@ else ifeq ($(shell uname -p), unknown) # Docker
 else                                   # UTCS
     PYTHON   := python3.5
     PIP      := pip3
-    PYLINT   := pylint3
+    PYLINT   := pylint
     COVERAGE := coverage
     PYDOC    := pydoc3
     AUTOPEP8 := autopep8
@@ -45,7 +45,7 @@ else                                   # UTCS
 endif
 
 .pylintrc:
-	$(PYLINT) --disable=locally-disabled --generate-rcfile > $@
+	$(PYLINT) --generate-rcfile > $@
 
 IDB2.html: app/models.py
 	python3 -m pydoc -w app/models.py
@@ -73,7 +73,7 @@ check:
 		exit 1;                                   \
 	fi;                                           \
 	echo "success";
-	-$(PYLINT) -rn --msg-template='{category}{module}{obj}{line}{column}{msg}'  app/tests.py  > tests.out
+	-$(PYLINT) --reports=y --disable=locally-disabled app/tests.py  > tests.out
 	coverage run app/tests.py >> tests.out 
 	coverage report --omit=$(VENV) -m >> tests.out
 	cp tests.out app/static/tests.txt

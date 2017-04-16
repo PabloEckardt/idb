@@ -1,10 +1,3 @@
-************* Module app.tests
-I:  3, 0: Locally disabling bad-whitespace (C0326) (locally-disabled)
-I:  4, 0: Locally disabling invalid-name (C0103) (locally-disabled)
-I:  5, 0: Locally disabling missing-docstring (C0111) (locally-disabled)
-I:  6, 0: Locally disabling bad-continuation (C0330) (locally-disabled)
-I:  7, 0: Locally disabling superfluous-parens (C0325) (locally-disabled)
-I:  8, 0: Locally disabling import-error (E0401) (locally-disabled)
 
 
 Report
@@ -28,19 +21,29 @@ Statistics by type
 
 
 
+External dependencies
+---------------------
+::
+
+    db_manager (app.tests)
+    insert_records (app.tests)
+    models (app.tests)
+
+
+
 Raw metrics
 -----------
 
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |207    |46.52 |207      |=          |
+|code      |207    |46.52 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|docstring |149    |33.48 |149      |=          |
+|docstring |149    |33.48 |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|comment   |18     |4.04  |18       |=          |
+|comment   |18     |4.04  |NC       |NC         |
 +----------+-------+------+---------+-----------+
-|empty     |71     |15.96 |71       |=          |
+|empty     |71     |15.96 |NC       |NC         |
 +----------+-------+------+---------+-----------+
 
 
@@ -75,19 +78,8 @@ Messages by category
 
 
 
-Messages
---------
 
-+-----------------+------------+
-|message id       |occurrences |
-+=================+============+
-|locally-disabled |6           |
-+-----------------+------------+
-
-
-
-Global evaluation
------------------
+--------------------------------------------------------------------
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 Passed Test10
