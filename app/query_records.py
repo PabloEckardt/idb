@@ -217,22 +217,22 @@ def rest_build_query(param):
         rest_queries.append(Restaurants.lat == float(param))
         rest_queries.append(Restaurants.long == float(param))
         rest_queries.append(Restaurants.rating == int(param))
-        rest_queries.append(Restaurants.id == int(param))
+        #rest_queries.append(Restaurants.id == int(param))
 
-    rest_queries.append(Restaurants.name == param)
-    rest_queries.append(Restaurants.yelp_id == param)
-    rest_queries.append(Restaurants.city == param)
-    rest_queries.append(Restaurants.address == param)
-    rest_queries.append(Restaurants.phone == param)
-    rest_queries.append(Restaurants.review_date == param)
-    rest_queries.append(Restaurants.price == param)
-    rest_queries.append(Restaurants.url == param)
-    rest_queries.append(Restaurants.food_type == param)
-    rest_queries.append(Restaurants.food_type2 == param)
-    rest_queries.append(Restaurants.food_type3 == param)
-    rest_queries.append(Restaurants.food_type_disp == param)
-    rest_queries.append(Restaurants.food_type_disp2 == param)
-    rest_queries.append(Restaurants.food_type_disp3 == param)
+    rest_queries.append(Restaurants.name.like('%'+param+'%'))
+    rest_queries.append(Restaurants.yelp_id.like('%'+param+'%'))
+    rest_queries.append(Restaurants.city.like('%'+param+'%'))
+    rest_queries.append(Restaurants.address.like('%'+param+'%'))
+    rest_queries.append(Restaurants.phone.like('%'+param+'%'))
+    rest_queries.append(Restaurants.review_date.like('%'+param+'%'))
+    rest_queries.append(Restaurants.price.like('%'+param+'%'))
+    rest_queries.append(Restaurants.url.like('%'+param+'%'))
+    rest_queries.append(Restaurants.food_type.like('%'+param+'%'))
+    rest_queries.append(Restaurants.food_type2.like('%'+param+'%'))
+    rest_queries.append(Restaurants.food_type3.like('%'+param+'%'))
+    rest_queries.append(Restaurants.food_type_disp.like('%'+param+'%'))
+    rest_queries.append(Restaurants.food_type_disp2.like('%'+param+'%'))
+    rest_queries.append(Restaurants.food_type_disp3.like('%'+param+'%'))
     return or_(*rest_queries)
 
 def merge_rests(search_output, candidate_output, modelidx = None): # Eliminate duplicates
@@ -260,9 +260,9 @@ def loc_build_query (param):
     query.append(Locations.zipcode == param)
     query.append(Locations.highest_price == param)
     query.append(Locations.lowest_price == param)
-    query.append(Locations.most_popular_restaurant == param)
-    query.append(Locations.popular_food_type == param)
-    query.append(Locations.most_popular_restaurant == param)
+    query.append(Locations.most_popular_restaurant.like('%'+param+'%'))
+    query.append(Locations.popular_food_type.like('%'+param+'%'))
+    query.append(Locations.most_popular_restaurant.like('%'+param+'%'))
     return or_(*query)
 
 def merge_locs(search_output, candidate_output):
@@ -286,12 +286,12 @@ def food_build_query(param):
         query.append(Food_Types.number_restaurants == int(param))
         query.append(Food_Types.average_price == float(param))
 
-    query.append(Food_Types.food_type == param)
-    query.append(Food_Types.image_url == param)
-    query.append(Food_Types.most_popular_restaurant == param)
-    query.append(Food_Types.food_type_display_name == param)
-    query.append(Food_Types.highest_rated_restaurant == param)
-    query.append(Food_Types.best_location == param)
+    query.append(Food_Types.food_type.like('%'+param+'%'))
+    query.append(Food_Types.image_url.like('%'+param+'%'))
+    query.append(Food_Types.most_popular_restaurant.like('%'+param+'%'))
+    query.append(Food_Types.food_type_display_name.like('%'+param+'%'))
+    query.append(Food_Types.highest_rated_restaurant.like('%'+param+'%'))
+    query.append(Food_Types.best_location.like('%'+param+'%'))
     return or_(*query)
 
 def merge_foods(search_output, candidate_output):
@@ -312,17 +312,17 @@ def rev_build_query(param):
         query.append(Reviews.rating == int(param))
         query.append(Reviews.zipcode == int(param))
 
-    query.append(Reviews.restaurant_name == param)
-    query.append(Reviews.yelp_restaurant_id == param)
-    query.append(Reviews.food_type == param)
-    query.append(Reviews.food_type_disp == param)
-    query.append(Reviews.date == param)
-    query.append(Reviews.username == param)
-    query.append(Reviews.review == param)
-    query.append(Reviews.profile_picture_url == param)
-    query.append(Reviews.date == param)
-    query.append(Reviews.review_url == param)
-    query.append(Reviews.profile_picture_url == param)
+    query.append(Reviews.restaurant_name.like('%'+param+'%'))
+    #query.append(Reviews.yelp_restaurant_id == param)
+    query.append(Reviews.food_type.like('%'+param+'%'))
+    query.append(Reviews.food_type_disp.like('%'+param+'%'))
+    query.append(Reviews.date.like('%'+param+'%'))
+    query.append(Reviews.username.like("%"+param+"%"))
+    query.append(Reviews.review.like('%'+param+'%'))
+    query.append(Reviews.profile_picture_url.like('%'+param+'%'))
+    query.append(Reviews.date.like('%'+param+'%'))
+    query.append(Reviews.review_url.like('%'+param+'%'))
+    query.append(Reviews.profile_picture_url.like('%'+param+'%'))
     return or_(*query)
 
 def search_revs(param, search_output, session_token):
@@ -346,18 +346,37 @@ def search_query(params):
                                                             # duplicates inside of search output
     return search_output
 
+"""
 # un comment to see a how to use
 print ("test #####################")
-p = ["Stack", "Burger", "1234"] # test with a reviewer id
+p = ["Stack", "Bell", "Akash"] # test with a reviewer id
 results = search_query(p)
 print ("testing query:", p)
 print()
-print ("result is an array of 4 jsons, Restaurants, locatios, foodtypes, reviews")
+print ("result is an array of 4 jsons, Restaurants, locations, foodtypes, reviews")
 for dict in results:
     print ("elements found for table:", len (dict))
+
 print()
 print ("search query results")
-for e in results:
-    for d in e:
-        print (d)
-        print (e[d])
+
+l = []
+for e in results[0]:
+    l.append(e)
+
+print ("%%%%%%%%%%%%%%%%%%")
+l = sorted(list(map(int, l)))
+
+print("elems")
+for elem in l:
+    print()
+    print (elem)
+    print()
+    print (results[0][str(elem)]["name"])
+    print (results[0][str(elem)]["id"])
+    print (results[0][str(elem)]["food_type"])
+    print (results[0][str(elem)]["address"])
+
+print ("%%%%%%%%%%%%%%%%%%")
+
+"""
