@@ -332,8 +332,9 @@ def search_revs(param, search_output, session_token):
     merge_rests(search_output, revs, 3) # reuse rests merge function because both models
                                         # have a id attribute as primary key
 
-def search_query(*params):
+def search_query(params):
     # for every param we want to build 4 jsons.
+
     search_output = [{},{},{},{}] #restaurants, locations, foodtypes, reviews
     # TODO make a list of dictionaries of pks to reduce search time in merge funcs
     model_searches = [search_rests, search_locs, search_foods, search_revs]
@@ -346,10 +347,9 @@ def search_query(*params):
     return search_output
 
 # un comment to see a how to use
-"""
 print ("test #####################")
-p = ["Aakash P."] # test with a reviewer id
-results = search_query(*p)
+p = ["Stack", "Burger"] # test with a reviewer id
+results = search_query(p)
 print ("testing query:", p)
 print()
 print ("result is an array of 4 jsons, Restaurants, locatios, foodtypes, reviews")
@@ -361,4 +361,3 @@ for e in results:
     for d in e:
         print (d)
         print (e[d])
-"""
