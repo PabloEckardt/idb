@@ -206,3 +206,159 @@ def query_location(zipcode):
         Locations.zipcode == zipcode).all()
     assert (len(result) == 1)
     return result[0].to_dict()
+
+
+## Searching via arbitrary parameters
+
+def rest_build_query(param):
+    rest_queries = []
+    if (param.isdigit()):
+        rest_queries.append(Restaurants.location == int(param))
+        rest_queries.append(Restaurants.lat == float(param))
+        rest_queries.append(Restaurants.long == float(param))
+        rest_queries.append(Restaurants.rating == int(param))
+        rest_queries.append(Restaurants.id == int(param))
+
+    rest_queries.append(Restaurants.name == param)
+    rest_queries.append(Restaurants.yelp_id == param)
+    rest_queries.append(Restaurants.city == param)
+    rest_queries.append(Restaurants.address == param)
+    rest_queries.append(Restaurants.phone == param)
+    rest_queries.append(Restaurants.review_date == param)
+    rest_queries.append(Restaurants.price == param)
+    rest_queries.append(Restaurants.url == param)
+    rest_queries.append(Restaurants.food_type == param)
+    rest_queries.append(Restaurants.food_type2 == param)
+    rest_queries.append(Restaurants.food_type3 == param)
+    rest_queries.append(Restaurants.food_type_disp == param)
+    rest_queries.append(Restaurants.food_type_disp2 == param)
+    rest_queries.append(Restaurants.food_type_disp3 == param)
+    return or_(*rest_queries)
+
+def merge_rests(search_output, candidate_output, modelidx = None): # Eliminate duplicates
+    if modelidx == None:
+        modelidx = 0
+    for r in candidate_output:
+        if not r["id"] in search_output[modelidx]:
+            search_output[modelidx][r["id"]] = r
+
+def search_rests(param, search_output, session_token):
+    # TODO for every element in query check where is the match and mark it.
+    query = rest_build_query(param)
+    restaurants = session_token.query(Restaurants).filter(query).all()
+    restaurants = [r.to_dict() for r in restaurants]
+    merge_rests(search_output, restaurants)
+
+def loc_build_query (param):
+    query = []
+    if (param.isdigit()):
+        query.append(Locations.average_rating == float(param))
+        query.append(Locations.average_price == float(param))
+        query.append(Locations.number_restaurants == int(param))
+        query.append(Locations.highest_rated_restaurant == int(param))
+
+    query.append(Locations.zipcode == param)
+    query.append(Locations.highest_price == param)
+    query.append(Locations.lowest_price == param)
+    query.append(Locations.most_popular_restaurant == param)
+    query.append(Locations.popular_food_type == param)
+    query.append(Locations.most_popular_restaurant == param)
+    return or_(*query)
+
+def merge_locs(search_output, candidate_output):
+    for r in candidate_output:
+        if not r["zipcode"] in search_output[0]:
+            search_output[1][r["zipcode"]] = r
+
+def search_locs(param, search_output, session_token):
+    # TODO mark params in elems
+    query = loc_build_query(param)
+    locs = session_token.query(Locations).filter(query).all()
+    locs = [r.to_dict() for r in locs]
+    merge_locs(search_output, locs)
+
+
+def food_build_query(param):
+    query = []
+    if (param.isdigit()):
+        query.append(Food_Types.average_price == float(param))
+        query.append(Food_Types.average_rating == float(param))
+        query.append(Food_Types.number_restaurants == int(param))
+        query.append(Food_Types.average_price == float(param))
+
+    query.append(Food_Types.food_type == param)
+    query.append(Food_Types.image_url == param)
+    query.append(Food_Types.most_popular_restaurant == param)
+    query.append(Food_Types.food_type_display_name == param)
+    query.append(Food_Types.highest_rated_restaurant == param)
+    query.append(Food_Types.best_location == param)
+    return or_(*query)
+
+def merge_foods(search_output, candidate_output):
+    for r in candidate_output:
+        if not r["food_type"] in search_output[0]:
+            search_output[2][r["food_type"]] = r
+
+def search_foods(param, search_output, session_token):
+    query = food_build_query(param)
+    foods = session_token.query(Food_Types).filter(query).all()
+    foods = [r.to_dict() for r in foods]
+    merge_foods(search_output, foods)
+
+def rev_build_query(param):
+    query = []
+    if (param.isdigit()):
+        query.append(Reviews.id == int(param))
+        query.append(Reviews.rating == int(param))
+        query.append(Reviews.zipcode == int(param))
+
+    query.append(Reviews.restaurant_name == param)
+    query.append(Reviews.yelp_restaurant_id == param)
+    query.append(Reviews.food_type == param)
+    query.append(Reviews.food_type_disp == param)
+    query.append(Reviews.date == param)
+    query.append(Reviews.username == param)
+    query.append(Reviews.review == param)
+    query.append(Reviews.profile_picture_url == param)
+    query.append(Reviews.date == param)
+    query.append(Reviews.review_url == param)
+    query.append(Reviews.profile_picture_url == param)
+    return or_(*query)
+
+def search_revs(param, search_output, session_token):
+    query = rev_build_query(param)
+    revs = session_token.query(Reviews).filter(query).all()
+    revs = [r.to_dict() for r in revs]
+    merge_rests(search_output, revs, 3) # reuse rests merge function because both models
+                                        # have a id attribute as primary key
+
+def search_query(*params):
+    # for every param we want to build 4 jsons.
+    search_output = [{},{},{},{}] #restaurants, locations, foodtypes, reviews
+    # TODO make a list of dictionaries of pks to reduce search time in merge funcs
+    model_searches = [search_rests, search_locs, search_foods, search_revs]
+    session = Session()
+    for param in params:
+        for model,search_func in enumerate(model_searches):
+            search_func(param,search_output, session) # this line searches a given parameter in all attributes
+                                                            # to in a model and places all results without
+                                                            # duplicates inside of search output
+    return search_output
+
+# un comment to see a how to use
+"""
+print ("test #####################")
+p = ["Aakash P."] # test with a reviewer id
+results = search_query(*p)
+print ("testing query:", p)
+print()
+print ("result is an array of 4 jsons, Restaurants, locatios, foodtypes, reviews")
+for dict in results:
+    print ("elements found for table:", len (dict))
+print()
+print ("search query results")
+for e in results:
+    for d in e:
+        print (d)
+        print (e[d])
+"""
