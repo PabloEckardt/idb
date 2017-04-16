@@ -206,3 +206,39 @@ def query_location(zipcode):
         Locations.zipcode == zipcode).all()
     assert (len(result) == 1)
     return result[0].to_dict()
+
+
+def search_rests:
+    pass
+
+def search_locs:
+    pass
+
+def search_foods:
+    pass
+
+def search_revs:
+    pass
+
+def search_query(*params):
+    # for every param we want to build 4 jsons.
+    search_output = [[],[],[],[]] #restaurants, locations, foodtypes, reviews
+    model_searches = [search_rests, search_locs, search_foods, search_revs]
+    session = Session()
+    """
+    for param in params:
+        for model in models:
+            for attribute in model:
+                if param == attribute:
+                   if instance_id not in search_output[model]:
+                       search_output[model][instance_id] = instance
+    """
+
+
+
+    return search_output
+
+
+
+
+
