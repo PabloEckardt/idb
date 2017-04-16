@@ -234,7 +234,6 @@ def rest_build_query(param):
 
 def merge_rests(search_output, candidate_output): # Eliminate duplicates
     # TODO make a dictionary so we can reduce the O(n^2) to O(n)
-    f = True
     for r in candidate_output:
         if not r["id"] in search_output[0]:
             search_output[0][r["id"]] = r
@@ -245,13 +244,34 @@ def search_rests(param, search_output, session_token):
     restaurants = session_token.query(Restaurants).filter(query).all()
     restaurants = [r.to_dict() for r in restaurants]
     merge_rests(search_output, restaurants)
-"""
+
+def loc_build_query (param):
+    query = []
+    if (param.isdigit()):
+        query.append(Locations.average_rating == float(param))
+        query.append(Locations.average_price == float(param))
+        query.append(Locations.number_restaurants == int(param))
+        query.append(Locations.highest_rated_restaurant == int(param))
+
+    query.append(Locations.zipcode == param)
+    query.append(Locations.highest_price == param)
+    query.append(Locations.lowest_price == param)
+    query.append(Locations.most_popular_restaurant == param)
+    query.append(Locations.popular_food_type == param)
+    query.append(Locations.most_popular_restaurant == param)
+    return or_(*query)
+
+def merge_locs(search_output, candidate_output):
+    # TODO make a dictionary so we can reduce the O(n^2) to O(n)
+    for r in candidate_output:
+        if not r["zipcode"] in search_output[0]:
+            search_output[1][r["zipcode"]] = r
+
 def search_locs(param, search_output, session_token):
     query = loc_build_query(param)
     locs = session_token.query(Locations).filter(query).all()
     locs = [r.to_dict() for r in locs]
     merge_locs(search_output, locs)
-"""
 
 def search_foods(parameter, model_idx, search_output, session_token):
     pass
@@ -263,7 +283,7 @@ def search_query(*params):
     # for every param we want to build 4 jsons.
     search_output = [{},{},{},{}] #restaurants, locations, foodtypes, reviews
     # TODO make a list of dictionaries of pks to reduce search time in merge funcs
-    model_searches = [search_rests]
+    model_searches = [search_rests, search_locs]
     #model_searches = [search_rests, search_locs, search_foods, search_revs]
     session = Session()
     for param in params:
@@ -272,19 +292,14 @@ def search_query(*params):
                                                             # to in a model and places all results without
                                                             # duplicates inside of search output
     return search_output
-"""
+
+s = Session()
 print ("test #####################")
-p = ["360 Pizza", "3 Woks Down", "Milto's"]
-print (search_query(*p))
-print( "end test ##################")
-print ("test 2#####################")
-print("end test ####################")
-print ("test 3#####################")
-print("end test ####################")
-print ("test 4#####################")
-print("end test ####################")
-print ("test 5#####################")
-print("end test ####################")
-print ("test 6#####################")
-print("end test ####################")
-"""
+p = ["78654"]
+for e in search_query(*p):
+    print ()
+    print ()
+    print ()
+    print ()
+    for d in e:
+        print (e)
