@@ -13,7 +13,7 @@ FILES :=					\
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python2
     PIP      := pip3.5
-    PYLINT   := pylint3
+    PYLINT   := pylint
     COVERAGE := coverage-3.5
     PYDOC    := pydoc
     AUTOPEP8 := autopep8
@@ -45,7 +45,7 @@ else                                   # UTCS
 endif
 
 .pylintrc:
-	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
+	$(PYLINT) --disable=locally-disabled --generate-rcfile > $@
 
 IDB2.html: app/models.py
 	python3 -m pydoc -w app/models.py
@@ -73,9 +73,10 @@ check:
 		exit 1;                                   \
 	fi;                                           \
 	echo "success";
-	-$(PYLINT) app/tests.py > tests.out
+	-$(PYLINT) -rn --msg-template='{category}{module}{obj}{line}{column}{msg}'  app/tests.py  > tests.out
 	coverage run app/tests.py >> tests.out 
 	coverage report --omit=$(VENV) -m >> tests.out
+	cp tests.out app/static/tests.txt
 	cat tests.out
 
 clean:

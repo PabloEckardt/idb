@@ -216,9 +216,7 @@ def About():
 
 @views.route('/TestAbout')
 def testAbout():
-    os.system('coverage report -m app/tests.py > app/static/test.txt')
-    os.system('python app/tests.py >> app/static/test.txt')
-
+    os.system('make check')
     return render_template("testabout.html")
 
 

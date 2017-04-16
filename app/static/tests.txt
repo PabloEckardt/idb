@@ -1,0 +1,24 @@
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+Passed Test10
+Passed Test11
+Passed Test12
+Passed Test1
+Passed Test2
+Passed Test3
+Passed Test4
+Passed Test5
+Passed Test6
+Passed Test7
+Passed Test8
+Passed Test9
+Name                    Stmts   Miss  Cover   Missing
+-----------------------------------------------------
+app/db_manager.py           9      0   100%
+app/insert_records.py      20      0   100%
+app/models.py             181      0   100%
+app/tests.py              136      0   100%
+-----------------------------------------------------
+TOTAL                     346      0   100%
