@@ -235,19 +235,28 @@ def rest_build_query(param):
     rest_queries.append(Restaurants.food_type_disp3.like('%'+param+'%'))
     return or_(*rest_queries)
 
-def merge_rests(search_output, candidate_output, modelidx = None): # Eliminate duplicates
+def merge_rests(search_output, candidate_output,high_p_out = None, modelidx = None,): # Eliminate duplicates
     if modelidx == None:
         modelidx = 0
-    for r in candidate_output:
-        if not r["id"] in search_output[modelidx]:
-            search_output[modelidx][r["id"]] = r
 
-def search_rests(param, search_output, session_token):
+    if high_p_out == None:
+        for r in candidate_output:
+            if not r["id"] in search_output[modelidx]:
+                search_output[modelidx][r["id"]] = r
+    else:
+        for r in candidate_output:
+            if not r["id"] in search_output[modelidx] and not r["id"] in high_p_out[modelidx]:
+                search_output[modelidx][r["id"]] = r
+
+def search_rests(session_token, param, search_output, high_p_out=None):
     # TODO for every element in query check where is the match and mark it.
     query = rest_build_query(param)
     restaurants = session_token.query(Restaurants).filter(query).all()
     restaurants = [r.to_dict() for r in restaurants]
-    merge_rests(search_output, restaurants)
+    if high_p_out == None:
+        merge_rests(search_output, restaurants, None, None)
+    else:
+        merge_rests(search_output, restaurants, high_p_out, None)
 
 def loc_build_query (param):
     query = []
@@ -270,8 +279,7 @@ def merge_locs(search_output, candidate_output):
         if not r["zipcode"] in search_output[0]:
             search_output[1][r["zipcode"]] = r
 
-def search_locs(param, search_output, session_token):
-    # TODO mark params in elems
+def search_locs(session_token, param, search_output, high_p_out=None):
     query = loc_build_query(param)
     locs = session_token.query(Locations).filter(query).all()
     locs = [r.to_dict() for r in locs]
@@ -299,7 +307,7 @@ def merge_foods(search_output, candidate_output):
         if not r["food_type"] in search_output[0]:
             search_output[2][r["food_type"]] = r
 
-def search_foods(param, search_output, session_token):
+def search_foods(session_token, param, search_output, high_p_out=None):
     query = food_build_query(param)
     foods = session_token.query(Food_Types).filter(query).all()
     foods = [r.to_dict() for r in foods]
@@ -325,7 +333,7 @@ def rev_build_query(param):
     query.append(Reviews.profile_picture_url.like('%'+param+'%'))
     return or_(*query)
 
-def search_revs(param, search_output, session_token):
+def search_revs(session_token, param, search_output, high_p_out=None):
     query = rev_build_query(param)
     revs = session_token.query(Reviews).filter(query).all()
     revs = [r.to_dict() for r in revs]
@@ -335,21 +343,32 @@ def search_revs(param, search_output, session_token):
 def search_query(params):
     # for every param we want to build 4 jsons.
     params = [str(p) for p in params] # make sure its always strings
+
+    whole_param = params[0]
+    for i in range(1,len(params)):
+        whole_param += " "
+        whole_param += params[i]
+
+    model_searches = [search_rests]
+    #model_searches = [search_rests, search_locs, search_foods, search_revs]
+
+    high_pri_output = [{},{},{},{}]
     search_output = [{},{},{},{}] #restaurants, locations, foodtypes, reviews
-    # TODO make a list of dictionaries of pks to reduce search time in merge funcs
-    model_searches = [search_rests, search_locs, search_foods, search_revs]
     session = Session()
+
+    for search_f in model_searches:
+        search_f(session, whole_param, high_pri_output)
+
     for param in params:
-        for model,search_func in enumerate(model_searches):
-            search_func(param,search_output, session) # this line searches a given parameter in all attributes
+        for search_func in model_searches:
+            search_func(session, param, search_output, high_pri_output) # this line searches a given parameter in all attributes
                                                             # to in a model and places all results without
                                                             # duplicates inside of search output
-    return search_output
+    return [*high_pri_output, *search_output]
 
-"""
 # un comment to see a how to use
 print ("test #####################")
-p = ["Stack", "Bell", "Akash"] # test with a reviewer id
+p = ["1431", "Cafe"] # test with a reviewer id
 results = search_query(p)
 print ("testing query:", p)
 print()
@@ -359,7 +378,7 @@ for dict in results:
 
 print()
 print ("search query results")
-
+"""
 l = []
 for e in results[0]:
     l.append(e)
@@ -380,3 +399,5 @@ for elem in l:
 print ("%%%%%%%%%%%%%%%%%%")
 
 """
+
+
