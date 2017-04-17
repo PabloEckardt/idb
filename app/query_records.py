@@ -235,29 +235,6 @@ def rest_build_query(param):
     rest_queries.append(Restaurants.food_type_disp3.like('%'+param+'%'))
     return or_(*rest_queries)
 
-def merge_rests(search_output, candidate_output,high_p_out = None, modelidx = None,): # Eliminate duplicates
-    if modelidx == None:
-        modelidx = 0
-
-    if high_p_out == None:
-        for r in candidate_output:
-            if not r["id"] in search_output[modelidx]:
-                search_output[modelidx][r["id"]] = r
-    else:
-        for r in candidate_output:
-            if not r["id"] in search_output[modelidx] and not r["id"] in high_p_out[modelidx]:
-                search_output[modelidx][r["id"]] = r
-
-def search_rests(session_token, param, search_output, high_p_out=None):
-    # TODO for every element in query check where is the match and mark it.
-    query = rest_build_query(param)
-    restaurants = session_token.query(Restaurants).filter(query).all()
-    restaurants = [r.to_dict() for r in restaurants]
-    if high_p_out == None:
-        merge_rests(search_output, restaurants, None, None)
-    else:
-        merge_rests(search_output, restaurants, high_p_out, None)
-
 def loc_build_query (param):
     query = []
     if (param.isdigit()):
@@ -274,18 +251,6 @@ def loc_build_query (param):
     query.append(Locations.most_popular_restaurant.like('%'+param+'%'))
     return or_(*query)
 
-def merge_locs(search_output, candidate_output):
-    for r in candidate_output:
-        if not r["zipcode"] in search_output[0]:
-            search_output[1][r["zipcode"]] = r
-
-def search_locs(session_token, param, search_output, high_p_out=None):
-    query = loc_build_query(param)
-    locs = session_token.query(Locations).filter(query).all()
-    locs = [r.to_dict() for r in locs]
-    merge_locs(search_output, locs)
-
-
 def food_build_query(param):
     query = []
     if (param.isdigit()):
@@ -301,17 +266,6 @@ def food_build_query(param):
     query.append(Food_Types.highest_rated_restaurant.like('%'+param+'%'))
     query.append(Food_Types.best_location.like('%'+param+'%'))
     return or_(*query)
-
-def merge_foods(search_output, candidate_output):
-    for r in candidate_output:
-        if not r["food_type"] in search_output[0]:
-            search_output[2][r["food_type"]] = r
-
-def search_foods(session_token, param, search_output, high_p_out=None):
-    query = food_build_query(param)
-    foods = session_token.query(Food_Types).filter(query).all()
-    foods = [r.to_dict() for r in foods]
-    merge_foods(search_output, foods)
 
 def rev_build_query(param):
     query = []
@@ -333,17 +287,6 @@ def rev_build_query(param):
     query.append(Reviews.profile_picture_url.like('%'+param+'%'))
     return or_(*query)
 
-
-def search_revs(session_token, param, search_output, high_p_out=None):
-    query = rev_build_query(param)
-    revs = session_token.query(Reviews).filter(query).all()
-    revs = [r.to_dict() for r in revs]
-    if high_p_out == None:
-        merge_rests(search_output, revs, None, 3)
-    else:
-        merge_rests(search_output, revs, high_p_out, 3)
-
-
 def merge_models(search_output, candidate_output, high_p_out=None, i=None): # Eliminate duplicates
     keys = ["id", "zipcode", "food_type", "id"]
 
@@ -351,7 +294,6 @@ def merge_models(search_output, candidate_output, high_p_out=None, i=None): # El
         for r in candidate_output:
             if not r[keys[i]] in search_output[i]:
                 search_output[i][r[keys[i]]] = r
-            else:
     else:
         for r in candidate_output:
             if not r[keys[i]] in search_output[i] and not r[keys[i]] in high_p_out[i]:
@@ -359,7 +301,6 @@ def merge_models(search_output, candidate_output, high_p_out=None, i=None): # El
 
 
 def search_models(session_token, param, search_output, high_p_out=None):
-    #merging_funcs = [merge_rests, merge_foods, merge_locs, merge_rests]
     queries_builders = [rest_build_query, loc_build_query, food_build_query, rev_build_query]
     models = [Restaurants, Locations, Food_Types, Reviews]
 
@@ -383,9 +324,6 @@ def search_query(params):
         whole_param += " "
         whole_param += params[i]
 
-    #model_searches = [search_rests]
-    #model_searches = [search_rests, search_locs, search_foods, search_revs]
-
     high_pri_output = [{},{},{},{}]
     search_output = [{},{},{},{}] #restaurants, locations, foodtypes, reviews
     session = Session()
@@ -397,47 +335,41 @@ def search_query(params):
 
     return [*high_pri_output, *search_output]
 
-# un comment to see a how to use
+
+# un comment to see output:
+"""
+data_names = ["high priority restaurants.", # display purposes
+              "high priority locations.",
+              "high priority foods.",
+              "high priority reviews.",
+              "restaurants",
+              "locations.",
+              "foods.",
+              "reviews."]
+
 print ("test #####################")
 p = ["1431", "Cafe"] # test with a reviewer id
 results = search_query(p)
 print ("testing query:", p)
 print()
 print ("result is an array of 8 jsons")
-for dict in results:
-    print ("elements found for table:", len (dict))
+for i,dict in enumerate(results):
+    print ("elements found for table:", data_names[i], "/ table:", i + 1, "/ quantity:", len(dict) )
+
 
 print()
 print ("search query results")
+print()
 
 for i,dict in enumerate(results):
-    print("dict",i)
+    print("###########  displaying results for ", data_names[i], "dict:", i + 1, "###########")
     l = list(dict.keys())
     if len(l) > 0:
-        for i in range (3):
+        print("found:", len(l),  "results in dict", data_names[i])
+        for j in range (min(len(l), 3)):
             pass
-            #print (dict[l[i]])
-
-"""
-l = []
-for e in results[0]:
-    l.append(e)
-
-print ("%%%%%%%%%%%%%%%%%%")
-l = sorted(list(map(int, l)))
-
-print("elems")
-for elem in l:
+            print (dict[l[j]])
+    else:
+        print ("found: 0 results in dict")
     print()
-    print (elem)
-    print()
-    print (results[0][str(elem)]["name"])
-    print (results[0][str(elem)]["id"])
-    print (results[0][str(elem)]["food_type"])
-    print (results[0][str(elem)]["address"])
-
-print ("%%%%%%%%%%%%%%%%%%")
-
 """
-
-
