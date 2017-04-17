@@ -333,15 +333,49 @@ def rev_build_query(param):
     query.append(Reviews.profile_picture_url.like('%'+param+'%'))
     return or_(*query)
 
+
 def search_revs(session_token, param, search_output, high_p_out=None):
     query = rev_build_query(param)
     revs = session_token.query(Reviews).filter(query).all()
     revs = [r.to_dict() for r in revs]
-    merge_rests(search_output, revs, 3) # reuse rests merge function because both models
-                                        # have a id attribute as primary key
+    if high_p_out == None:
+        merge_rests(search_output, revs, None, 3)
+    else:
+        merge_rests(search_output, revs, high_p_out, 3)
+
+
+def merge_models(search_output, candidate_output, high_p_out=None, i=None): # Eliminate duplicates
+    keys = ["id", "zipcode", "food_type", "id"]
+
+    if high_p_out == None:
+        for r in candidate_output:
+            if not r[keys[i]] in search_output[i]:
+                search_output[i][r[keys[i]]] = r
+            else:
+    else:
+        for r in candidate_output:
+            if not r[keys[i]] in search_output[i] and not r[keys[i]] in high_p_out[i]:
+                search_output[i][r[keys[i]]] = r
+
+
+def search_models(session_token, param, search_output, high_p_out=None):
+    #merging_funcs = [merge_rests, merge_foods, merge_locs, merge_rests]
+    queries_builders = [rest_build_query, loc_build_query, food_build_query, rev_build_query]
+    models = [Restaurants, Locations, Food_Types, Reviews]
+
+    for i in range(4):
+        query = queries_builders[i](param)
+        instances = session_token.query(models[i]).filter(query)
+        instances_dict = [inst.to_dict() for inst in instances]
+
+        if high_p_out == None:
+            merge_models(search_output, instances_dict, None, i)
+        else:
+            merge_models(search_output, instances_dict, high_p_out, i)
+
 
 def search_query(params):
-    # for every param we want to build 4 jsons.
+
     params = [str(p) for p in params] # make sure its always strings
 
     whole_param = params[0]
@@ -349,21 +383,18 @@ def search_query(params):
         whole_param += " "
         whole_param += params[i]
 
-    model_searches = [search_rests]
+    #model_searches = [search_rests]
     #model_searches = [search_rests, search_locs, search_foods, search_revs]
 
     high_pri_output = [{},{},{},{}]
     search_output = [{},{},{},{}] #restaurants, locations, foodtypes, reviews
     session = Session()
 
-    for search_f in model_searches:
-        search_f(session, whole_param, high_pri_output)
+    search_models(session, whole_param, high_pri_output)
 
     for param in params:
-        for search_func in model_searches:
-            search_func(session, param, search_output, high_pri_output) # this line searches a given parameter in all attributes
-                                                            # to in a model and places all results without
-                                                            # duplicates inside of search output
+        search_models(session, param, search_output, high_pri_output)
+
     return [*high_pri_output, *search_output]
 
 # un comment to see a how to use
@@ -372,12 +403,21 @@ p = ["1431", "Cafe"] # test with a reviewer id
 results = search_query(p)
 print ("testing query:", p)
 print()
-print ("result is an array of 4 jsons, Restaurants, locations, foodtypes, reviews")
+print ("result is an array of 8 jsons")
 for dict in results:
     print ("elements found for table:", len (dict))
 
 print()
 print ("search query results")
+
+for i,dict in enumerate(results):
+    print("dict",i)
+    l = list(dict.keys())
+    if len(l) > 0:
+        for i in range (3):
+            pass
+            #print (dict[l[i]])
+
 """
 l = []
 for e in results[0]:
