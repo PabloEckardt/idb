@@ -62,6 +62,19 @@ def no_singles(l):
 
 
 def make_divisions(params):
+    """
+    Separates the given list of strings into possible groupings.
+    e.g. [a, b, c, d] would be separated to
+    [
+    [a+b, c, d],
+    [a+b+c, d],
+    [a, b+c, d],
+    [a, b+c+d],
+    etc.
+    ]
+    with spaces between words.
+    
+    """
     bubbles = []
     bigL = []
     for i in range(1, len(params)):
