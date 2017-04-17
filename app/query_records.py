@@ -217,12 +217,12 @@ def query_review(id):
     return result[0].to_dict()
 
 
-def query_restaurant_reviews(restaurant_id):
+def query_restaurant_reviews(id):
     """
     Return all reviews for the restaurant with the given id
     """
     session = Session()
-    result = session.query(Reviews).filter(Reviews.restaurant_id == restaurant_id).all()
+    result = session.query(Reviews).filter(Reviews.restaurant_id == id).all()
     result2 = [e.to_dict() for e in result]
     print(result2)
     return result2
