@@ -354,7 +354,7 @@ print ("testing query:", p)
 print()
 print ("result is an array of 8 jsons")
 for i,dict in enumerate(results):
-    print ("elements found for table:", data_names[i], "/ table:", i + 1, "/ quantity:", len(dict) )
+    print ("elements found for dict:", data_names[i], "/ dict #:", i + 1, "/ quantity:", len(dict) )
 
 
 print()
