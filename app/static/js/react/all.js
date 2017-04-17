@@ -2,7 +2,7 @@ var AllItem = React.createClass({
     render: function () {
         return (
             <a href = {"/Restaurants/" + this.props.id}>
-                <div className = "col-sm-4" id = "restaurantGrid">
+                <div className = "col-sm-4" id = "allGridItem">
                     <img src = {this.props.img_url} className="img-responsive"/>
                     <h1>{ this.props.name}</h1>
                     Address: { this.props.address }<br />
@@ -16,24 +16,195 @@ var AllItem = React.createClass({
     }
 });
 
-var AllList = React.createClass({
-
-
+var RestItem = React.createClass({
     render: function () {
+        return (
+            <a href = {"/Restaurants/" + this.props.id}>
+                <div className = "col-sm-4" id = "allGridItem">
+                    <img src = {this.props.img_url} className="img-responsive"/>
+                    <h1>{ this.props.name}</h1>
+                    Address: { this.props.address }<br />
+                    Rating: { this.props.rating } <br />
+                    Food Type: { this.props.foodtypeD } <br />
+                    Price: { this.props.price }
+
+                </div>
+            </a>
+        );
+    }
+});
+
+var LocationItem = React.createClass({
+    render: function () {
+        return (
+            <a href = {"/Locations/" + this.props.id}>
+                <div className = "col-sm-4" id = "allGridItem">
+                    <h1>{ this.props.name}</h1>
+                    Restaurant Count: { this.props.numRest }<br />
+                    Average Rating: { this.props.rating } <br />
+                    Price Ranges: { this.props.Hprice + " - " + this.props.Lprice } <br />
+                    Average Price: { this.props.avgPrice}/5
+
+                </div>
+            </a>
+        );
+    }
+});
+
+var FoodTypeItem = React.createClass({
+    render: function () {
+        return (
+            <a href = {"/Food_Types/" + this.props.id}>
+                <div className = "col-sm-4" id = "allGridItem">
+                    <img src = {this.props.img_url} className="img-responsive"/>
+                    <h1>{ this.props.name}</h1>
+                    Best Zip: { this.props.best_location }<br />
+                    Average Rating: { this.props.rating } <br />
+                    Restaurant Count: { this.props.numRest} <br />
+                    Average Price: {this.props.price}/5 <br />
+
+                </div>
+            </a>
+        );
+    }
+});
+
+var ReviewItem = React.createClass({
+    render: function () {
+        return (
+            <a href = {"/Reviews/" + this.props.id}>
+                <div className = "col-sm-4" id = "allGridItem">
+                    <div className="review_pic">
+                        <img className="aboutPic img-responsive" src = {this.props.img_url} />
+                    </div>
+                    <h1>{ this.props.name}</h1>
+                    Date of Review: {this.props.date} <br />
+                    Restaurant: {this.props.restaurant} <br />
+                    Rating Given: {this.props.rating} <br />
+                    Food Type Reviewed: {this.props.foodtype}
+
+                </div>
+            </a>
+        );
+    }
+});
+
+
+
+
+var AllList = React.createClass({
+    render: function () {
+        var count = 0;
+        console.log(this.props.elements)
         var elements = this.props.elements.map(function (element, index) {
-            return (
-                <RestItem
-                    key={index}
-                    name={element.name}
-                    rating={element.rating}
-                    address={element.address}
-                    foodtype={element.food_type}
-                    foodtypeD = {element.food_type_disp}
-                    img_url={element.img_url}
-                    id={element.id}
-                    price = {element.price}
-                />
-            );
+            count++;
+            if (count <= JSONsections[0])
+                return (
+                    <RestItem
+                        key={index}
+                        name={element.name}
+                        rating={element.rating}
+                        address={element.address}
+                        foodtype={element.food_type}
+                        foodtypeD = {element.food_type_disp}
+                        img_url={element.img_url}
+                        id={element.id}
+                        price = {element.price}
+                    />
+                );
+            else if (count <= JSONsections[1])
+                return (
+                    <LocationItem
+                        key={index}
+                        name={element.zipcode}
+                        rating={element.average_rating}
+                        numRest={element.number_restaurants}
+                        id={element.zipcode}
+                        Lprice = {element.lowest_price}
+                        Hprice = {element.highest_price}
+                        avgPrice = {element.average_price}
+                    />
+                );
+            else if (count <= JSONsections[2])
+                return (
+                    <FoodTypeItem
+                        key={index}
+                        name={element.food_type_display_name}
+                        rating={element.average_rating}
+                        best_location={element.best_location}
+                        img_url={element.image_url}
+                        id={element.food_type}
+                        numRest = {element.number_restaurants}
+                        price = {element.average_price}
+                    />
+                );
+            else if (count <= JSONsections[3])
+                return (
+                    <ReviewItem
+                        key={index}
+                        name={element.username}
+                        img_url={element.profile_picture_url}
+                        restaurant = {element.restaurant_name}
+                        rating = {element.rating}
+                        date = {element.date}
+                        id = {element.id}
+                        foodtype = {element.food_type_disp}
+                    />
+                );
+            else if (count <= JSONsections[4])
+                return (
+                    <RestItem
+                        key={index}
+                        name={element.name}
+                        rating={element.rating}
+                        address={element.address}
+                        foodtype={element.food_type}
+                        foodtypeD = {element.food_type_disp}
+                        img_url={element.img_url}
+                        id={element.id}
+                        price = {element.price}
+                    />
+                );
+            else if (count <= JSONsections[5])
+                return (
+                    <LocationItem
+                        key={index}
+                        name={element.zipcode}
+                        rating={element.average_rating}
+                        numRest={element.number_restaurants}
+                        id={element.zipcode}
+                        Lprice = {element.lowest_price}
+                        Hprice = {element.highest_price}
+                        avgPrice = {element.average_price}
+                    />
+                );
+            else if (count <= JSONsections[6])
+                return (
+                    <FoodTypeItem
+                        key={index}
+                        name={element.food_type_display_name}
+                        rating={element.average_rating}
+                        best_location={element.best_location}
+                        img_url={element.image_url}
+                        id={element.food_type}
+                        numRest = {element.number_restaurants}
+                        price = {element.average_price}
+                    />
+                );
+            else
+                return (
+                    <ReviewItem
+                        key={index}
+                        name={element.username}
+                        img_url={element.profile_picture_url}
+                        restaurant = {element.restaurant_name}
+                        rating = {element.rating}
+                        date = {element.date}
+                        id = {element.id}
+                        foodtype = {element.food_type_disp}
+                    />
+                );
+
         });
 
         var pageId = "";
@@ -70,6 +241,7 @@ var Paginator = React.createClass({
 
 // Could come from an API, LocalStorage, another component, etc...
 var elements = [];
+var JSONsections = [0,0,0,0,0,0,0,0,0,0,0,0];
 var pages = [];
 var page = 0;
 var filters = {"Price" : [], "Rating": [], "FoodType": [], "Distance": ""};
@@ -91,30 +263,33 @@ function changePage (e) {
     } else if (e == "Next") {
         if (page < pages.length - 1) {
             page += 1;
-            ReactDOM.render(<AllList elements={pages[page]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<AllList elements={pages[page]} />, document.getElementById('allGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Last") {
         if (page < pages.length - 1) {
             page = pages.length - 1;
-            ReactDOM.render(<AllList elements={pages[page]} />, document.getElementById('AllGrid'));
+            ReactDOM.render(<AllList elements={pages[page]} />, document.getElementById('allGrid'));
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     }
 }
 
 
-function loadRestGrid() {
+function loadAllGrid() {
     //console.log(elements);
-    ReactDOM.render(<h2>Loading...</h2>, document.getElementById('restGrid'));
+    ReactDOM.render(<h2>Loading...</h2>, document.getElementById('allGrid'));
     getData();
+
 }
 
 function getData() {
-    var url = "/API/Restaurants";
+    var url = "/API/All?search=";
+    var param = getParameterByName('search');
+    url += param
     //console.log("http://"+extractHostname(window.location.href)+"/API/Restaurants");
     $.getJSON( url, {
-        tags: "restaurants",
+        tags: "All",
         tagmode: "any",
         format: "json"
     })
@@ -122,20 +297,45 @@ function getData() {
             //console.log(data);
             elements = data;
             pages = [];
-
+            var currpage = [];
             // TODO: get the page number..
 
-            var count = 0;
-            for (var i = 0; i < elements.length; i += 45) {
-                pages[count] = elements.slice(i, i + 45);
-                count += 1;
+            var pageCount = 0;
+            var currCount = 0;
+            //console.log(elements);
+            var i = 0;
+            for (; i < elements.length; i++) {
+                if (i > 0)
+                    JSONsections[i] = Object.keys(elements[i]).length  + JSONsections[i-1];
+                else
+                    JSONsections[i] = Object.keys(elements[i]).length;
+
+                var keys = Object.keys(elements[i]);
+                //console.log(keys);
+                var j = 0;
+                for (; j < keys.length; j++) {
+                    currpage.push(elements[i][keys[j]]);
+                    currCount++;
+                    if (currCount == 45) {
+                        currCount = 0;
+                        pages.push(currpage);
+                        currpage = [];
+                        pageCount++;
+                    }
+                }
             }
+
+            console.log(pages);
+            // for (var i = 0; i < elements.length; i += 45) {
+            //     pages[count] = elements.slice(i, i + 45);
+            //     count += 1;
+            // }
             //console.log(elements.length);
             //console.log("SIZE UP PAGES DOWN");
             //console.log(pages);
 
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            ReactDOM.render(<AllList elements={pages[0]} />, document.getElementById('allGrid'));
         });
 
 }
@@ -285,7 +485,21 @@ function extractHostname(url) {
     return hostname;
 }
 
+// get parameters from url
+
+function getParameterByName(name, url) {
+    if (!url) {
+        url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 
 
 // start the display of elements
-loadRestGrid();
+loadAllGrid();

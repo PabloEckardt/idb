@@ -39,7 +39,6 @@ input[type=text].mainsearch {
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
-    background-image: url('searchicon.png');
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
@@ -186,6 +185,70 @@ div#reviewGrid div.thumbnail_container div.thumbnail {
 #hidePaginator {
     display: none;
 }
+
+/* Styling for all grid */
+
+div#allGridItem {
+    padding-top: 10px;
+    margin-bottom: 10px;
+    height:330px;
+    background: #eeeeee;
+    padding-bottom: 40px;
+    border: 3px solid #bbe8ee;
+    border-radius: 10px;
+}
+
+div#allGridItem img {
+    height: 150px;
+}
+
+div#allGridItem h1{
+    font-size: 1.7em;
+}
+div#allGridItem h1{
+    font-size: 1.7em;
+}
+
+@media (max-width: 1200px) {
+    div#allGridItem h1{
+        font-size: 1.4em;
+    }
+    div#allGridItem h1{
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 700px) {
+    div#allGridItem h1{
+        font-size: 1.2em;
+    }
+    div#allGridItem h1{
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 400px) {
+    div#allGridItem h1{
+        font-size: 1.1em;
+    }
+    div#allGridItem h1{
+        font-size: 1.1em;
+    }
+}
+
+
+div#allGrid div.thumbnail_container {
+    padding-bottom: 100%;
+}
+
+div#allGrid div.thumbnail_container div.thumbnail {
+    height: 150px;
+}
+
+
+
+
+
 
 /* Style for Restaurant instances */
 .flex-container {
