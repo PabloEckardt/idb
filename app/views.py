@@ -208,6 +208,11 @@ def Reviews():
     return render_template(
         "reviews.html", food_types=food_types)
 
+@views.route('/All')
+def showAll():
+    return render_template(
+        "all.html", food_types=food_types)
+
 
 @views.route('/About')
 def About():
@@ -253,7 +258,6 @@ def food_type(pk):
 def restReview(pk):
     d = query_restaurant_reviews(pk)
     return render_template("restaurant_reviews_instance.html", instance=d)
-
 
 @views.route('/Reviews/<pk>')
 def review(pk):
