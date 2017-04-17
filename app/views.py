@@ -292,3 +292,11 @@ def food_types_api():
 @views.route('/API/Locations', methods=['GET'])
 def locations_api():
     return query_all_locations(request.args.get('sortby'), request.args.get('avgrating'), request.args.get('avgprice'), request.args.get('foodtype'))
+
+
+@views.route('/API/All', methods=['GET'])
+def search_all():
+    query = request.args.get('search').split(" ")
+    return jsonify(search_query(query))
+
+

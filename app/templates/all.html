@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class = "container" style = "margin:auto;">
+    <div class="row">
+        <div class = "col-sm-2">
+            <input class = "filterMainButton" type ="button" value = "Filters" role="button" data-toggle="collapse" href="#allFilters" aria-expanded="false" aria-controls="allFilter" />
+            <br>
+            <div class = "collapse" id = "allFilters">
+                <br>
+                <a role="button" data-toggle="collapse" href="#priceFilter" aria-expanded="false" aria-controls="priceFilter">
+                    Price
+                </a><br>
+
+                <div class="collapse" id="priceFilter">
+                    <div class="btn-group" data-toggle="buttons">
+                        <input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$" />  $ <br />
+                        <input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$" />  $$ <br />
+                        <input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$$" />  $$$ <br />
+                        <input type="checkbox" onchange = "addFilter(['Price', this.value, this.checked])" value = "$$$$" />  $$$$ <br />
+                    </div>
+                </div>
+
+                <a role="button" data-toggle="collapse" href="#reviewFilter" aria-expanded="false" aria-controls="reviewFilter">
+                    Rating
+                </a> <br>
+
+                <div class="collapse" id="reviewFilter">
+                    <div class="btn-group" data-toggle="buttons">
+                        <input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "1" />  &#9733;&#9734;&#9734;&#9734;&#9734;<br />
+                        <input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "2" />  &#9733;&#9733;&#9734;&#9734;&#9734;<br />
+                        <input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "3" />  &#9733;&#9733;&#9733;&#9734;&#9734;<br />
+                        <input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "4" />  &#9733;&#9733;&#9733;&#9733;&#9734;<br />
+                        <input type="checkbox" onchange = "addFilter(['Rating', this.value, this.checked])" value = "5" />  &#9733;&#9733;&#9733;&#9733;&#9733;<br />
+                    </div>
+                </div>
+
+                <a role="button" data-toggle="collapse" href="#foodtypeFilter" aria-expanded="false" aria-controls="foodtypeFilter">
+                    Food Type
+                </a> <br>
+
+                <div class="collapse" id="foodtypeFilter">
+                    <div class="containerFoodType">
+                        {% for element in food_types %}
+                        <input type="checkbox" onchange = "addFilter(['FoodType', this.value, this.checked])" value = {{ element[0] }} /> {{element[1]}} <br />
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+                <br>
+                <input type = "button"  onclick="filterGrid()" value = "Filter!" />
+
+            </div>
+            <br>
+        </div>
+        <div style = "text-align: right;">
+            Sort By:
+            <select onChange = "sortGrid(this);" id = "sortOptions">
+                <option value="Name-L">Name - A to Z</option>
+                <option value="Name-H">Name - Z to A</option>
+                <option value="Rating-L">Rating - Low to High</option>
+                <option value="Rating-H">Rating - High to Low</option>
+                <option value="Price-L">Price - Low to High</option>
+                <option value="Price-H">Price - High to Low</option>
+            </select>
+        </div>
+        <div id = "Grid" class = "col-sm-10">
+
+
+
+            <div id = "allGrid" class = "col-sm-12">
+            </div>
+        </div>
+        <br><br><br>
+        <script src="{{ url_for('static', filename='js/react/all.js') }}" type="text/babel"></script>
+
+    </div>
+</div>
+{% endblock %}
