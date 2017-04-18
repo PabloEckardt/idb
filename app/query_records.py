@@ -335,7 +335,7 @@ def search_query(params):
 
     return [*high_pri_output, *search_output]
 
-
+"""
 # un comment to see output:
 data_names = ["high priority restaurants.", # display purposes
               "high priority locations.",
@@ -346,18 +346,6 @@ data_names = ["high priority restaurants.", # display purposes
               "foods.",
               "reviews."]
 
-
-def bridge (str,str2):
-    return str + " " + str2
-
-l = ["a","b", "c", "d"]
-
-for i in range(len(l)):
-    res = l[i]
-    for j in range (i+1,len(l)):
-        if not j == len(l):
-            res = bridge(res,l[j])
-        print (res)
 
 print ("test #####################")
 p = ["1431", "Cafe"] # test with a reviewer id
@@ -392,3 +380,7 @@ for i,dict in enumerate(results):
         print ("found: 0 results in dict")
     print()
     break
+"""
+
+
+
