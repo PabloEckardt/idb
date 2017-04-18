@@ -1,95 +1,52 @@
+function updateHaystack(input, needle) {
+    var found = false;
+    var i = 0;
+    for (;i < params.length; i++) {
+        var reg = new RegExp('(^|)(' + params[i] + ')(|$)','ig');
+        if (reg.test(input)) {
+            found = true;
+            input = input.replace(reg, '$1<span id = "highlightText">$2</span>$3');
+        }
+
+    }
+    if (found)
+        return input;
+    return null;
+}
+
 var AllItem = React.createClass({
     render: function () {
-        return (
-            <a href = {"/Restaurants/" + this.props.id}>
-                <div className = "col-sm-4" id = "allGridItem">
-                    <img src = {this.props.img_url} className="img-responsive"/>
-                    <h1>{ this.props.name}</h1>
-                    Address: { this.props.address }<br />
-                    Rating: { this.props.rating } <br />
-                    Food Type: { this.props.foodtypeD } <br />
-                    Price: { this.props.price }
+        var htmlString = '';
+        htmlString = "<div class ='text-right'>"+ this.props.type + "</div>";
+        var name = updateHaystack(this.props.name, 'cafe');
+        if (name != null)
+            htmlString += '<h1>' + name + '</h1><br>';
+        else
+            htmlString += '<h1>' + this.props.name + '</h1><br>';
+        var currElement = this.props.element;
+        var keys = Object.keys(currElement);
 
+        var j = 0;
+
+        console.log(params);
+        for (; j < keys.length; j++) {
+            var chString = String(currElement[keys[j]]);
+            if (chString != null) {
+                chString = updateHaystack(chString, 1431, params);
+                if (chString != null) {
+                    htmlString += keys[j] + ": " + chString + "<br />";
+                }
+            }
+
+        }
+        return (
+            <a href = {this.props.url}>
+                <div className = "col-sm-12" id = "allGridItem" dangerouslySetInnerHTML={{__html: htmlString}}>
                 </div>
             </a>
         );
     }
 });
-
-var RestItem = React.createClass({
-    render: function () {
-        return (
-            <a href = {"/Restaurants/" + this.props.id}>
-                <div className = "col-sm-4" id = "allGridItem">
-                    <img src = {this.props.img_url} className="img-responsive"/>
-                    <h1>{ this.props.name}</h1>
-                    Address: { this.props.address }<br />
-                    Rating: { this.props.rating } <br />
-                    Food Type: { this.props.foodtypeD } <br />
-                    Price: { this.props.price }
-
-                </div>
-            </a>
-        );
-    }
-});
-
-var LocationItem = React.createClass({
-    render: function () {
-        return (
-            <a href = {"/Locations/" + this.props.id}>
-                <div className = "col-sm-4" id = "allGridItem">
-                    <h1>{ this.props.name}</h1>
-                    Restaurant Count: { this.props.numRest }<br />
-                    Average Rating: { this.props.rating } <br />
-                    Price Ranges: { this.props.Hprice + " - " + this.props.Lprice } <br />
-                    Average Price: { this.props.avgPrice}/5
-
-                </div>
-            </a>
-        );
-    }
-});
-
-var FoodTypeItem = React.createClass({
-    render: function () {
-        return (
-            <a href = {"/Food_Types/" + this.props.id}>
-                <div className = "col-sm-4" id = "allGridItem">
-                    <img src = {this.props.img_url} className="img-responsive"/>
-                    <h1>{ this.props.name}</h1>
-                    Best Zip: { this.props.best_location }<br />
-                    Average Rating: { this.props.rating } <br />
-                    Restaurant Count: { this.props.numRest} <br />
-                    Average Price: {this.props.price}/5 <br />
-
-                </div>
-            </a>
-        );
-    }
-});
-
-var ReviewItem = React.createClass({
-    render: function () {
-        return (
-            <a href = {"/Reviews/" + this.props.id}>
-                <div className = "col-sm-4" id = "allGridItem">
-                    <div className="review_pic">
-                        <img className="aboutPic img-responsive" src = {this.props.img_url} />
-                    </div>
-                    <h1>{ this.props.name}</h1>
-                    Date of Review: {this.props.date} <br />
-                    Restaurant: {this.props.restaurant} <br />
-                    Rating Given: {this.props.rating} <br />
-                    Food Type Reviewed: {this.props.foodtype}
-
-                </div>
-            </a>
-        );
-    }
-});
-
-
 
 
 var AllList = React.createClass({
@@ -98,110 +55,86 @@ var AllList = React.createClass({
         console.log(this.props.elements)
         var elements = this.props.elements.map(function (element, index) {
             count++;
+            if (count == 1)
+                console.log(element);
             if (count <= JSONsections[0])
                 return (
-                    <RestItem
+                    <AllItem
+                        element = {element}
                         key={index}
                         name={element.name}
-                        rating={element.rating}
-                        address={element.address}
-                        foodtype={element.food_type}
-                        foodtypeD = {element.food_type_disp}
-                        img_url={element.img_url}
-                        id={element.id}
-                        price = {element.price}
+                        url={"/Restaurants/" + element.id}
+                        type="Restaurant"
                     />
                 );
             else if (count <= JSONsections[1])
                 return (
-                    <LocationItem
+                    <AllItem
+                        element = {element}
                         key={index}
                         name={element.zipcode}
-                        rating={element.average_rating}
-                        numRest={element.number_restaurants}
-                        id={element.zipcode}
-                        Lprice = {element.lowest_price}
-                        Hprice = {element.highest_price}
-                        avgPrice = {element.average_price}
+                        url={"/Locations/" + element.id}
+                        type="Location"
                     />
                 );
             else if (count <= JSONsections[2])
                 return (
-                    <FoodTypeItem
+                    <AllItem
+                        element = {element}
                         key={index}
                         name={element.food_type_display_name}
-                        rating={element.average_rating}
-                        best_location={element.best_location}
-                        img_url={element.image_url}
-                        id={element.food_type}
-                        numRest = {element.number_restaurants}
-                        price = {element.average_price}
+                        url={"/Food_Type/" + element.id}
+                        type="Food Type"
                     />
                 );
             else if (count <= JSONsections[3])
                 return (
-                    <ReviewItem
+                    <AllItem
+                        element = {element}
                         key={index}
                         name={element.username}
-                        img_url={element.profile_picture_url}
-                        restaurant = {element.restaurant_name}
-                        rating = {element.rating}
-                        date = {element.date}
-                        id = {element.id}
-                        foodtype = {element.food_type_disp}
+                        url={"/Reviews/" + element.id}
+                        type="Review"
                     />
                 );
             else if (count <= JSONsections[4])
                 return (
-                    <RestItem
+                    <AllItem
+                        element = {element}
                         key={index}
                         name={element.name}
-                        rating={element.rating}
-                        address={element.address}
-                        foodtype={element.food_type}
-                        foodtypeD = {element.food_type_disp}
-                        img_url={element.img_url}
-                        id={element.id}
-                        price = {element.price}
+                        url={"/Restaurants/" + element.id}
+                        type="Restaurant"
                     />
                 );
             else if (count <= JSONsections[5])
                 return (
-                    <LocationItem
+                    <AllItem
+                        element = {element}
                         key={index}
                         name={element.zipcode}
-                        rating={element.average_rating}
-                        numRest={element.number_restaurants}
-                        id={element.zipcode}
-                        Lprice = {element.lowest_price}
-                        Hprice = {element.highest_price}
-                        avgPrice = {element.average_price}
+                        url={"/Locations/" + element.id}
+                        type="Location"
                     />
                 );
             else if (count <= JSONsections[6])
                 return (
-                    <FoodTypeItem
+                    <AllItem
+                        element = {element}
                         key={index}
                         name={element.food_type_display_name}
-                        rating={element.average_rating}
-                        best_location={element.best_location}
-                        img_url={element.image_url}
-                        id={element.food_type}
-                        numRest = {element.number_restaurants}
-                        price = {element.average_price}
+                        url={"/Food_Types/" + element.id}
+                        type="Food Type"
                     />
                 );
             else
                 return (
-                    <ReviewItem
+                    <AllItem
+                        element = {element}
                         key={index}
                         name={element.username}
-                        img_url={element.profile_picture_url}
-                        restaurant = {element.restaurant_name}
-                        rating = {element.rating}
-                        date = {element.date}
-                        id = {element.id}
-                        foodtype = {element.food_type_disp}
+                        url={"/Reviews/" + element.id}
+                        type="Review"
                     />
                 );
 
@@ -213,9 +146,10 @@ var AllList = React.createClass({
         } else {
             pageId = "hidePaginator";
         }
-
+        var showRes = URLparam;
         return (
             <div className = "row">
+                <h1> Results for: {showRes} </h1>
                 <Paginator pageId = {pageId} location = "top"/>
                 {elements}
                 <Paginator pageId = {pageId} location = "bottom"/>
@@ -245,6 +179,8 @@ var JSONsections = [0,0,0,0,0,0,0,0,0,0,0,0];
 var pages = [];
 var page = 0;
 var filters = {"Price" : [], "Rating": [], "FoodType": [], "Distance": ""};
+var URLparam = '';
+var params = [];
 
 function changePage (e) {
     //console.log(e);
@@ -285,8 +221,9 @@ function loadAllGrid() {
 
 function getData() {
     var url = "/API/All?search=";
-    var param = getParameterByName('search');
-    url += param
+    URLparam = getParameterByName('search');
+    url += URLparam;
+    params = URLparam.split(" ");
     //console.log("http://"+extractHostname(window.location.href)+"/API/Restaurants");
     $.getJSON( url, {
         tags: "All",
