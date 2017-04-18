@@ -337,7 +337,6 @@ def search_query(params):
 
 
 # un comment to see output:
-"""
 data_names = ["high priority restaurants.", # display purposes
               "high priority locations.",
               "high priority foods.",
@@ -346,6 +345,19 @@ data_names = ["high priority restaurants.", # display purposes
               "locations.",
               "foods.",
               "reviews."]
+
+
+def bridge (str,str2):
+    return str + " " + str2
+
+l = ["a","b", "c", "d"]
+
+for i in range(len(l)):
+    res = l[i]
+    for j in range (i+1,len(l)):
+        if not j == len(l):
+            res = bridge(res,l[j])
+        print (res)
 
 print ("test #####################")
 p = ["1431", "Cafe"] # test with a reviewer id
@@ -367,9 +379,16 @@ for i,dict in enumerate(results):
     if len(l) > 0:
         print("found:", len(l),  "results in dict", data_names[i])
         for j in range (min(len(l), 3)):
-            pass
             print (dict[l[j]])
+
+            print()
+            print()
+            print("Attempting to find matches")
+            #s = Session()
+            #attempt = s.query(Restaurants).filter(Restaurants.id == dict[l[j]]["id"]).first()
+
+            print ("attempt:", attempt.keys())
     else:
         print ("found: 0 results in dict")
     print()
-"""
+    break
