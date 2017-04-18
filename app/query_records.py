@@ -3,12 +3,13 @@
 # pylint: disable = bad-whitespace
 # pylint: disable = invalid-name
 # pylint: disable = missing-docstring
+
 import json
+from .divide_parameters import *
 from app import *
 from flask import Flask, request, jsonify
 from app.models import Restaurants, Locations, Food_Types, Reviews, Base
 from sqlalchemy import or_
-
 # Query all instances
 
 
@@ -317,23 +318,39 @@ def search_models(session_token, param, search_output, high_p_out=None):
 
 def search_query(params):
 
-    params = [str(p) for p in params] # make sure its always strings
+    params = [str(p) for p in params]           # make sure its always strings
 
-    whole_param = params[0]
+    whole_param = params[0]                     # assume all strings are 1 argument
     for i in range(1,len(params)):
         whole_param += " "
         whole_param += params[i]
 
-    high_pri_output = [{},{},{},{}]
-    search_output = [{},{},{},{}] #restaurants, locations, foodtypes, reviews
+    param_groups = make_divisions(params)       # make all logical groups from a set
+                                                # of strings, exclude last 2 cases
+
+    high_pri_output = [{},{},{},{}]             # Results that contain >1 matching
+                                                # strings ordered in rest,loc,food,rev
+
+    search_output = [{},{},{},{}]               # Any result containing 1 matching string
+
     session = Session()
 
-    search_models(session, whole_param, high_pri_output)
+    search_models(session, whole_param, high_pri_output) # do search for whole string assumption
+
+    for search in param_groups:
+        search_models(session,search, high_pri_output)   # do search with second weakest assumption
 
     for param in params:
-        search_models(session, param, search_output, high_pri_output)
+        search_models(session, param, search_output, high_pri_output) # do search for any matches
 
     return [*high_pri_output, *search_output]
+
+
+# test sub divs
+"""
+l = ["a","b","c","d","e","f","g"] 
+print (make_divisions(l))
+"""
 
 """
 # un comment to see output:

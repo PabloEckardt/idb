@@ -52,14 +52,25 @@ def captureRight(b,params):
 # print (captureRight([3]))
 
 
-def clean(old):
+def clean_dups(old):
     new = []
     d = {}
     for e in old:
-        if not e in d:
-            d[e] = 1
-            new.append(e)
+        for q in e:
+            if not q in d:
+                d[q] = 1
+                new.append(*q)
     return new
+
+def no_singles(l):
+    r = []
+    if " " in l:
+        r.append(l)
+    if len(r) == 0:
+        return None
+    return tuple(r)
+
+
 
 def make_divisions(params):
     bubbles = []
@@ -70,21 +81,33 @@ def make_divisions(params):
             bubbles[i-1].append(j)
 
         count = 0
-        while bubbles[i-1][len(bubbles[i-1]) - 1] < len(params): #trippy AF while right bubble component hasn't reached past end
+
+        while bubbles[i-1][len(bubbles[i-1]) - 1] < len(params):
             l = []
 
-            if not captureLeft(bubbles[i-1]) == None:
-               l.append(captureLeft(bubbles[i-1]))
+            left = captureLeft(bubbles[i-1], params)
+            if not left == None:
+                left = no_singles(left)
+                if not left == None:
+                    l.append(left)
 
-            l.append(captureBubble(bubbles[i-1]))
+            mid = captureBubble(bubbles[i-1], params)
+            if not mid == None:
+                mid = no_singles(mid)
+                if not mid == None:
+                    l.append(mid)
 
-            if not captureRight(bubbles[i-1]) == None:
-                l.append(captureRight(bubbles[i-1]))
+            right = captureRight(bubbles[i-1], params)
+            if not right == None:
+                right = no_singles(right)
+                if not right == None:
+                    l.append(right)
 
-            print(l)
             bigL.append(tuple(l))
 
             bubbles[i-1] = [k + 1 for k in bubbles[i-1]]
             count += 1
 
-    return clean(bigL)
+    bigL = clean_dups(bigL)
+
+    return bigL
