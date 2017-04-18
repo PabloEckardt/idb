@@ -28,7 +28,7 @@ var AllItem = React.createClass({
 
         var j = 0;
 
-        console.log(params);
+        //console.log(params);
         for (; j < keys.length; j++) {
             var chString = String(currElement[keys[j]]);
             if (chString != null) {
@@ -51,12 +51,10 @@ var AllItem = React.createClass({
 
 var AllList = React.createClass({
     render: function () {
-        var count = 0;
-        console.log(this.props.elements)
+        var count = page * perPage;
+        //console.log(this.props.elements)
         var elements = this.props.elements.map(function (element, index) {
             count++;
-            if (count == 1)
-                console.log(element);
             if (count <= JSONsections[0])
                 return (
                     <AllItem
@@ -73,7 +71,7 @@ var AllList = React.createClass({
                         element = {element}
                         key={index}
                         name={element.zipcode}
-                        url={"/Locations/" + element.id}
+                        url={"/Locations/" + element.zipcode}
                         type="Location"
                     />
                 );
@@ -83,11 +81,11 @@ var AllList = React.createClass({
                         element = {element}
                         key={index}
                         name={element.food_type_display_name}
-                        url={"/Food_Type/" + element.id}
+                        url={"/Food_Type/" + element.food_type}
                         type="Food Type"
                     />
                 );
-            else if (count <= JSONsections[3])
+            else if (count <= JSONsections[3]) {
                 return (
                     <AllItem
                         element = {element}
@@ -96,7 +94,7 @@ var AllList = React.createClass({
                         url={"/Reviews/" + element.id}
                         type="Review"
                     />
-                );
+                );}
             else if (count <= JSONsections[4])
                 return (
                     <AllItem
@@ -113,7 +111,7 @@ var AllList = React.createClass({
                         element = {element}
                         key={index}
                         name={element.zipcode}
-                        url={"/Locations/" + element.id}
+                        url={"/Locations/" + element.zipcode}
                         type="Location"
                     />
                 );
@@ -123,7 +121,7 @@ var AllList = React.createClass({
                         element = {element}
                         key={index}
                         name={element.food_type_display_name}
-                        url={"/Food_Types/" + element.id}
+                        url={"/Food_Types/" + element.food_type}
                         type="Food Type"
                     />
                 );
@@ -178,6 +176,7 @@ var elements = [];
 var JSONsections = [0,0,0,0,0,0,0,0,0,0,0,0];
 var pages = [];
 var page = 0;
+var perPage = 45;
 var filters = {"Price" : [], "Rating": [], "FoodType": [], "Distance": ""};
 var URLparam = '';
 var params = [];
@@ -187,28 +186,23 @@ function changePage (e) {
     if (e == "First") {
         if (page != 0) {
             page = 0;
-            ReactDOM.render(<AllList elements={pages[0]} />, document.getElementById('allGrid'));
-            $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Prev") {
         if (page != 0) {
             page -= 1;
-            ReactDOM.render(<AllList elements={pages[page]} />, document.getElementById('allGrid'));
-            $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Next") {
         if (page < pages.length - 1) {
             page += 1;
-            ReactDOM.render(<AllList elements={pages[page]} />, document.getElementById('allGrid'));
-            $('html, body').animate({ scrollTop: 0 }, 'fast');
         }
     } else if (e == "Last") {
         if (page < pages.length - 1) {
             page = pages.length - 1;
-            ReactDOM.render(<AllList elements={pages[page]} />, document.getElementById('allGrid'));
-            $('html, body').animate({ scrollTop: 0 }, 'fast');
+
         }
     }
+    ReactDOM.render(<AllList elements={pages[page]} />, document.getElementById('allGrid'));
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
 }
 
 
@@ -253,7 +247,7 @@ function getData() {
                 for (; j < keys.length; j++) {
                     currpage.push(elements[i][keys[j]]);
                     currCount++;
-                    if (currCount == 45) {
+                    if (currCount == perPage) {
                         currCount = 0;
                         pages.push(currpage);
                         currpage = [];
@@ -261,7 +255,7 @@ function getData() {
                     }
                 }
             }
-
+            console.log(JSONsections);
             console.log(pages);
             // for (var i = 0; i < elements.length; i += 45) {
             //     pages[count] = elements.slice(i, i + 45);
