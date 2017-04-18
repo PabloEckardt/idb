@@ -1,10 +1,7 @@
-params = ["Taco", "Bell", "William", "Cannon"]
-bubbles = []
-
 def bridge(s1,s2):
     return s1 + " " + s2
 
-def captureBubble(b):
+def captureBubble(b,params):
 
     if len(b) > 1:
         limit = b[len(b)-1]
@@ -22,7 +19,7 @@ def captureBubble(b):
 # print (captureBubble([0,1]))
 # print (captureBubble([0,1,2]))
 
-def captureLeft(b):
+def captureLeft(b,params):
     lowest = b[0]
     if lowest == 0:
         return None
@@ -38,7 +35,7 @@ def captureLeft(b):
 # print (captureLeft([2,3]))
 # print (captureLeft([3]))
 
-def captureRight(b):
+def captureRight(b,params):
     highest = b[len(b) - 1]
     if highest == len(params) - 1:
         return None
@@ -64,7 +61,8 @@ def clean(old):
             new.append(e)
     return new
 
-def make_divisions():
+def make_divisions(params):
+    bubbles = []
     bigL = []
     for i in range (1,len(params)):
         bubbles.append([])
