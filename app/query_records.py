@@ -35,7 +35,7 @@ def query_all_restaurants(sortby, rating, price, foodtype, name, id):
         foodtypes = foodtype.split(",")
         fQ = []
         for a in foodtypes:
-            fQ.append(Restaurants.food_type == a)
+            fQ.append(Restaurants.food_type.like('%' + a + '%'))
         if len(fQ) > 0:
             queries.append(or_(*fQ))
 
@@ -85,7 +85,7 @@ def query_all_locations(sortby, avgrating, avgprice, foodtype):
         foodtypes = foodtype.split(",")
         fQ = []
         for a in foodtypes:
-            fQ.append(Locations.popular_food_type == a)
+            fQ.append(Locations.popular_food_type.like('%' + a + '%'))
         if len(fQ) > 0:
             queries.append(or_(*fQ))
 
@@ -120,7 +120,7 @@ def query_all_food_types(sortby, avgrating, avgprice, foodtype):
         foodtypes = foodtype.split(",")
         fQ = []
         for a in foodtypes:
-            fQ.append(Food_Types.food_type == a)
+            fQ.append(Food_Types.food_type.like('%' + a + '%'))
         if len(fQ) > 0:
             queries.append(or_(*fQ))
 
@@ -148,7 +148,7 @@ def query_all_reviews(sortby, rating, hasimg, foodtype, id):
         foodtypes = foodtype.split(",")
         fQ = []
         for a in foodtypes:
-            fQ.append(Reviews.food_type == a)
+            fQ.append(Reviews.food_type.like('%' + a + '%'))
         if len(fQ) > 0:
             queries.append(or_(*fQ))
     if hasimg != None:
