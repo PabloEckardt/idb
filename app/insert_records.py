@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+# pylint: disable = bad-whitespace
+# pylint: disable = invalid-name
+# pylint: disable = missing-docstring
 # import our models
 try:
     from app.models import Restaurants, Locations, Food_Types, Reviews, Base
@@ -6,6 +11,7 @@ except ImportError:
 
 
 def add_restaurant(
+
     session_obj,
     id,
     name,
@@ -25,7 +31,10 @@ def add_restaurant(
     img_url,
     *food_types
 ):
-
+    """
+    Adds a restaurant with the provided variables to the
+    provided database.
+    """
     new_restaurant = Restaurants(
         id=id,
         name=name,
@@ -68,6 +77,10 @@ def add_location(
     number_restaurants
 ):
 
+    """
+    Adds a location with the provided variables to the
+    provided database.
+    """
     new_location = Locations(
         zipcode=zipcode,
         average_rating=average_rating,
@@ -95,7 +108,10 @@ def add_food_type(session_obj,
                   highest_rated_restaurant,
                   best_location
                   ):
-
+    """
+    Adds a food type with the provided variables to the
+    provided database.
+    """
     new_food_type = Food_Types(
         food_type=food_type,
         food_type_display_name=food_type_display_name,
@@ -128,6 +144,10 @@ def add_review(
     zipcode
 ):
 
+    """
+    Adds a review with the provided variables to the
+    provided database.
+    """
     # I realized that having zipcode and restaurant id is wasteful.
     new_review = Reviews(
         restaurant_id=restaurant_id,

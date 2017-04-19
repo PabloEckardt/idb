@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+
+# pylint: disable = bad-whitespace
+# pylint: disable = invalid-name
+# pylint: disable = missing-docstring
+
 from app.insert_records import *
 from os import listdir
 from os.path import isfile, join
@@ -6,6 +12,9 @@ import json
 
 
 def add_restaurants(flask_app):
+    """
+    Populates the app with restaurants
+    """
     session_token = app.Session()
     default = "/static/img/default.jpg"
     with open(flask_app.config["REVIEWS"], "r") as rj:
@@ -54,6 +63,9 @@ def add_restaurants(flask_app):
 
 
 def add_reviews(flask_app):
+    """
+    Populates the app with reviews
+    """
     session_token = app.Session()
     default = "/static/img/default.jpg"
     with open(flask_app.config["REVIEWS"], "r") as rj:
@@ -92,6 +104,9 @@ def loc_find_avg_rating(l):
 
 
 def loc_find_avg_price(l):
+    """
+    Finds the average price of all locations in the provided list
+    """
     avg = 0.0
     rest_no = len(l)
     for id in l:
@@ -105,7 +120,13 @@ def loc_find_avg_price(l):
 
 
 def loc_find_hi_lo_price(l):
-
+    """
+    Finds the high highest price, lowest price,
+    most popular restaurant, and highest rated restaurant
+    from the provided location model.
+    Returns the following list:
+    [highest_price, lowest_price, most_popular_restaurant_key, highest_rated_restaurant_key]
+    """ 
     hi = 1
     lo = 4
     prices = {1: "$", 2: "$$", 3: "$$$", 4: "$$$$"}
@@ -134,6 +155,9 @@ def loc_find_hi_lo_price(l):
 
 
 def loc_find_popular_food_type(l):
+    """
+    Returns the name of the food type that is most popular in the provided location model.
+    """
     cats = {}
     cat = l[list(l.keys())[0]]["categories"][0]["alias"]
     highest = 0
@@ -153,6 +177,9 @@ def loc_find_popular_food_type(l):
 
 
 def add_locations(flask_app):
+    """
+    Populates the app with locations.
+    """
     session_token = app.Session()
     with open(flask_app.config["LOCATIONS"], "r") as l:
         locs = json.load(l)
@@ -177,6 +204,9 @@ def add_locations(flask_app):
 
 
 def find_avg_price(l):
+    """
+    Returns the average price of all objects in the provided list.
+    """
     price = 0.0
     rest_no = len(l)
     for dict in l:
@@ -190,7 +220,9 @@ def find_avg_price(l):
 
 
 def find_avg_rating(l):
-
+    """
+    Finds average rating of all objects in the provided list.
+    """
     rating = 0.0
     rest_no = len(l)
     for dict in l:
@@ -200,7 +232,9 @@ def find_avg_rating(l):
 
 
 def find_img_url(food_type, img_list):
-
+    """
+    Returns an image url of the given food type from the given list if images.
+    """
     if food_type in img_list:
         return "/static/img/" + food_type + ".jpg"
     else:
@@ -208,6 +242,10 @@ def find_img_url(food_type, img_list):
 
 
 def find_highest_rated_r(rl):
+    """
+    Returns the key of the highest rated restaurant
+    from the given list.
+    """
     rating = 1
     highest_rate_no = 1
     best = ""

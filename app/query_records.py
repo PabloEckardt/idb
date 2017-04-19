@@ -14,6 +14,15 @@ from sqlalchemy import or_
 
 
 def query_all_restaurants(sortby, rating, price, foodtype, name, id):
+    """
+    Returns a list of restaurants filtered for the given qualities.
+    sortby - the attribute by which to sort the results. Defaults to "name".
+    rating - (int) the desired rating
+    price - (string) the desired price, formatted as a string of $'s
+    foodtype - (string) the desired name of the foodtype
+    name - (string) the desired restaurant name
+    id - the desired restaurant id
+    """
     session = Session()
     if sortby is None:
         sortby = "name"
@@ -62,6 +71,13 @@ def query_all_restaurants(sortby, rating, price, foodtype, name, id):
 
 
 def query_all_locations(sortby, avgrating, avgprice, foodtype):
+    """
+    Returns a list of locations based on given attributes.
+    sortby - attribute by which to sort, defaults to zipcode
+    avgrating - (double) desired average rating
+    avgprice - (double) desired average price
+    foodtype - (string) desired food type
+    """
     session = Session()
     if sortby is None:
         sortby = "zipcode"
@@ -97,6 +113,13 @@ def query_all_locations(sortby, avgrating, avgprice, foodtype):
 
 
 def query_all_food_types(sortby, avgrating, avgprice, foodtype):
+    """
+    Returns a list of food types based on given attributes.
+    sortby - attribute by which to sort, defaults to food type
+    avgrating - (double) desired average rating
+    avgprice - (double) desired average price
+    foodtype - (string) desired food type
+    """
     session = Session()
     if sortby is None:
         sortby = "food_type"
@@ -132,7 +155,16 @@ def query_all_food_types(sortby, avgrating, avgprice, foodtype):
 
 
 def query_all_reviews(sortby, rating, hasimg, foodtype, id):
-    if sortby is None:
+
+    """
+    Returns a list of reviews with the desired attributes.
+    sortby - attribute by which to sort, defaults to username
+    rating - (int) the desired rating
+    hasimg - (boolean) whether or not the returned review author has a profile picture
+    foodtype - (string) the desired food type
+    id - (int) the desired review id
+    """
+    if sortby == None:
         sortby = "username"
     session = Session()
 
@@ -167,6 +199,9 @@ def query_all_reviews(sortby, rating, hasimg, foodtype, id):
 
 
 def query_restaurant(id):
+    """
+    Return the restaurant with the given id
+    """
     session = Session()
     result = session.query(Restaurants).filter(Restaurants.id == id).all()
     assert (len(result) == 1)
@@ -174,6 +209,9 @@ def query_restaurant(id):
 
 
 def query_review(id):
+    """
+    Return the review with the given id
+    """
     session = Session()
     result = session.query(Reviews).filter(Reviews.id == id).all()
     assert (len(result) == 1)
@@ -181,6 +219,9 @@ def query_review(id):
 
 
 def query_restaurant_reviews(id):
+    """
+    Return all reviews for the restaurant with the given id
+    """
     session = Session()
     result = session.query(Reviews).filter(Reviews.restaurant_id == id).all()
     result2 = [e.to_dict() for e in result]
@@ -189,6 +230,9 @@ def query_restaurant_reviews(id):
 
 
 def query_food_type(food_type):
+    """
+    Return the food type with the given name.
+    """
     session = Session()
     result = session.query(Food_Types).filter(
         Food_Types.food_type == food_type).all()
@@ -202,6 +246,9 @@ def query_food_type(food_type):
 
 
 def query_location(zipcode):
+    """
+    Return the location with the given zip code.
+    """
     session = Session()
     result = session.query(Locations).filter(
         Locations.zipcode == zipcode).all()
