@@ -4,7 +4,6 @@
 # pylint: disable = invalid-name
 # pylint: disable = missing-docstring
 
-import json
 from .divide_parameters import *
 from app import *
 from flask import Flask, request, jsonify
@@ -259,6 +258,11 @@ def query_location(zipcode):
 # Searching via arbitrary parameters
 
 def rest_build_query(param):
+    """
+    :param string user is using to search: 
+    :return a list of queries adept to the Restaurant model: 
+    Some queries make sense to look into substrings
+    """
     rest_queries = []
     if (param.isdigit()):
         rest_queries.append(Restaurants.location == int(param))
@@ -285,6 +289,11 @@ def rest_build_query(param):
 
 
 def loc_build_query(param):
+    """
+    :param  string user is using to search: 
+    :return a list of queries adept to the Locations model: 
+    Some queries make sense to look into substrings
+    """
     query = []
     if (param.isdigit()):
         query.append(Locations.average_rating == float(param))
@@ -302,6 +311,11 @@ def loc_build_query(param):
 
 
 def food_build_query(param):
+    """
+    :param  string user is using to search: 
+    :return a list of queries adept to the Food_Types model: 
+    Some queries make sense to look into substrings
+    """
     query = []
     if (param.isdigit()):
         query.append(Food_Types.average_price == float(param))
@@ -319,6 +333,11 @@ def food_build_query(param):
 
 
 def rev_build_query(param):
+    """
+    :param  string user is using to search: 
+    :return a list of queries adept to the Reviews model: 
+    Some queries make sense to look into substrings
+    """
     query = []
     if (param.isdigit()):
         query.append(Reviews.id == int(param))
@@ -340,6 +359,13 @@ def rev_build_query(param):
 
 
 def merge_models(search_output, candidate_output, high_p_out=None, i=None):
+    """
+    :param search_output: Where caller expects results without duplicates
+    :param candidate_output: Output before checking for duplicates
+    :param high_p_out: search_output compares against this.
+           Set of results to be shown first.
+    :return: None
+    """
     # Eliminate duplicates
     keys = ["id", "zipcode", "food_type", "id"]
 
@@ -355,6 +381,13 @@ def merge_models(search_output, candidate_output, high_p_out=None, i=None):
 
 
 def search_models(session_token, param, search_output, high_p_out=None):
+    """
+    :param session_token: Alchemy Session 
+    :param param: Simplified search keyword
+    :param search_output: base priority search results
+    :param high_p_out: high priority search results
+    :return: None, functions has effect on parameters
+    """
     queries_builders = [rest_build_query, loc_build_query,
                         food_build_query, rev_build_query]
     models = [Restaurants, Locations, Food_Types, Reviews]
@@ -371,7 +404,12 @@ def search_models(session_token, param, search_output, high_p_out=None):
 
 
 def search_query(params):
-
+    """
+    :params: List of strings user passed to search
+    :return: list of 8 dictionaries with return values first 4 dicts
+             are higher priority, meaning they should be displayed first
+             the other 4 are basic results
+    """
     params = [str(p) for p in params]           # make sure its always strings
 
     # assume all strings are 1 argument
