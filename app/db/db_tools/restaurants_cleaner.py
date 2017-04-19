@@ -11,9 +11,9 @@ m = {}
 new_mega = {}
 rejects_list = []
 
-with open ("mega.json", "r") as mega:
+with open("mega.json", "r") as mega:
     m = json.load(mega)
-    with open ("rejects.txt", "r") as r:
+    with open("rejects.txt", "r") as r:
         rejects_list = list(r.read().splitlines())
 
     for key in m:
@@ -28,13 +28,13 @@ with open ("mega.json", "r") as mega:
             new_mega[key] = m[key]
 
 
-with open ("deleted_from_mega.txt", "w") as dfm:
+with open("deleted_from_mega.txt", "w") as dfm:
     print("len mega", len(m))
     print("len new mega", len(new_mega))
-    print ("deleted", len(rejects_ids), "restaurants")
+    print("deleted", len(rejects_ids), "restaurants")
     for e in rejects_ids:
-        s = e+","+ m[e]["name"]+ ","
-        print (s, end="")
+        s = e + "," + m[e]["name"] + ","
+        print(s, end="")
         dfm.write(s.encode('utf-8'))
         for cat in m[e]["categories"]:
             s = cat["title"] + ","
@@ -43,6 +43,5 @@ with open ("deleted_from_mega.txt", "w") as dfm:
         print("")
         dfm.write("\n")
 
-with open ("new_mega.json", "w") as n_m:
-    json.dump(new_mega,n_m, indent=4 )
-
+with open("new_mega.json", "w") as n_m:
+    json.dump(new_mega, n_m, indent=4)

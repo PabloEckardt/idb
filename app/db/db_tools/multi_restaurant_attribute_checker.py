@@ -5,13 +5,13 @@ with open("db/restaurants.json", "r") as f:
 
 for e in d.keys():
     # Test for not having price in restaurants
-    #try:
+    # try:
     #    i = d[e]["price"]
-    #except KeyError:
+    # except KeyError:
     #    print("key ", e, "doesnt have price")
 
     # Test for not having zip - replaced with 78704
-    #if d[e]["location"]["zip_code"] == "":
+    # if d[e]["location"]["zip_code"] == "":
     #    print(e, "doesn't have a zip")
 
     # Test for categories - replaced with pizza

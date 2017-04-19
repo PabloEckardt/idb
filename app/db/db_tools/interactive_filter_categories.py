@@ -5,10 +5,10 @@ import json
 
 food_types = {}
 l = []
-with open ("food_type.json", "r") as ft:
+with open("food_type.json", "r") as ft:
     food_types = json.load(ft)
     for key in food_types:
-        print (key + "?")
+        print(key + "?")
         i = raw_input()
         if i == 'n':
             l.append(key)
@@ -16,8 +16,8 @@ with open ("food_type.json", "r") as ft:
             pass
 
 for e in l:
-    print (e)
+    print(e)
 
 with open("rejects.txt", "w") as f2:
     for e in l:
-        f2.write(e+"\n")
+        f2.write(e + "\n")

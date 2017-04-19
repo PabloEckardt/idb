@@ -33,9 +33,12 @@ def add_restaurants(flask_app):
 
                 price = None if not "price" in rest_dict.keys(
                 ) else rest_dict["price"]
-                addr = rest_dict["location"]["address1"] if not rest_dict["location"]["address1"] == "" else "No Entry"
-                phone = rest_dict["display_phone"] if not rest_dict["display_phone"] == "" else "No Entry"
-                img_url = default if rest_dict["image_url"] == "" else rest_dict["image_url"]
+                addr = rest_dict["location"]["address1"] if not \
+                    rest_dict["location"]["address1"] == "" else "No Entry"
+                phone = rest_dict["display_phone"] if not \
+                    rest_dict["display_phone"] == "" else "No Entry"
+                img_url = default if rest_dict["image_url"] == "" \
+                    else rest_dict["image_url"]
 
                 add_restaurant(
                     session_token,
@@ -72,7 +75,8 @@ def add_reviews(flask_app):
             for k in r:
                 rev_list = r[k]
                 for rev_dict in rev_list:
-                    img_url = default if rev_dict["user"]["image_url"] == None else rev_dict["user"]["image_url"]
+                    img_url = default if rev_dict["user"]["image_url"] is None\
+                        else rev_dict["user"]["image_url"]
                     add_review(
                         session_token,
                         k,  # rest id
@@ -273,9 +277,10 @@ def find_best_location(rl, ft):
         for dict in rl:
             if "zip_code" in dict["location"].keys():
                 return dict["location"]["zip_code"]
-        print (
-            "WARNING: could not determine the best location for food type, FOOD_TYPE:", ft)
-        print ("seting up default 78704 for:", ft)
+        print(
+            "WARNING: could not determine the best location"
+            " for food type, FOOD_TYPE:", ft)
+        print("seting up default 78704 for:", ft)
         return "78704"
 
 

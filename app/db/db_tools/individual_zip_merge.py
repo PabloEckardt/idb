@@ -11,7 +11,8 @@ for zipcode in zipcodes.zipCodes:
     with open(s, "r") as f:
         zip_data = json.load(f)
     for key in zip_data.keys():
-        latlon = (zip_data[key]["coordinates"]["latitude"], zip_data[key]["coordinates"]["longitude"])
+        latlon = (zip_data[key]["coordinates"]["latitude"],
+                  zip_data[key]["coordinates"]["longitude"])
         if not latlon in latlons:
             mega[count] = zip_data[key]
             latlons[latlon] = True
