@@ -118,8 +118,19 @@ versions:
 	@echo
 	$(PIP) list
 
+autopepNoneComparisons:
+	$(AUTOPEP8) . --a --select=E711 --in-place --recursive --exclude ./venv >autopep.out
+
+autopepMaxCharLine:
+	$(AUTOPEP8) . --a --select=E501 --max-line-length=80 --in-place --recursive --exclude ./venv >autopep.out
+
+autopepCharSpaceComments:
+	$(AUTOPEP8) . --a --select=E265 --max-line-length=80 --in-place --recursive --exclude ./venv >autopep.out
+
 pretty:
 	$(AUTOPEP8) . --in-place --recursive --verbose --exclude ./venv
 
+pretty?:
+	$(AUTOPEP8) . --diff --recursive --verbose --exclude ./venv --pep8-passes 2000 > autopep.out
 
 

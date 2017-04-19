@@ -1,0 +1,11 @@
+--- original/./app/query_records.py
++++ fixed/./app/query_records.py
+@@ -302,7 +302,7 @@
+     else:
+         for r in candidate_output:
+             if not r[keys[i]] in search_output[i] and not r[keys[i]
+-                ] in high_p_out[i]:
++                                                            ] in high_p_out[i]:
+                 search_output[i][r[keys[i]]] = r
+ 
+ 

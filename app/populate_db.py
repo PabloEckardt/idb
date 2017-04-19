@@ -60,7 +60,7 @@ def add_reviews(flask_app):
             for k in r:
                 rev_list = r[k]
                 for rev_dict in rev_list:
-                    img_url = default if rev_dict["user"]["image_url"] == None else rev_dict["user"]["image_url"]
+                    img_url = default if rev_dict["user"]["image_url"] is None else rev_dict["user"]["image_url"]
                     add_review(
                         session_token,
                         k,  # rest id
@@ -235,9 +235,9 @@ def find_best_location(rl, ft):
         for dict in rl:
             if "zip_code" in dict["location"].keys():
                 return dict["location"]["zip_code"]
-        print (
+        print(
             "WARNING: could not determine the best location for food type, FOOD_TYPE:", ft)
-        print ("seting up default 78704 for:", ft)
+        print("seting up default 78704 for:", ft)
         return "78704"
 
 

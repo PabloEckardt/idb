@@ -137,7 +137,7 @@ def search(bearer_token, term, location, offset):
         'limit': SEARCH_LIMIT,
         'offset': offset
     }
-    print (url_params)
+    print(url_params)
     return request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
 
 
@@ -189,19 +189,20 @@ def main():
     parser.add_argument("-f", "--firstIdx", dest="first", default=0, type=int, help="Idx to start at\
     in the zipcodes list (default: 0)")
 
-    parser.add_argument("-s", "--secondIdx", dest="second", default=len(zipCodes)-1, type=int,
-    help="Idx to end at in the zipcodes list (default: len(zipCodes)-1)")
+    parser.add_argument("-s", "--secondIdx", dest="second", default=len(zipCodes) - 1, type=int,
+                        help="Idx to end at in the zipcodes list (default: len(zipCodes)-1)")
 
     args = parser.parse_args()
 
-    for i in range(args.first, args.second+1):
+    for i in range(args.first, args.second + 1):
         zipcode = zipCodes[i]
         offset = 0
         restaurants = {}
         count = 0
         while offset != 1000:
             try:
-                businesses = query_api("restaurants", "Austin, TX, " + str(zipcode) + ", United States", offset)
+                businesses = query_api(
+                    "restaurants", "Austin, TX, " + str(zipcode) + ", United States", offset)
                 if not businesses:
                     break
                 for e in businesses:
@@ -218,8 +219,9 @@ def main():
                 )
             offset += 50
         count = 0
-        with open (str(zipcode)+".json", "w") as f:
-            json.dump(restaurants, f, indent = 4)
+        with open(str(zipcode) + ".json", "w") as f:
+            json.dump(restaurants, f, indent=4)
+
 
 if __name__ == '__main__':
     main()

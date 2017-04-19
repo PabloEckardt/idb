@@ -7,9 +7,8 @@ with open("restaurants.json", "w") as new_mega:
     new = {}
     with open("new_mega.json", "r") as old_mega:
         old = json.load(old_mega)
-        with open("reviews.json","r") as reviews:
+        with open("reviews.json", "r") as reviews:
             r = json.load(reviews)
-
 
             print("len old", len(old))
             l1 = len(old)
@@ -23,6 +22,3 @@ with open("restaurants.json", "w") as new_mega:
             print("len new", len(new))
             print("count is:", count, "diff", l1 - l2)
         json.dump(old, new_mega, indent=4)
-
-
-
