@@ -9,7 +9,7 @@ zips = {}
 
 for r in mega.keys():
     curr_zip = mega[r]["location"]["zip_code"]
-    #print(curr_zip)
+    # print(curr_zip)
     if curr_zip != "":
         if not curr_zip in zips.keys():
             zips[curr_zip] = {r: mega[r]}

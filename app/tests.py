@@ -59,7 +59,7 @@ class test_db (TestCase):
         )
 
         assert not (self.session_token.query(Restaurants) is None)
-        print ("Passed Test1")
+        print("Passed Test1")
 
     def test_2_Restaurants_manual_integrity(self):
         '''
