@@ -233,7 +233,7 @@ def testAbout():
 @views.route('/Restaurants/<pk>')
 def restaurant(pk):
     d = query_restaurant(pk)
-    return render_template("restaurant_instance.html", instance=d)
+    return render_template("restaurant_instance.html", instance=d, food_types=food_types)
 
 # LOCATIONS
 

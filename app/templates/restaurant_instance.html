@@ -17,7 +17,7 @@
   </div>
  </div>
  </div>
- <div class = "col-sm-8">
+ <div class = "col-sm-4">
  <nav class="nav">
 <ul>
   <li><a href="/Food_Types/{{ instance['food_type']}}">Go to {{instance["food_type_disp"] }}</a></li>
@@ -26,8 +26,16 @@
 </ul>
 </nav>
   <h2> Food Type </h2>
+
   <a href="/Food_Types/{{instance['food_type'] }}"> {{ instance["food_type_disp"] }} </a>
 
+     {% if instance["food_type2"] != None %}
+     , <a href="/Food_Types/{{instance['food_type2'] }}"> {{ instance["food_type_disp2"] }} </a>
+     {% endif %}
+     {% if instance["food_type3"] != None %}
+     , <a href="/Food_Types/{{instance['food_type3'] }}"> {{ instance["food_type_disp3"] }} </a>
+     {% endif %}
+    <br /><br />
   <h2> Rating </h2>
   <p> {{ instance["rating"] }} </p>
 
@@ -43,6 +51,36 @@
 
      <a href = {{ instance["url"] }} target = "_blank"><h2> Link to Yelp </h2></a> </p>
   </div>
+    <div class = "col-sm-4">
+        <div id = "instanceMap">
+        </div>
+    </div>
+    <script>
+        function initMap() {
+            var uluru = {lat: {{ instance["lat"] }}, lng: {{instance["long"]}}};
+            var map = new google.maps.Map(document.getElementById('instanceMap'), {
+                zoom: 16,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                title: 'test'
+            });
+            var infowindow = new google.maps.InfoWindow({
+                content: '<b>{{ instance["name"] }}</b> <br /> {{ instance["address"] }}' +
+                '<br> <a href = "https://www.google.com/maps/dir/Current+Location/{{ instance["lat"] }},{{instance["long"]}}" target="_blank">Directions</a>' +
+                '' +
+                ''
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmjP2A5iT5WAGYIKPnHR34erQftUGAtYI&callback=initMap">
+    </script>
 </article>
 </div>
 </div>

@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
-<p align = "center"> Release your creativity and search for a restaurant!</p>
-<div style = "width: 100%;">
-<input id = "mainsearchbox" type="text" class = "mainsearch" name="search" placeholder="Search..">
-</div>
+  <div id = "searchbox">
+    <input id = "mainsearchbox" type="text" class = "mainsearch" name="search" placeholder="Search anything!">
+    <input class = "searchButton" type = "button" value = "Search" onclick = "runSearch()">
+  </div>
+
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -16,9 +17,13 @@
 	  		}
 	    });
 	});
+	function runSearch() {
+        var value = document.getElementById("mainsearchbox").value;
+        console.log(value);
+        window.location.href = "/All?search=" + value;
+    }
 </script>
 
-<br><br>
 <div id="myCarousel" class="carousel slide" data-ride="carousel" >
   <!-- Indicators -->
   <ol class="carousel-indicators">

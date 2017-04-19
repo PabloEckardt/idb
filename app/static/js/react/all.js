@@ -254,19 +254,19 @@ function getData() {
                         pageCount++;
                     }
                 }
+                if (currpage.length > 0) {
+                    pages.push(currpage);
+                    pageCount++;
+                }
             }
-            console.log(JSONsections);
-            console.log(pages);
-            // for (var i = 0; i < elements.length; i += 45) {
-            //     pages[count] = elements.slice(i, i + 45);
-            //     count += 1;
-            // }
-            //console.log(elements.length);
-            //console.log("SIZE UP PAGES DOWN");
+            //console.log(JSONsections);
             //console.log(pages);
 
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<AllList elements={pages[0]} />, document.getElementById('allGrid'));
+            if (pages.length > 0)
+                ReactDOM.render(<AllList elements={pages[0]} />, document.getElementById('allGrid'));
+            else
+                ReactDOM.render(<h1>No Results found for: { getParameterByName('search') }</h1>, document.getElementById('allGrid'));
         });
 
 }
