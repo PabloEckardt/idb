@@ -15,10 +15,6 @@ def captureBubble(b,params):
         string = params[b[0]]
     return (string)
 
-# print (captureBubble([0]))
-# print (captureBubble([0,1]))
-# print (captureBubble([0,1,2]))
-
 def captureLeft(b,params):
     lowest = b[0]
     if lowest == 0:
@@ -30,11 +26,6 @@ def captureLeft(b,params):
         string = bridge(params[lowest], string)
     return (string)
 
-# print (captureLeft([0]))
-# print (captureLeft([1,2]))
-# print (captureLeft([2,3]))
-# print (captureLeft([3]))
-
 def captureRight(b,params):
     highest = b[len(b) - 1]
     if highest == len(params) - 1:
@@ -45,11 +36,6 @@ def captureRight(b,params):
         highest += 1
         string = bridge(string, params[highest])
     return (string)
-
-# print (captureRight([0]))
-# print (captureRight([1]))
-# print (captureRight([2]))
-# print (captureRight([3]))
 
 
 def clean_dups(old):
