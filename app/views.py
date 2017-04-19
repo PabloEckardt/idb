@@ -218,6 +218,10 @@ def showAll():
 def About():
     return render_template("about.html")
 
+@views.route('/Data_Visualization')
+def Data_Vizualization():
+    return render_template("data_visualization.html")
+
 
 @views.route('/TestAbout')
 def testAbout():
