@@ -278,28 +278,37 @@ def techreport():
 
 @views.route('/API/Restaurants', methods=['GET'])
 def restaurants_api():
-    return query_all_restaurants(request.args.get('sortby'), request.args.get('rating'),
-                                 request.args.get('price'), request.args.get(
-                                     'foodtype'), request.args.get('name'),
+    return query_all_restaurants(request.args.get('sortby'),
+                                 request.args.get('rating'),
+                                 request.args.get('price'),
+                                 request.args.get('foodtype'),
+                                 request.args.get('name'),
                                  request.args.get('id'))
 
 
 @views.route('/API/Reviews', methods=['GET'])
 def reviews_api():
-    return query_all_reviews(request.args.get('sortby'), request.args.get('rating'),
-                             request.args.get('hasimg'), request.args.get('foodtype'), request.args.get('id'))
+    return query_all_reviews(request.args.get('sortby'),
+                             request.args.get('rating'),
+                             request.args.get('hasimg'),
+                             request.args.get('foodtype'),
+                             request.args.get('id'))
 
 
 @views.route('/API/Food_Types', methods=['GET'])
 def food_types_api():
-    return query_all_food_types(request.args.get('sortby'), request.args.get(
-        'avgrating'), request.args.get('avgprice'), request.args.get('foodtype'))
+    return query_all_food_types(request.args.get('sortby'),
+                                request.args.get('avgrating'),
+                                request.args.get('avgprice'),
+                                request.args.get('foodtype'))
 
 
 @views.route('/API/Locations', methods=['GET'])
 def locations_api():
-    return query_all_locations(request.args.get('sortby'), request.args.get(
-        'avgrating'), request.args.get('avgprice'), request.args.get('foodtype'))
+    return query_all_locations(request.args.get('sortby'),
+                               request.args.get('avgrating'),
+                               request.args.get('avgprice'),
+                               request.args.get('foodtype'))
 
 
 @views.route('/API/All', methods=['GET'])

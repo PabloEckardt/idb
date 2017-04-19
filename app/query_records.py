@@ -49,8 +49,8 @@ def query_all_restaurants(sortby, rating, price, foodtype, name, id):
         queries.append(*fQ)
     # queries.append(or_(*price))
 
-    #ratings = [Restaurants.rating == 1]
-    #ratings.append(Restaurants.rating ==2)
+    # ratings = [Restaurants.rating == 1]
+    # ratings.append(Restaurants.rating ==2)
 
     # queries.append(or_(*ratings))
 
@@ -192,8 +192,8 @@ def query_food_type(food_type):
     session = Session()
     result = session.query(Food_Types).filter(
         Food_Types.food_type == food_type).all()
-    #result = session.query(Food_Types).all()
-    #result2 = [e.to_dict() for e in result]
+    # result = session.query(Food_Types).all()
+    # result2 = [e.to_dict() for e in result]
     # print(result[0].to_dict())
     assert (len(result) == 1)
     print(result[0].to_dict())
@@ -218,7 +218,7 @@ def rest_build_query(param):
         rest_queries.append(Restaurants.lat == float(param))
         rest_queries.append(Restaurants.long == float(param))
         rest_queries.append(Restaurants.rating == int(param))
-        #rest_queries.append(Restaurants.id == int(param))
+        # rest_queries.append(Restaurants.id == int(param))
 
     rest_queries.append(Restaurants.name.like('%' + param + '%'))
     rest_queries.append(Restaurants.yelp_id.like('%' + param + '%'))
@@ -279,7 +279,7 @@ def rev_build_query(param):
         query.append(Reviews.zipcode == int(param))
 
     query.append(Reviews.restaurant_name.like('%' + param + '%'))
-    #query.append(Reviews.yelp_restaurant_id == param)
+    # query.append(Reviews.yelp_restaurant_id == param)
     query.append(Reviews.food_type.like('%' + param + '%'))
     query.append(Reviews.food_type_disp.like('%' + param + '%'))
     query.append(Reviews.date.like('%' + param + '%'))
@@ -292,7 +292,8 @@ def rev_build_query(param):
     return or_(*query)
 
 
-def merge_models(search_output, candidate_output, high_p_out=None, i=None):  # Eliminate duplicates
+def merge_models(search_output, candidate_output, high_p_out=None, i=None):
+    # Eliminate duplicates
     keys = ["id", "zipcode", "food_type", "id"]
 
     if high_p_out is None:
