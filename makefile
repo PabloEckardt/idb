@@ -119,7 +119,7 @@ versions:
 	$(PIP) list
 
 pretty:
-	$(AUTOPEP8) . --recursive --in-place --verbose
+	$(AUTOPEP8) . --in-place --recursive --verbose --exclude ./venv
 
 
 
