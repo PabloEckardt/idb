@@ -1,46 +1,46 @@
 .DEFAULT_GOAL := test
 
 FILES :=					\
-    app/models.py       	\
-    app/tests.py        	\
-    app/insert_records.py	\
-    app/db_manager.py		\
-    IDB2.html				\
-    IDB2.log				\
-    IDB2.pdf				\
-    .travis.yml         
+	app/models.py       	\
+	app/tests.py        	\
+	app/insert_records.py	\
+	app/db_manager.py		\
+	IDB2.html				\
+	IDB2.log				\
+	IDB2.pdf				\
+	.travis.yml
 
 ifeq ($(shell uname), Darwin)          # Apple
-    PYTHON   := python3.5
-    PIP      := pip3.5
-    PYLINT   := pylint
-    COVERAGE := coverage-3.5
-    PYDOC    := pydoc
-    AUTOPEP8 := autopep8
+	PYTHON   := python3.5
+	PIP      := pip3.5
+	PYLINT   := pylint
+	COVERAGE := coverage-3.5
+	PYDOC    := pydoc
+	AUTOPEP8 := autopep8
 	VENV="venv/lib*"
 else ifeq ($(CI), true)                # Travis CI
-    PYTHON   := python3.5
-    PIP      := pip3
-    PYLINT   := pylint
-    COVERAGE := coverage
-    PYDOC    := pydoc3
-    AUTOPEP8 := autopep8
+	PYTHON   := python3.5
+	PIP      := pip3
+	PYLINT   := pylint
+	COVERAGE := coverage
+	PYDOC    := pydoc3
+	AUTOPEP8 := autopep8
 	VENV="/home/travis/virtualenv/*"
 else ifeq ($(shell uname -p), unknown) # Docker
-    PYTHON   := python2.7
-    PIP      := pip3.5
-    PYLINT   := pylint
-    COVERAGE := coverage-3.5
-    PYDOC    := pydoc
-    AUTOPEP8 := autopep8
+	PYTHON   := python2.7
+	PIP      := pip3.5
+	PYLINT   := pylint
+	COVERAGE := coverage-3.5
+	PYDOC    := pydoc
+	AUTOPEP8 := autopep8
 	VENV="venv/lib*"
 else                                   # UTCS
-    PYTHON   := python3.5
-    PIP      := pip3
-    PYLINT   := pylint
-    COVERAGE := coverage
-    PYDOC    := pydoc3
-    AUTOPEP8 := autopep8
+	PYTHON   := python3.5
+	PIP      := pip3
+	PYLINT   := pylint
+	COVERAGE := coverage
+	PYDOC    := pydoc3
+	AUTOPEP8 := autopep8
 	VENV="venv/lib*"
 endif
 
@@ -73,7 +73,9 @@ check:
 		exit 1;                                   \
 	fi;                                           \
 	echo "success";
+
 	-$(PYLINT) --reports=y --disable=locally-disabled app/tests.py  > tests.out
+
 	coverage run app/tests.py >> tests.out 
 	coverage report --omit=$(VENV) -m >> tests.out
 	cp tests.out app/static/tests.txt
@@ -115,3 +117,20 @@ versions:
 	$(AUTOPEP8) --version
 	@echo
 	$(PIP) list
+
+autopepNoneComparisons:
+	$(AUTOPEP8) . --a --select=E711 --in-place --recursive --exclude ./venv >autopep.out
+
+autopepMaxCharLine:
+	$(AUTOPEP8) . --a --select=E501 --max-line-length=80 --in-place --recursive --exclude ./venv >autopep.out
+
+autopepCharSpaceComments:
+	$(AUTOPEP8) . --a --select=E265 --max-line-length=80 --in-place --recursive --exclude ./venv >autopep.out
+
+pretty:
+	$(AUTOPEP8) . --in-place --recursive --verbose --exclude ./venv
+
+pretty?:
+	$(AUTOPEP8) . --diff --recursive --verbose --exclude ./venv --pep8-passes 2000 > autopep.out
+
+

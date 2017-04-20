@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+
+# pylint: disable = bad-whitespace
+# pylint: disable = invalid-name
+# pylint: disable = missing-docstring
+
 from app.insert_records import *
 from os import listdir
 from os.path import isfile, join
@@ -6,76 +12,96 @@ import json
 
 
 def add_restaurants(flask_app):
+    """
+    Populates the app with restaurants
+    """
     session_token = app.Session()
-    default = "/static/img/default.jpg"
-    with open(flask_app.config["REVIEWS"], "r") as rj:
-        r = json.load(rj)
-        with open(flask_app.config["RESTAURANTS"], "r") as me:
-            m = json.load(me)
-            for key in m:
 
-                rest_dict = m[key]
+    rest_exist = session_token.query(
+        Restaurants.id).filter(Restaurants.id == "1234").count() > 0
+    print ("Generating Restaurants:", not rest_exist)
+    if not rest_exist:
+        default = "/static/img/default.jpg"
+        with open(flask_app.config["REVIEWS"], "r") as rj:
+            r = json.load(rj)
+            with open(flask_app.config["RESTAURANTS"], "r") as me:
+                m = json.load(me)
+                for key in m:
 
-                cat_len = len(rest_dict["categories"])
-                l = [None] * 6
-                for i in range(cat_len):
-                    l[i] = rest_dict["categories"][i]["alias"]
-                    l[i + 3] = rest_dict["categories"][i]["title"]
+                    rest_dict = m[key]
 
-                price = None if not "price" in rest_dict.keys(
-                ) else rest_dict["price"]
-                addr = rest_dict["location"]["address1"] if not rest_dict["location"]["address1"] == "" else "No Entry"
-                phone = rest_dict["display_phone"] if not rest_dict["display_phone"] == "" else "No Entry"
-                img_url = default if rest_dict["image_url"] == "" else rest_dict["image_url"]
+                    cat_len = len(rest_dict["categories"])
+                    l = [None] * 6
+                    for i in range(cat_len):
+                        l[i] = rest_dict["categories"][i]["alias"]
+                        l[i + 3] = rest_dict["categories"][i]["title"]
 
-                add_restaurant(
-                    session_token,
-                    key,
-                    rest_dict["name"],
-                    rest_dict["id"],
-                    int(rest_dict["location"]["zip_code"]),
-                    rest_dict["coordinates"]["latitude"],
-                    rest_dict["coordinates"]["longitude"],
-                    rest_dict["location"]["city"],
-                    addr,
-                    phone,
-                    price,
-                    float(rest_dict["rating"]),
-                    r[key][0]["text"],
-                    r[key][0]["time_created"],
-                    rest_dict["review_count"],
-                    rest_dict["url"],
-                    img_url,
-                    *l
-                )
+                    price = None if not "price" in rest_dict.keys(
+                    ) else rest_dict["price"]
+                    addr = rest_dict["location"]["address1"] if not \
+                        rest_dict["location"]["address1"] == "" else "No Entry"
+                    phone = rest_dict["display_phone"] if not \
+                        rest_dict["display_phone"] == "" else "No Entry"
+                    img_url = default if rest_dict["image_url"] == "" \
+                        else rest_dict["image_url"]
+
+                    add_restaurant(
+                        session_token,
+                        key,
+                        rest_dict["name"],
+                        rest_dict["id"],
+                        int(rest_dict["location"]["zip_code"]),
+                        rest_dict["coordinates"]["latitude"],
+                        rest_dict["coordinates"]["longitude"],
+                        rest_dict["location"]["city"],
+                        addr,
+                        phone,
+                        price,
+                        float(rest_dict["rating"]),
+                        r[key][0]["text"],
+                        r[key][0]["time_created"],
+                        rest_dict["review_count"],
+                        rest_dict["url"],
+                        img_url,
+                        *l
+                    )
 
 
 def add_reviews(flask_app):
+    """
+    Populates the app with reviews
+    """
     session_token = app.Session()
-    default = "/static/img/default.jpg"
-    with open(flask_app.config["REVIEWS"], "r") as rj:
-        r = json.load(rj)
-        with open(flask_app.config["RESTAURANTS"], "r") as me:
-            m = json.load(me)
-            for k in r:
-                rev_list = r[k]
-                for rev_dict in rev_list:
-                    img_url = default if rev_dict["user"]["image_url"] == None else rev_dict["user"]["image_url"]
-                    add_review(
-                        session_token,
-                        k,  # rest id
-                        m[k]["name"],  # rest name
-                        m[k]["id"],  # yelp id
-                        m[k]["categories"][0]["alias"],
-                        m[k]["categories"][0]["title"],
-                        rev_dict["time_created"],
-                        rev_dict["rating"],
-                        rev_dict["user"]["name"],
-                        rev_dict["text"],
-                        img_url,
-                        rev_dict["url"],
-                        m[k]["location"]["zip_code"]
-                    )
+
+    rev_exist = session_token.query(
+        Reviews.id).filter(Reviews.id == 123).count() > 0
+    print ("Generating Reviews:", not rev_exist)
+    if not rev_exist:
+        default = "/static/img/default.jpg"
+        with open(flask_app.config["REVIEWS"], "r") as rj:
+            r = json.load(rj)
+            with open(flask_app.config["RESTAURANTS"], "r") as me:
+                m = json.load(me)
+                for k in r:
+                    rev_list = r[k]
+                    for rev_dict in rev_list:
+                        img_url = default if rev_dict["user"]["image_url"] is None\
+                            else rev_dict["user"]["image_url"]
+                        add_review(
+                            session_token,
+                            k,  # rest id
+                            m[k]["name"],  # rest name
+                            m[k]["id"],  # yelp id
+                            m[k]["categories"][0]["alias"],
+                            m[k]["categories"][0]["title"],
+                            rev_dict["time_created"],
+                            rev_dict["rating"],
+                            rev_dict["user"]["name"],
+                            rev_dict["text"],
+                            img_url,
+                            rev_dict["url"],
+                            m[k]["location"]["zip_code"]
+                        )
 
 
 def loc_find_avg_rating(l):
@@ -88,6 +114,9 @@ def loc_find_avg_rating(l):
 
 
 def loc_find_avg_price(l):
+    """
+    Finds the average price of all locations in the provided list
+    """
     avg = 0.0
     rest_no = len(l)
     for id in l:
@@ -101,7 +130,13 @@ def loc_find_avg_price(l):
 
 
 def loc_find_hi_lo_price(l):
-
+    """
+    Finds the high highest price, lowest price,
+    most popular restaurant, and highest rated restaurant
+    from the provided location model.
+    Returns the following list:
+    [highest_price, lowest_price, most_popular_restaurant_key, highest_rated_restaurant_key]
+    """ 
     hi = 1
     lo = 4
     prices = {1: "$", 2: "$$", 3: "$$$", 4: "$$$$"}
@@ -130,6 +165,9 @@ def loc_find_hi_lo_price(l):
 
 
 def loc_find_popular_food_type(l):
+    """
+    Returns the name of the food type that is most popular in the provided location model.
+    """
     cats = {}
     cat = l[list(l.keys())[0]]["categories"][0]["alias"]
     highest = 0
@@ -149,30 +187,40 @@ def loc_find_popular_food_type(l):
 
 
 def add_locations(flask_app):
+    """
+    Populates the app with locations.
+    """
     session_token = app.Session()
-    with open(flask_app.config["LOCATIONS"], "r") as l:
-        locs = json.load(l)
-        for zip in locs:
-            avg_rating = loc_find_avg_rating(locs[zip])
-            avg_price = loc_find_avg_price(locs[zip])
-            hi_lo_pop_rate = loc_find_hi_lo_price(locs[zip])
-            popular_food_type = loc_find_popular_food_type(locs[zip])
+    locs_exist = session_token.query(
+        Locations.zipcode).filter(Locations.zipcode == "78704").count() > 0
+    print ("Generating Locations:", not locs_exist)
+    if not locs_exist:
+        with open(flask_app.config["LOCATIONS"], "r") as l:
+            locs = json.load(l)
+            for zip in locs:
+                avg_rating = loc_find_avg_rating(locs[zip])
+                avg_price = loc_find_avg_price(locs[zip])
+                hi_lo_pop_rate = loc_find_hi_lo_price(locs[zip])
+                popular_food_type = loc_find_popular_food_type(locs[zip])
 
-            add_location(
-                session_token,
-                zip,
-                avg_rating,
-                avg_price,
-                hi_lo_pop_rate[0],
-                hi_lo_pop_rate[1],
-                popular_food_type,
-                hi_lo_pop_rate[2],
-                hi_lo_pop_rate[3],
-                len(locs[zip])
-            )
+                add_location(
+                    session_token,
+                    zip,
+                    avg_rating,
+                    avg_price,
+                    hi_lo_pop_rate[0],
+                    hi_lo_pop_rate[1],
+                    popular_food_type,
+                    hi_lo_pop_rate[2],
+                    hi_lo_pop_rate[3],
+                    len(locs[zip])
+                )
 
 
 def find_avg_price(l):
+    """
+    Returns the average price of all objects in the provided list.
+    """
     price = 0.0
     rest_no = len(l)
     for dict in l:
@@ -186,7 +234,9 @@ def find_avg_price(l):
 
 
 def find_avg_rating(l):
-
+    """
+    Finds average rating of all objects in the provided list.
+    """
     rating = 0.0
     rest_no = len(l)
     for dict in l:
@@ -196,7 +246,9 @@ def find_avg_rating(l):
 
 
 def find_img_url(food_type, img_list):
-
+    """
+    Returns an image url of the given food type from the given list if images.
+    """
     if food_type in img_list:
         return "/static/img/" + food_type + ".jpg"
     else:
@@ -204,6 +256,10 @@ def find_img_url(food_type, img_list):
 
 
 def find_highest_rated_r(rl):
+    """
+    Returns the key of the highest rated restaurant
+    from the given list.
+    """
     rating = 1
     highest_rate_no = 1
     best = ""
@@ -235,9 +291,10 @@ def find_best_location(rl, ft):
         for dict in rl:
             if "zip_code" in dict["location"].keys():
                 return dict["location"]["zip_code"]
-        print (
-            "WARNING: could not determine the best location for food type, FOOD_TYPE:", ft)
-        print ("seting up default 78704 for:", ft)
+        print(
+            "WARNING: could not determine the best location"
+            " for food type, FOOD_TYPE:", ft)
+        print("seting up default 78704 for:", ft)
         return "78704"
 
 
@@ -254,34 +311,39 @@ def find_most_popular_restaurant(rl):
 
 def add_food_types(flask_app):
     session_token = app.Session()
-    p = "app/static/img/"
-    img_files = [f for f in listdir(p) if isfile(join(p, f))]
-    img_files_short = [e.split(".")[0] for e in img_files]
-    count = 0
-    with open(flask_app.config["FOOD_TYPES"]) as f:
-        ft = json.load(f)
-        for k in ft:
-            count += 1
-            restaurant_list = ft[k]
-            food_type_display_name = k.split("/")[1]
-            k = k.split("/")[0]
-            avg_rating = find_avg_rating(restaurant_list)
-            avg_price = find_avg_price(restaurant_list)
-            img_url = find_img_url(k, img_files_short)
-            best_restaurant = find_highest_rated_r(restaurant_list)
-            best_location = find_best_location(restaurant_list, k)
-            most_popular_restaurant = find_most_popular_restaurant(
-                restaurant_list)
 
-            add_food_type(
-                session_token,
-                k,
-                food_type_display_name,
-                avg_price,
-                avg_rating,
-                img_url,
-                len(restaurant_list),
-                most_popular_restaurant,
-                best_restaurant,
-                best_location
-            )
+    foods_exist = session_token.query(
+        Food_Types.best_location).filter(Food_Types.best_location == "78704").count() > 0
+    print ("Generating Food Types:", not foods_exist)
+    if not foods_exist:
+        p = "app/static/img/"
+        img_files = [f for f in listdir(p) if isfile(join(p, f))]
+        img_files_short = [e.split(".")[0] for e in img_files]
+        count = 0
+        with open(flask_app.config["FOOD_TYPES"]) as f:
+            ft = json.load(f)
+            for k in ft:
+                count += 1
+                restaurant_list = ft[k]
+                food_type_display_name = k.split("/")[1]
+                k = k.split("/")[0]
+                avg_rating = find_avg_rating(restaurant_list)
+                avg_price = find_avg_price(restaurant_list)
+                img_url = find_img_url(k, img_files_short)
+                best_restaurant = find_highest_rated_r(restaurant_list)
+                best_location = find_best_location(restaurant_list, k)
+                most_popular_restaurant = find_most_popular_restaurant(
+                    restaurant_list)
+
+                add_food_type(
+                    session_token,
+                    k,
+                    food_type_display_name,
+                    avg_price,
+                    avg_rating,
+                    img_url,
+                    len(restaurant_list),
+                    most_popular_restaurant,
+                    best_restaurant,
+                    best_location
+                )

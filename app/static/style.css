@@ -31,7 +31,7 @@ h2              { font-size: 1.2em; }
 }
 
 input[type=text].mainsearch {
-	display:block;
+	display:inline;
     width: 300px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -41,14 +41,59 @@ input[type=text].mainsearch {
     background-color: white;
     background-position: 10px 10px; 
     background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
+    padding: 12px 20px 12px 30px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
 
-input[type=text]:focus {
+input[type=button].searchButton {
+    display:inline;
+    box-sizing: border-box;
+    border: 2px solid #bcdff1;
+    color:white;
+    margin: 0 auto;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #2c7ed5;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 20px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+div#searchbox {
+    margin:0 auto;
+    text-align: center;
+    width:100%;
+    position: absolute;
+    z-index: 100;
+    top: 120px;
+}
+
+input[type=text].searchButton:focus {
     width: 70%;
 }
+
+div#myCarousel {
+    z-index: 0;
+    margin-top: -20px;
+}
+
+@media (max-width: 600px) {
+    div#myCarousel {
+        z-index: 0;
+    }
+    div#searchbox {
+        margin:0 auto;
+        text-align: center;
+        width:100%;
+        z-index: 100;
+        position: static;
+        margin-bottom: 30px;
+    }
+}
+
 
 
 [id^="togList"],                        /* HIDE CHECKBOX */
@@ -186,12 +231,15 @@ div#reviewGrid div.thumbnail_container div.thumbnail {
     display: none;
 }
 
+span#highlightText {
+    background-color: yellow;
+}
 /* Styling for all grid */
 
 div#allGridItem {
     padding-top: 10px;
     margin-bottom: 10px;
-    height:330px;
+
     background: #eeeeee;
     padding-bottom: 40px;
     border: 3px solid #bbe8ee;
@@ -245,7 +293,9 @@ div#allGrid div.thumbnail_container div.thumbnail {
     height: 150px;
 }
 
-
+#instanceMap {
+    height: 350px;
+}
 
 
 

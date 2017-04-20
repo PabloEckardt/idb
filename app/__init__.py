@@ -12,6 +12,7 @@ setupdb(db_engine)
 session_factory = init_session(db_engine)
 Session = scoped_session(session_factory)
 
+
 def create_app(config, debug=False, testing=False, config_overrides=None):
     app = Flask(__name__)
     CORS(app)

@@ -91,7 +91,6 @@ def obtain_bearer_token(host, path):
     return bearer_token
 
 
-
 def main():
 
     bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
@@ -105,7 +104,7 @@ def main():
     reviews_not_collected = []
 
     count = 0
-    with open ("new_mega.json", "r") as m:
+    with open("new_mega.json", "r") as m:
         new_mega = json.load(m)
         for key in new_mega:
             print(count)
@@ -115,22 +114,22 @@ def main():
             response = requests.request('GET', url, headers=headers)
             if not response:
                 reviews_not_collected.append(key)
-                print("key:", key,"is broken")
+                print("key:", key, "is broken")
             else:
                 reviews[key] = response.json().get("reviews")
                 reviews_collected.append(key)
 
-
-    with open ("review_key_data.txt", "w") as rkd:
+    with open("review_key_data.txt", "w") as rkd:
         rkd.write("collected\n")
         for c in reviews_collected:
-            rkd.write(c+"\n")
+            rkd.write(c + "\n")
         rkd.write("not collected\n")
         for c in reviews_not_collected:
-            rkd.write(c+"\n")
+            rkd.write(c + "\n")
 
-    with open ("reviews.json", "w") as r:
+    with open("reviews.json", "w") as r:
         json.dump(reviews, r, indent=4)
+
 
 if __name__ == '__main__':
     main()

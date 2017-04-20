@@ -45,7 +45,8 @@ except ImportError:
 # You can find them on
 # https://www.yelp.com/developers/v3/manage_app
 CLIENT_ID = "oQeTOrWw-rVtEKjG6sA2ew"
-CLIENT_SECRET = "8wZGatI4Bjq064mYOa37QdmYvO3VdeJsoq6Ju7kaASPP9nhS2FmRKnAR4NZcg7BM"
+CLIENT_SECRET = "8wZGatI4Bjq064mYOa37QdmYvO3VdeJsoq6J" \
+                "u7kaASPP9nhS2FmRKnAR4NZcg7BM"
 
 
 # API constants, you shouldn't have to change these.
@@ -98,7 +99,8 @@ def request(host, path, bearer_token, url_params=None):
     Args:
         host (str): The domain host of the API.
         path (str): The path of the API after the domain.
-        bearer_token (str): OAuth bearer token, obtained using client_id and client_secret.
+        bearer_token (str): OAuth bearer token, obtained
+        using client_id and client_secret.
         url_params (dict): An optional set of query parameters in the request.
 
     Returns:
@@ -137,7 +139,7 @@ def search(bearer_token, term, location, offset):
         'limit': SEARCH_LIMIT,
         'offset': offset
     }
-    print (url_params)
+    print(url_params)
     return request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
 
 
@@ -186,22 +188,34 @@ def query_api(term, location, offset):
 def main():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-f", "--firstIdx", dest="first", default=0, type=int, help="Idx to start at\
-    in the zipcodes list (default: 0)")
+    parser.add_argument("-f",
+                        "--firstIdx",
+                        dest="first",
+                        default=0,
+                        type=int,
+                        help="Idx to start at in the"
+                             " zipcodes list (default: 0)")
 
-    parser.add_argument("-s", "--secondIdx", dest="second", default=len(zipCodes)-1, type=int,
-    help="Idx to end at in the zipcodes list (default: len(zipCodes)-1)")
+    parser.add_argument("-s",
+                        "--secondIdx",
+                        dest="second",
+                        default=len(zipCodes) - 1,
+                        type=int,
+                        help="Idx to end at in the zipcodes"
+                             " list (default: len(zipCodes)-1)")
 
     args = parser.parse_args()
 
-    for i in range(args.first, args.second+1):
+    for i in range(args.first, args.second + 1):
         zipcode = zipCodes[i]
         offset = 0
         restaurants = {}
         count = 0
         while offset != 1000:
             try:
-                businesses = query_api("restaurants", "Austin, TX, " + str(zipcode) + ", United States", offset)
+                businesses = query_api(
+                    "restaurants", "Austin, TX, " + str(zipcode)
+                                   + ", United States", offset)
                 if not businesses:
                     break
                 for e in businesses:
@@ -210,7 +224,8 @@ def main():
 
             except HTTPError as error:
                 sys.exit(
-                    'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
+                    'Encountered HTTP error {0} on {1}:\n '
+                    '{2}\nAbort program.'.format(
                         error.code,
                         error.url,
                         error.read(),
@@ -218,8 +233,9 @@ def main():
                 )
             offset += 50
         count = 0
-        with open (str(zipcode)+".json", "w") as f:
-            json.dump(restaurants, f, indent = 4)
+        with open(str(zipcode) + ".json", "w") as f:
+            json.dump(restaurants, f, indent=4)
+
 
 if __name__ == '__main__':
     main()

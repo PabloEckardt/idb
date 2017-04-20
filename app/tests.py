@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
-
-# pylint: disable = bad-whitespace
+"""
+Tests File
+"""
 # pylint: disable = invalid-name
-# pylint: disable = missing-docstring
-# pylint: disable = bad-continuation
-# pylint: disable = superfluous-parens
-# pylint: disable = import-error
 # -------
 # imports
 # -------
@@ -16,8 +13,12 @@ from insert_records import add_restaurant, add_location, add_food_type, add_revi
 from db_manager import setupdb, init_session, create_engine
 
 
-class test_db (TestCase):
-
+class test_db(TestCase):
+    """
+    Tests 1-12 Are database tests. They will generate a new database
+    from scratch and query, add and delete elements from it reassuring
+    that our database backend works.
+    """
     session_token = None
 
     def setUp(self):
@@ -58,8 +59,8 @@ class test_db (TestCase):
             *food_types
         )
 
-        assert not (self.session_token.query(Restaurants) is None)
-        print ("Passed Test1")
+        assert not self.session_token.query(Restaurants) is None
+        print("Passed Test1")
 
     def test_2_Restaurants_manual_integrity(self):
         '''
@@ -93,10 +94,10 @@ class test_db (TestCase):
             name="Little Italy2").first()
 
         # test serialize
-        assert (isinstance(restaurant_1.to_dict(), dict))
+        assert isinstance(restaurant_1.to_dict(), dict)
 
         # test data types
-        assert not (self.session_token.query(Restaurants) is None)
+        assert not self.session_token.query(Restaurants) is None
         assert restaurant_1.id == "0002"
         assert restaurant_1.name == "Little Italy2"
         assert restaurant_1.location == 78701
@@ -149,7 +150,7 @@ class test_db (TestCase):
         rst = self.session_token.query(Restaurants).filter_by(
             name="Little Italy 3").first()
 
-        assert (rst is None)
+        assert rst is None
         print("Passed Test3")
 
     def test_4_Locations_addition(self):
@@ -170,7 +171,7 @@ class test_db (TestCase):
             40
         )
 
-        assert not (self.session_token.query(Locations) is None)
+        assert not self.session_token.query(Locations) is None
         print("Passed Test4")
 
     def test_5_Locations_manual_integrity(self):
@@ -197,18 +198,18 @@ class test_db (TestCase):
         loc = self.session_token.query(
             Locations).filter_by(zipcode="00002").first()
 
-        assert not (self.session_token.query(Locations) is None)
+        assert not self.session_token.query(Locations) is None
 
         # test serialize
         assert isinstance(loc.to_dict(), dict)
 
         # test query
-        assert (loc.zipcode == "00002")
-        assert (loc.average_rating == 3.0)
-        assert (loc.average_price == 3.0)
-        assert (loc.highest_price == "$$$$")
-        assert (loc.popular_food_type == "Italian")
-        assert (loc.highest_rated_restaurant == "Little Italy")
+        assert loc.zipcode == "00002"
+        assert loc.average_rating == 3.0
+        assert loc.average_price == 3.0
+        assert loc.highest_price == "$$$$"
+        assert loc.popular_food_type == "Italian"
+        assert loc.highest_rated_restaurant == "Little Italy"
         print("Passed Test5")
 
     def test_6_Locations_delete(self):
@@ -241,7 +242,7 @@ class test_db (TestCase):
         l = self.session_token.query(
             Locations).filter_by(zipcode="00003").first()
 
-        assert (l is None)
+        assert l is None
         print("Passed Test6")
 
     def test_7_Reviews_addition(self):
@@ -265,7 +266,7 @@ class test_db (TestCase):
             u"002",
         )
 
-        assert not (self.session_token.query(Reviews) is None)
+        assert not self.session_token.query(Reviews) is None
         print("Passed Test7")
 
     def test_8_Reviews__manual_integrity(self):
@@ -283,10 +284,10 @@ class test_db (TestCase):
             u"12/1/2014",  # date
             4,  # rating
             u"pebs",  # username
-                u"pretty good",  # review
-                u"/review_profiles/pebs",  # img url
-                u"/review/1",  # rev url
-                u"002",  # zip
+            u"pretty good",  # review
+            u"/review_profiles/pebs",  # img url
+            u"/review/1",  # rev url
+            u"002",  # zip
         )
 
         self.session_token.add(new_r)
@@ -295,18 +296,18 @@ class test_db (TestCase):
         rev = self.session_token.query(Reviews).filter_by(
             restaurant_id=u"009").first()
 
-        assert not (self.session_token.query(Reviews) is None)
+        assert not self.session_token.query(Reviews) is None
 
         # test serialize
         assert isinstance(rev.to_dict(), dict)
 
         # test query
-        assert (rev.date == u"12/1/2014")
-        assert (rev.rating == 4)
-        assert (rev.username == u"pebs")
-        assert (rev.profile_picture_url == u"/review_profiles/pebs")
-        assert (rev.review_url == u"/review/1")
-        assert (rev.restaurant_id == u"009")
+        assert rev.date == u"12/1/2014"
+        assert rev.rating == 4
+        assert rev.username == u"pebs"
+        assert rev.profile_picture_url == u"/review_profiles/pebs"
+        assert rev.review_url == u"/review/1"
+        assert rev.restaurant_id == u"009"
         print("Passed Test8")
 
     def test_9_Reviews_delete(self):
@@ -324,10 +325,10 @@ class test_db (TestCase):
             u"12/1/2014",  # date
             4,  # rating
             u"pebs",  # username
-                u"pretty good",  # review
-                u"/review_profiles/pebs",  # img url
-                u"/review/1",  # rev url
-                u"002",  # zip
+            u"pretty good",  # review
+            u"/review_profiles/pebs",  # img url
+            u"/review/1",  # rev url
+            u"002",  # zip
         )
 
         self.session_token.add(new_r)
@@ -342,7 +343,7 @@ class test_db (TestCase):
         r = self.session_token.query(Reviews).filter_by(
             restaurant_id=u"0010").first()
 
-        assert (r is None)
+        assert r is None
         print("Passed Test9")
 
     def test_10_Food_Type_addition(self):
@@ -364,7 +365,7 @@ class test_db (TestCase):
             u"00001"
         )
 
-        assert not (self.session_token.query(Food_Types) is None)
+        assert not self.session_token.query(Food_Types) is None
         print("Passed Test10")
 
     def test_11_Food_Type_manual_Integrity(self):
@@ -391,18 +392,18 @@ class test_db (TestCase):
         food = self.session_token.query(Food_Types).filter_by(
             food_type=u"Italian").first()
 
-        assert not (self.session_token.query(Food_Types) is None)
+        assert not self.session_token.query(Food_Types) is None
 
         # test serialize
         assert isinstance(food.to_dict(), dict)
 
         # test query
-        assert (food.food_type == u"Italian")
-        assert (food.average_price == 3.0)
-        assert (food.average_rating == 3.0)
-        assert (food.image_url == u"/food_types/italian/img.jpg")
-        assert (food.highest_rated_restaurant == u"Large Italy")
-        assert (food.best_location == u"00001")
+        assert food.food_type == u"Italian"
+        assert food.average_price == 3.0
+        assert food.average_rating == 3.0
+        assert food.image_url == u"/food_types/italian/img.jpg"
+        assert food.highest_rated_restaurant == u"Large Italy"
+        assert food.best_location == u"00001"
         print("Passed Test11")
 
     def test_12_Food_Type_delete(self):
