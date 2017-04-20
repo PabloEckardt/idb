@@ -11,37 +11,6 @@
 <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
 <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
 <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
-<!--
-<svg width="960" height="960" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
-//var svg = d3.select("svg"),
-//    width = +svg.attr("width"),
-//    height = +svg.attr("height");
-//
-//var format = d3.format(",d");
-//
-//var color = d3.scaleOrdinal(d3.schemeCategory20c);
-//
-//var pack = d3.pack()
-//    .size([width, height])
-//    .padding(1.5);
-//
-//d3.csv("flare.csv", function(d) {
-//  d.value = +d.value;
-//  if (d.value) return d;
-//}, function(error, classes) {
-//  if (error) throw error;
-//
-//  var root = d3.hierarchy({children: classes})
-//      .sum(function(d) { return d.value; })
-//      .each(function(d) {
-//        if (id = d.data.id) {
-//          var id, i = id.lastIndexOf(".");
-//          d.id = id;
-//          d.package = id.slice(0, i);
-//          d.class = id.slice(i + 1);
-//        }
-//      });
--->
 <html>
 <head>
   <title>Test</title>
@@ -49,75 +18,47 @@
   <script>
    document.addEventListener('DOMContentLoaded', function() {
       var count = {};
-      var c = 0;
-      d3.json("/API/Reviews", function(d) {
-        //console.log(d[0].username);
+      d3.json("http://artistree.me/api/works/all", function(result) {
+        var d = result.data;
         for (var i=0;i < d.length; i++) {
-           //console.log(d[i]);
-           if (!("username" in d[i])) continue;
-           if (!(d[i].username in count)) {
-              if (c < 50) {
-                count[d[i].username] = 1;
-              }
-              c++;
+           if (!("date" in d[i]) || !(d[i].date)) continue;
+           var year = +((d[i].date).substring(12, 16));
+           var era = (Math.floor(year / 100) + 1).toString() + "th Century";
+           if (!(era in count)) {
+                count[era] = 1;
            }
            else {
-              count[d[i].username]++;
+              count[era]++;
            }
         }
-        console.log(count);
         data = []
         for (key in count) {
            data.push({"name": key, "count": count[key]});
         }
-        console.log(data);
+        var colors = ["red", "orange", "purple", "cyan", "indigo", "green", "gray", "pink",
+        "blue", "yellow", "maroon"];
+        var coloridx = 0;
         var bubbleChart = new d3.svg.BubbleChart({
             supportResponsive: true,
             //container: => use @default
-            size: 2000,
+            size: 600,
             //viewBoxSize: => use @default
-            innerRadius: 600 / 5.5,
+            innerRadius: 600 / 3.5,
             //outerRadius: => use @default
-            radiusMin: 40,
-            radiusMax: 80,
+            radiusMin: 50,
+            //radiusMax: 80,
+            //radiusMax: use @default
             //intersectDelta: use @default
             //intersectInc: use @default
             //circleColor: use @default
             data: {
-              items://[
-                    // {name: "Java", count: "236"},
-                    // {name: ".Net", count: "382"},
-                    // {name: "Php", count: "170"},
-                    // {name: "Ruby", count: "123"},
-                    // {name: "D", count: "12"},
-                    // {name: "Python", count: "170"},
-                    // {name: "C/C++", count: "382"},
-                    // {name: "Pascal", count: "10"},
-                    // {name: "Something", count: "170"},
-                    //],
-                 data,
+              items:
+              data,
               eval: function (item) {return item.count;},
-              classed: function (item) {return item.name.split(" ").join("");}
+              classed: function (item) {return item.name.split(" ").join("");},
+              color: function (d) {return colors[++coloridx];}
             },
-            plugins: [
-              {
-                name: "central-click",
-                options: {
-                  text: "(See more detail)",
-                  style: {
-                    "font-size": "12px",
-                    "font-style": "italic",
-                    "font-family": "Source Sans Pro, sans-serif",
-                    //"font-weight": "700",
-                    "text-anchor": "middle",
-                    "fill": "white"
-                  },
-                  attr: {dy: "65px"},
-                  centralClick: function() {
-                    alert("Here is more details!!");
-                  }
-                }
-              },
+             plugins: [
               {
                 name: "lines",
                 options: {
@@ -177,43 +118,13 @@
       margin: 0 auto;
     }
     .bubbleChart svg{
-      background: #000000;
+      background: #bbe8ee;
     }
   </style>
 </head>
-<body style="background: #000000">
+<body style="background: #bbe8ee">
+   <center><h3 color="ff4943">Number of Artworks by Era - Data from Code Artists (artistree.me)</h3></center>
 <div class="bubbleChart"/>
 </body>
 </html>
-<!--
-//  var node = svg.selectAll(".node")
-//    .data(data)
-//    .enter().append("g")
-//      .attr("class", "node")
-//      .attr("transform", function(d) { return "translate(" + 50 + "," + 50 + ")"; });
-//  console.log(node);
-//
-//  node.append("circle")
-//      .attr("id", function(d) { return d.name; })
-//      .attr("r", function(d) { return d.r; })
-//      .style("fill", function(d) { return color("blue"); });
-//
-//  node.append("clipPath")
-//      .attr("id", function(d) { return "clip-" + d.name; })
-//    .append("use")
-//      .attr("xlink:href", function(d) { return "#" + d.name; });
-//
-//  node.append("text")
-//      .attr("clip-path", function(d) { return "url(#clip-" + d.name + ")"; })
-//    .selectAll("tspan")
-//    //.data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
-//    .enter().append("tspan")
-//      .attr("x", 0)
-//      .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
-//      .text(function(d) { return d; });
-//
-//  node.append("title")
-//      .text(function(d) { return d.id + "\n" + format(d.count); });
-//});
--->
 {% endblock %}
