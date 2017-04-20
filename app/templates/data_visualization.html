@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
+<script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
+<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
+<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
+<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
+<script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
+<script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
+<script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
+<script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+<html>
+<head>
+  <title>Test</title>
+  <meta charset="utf=8">
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      var count = {};
+      d3.json("http://artistree.me/api/works/all", function(result) {
+        var d = result.data;
+        for (var i=0;i < d.length; i++) {
+           if (!("date" in d[i]) || !(d[i].date)) continue;
+           var year = +((d[i].date).substring(12, 16));
+           var era = (Math.floor(year / 100) + 1).toString() + "th Century";
+           if (!(era in count)) {
+                count[era] = 1;
+           }
+           else {
+              count[era]++;
+           }
+        }
+        data = []
+        for (key in count) {
+           data.push({"name": key, "count": count[key]});
+        }
+        var colors = ["red", "orange", "purple", "cyan", "indigo", "green", "gray", "pink",
+        "blue", "yellow", "maroon"];
+        var coloridx = 0;
+        var bubbleChart = new d3.svg.BubbleChart({
+            supportResponsive: true,
+            //container: => use @default
+            size: 600,
+            //viewBoxSize: => use @default
+            innerRadius: 600 / 3.5,
+            //outerRadius: => use @default
+            radiusMin: 50,
+            //radiusMax: 80,
+            //radiusMax: use @default
+            //intersectDelta: use @default
+            //intersectInc: use @default
+            //circleColor: use @default
+            data: {
+              items:
+              data,
+              eval: function (item) {return item.count;},
+              classed: function (item) {return item.name.split(" ").join("");},
+              color: function (d) {return colors[++coloridx];}
+            },
+             plugins: [
+              {
+                name: "lines",
+                options: {
+                  format: [
+                    {// Line #0
+                      textField: "count",
+                      classed: {count: true},
+                      style: {
+                        "font-size": "28px",
+                        "font-family": "Source Sans Pro, sans-serif",
+                        "text-anchor": "middle",
+                        fill: "white"
+                      },
+                      attr: {
+                        dy: "0px",
+                        x: function (d) {return d.cx;},
+                        y: function (d) {return d.cy;}
+                      }
+                    },
+                    {// Line #1
+                      textField: "name",
+                      classed: {text: true},
+                      style: {
+                        "font-size": "14px",
+                        "font-family": "Source Sans Pro, sans-serif",
+                        "text-anchor": "middle",
+                        fill: "white"
+                      },
+                      attr: {
+                        dy: "20px",
+                        x: function (d) {return d.cx;},
+                        y: function (d) {return d.cy;}
+                      }
+                    }
+                  ],
+                  centralFormat: [
+                    {// Line #0
+                      style: {"font-size": "50px"},
+                      attr: {}
+                    },
+                    {// Line #1
+                      style: {"font-size": "30px"},
+                      attr: {dy: "40px"}
+                    }
+                  ]
+                }
+              }]
+          });
+        });
+      });
+  </script>
+  <style>
+    .bubbleChart {
+      min-width: 100px;
+      max-width: 700px;
+      height: 700px;
+      margin: 0 auto;
+    }
+    .bubbleChart svg{
+      background: #bbe8ee;
+    }
+  </style>
+</head>
+<body style="background: #bbe8ee">
+   <center><h3 color="ff4943">Number of Artworks by Era - Data from Code Artists (artistree.me)</h3></center>
+<div class="bubbleChart"/>
+</body>
+</html>
+{% endblock %}
