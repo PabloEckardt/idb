@@ -56,7 +56,7 @@
            //console.log(d[i]);
            if (!("username" in d[i])) continue;
            if (!(d[i].username in count)) {
-              if (c < 500) {
+              if (c < 50) {
                 count[d[i].username] = 1;
               }
               c++;
@@ -74,7 +74,12 @@
         var bubbleChart = new d3.svg.BubbleChart({
             supportResponsive: true,
             //container: => use @default
-            size: 5000,
+            size: 2000,
+            //viewBoxSize: => use @default
+            innerRadius: 600 / 5.5,
+            //outerRadius: => use @default
+            radiusMin: 40,
+            radiusMax: 80,
             //intersectDelta: use @default
             //intersectInc: use @default
             //circleColor: use @default
