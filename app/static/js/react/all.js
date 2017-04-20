@@ -1,4 +1,4 @@
-function updateHaystack(input, needle) {
+function updateHaystack(input) {
     var found = false;
     var i = 0;
     for (;i < params.length; i++) {
@@ -32,7 +32,7 @@ var AllItem = React.createClass({
         for (; j < keys.length; j++) {
             var chString = String(currElement[keys[j]]);
             if (chString != null) {
-                chString = updateHaystack(chString, 1431, params);
+                chString = updateHaystack(chString);
                 if (chString != null) {
                     htmlString += keys[j] + ": " + chString + "<br />";
                 }

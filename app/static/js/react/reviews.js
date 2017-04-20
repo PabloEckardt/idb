@@ -137,7 +137,11 @@ function getData() {
             console.log(pages);
 
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<ReviewList elements={pages[0]} />, document.getElementById('reviewGrid'));
+            if (elements.length >0) {
+                ReactDOM.render(<ReviewList elements={pages[0]}/>, document.getElementById('reviewGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('reviewGrid'));
+            }
         });
 
 }
@@ -192,7 +196,11 @@ function sortGrid(e) {
             //console.log(pages);
             //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<ReviewList elements={pages[0]} />, document.getElementById('reviewGrid'));
+            if (elements.length >0) {
+                ReactDOM.render(<ReviewList elements={pages[0]}/>, document.getElementById('reviewGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('reviewGrid'));
+            }
         });
 }
 

@@ -116,6 +116,19 @@
             grid div will be re-rendered using the new page[pageIndex]. This drastically speeds up rendering speed of the React components. Initially
             we were rendering all 4k restaurants and it was taking approximately 8 seconds to render. After this implementation it was reduced to about
             1 sec.</p>
+            <p><strong>Search Functionality:</strong><br>
+                For the front end portion of the search functionality, the search parameter is passed to the page through the URL, with the URL being
+                "/All?search=parameters". The API call for searching is "/API/All?search=parameters", which a JSON is returned with an array of 8
+                dictionaries, first 4 are high priority (better matching) and lower priority are the latter 4. The reason for the different dictionaries
+                is to be able to distinguish which model each entry came from and to know where to link them to, for instance, linking a restaurant
+                to "/Restaurant/ID" or a review to "Reviews/ID". Within the AllList React component, we are checking each attribute of the model
+                to see if the searched keywords are found, and if found it is highlighted. We gather the search keywords by getting the URL
+                parameters through function called "getParameterByName" which takes in the URL and a parameter name, in this case "search". For
+                each item that will generate a React component, we call "updateHaystack" which takes in the attribute field and performs a REGEX
+                match and replace to put the keywords found in a span that will be highlighted due to the CSS associated to the id of that span. We
+                used the same pagination functionality as the other models/pages and we also included which model each search result is coming
+                from on the top right of the div to inform the user which model the search is from.
+            </p>
           <h2>Back End:</h2> <br>
           <p>At this point of the development of foodcloseto.me we have 4 models:  Reviews,  Food_Types,  Locations, Restaurants. </p>
           <ul>

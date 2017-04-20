@@ -133,7 +133,11 @@ function getData() {
             //console.log(pages);
 
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<LocationList elements={pages[0]} />, document.getElementById('locationGrid'));
+            if (elements.length >0) {
+                ReactDOM.render(<LocationList elements={pages[0]}/>, document.getElementById('locationGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('locationGrid'));
+            }
         });
 
 }
@@ -188,7 +192,11 @@ function sortGrid(e) {
             //console.log(pages);
             //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<LocationList elements={pages[0]} />, document.getElementById('locationGrid'));
+            if (elements.length >0) {
+                ReactDOM.render(<LocationList elements={pages[0]}/>, document.getElementById('locationGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('locationGrid'));
+            }
         });
 }
 

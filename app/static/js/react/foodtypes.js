@@ -134,7 +134,11 @@ function getData() {
             //console.log(pages);
 
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<FoodTypeList elements={pages[0]} />, document.getElementById('foodTypeGrid'));
+            if (elements.length > 0) {
+                ReactDOM.render(<FoodTypeList elements={pages[0]} />, document.getElementById('foodTypeGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('foodTypeGrid'));
+            }
         });
 
 }
@@ -189,7 +193,11 @@ function sortGrid(e) {
             //console.log(pages);
             //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<FoodTypeList elements={pages[0]} />, document.getElementById('foodTypeGrid'));
+            if (elements.length > 0) {
+                ReactDOM.render(<FoodTypeList elements={pages[0]} />, document.getElementById('foodTypeGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('foodTypeGrid'));
+            }
         });
 }
 
@@ -245,7 +253,11 @@ function filterGrid() {
             //console.log(pages);
             //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<FoodTypeList elements={pages[0]} />, document.getElementById('foodTypeGrid'));
+            if (elements.length > 0) {
+                ReactDOM.render(<FoodTypeList elements={pages[0]} />, document.getElementById('foodTypeGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('foodTypeGrid'));
+            }
         });
 }
 

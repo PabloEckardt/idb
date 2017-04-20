@@ -132,10 +132,14 @@ function getData() {
             }
             //console.log(elements.length);
             //console.log("SIZE UP PAGES DOWN");
-            //console.log(pages);
+            // console.log(pages);
 
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            if (elements.length > 0) {
+                ReactDOM.render(<RestList elements={pages[0]}/>, document.getElementById('restGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('restGrid'));
+            }
         });
 
 }
@@ -190,7 +194,11 @@ function sortGrid(e) {
             //console.log(pages);
             //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
-            ReactDOM.render(<RestList elements={pages[0]} />, document.getElementById('restGrid'));
+            if (elements.length > 0) {
+                ReactDOM.render(<RestList elements={pages[0]}/>, document.getElementById('restGrid'));
+            } else {
+                ReactDOM.render(<h1>None Found..</h1>, document.getElementById('restGrid'));
+            }
         });
 }
 
@@ -245,7 +253,7 @@ function getFilters() {
             //console.log(pages);
             //console.log(sortBy[1]);
             // TODO: review if we need to keep this or remove above
-            if (elements.length >0) {
+            if (elements.length > 0) {
                 ReactDOM.render(<RestList elements={pages[0]}/>, document.getElementById('restGrid'));
             } else {
                 ReactDOM.render(<h1>None Found..</h1>, document.getElementById('restGrid'));

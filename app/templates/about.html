@@ -84,10 +84,14 @@
        </div>
     </div>
         <div class="row">
-            <div class="col-sm-12 stats" id="tools">
-                <input type = "button" value = "Run Tests!" onclick="window.location.href = '/TestAbout';" />
+            <div class="col-sm-12 stats" id="tools" style = "text-align: center;">
+                <input class = "searchButton"type = "button" value = "Run Tests!" onclick="window.location.href = '/TestAbout';" />
             </div>
         </div>
+        <br />
+        {% block test %}
+        {% endblock %}
+        <br />
     <div class="row">
        <div class="col-sm-12 stats" id="tools">
           <div class="title">
@@ -104,6 +108,3 @@
       </div> <!-- end of row for info -->
     </div>
     {% endblock %}
-
-
-}
