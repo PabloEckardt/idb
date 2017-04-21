@@ -76,7 +76,6 @@ def add_location(
     most_popular_restaurant,
     number_restaurants
 ):
-
     """
     Adds a location with the provided variables to the
     provided database.
@@ -143,7 +142,6 @@ def add_review(
     review_url,
     zipcode
 ):
-
     """
     Adds a review with the provided variables to the
     provided database.

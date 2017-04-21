@@ -219,6 +219,7 @@ def showAll():
 def About():
     return render_template("about.html")
 
+
 @views.route('/Data_Visualization')
 def Data_Vizualization():
     return render_template("data_visualization.html")
@@ -237,7 +238,8 @@ def testAbout():
 @views.route('/Restaurants/<pk>')
 def restaurant(pk):
     d = query_restaurant(pk)
-    return render_template("restaurant_instance.html", instance=d, food_types=food_types)
+    return render_template("restaurant_instance.html",
+                           instance=d, food_types=food_types)
 
 # LOCATIONS
 

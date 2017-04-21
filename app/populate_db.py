@@ -19,7 +19,7 @@ def add_restaurants(flask_app):
 
     rest_exist = session_token.query(
         Restaurants.id).filter(Restaurants.id == "1234").count() > 0
-    print ("Generating Restaurants:", not rest_exist)
+    print("Generating Restaurants:", not rest_exist)
     if not rest_exist:
         default = "/static/img/default.jpg"
         with open(flask_app.config["REVIEWS"], "r") as rj:
@@ -75,7 +75,7 @@ def add_reviews(flask_app):
 
     rev_exist = session_token.query(
         Reviews.id).filter(Reviews.id == 123).count() > 0
-    print ("Generating Reviews:", not rev_exist)
+    print("Generating Reviews:", not rev_exist)
     if not rev_exist:
         default = "/static/img/default.jpg"
         with open(flask_app.config["REVIEWS"], "r") as rj:
@@ -136,7 +136,7 @@ def loc_find_hi_lo_price(l):
     from the provided location model.
     Returns the following list:
     [highest_price, lowest_price, most_popular_restaurant_key, highest_rated_restaurant_key]
-    """ 
+    """
     hi = 1
     lo = 4
     prices = {1: "$", 2: "$$", 3: "$$$", 4: "$$$$"}
@@ -193,7 +193,7 @@ def add_locations(flask_app):
     session_token = app.Session()
     locs_exist = session_token.query(
         Locations.zipcode).filter(Locations.zipcode == "78704").count() > 0
-    print ("Generating Locations:", not locs_exist)
+    print("Generating Locations:", not locs_exist)
     if not locs_exist:
         with open(flask_app.config["LOCATIONS"], "r") as l:
             locs = json.load(l)
@@ -314,7 +314,7 @@ def add_food_types(flask_app):
 
     foods_exist = session_token.query(
         Food_Types.best_location).filter(Food_Types.best_location == "78704").count() > 0
-    print ("Generating Food Types:", not foods_exist)
+    print("Generating Food Types:", not foods_exist)
     if not foods_exist:
         p = "app/static/img/"
         img_files = [f for f in listdir(p) if isfile(join(p, f))]

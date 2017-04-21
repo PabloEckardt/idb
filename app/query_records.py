@@ -154,7 +154,6 @@ def query_all_food_types(sortby, avgrating, avgprice, foodtype):
 
 
 def query_all_reviews(sortby, rating, hasimg, foodtype, id):
-
     """
     Returns a list of reviews with the desired attributes.
     sortby - attribute by which to sort, defaults to username
@@ -376,13 +375,13 @@ def merge_models(search_output, candidate_output, high_p_out=None, i=None):
     else:
         for r in candidate_output:
             if not r[keys[i]] in search_output[i] and not r[keys[i]
-                ] in high_p_out[i]:
+                                                            ] in high_p_out[i]:
                 search_output[i][r[keys[i]]] = r
 
 
 def search_models(session_token, param, search_output, high_p_out=None):
     """
-    :param session_token: Alchemy Session 
+    :param session_token: Alchemy Session
     :param param: Simplified search keyword
     :param search_output: base priority search results
     :param high_p_out: high priority search results
