@@ -26,58 +26,58 @@
     <div class="row" style = "text-align: center; margin-bottom: 30px;">
         
             <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
-                
-                <div class="thumbnail_container">
-                  <div class="thumbnail">
-                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/edwin.jpg') }}">
-                  </div>
+
+                    <div class="thumbnail_container">
+                        <div class="thumbnail">
+                            <img class = "aboutPic img-circle" src = "{{ url_for('static', filename='img/edwin.jpg') }}">
+                        </div>
+                    </div>
+                    <h2>Edwin Bejarano</h2>
+                    <p>Senior Computer Science major. I like long walks on the beach while not coding. Other than that you will find me watching Netflix or at the gym.</p>
+                    <p><strong>Front end</strong></p>
+                    <p><strong>Commits: 71</strong></p>
+                    <p><strong>Issues: 20</strong></p>
+                    <p><strong>Unit tests: 5</strong></p>
                 </div>
-                <h2>Edwin Bejarano</h2>
-                <p>Senior Computer Science major. I like long walks on the beach while not coding. Other than that you will find me watching Netflix or at the gym.</p>
-                <p><strong>Front end</strong></p>
-                <p><strong>Commits: 28</strong></p>
-                <p><strong>Issues: 6</strong></p>
-                <p><strong>Unit tests: 3</strong></p>
-            </div>
             <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
                 <div class="thumbnail_container">
-                  <div class="thumbnail">
-                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/pablo.jpeg') }}">
-                  </div>
+                    <div class="thumbnail">
+                        <img class = "aboutPic img-circle" src = "{{ url_for('static', filename='img/pablo.jpeg') }}">
+                    </div>
                 </div>
                 <h2>Pablo Eckardt Salazar</h2>
                 <p>I am a clever clever good looking engineer into backend and I like things like OpenCV. Oh and I like corgis.</p>
                 <p><strong>Backend</strong></p>
-                <p><strong>Commits: 35 </strong></p>
-                <p><strong>Issues: 7</strong></p>
-                <p><strong>Unit tests: 3</strong></p>
+                <p><strong>Commits: 111 </strong></p>
+                <p><strong>Issues: 18</strong></p>
+                <p><strong>Unit tests: 10</strong></p>
             </div>
             <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
                 <div class="thumbnail_container">
-                  <div class="thumbnail">
-                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/parker.jpg') }}">
-                  </div>
+                    <div class="thumbnail">
+                        <img class = "aboutPic img-circle" src = "{{ url_for('static', filename='img/parker.jpg') }}">
+                    </div>
                 </div>
                 <h2>Parker Kruzel</h2>
                 <p>I am a junior Computer Science student. I am an avid eSports enthusiast (with a particular love of Pokemon and Dota 2), and I am currently preparing to study in Sweden this fall.</p>
                 <p><strong>Front end</strong></p>
-                <p><strong>Commits: 11</strong></p>
-                <p><strong>Issues: 5</strong></p>
+                <p><strong>Commits: 47</strong></p>
+                <p><strong>Issues: 15</strong></p>
                 <p><strong>Unit tests: 3</strong></p>
             </div>
             <div class="col-sm-3" style = "text-align: center; margin-bottom: 30px;">
                 <div class="thumbnail_container">
-                  <div class="thumbnail">
-                      <img class = "aboutPic" src = "{{ url_for('static', filename='img/audric.jpg') }}">
-                  </div>
+                    <div class="thumbnail">
+                        <img class = "aboutPic img-circle" src = "{{ url_for('static', filename='img/audric.jpg') }}">
+                    </div>
                 </div>
                 <h2>Audric Terry</h2>
                 <p>I like soccer and juice, that's it.</p>
                 <p><strong>Backend</strong></p>
-                <p><strong>Commits: 27</strong></p>
-                <p><strong>Issues: 5</strong></p>
+                <p><strong>Commits: 91</strong></p>
+                <p><strong>Issues: 20</strong></p>
                 <p><strong>Unit tests: 3</strong></p>
-            </div>
+                </div>
     </div>
       <div class="row" style = "margin-bottom: 30px;">
         <div class="col-sm-12"> 
@@ -116,18 +116,63 @@
             grid div will be re-rendered using the new page[pageIndex]. This drastically speeds up rendering speed of the React components. Initially
             we were rendering all 4k restaurants and it was taking approximately 8 seconds to render. After this implementation it was reduced to about
             1 sec.</p>
-            <p><strong>Search Functionality:</strong><br>
+            <p><strong>Search Functionality on the Front End:</strong><br>
                 For the front end portion of the search functionality, the search parameter is passed to the page through the URL, with the URL being
                 "/All?search=parameters". The API call for searching is "/API/All?search=parameters", which a JSON is returned with an array of 8
-                dictionaries, first 4 are high priority (better matching) and lower priority are the latter 4. The reason for the different dictionaries
+                dictionaries, first 4 are high priority (better matching) and lower priority are the latter 4. <br>The reason for the different dictionaries
                 is to be able to distinguish which model each entry came from and to know where to link them to, for instance, linking a restaurant
                 to "/Restaurant/ID" or a review to "Reviews/ID". Within the AllList React component, we are checking each attribute of the model
                 to see if the searched keywords are found, and if found it is highlighted. We gather the search keywords by getting the URL
-                parameters through function called "getParameterByName" which takes in the URL and a parameter name, in this case "search". For
+                parameters through function called "getParameterByName" which takes in the URL and a parameter name, in this case "search".<br> For
                 each item that will generate a React component, we call "updateHaystack" which takes in the attribute field and performs a REGEX
                 match and replace to put the keywords found in a span that will be highlighted due to the CSS associated to the id of that span. We
                 used the same pagination functionality as the other models/pages and we also included which model each search result is coming
                 from on the top right of the div to inform the user which model the search is from.
+            </p>
+            <p>
+               <strong>Search Functionality on the Back End </strong><br>
+
+                The search functionality in the back end is a 3 step process in which we query the whole database for all matching attributes of all models.
+                We determined that the most important parameters in a search may be implicit within the search, or they may be the exact relative match
+                of the search.  simple "or" of the terms in the database is not good enough for our
+                kind of models. There would be too much noise in the results because of our 12k review data points, which by nature contain words that describe
+                our models such as names, food types, locations, etc.
+
+                Note that our search is capable of correcting simple errors in capitalization, locate elements contained in other strings, and a combination of both.
+
+                We identified 3 main multi-word search cases and built a solution for each one of them.
+
+                <ol type="1">
+                    <li> <strong>High Priority </strong> <br></li>
+                        First is the basic case and potentially most important one
+                        where we assume that the user gave us a set of words which are to be interpreted as a single string. Such as complete name of a restaurant
+                        like "Taco Bell". When somebody searches for Taco Bell they don't expect a search result derived from adding the meaning of each individual word.
+                        So we catalog these results as highest priority, and results such as these are always among the first to come up in the search results.
+                    <li> <strong>Low Priority </strong> <br></li>
+                        The second case is when a user searches for a series of individual ideas i.e: Mexican Tacos. In this case we can assume that yielding result from
+                        searching each individual meaning is acceptable for the user. We consider these searches the lowest priority searches and its results are
+                        displayed last.<br>
+                    <li> <strong>Mid Priority </strong> <br></li>
+                        The third and most complex case is a mixture of the last two. When there are groupings of words that together are highly relevant and are accompanied
+                        by words that exist to narrow or supplement the search results. I.e. Cabob Bob's Burritos 78704. This kind of search is complicated and not solved by
+                        the cases described above. We can't make any assumption for this case as to what is what in a list of search parameters.<br>
+
+                        On one hand, the first solution we implemented would yield 0 results, and on the other hand the second solution would yield far too many and
+                        disorganized results for the search to be meaningful.<br><br> For this reason we wrote an algorithm that would generate unique contigous groupings
+                        (> 1 elements) from a set of words. We used those groupings and treated them as search parameters for case 1, thus yielding our middle priority results.
+                        The results of these 3 methods put together yield a strong search engine that is very error resistant, and almost fully context aware.<br>
+
+                        In our search engine, it is possible to make incorrect assertions while making a search and do searches such as: Cabob Bob's Tacos, and still get the
+                        correct result parameters displayed first. Additionally, our search is fast and demonstrates no latency whatsoever while it searches over our thousands
+                        of instances.<br>
+                </ol>
+                Our last adjustments were to make decisions as to which models should we be displaying first within each category high or low priority.
+                We ended up with a model where Restaurants > Food_Types > Locations > Reviews was the norm. Reviews are too plentiful and return for almost any search
+                concerning each one of the other models. However, if a user would search for a reviewer's user name its guaranteed it would be displayed first.
+                For that reason they are set to last.<br> Since the core of our website is restaurants, and our middle and high priority searches do an excellent job
+                at finding these, we put that first. Food_Types is a better abstraction that Locations because information about a type of food is more concrete on a
+                base level than information about a zipcode.
+
             </p>
           <h2>Back End:</h2> <br>
           <p>At this point of the development of foodcloseto.me we have 4 models:  Reviews,  Food_Types,  Locations, Restaurants. </p>
@@ -195,6 +240,17 @@
           </ul>
           <p><strong>config.py:</strong> This is the last configuration file. It doesn’t exactly interact with GCP directly, but, rather, interacts with it indirectly. Essentially, that file contains the GCP Project ID which then goes in our main Flask object. This Project ID is how the local version of the Google Cloud SDK authenticates the user when utilizing their provided command line interface (CLI).  This CLI is what we use to deploy our application to the App Engine and is by far the easiest way to do so.</p>
        </div>
+    <div class="row" style = "margin-bottom: 30px;">
+    <div class="col-sm-12">
+        <div class="title">
+            <h1 id = "Data Visualization">Data Visualization With D3</h1><br>
+        </div>
+        <p>
+            We were assigned the task of performing some kind of data visualization using another groups API. The main tool that we used to achieve this goal was the D3 javascript library. D3 is extremely powerful and useful and really makes it easy to bring data to life via a mixture of HTML, SVG (Scalable Vector Graphics), and CSS, all combined into one easy to import module. The data visualization that we exercised using this library is very simple and straightforward and doesn’t even begin to scratch the surface of what D3 is capable of. Now, after that intentionally long introduction, let’s get into the details. <br><br>
+            We started by choosing a simple example from D3’s main website, as we were told this was ok to do. The example we chose was slightly interactive and animated bubble chart. The group that we were assigned to visualize data from was Code Artists (artistree.me). Their main API categories were Artists, Works, Media, and Eras. Given that we were doing a bubble chart, we thought it would make the most sense to tally up the number of works per Era and display total counts per era as the bubbles. So for example, the 17 Century (an “Era”) had 1214 pieces of artwork, which represents one bubble in our chart. Clearly, this is a really simple idea that D3 made trivial almost. Regardless, the actual code is explained below. <br><br>
+            First, the file I’ll be explaining is in app/templates/data_visualization.html. The first necessary step is to import the necessary libraries (D3, along with some supporting functionalities from the example). Next, we need to query Code Artist’s API and get the actual data. Part of the project requirement was to do this dynamically instead of downloading the data into a static file, so that’s what we did. The only issues with this is that the raw returned json from their API wasn’t exactly in the right format that we needed for the D3 method that we were planning on using. Therefore, there was a little data massaging necessary. Starting on line 19 of the file, which is in javascript, what we did was query the API for all artworks, (note: everything after the d3.json() query is inside of the callback parameter to that function. If you don’t know what a callback is, a simple Google search will suffice), and then loop through the returned json by object, where each object represents another json of a specific artwork. For each artwork we cracked the Century (or Era) from the data field and added it to a different json that we were building that stored the counts of each artwork by era. So, if the current iterations date was the first of an Era, we would add a new field to our json. Otherwise, we increment the count for that Era by one. Once this new json with all the counts was created, we simply looped through it to form one more new json that fit the format of what the D3 method we were going to use required. The last thing necessary to complete this visualization is to build the actual chart. All this requires is a call to d3.svg.BubbleChart(). This method takes quite a few parameters, but they are all pretty straightforward. They specify things like the data, what colors to use, how big to make the circles, whether or not to make the bubbles interactive or not, and things like that. After this call is finished, the only thing left is a little html styling which is handled at the very bottom of the file. And that’s it! After those few simple steps, the data visualization is complete.
+        </p>
+    </div>
         <div class="row" style = "margin-bottom: 30px;">
             <div class="col-sm-12">
                 <div class="title">
