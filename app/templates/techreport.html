@@ -103,6 +103,34 @@
                 We improved our imagery and fonts, and with those simple changes our website looks a lot more professional. For the sake of consistency we choose aspect ratio over image size as far as how we display
                 our instances. For that reason sometimes images will appear to be slightly smaller, but never distorted. Overall we aspired for polished simplicity.
             </p>
+
+            <h2>User Stories</h2>
+          <ol type="1">
+
+              <li> As a user I want to be able to filter restaurants by different food types to explore my options.</li>
+              <p>Estimate time: 8h. Actual Development Time: 16h </p>
+              <li>As a Developer user I want to be able to filter and sort at the API call itself.</li>
+              <p>Estimate time: 8h. Actual Development Time: 16h </p>
+              <li>As a Developer user I want to be able to query single and complete sets of instances from the database.</li>
+              <p>Estimate time: 1h. Actual Development Time: 3h </p>
+              <li>As a user I want to have links inside of general types like Locations suggesting restaurants.</li>
+              <p>Estimate time: 1/2h. Actual Development Time: 1h </p>
+              <li>As a user I want to see where a restaurant is located in a map.</li>
+              <p>Estimate time: 3h. Actual Development Time: 3h </p>
+              <li>As a user I want to be able to use the search bar from any location of the website</li>
+              <p>Estimate time: 1h. Actual Development Time: 1h </p>
+              <li>As a user I'd like to see a design aesthetic that is less simple and more welcoming.</li>
+              <p>Estimate time: 2h. Actual Development Time: 2h </p>
+              <li>As a user I'd like to be able to search multiple things at the same time like restaurants and locations.</li>
+              <p>Estimate time: 6h. Actual Development Time: 10h </p>
+              <li>As a user I'd like to see the most important search results first.</li>
+              <p>Estimate time: 4h. Actual Development Time: 3h </p>
+              <li>As a grader I want to be able to visualize somebody's data while its being queried in real time.</li>
+              <p>Estimate time: 6h. Actual Development Time: 7h </p>
+              <li>As a user I'd like to be able to filter the different grids by different parameters.</li>
+              <p>Estimate time: 6h. Actual Development Time: 7h </p>
+
+          </ol>
           <h2>Front End:</h2><br>
           <p>The front end was designed using a basic bootstrap enabled theme and Flask. Flask templates were used to render each page with “layout.html” template as the base template. All the templates used by Flask are found within the “app/template” folder. These templates use Flask syntax to help populate the pages, especially when dealing with the grids found on each main model page. The grid is filled in depending on the size of the passed data, which it will iterated through and display each instance on the page. Each page will have a navbar at the top to allow users to easily navigate to the different areas of the site. Aside from the navbar each page will have a different template used to show the content. “app/template/layout.html” inside the “app/template” folder will be the main layout of the website. Each other template will be extending “app/template/layout.html” and including a block named “body” to render that page properly through the rendering function for each view in “app/views.py”.</p>
           <p>The majority of the CSS is managed by the bootstrap included css but for the rest of the designs, the CSS is in “static/style.css”. The CSS found in this file will be a little more specific to the needs of the website and pages, such as certain CSS classes found in the about.html or restaurants.html web pages.</p>

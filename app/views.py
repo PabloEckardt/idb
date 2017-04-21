@@ -227,7 +227,7 @@ def Data_Vizualization():
 
 @views.route('/TestAbout')
 def testAbout():
-    os.system('make check')
+    os.system('make buttoncheck')
     return render_template("testabout.html")
 
 

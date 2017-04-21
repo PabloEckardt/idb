@@ -58,6 +58,12 @@ IDB3.html: app/models.py
 IDB2.log:
 	git log > IDB2.log
 
+buttoncheck:
+	chmod 777 app/static/tests.txt
+	python3 app/tests.py > app/static/tests.txt
+	chmod 777 app/static/tests.txt
+		
+	
 
 check:
 	@	not_found=0;                                 \
