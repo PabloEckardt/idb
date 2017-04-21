@@ -95,6 +95,14 @@
           <div class="title">
             <h1 id = "design">Design</h1><br>
           </div>
+          <h2>Aesthetics:</h2><br>
+            <p>Our website started with a very very basic aesthetic, a simple white background and and some nice pictures that were labeled for free use. For Phase 2 we decided to improve
+                our general design, and give our website a personality. This was a little challenging since we all fanatics of minimalistic designs. So even adding colors was not our first instinct.
+                We decided to use red for our navigation bar because its a color very much associated with food in advertising. but instead of going for a stringent red such as yelp's we went for a more pastel type
+                of red. Then we supplemented it with another pastel color for our background, a simple aqua marine. The result is a very pleasing yet simple website that carries a consistent style throughout.
+                We improved our imagery and fonts, and with those simple changes our website looks a lot more professional. For the sake of consistency we choose aspect ratio over image size as far as how we display
+                our instances. For that reason sometimes images will appear to be slightly smaller, but never distorted. Overall we aspired for polished simplicity.
+            </p>
           <h2>Front End:</h2><br>
           <p>The front end was designed using a basic bootstrap enabled theme and Flask. Flask templates were used to render each page with “layout.html” template as the base template. All the templates used by Flask are found within the “app/template” folder. These templates use Flask syntax to help populate the pages, especially when dealing with the grids found on each main model page. The grid is filled in depending on the size of the passed data, which it will iterated through and display each instance on the page. Each page will have a navbar at the top to allow users to easily navigate to the different areas of the site. Aside from the navbar each page will have a different template used to show the content. “app/template/layout.html” inside the “app/template” folder will be the main layout of the website. Each other template will be extending “app/template/layout.html” and including a block named “body” to render that page properly through the rendering function for each view in “app/views.py”.</p>
           <p>The majority of the CSS is managed by the bootstrap included css but for the rest of the designs, the CSS is in “static/style.css”. The CSS found in this file will be a little more specific to the needs of the website and pages, such as certain CSS classes found in the about.html or restaurants.html web pages.</p>
