@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>models</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/pebs/git/idb/app/models.py">/home/pebs/git/idb/app/models.py</a></font></td></tr></table>
+    <p><tt>models.py</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial">sqlalchemy.ext.declarative.api.Base(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.html#Food_Types">Food_Types</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Locations">Locations</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Restaurants">Restaurants</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Reviews">Reviews</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Food_Types">class <strong>Food_Types</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Primary&nbsp;Key&nbsp;=&nbsp;food_type&nbsp;(Natural&nbsp;Key)<br>
+Foreign&nbsp;Keys:&nbsp;to&nbsp;<a href="#Locations">Locations</a>&nbsp;Table,&nbsp;and&nbsp;<a href="#Restaurants">Restaurants</a>&nbsp;Table<br>
+&nbsp;<br>
+average_price&nbsp;=&nbsp;average&nbsp;price&nbsp;of&nbsp;restaurants&nbsp;of&nbsp;a&nbsp;certain&nbsp;food&nbsp;type<br>
+ex:&nbsp;average&nbsp;price&nbsp;of&nbsp;American&nbsp;is&nbsp;2&nbsp;where&nbsp;American&nbsp;is&nbsp;a&nbsp;set&nbsp;of<br>
+2&nbsp;restaurants,&nbsp;one&nbsp;with&nbsp;$&nbsp;as&nbsp;price,&nbsp;another&nbsp;is&nbsp;$$$<br>
+&nbsp;<br>
+average_rating&nbsp;=&nbsp;similar&nbsp;to&nbsp;above,&nbsp;average_rating&nbsp;represents&nbsp;how<br>
+is&nbsp;a&nbsp;food&nbsp;type&nbsp;represented&nbsp;as&nbsp;a&nbsp;whole.&nbsp;ex:&nbsp;American&nbsp;3/5,&nbsp;etc<br>
+&nbsp;<br>
+number_restaurants&nbsp;=&nbsp;restaurant&nbsp;instances&nbsp;from&nbsp;the&nbsp;Restaurant&nbsp;table<br>
+associated&nbsp;with&nbsp;this&nbsp;food&nbsp;type.&nbsp;ex:&nbsp;2&nbsp;American&nbsp;food&nbsp;<a href="#Restaurants">Restaurants</a><br>
+&nbsp;<br>
+most_popular_restaurant&nbsp;=&nbsp;most&nbsp;reviewed&nbsp;restaurant&nbsp;in&nbsp;set&nbsp;of<br>
+restaurants&nbsp;associated&nbsp;with&nbsp;food&nbsp;type<br>
+&nbsp;<br>
+food_type_display_name&nbsp;=&nbsp;printable&nbsp;version&nbsp;of&nbsp;the&nbsp;food&nbsp;type&nbsp;string<br>
+&nbsp;<br>
+best_location&nbsp;=&nbsp;zipcode&nbsp;associated&nbsp;with&nbsp;the&nbsp;best&nbsp;and&nbsp;most&nbsp;numerous<br>
+instances&nbsp;of&nbsp;restaurants&nbsp;associated&nbsp;with&nbsp;each&nbsp;specific&nbsp;food&nbsp;type<br>
+&nbsp;<br>
+to_dict&nbsp;is&nbsp;a&nbsp;"serialize'&nbsp;type&nbsp;function&nbsp;that&nbsp;allows&nbsp;this&nbsp;object<br>
+to&nbsp;become&nbsp;a&nbsp;json&nbsp;in&nbsp;a&nbsp;much&nbsp;more&nbsp;efficient&nbsp;way<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Food_Types">Food_Types</a></dd>
+<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Food_Types-__init__"><strong>__init__</strong></a>(self, food_type, food_type_display_name, average_price, average_rating, image_url, number_restaurants, most_popular_restaurant, highest_rated_restaurant, best_location)</dt></dl>
+
+<dl><dt><a name="Food_Types-to_dict"><strong>to_dict</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>average_price</strong></dt>
+</dl>
+<dl><dt><strong>average_rating</strong></dt>
+</dl>
+<dl><dt><strong>best_location</strong></dt>
+</dl>
+<dl><dt><strong>food_type</strong></dt>
+</dl>
+<dl><dt><strong>food_type_display_name</strong></dt>
+</dl>
+<dl><dt><strong>highest_rated_restaurant</strong></dt>
+</dl>
+<dl><dt><strong>image_url</strong></dt>
+</dl>
+<dl><dt><strong>location</strong></dt>
+</dl>
+<dl><dt><strong>most_popular_restaurant</strong></dt>
+</dl>
+<dl><dt><strong>number_restaurants</strong></dt>
+</dl>
+<dl><dt><strong>restaurant</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fd5de7c1c50; Food_Types&gt;</dl>
+
+<dl><dt><strong>__table__</strong> = Table('food_types', MetaData(bind=Engine(sqlite:...table=&lt;food_types&gt;, nullable=False), schema=None)</dl>
+
+<dl><dt><strong>__table_args__</strong> = {'extend_existing': True}</dl>
+
+<dl><dt><strong>__tablename__</strong> = 'food_types'</dl>
+
+<hr>
+Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=Engine(sqlite:///app/db/food_close_to.db))</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Locations">class <strong>Locations</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Primary&nbsp;Key&nbsp;=&nbsp;Zipcode&nbsp;(Natural&nbsp;Key)<br>
+Foreign&nbsp;Keys:&nbsp;to&nbsp;<a href="#Food_Types">Food_Types</a>&nbsp;Table,&nbsp;and&nbsp;<a href="#Restaurants">Restaurants</a>&nbsp;Table<br>
+&nbsp;<br>
+average_rating&nbsp;=&nbsp;averaged&nbsp;ratings&nbsp;of&nbsp;all&nbsp;restaurants&nbsp;associated<br>
+with&nbsp;the&nbsp;zipcode<br>
+&nbsp;<br>
+average_price&nbsp;=&nbsp;averaged&nbsp;price&nbsp;of&nbsp;all&nbsp;restaurants&nbsp;associated<br>
+with&nbsp;the&nbsp;zipcode<br>
+&nbsp;<br>
+highest_price&nbsp;=&nbsp;highest&nbsp;price&nbsp;found&nbsp;among&nbsp;set&nbsp;of&nbsp;restaurants<br>
+associated&nbsp;with&nbsp;the&nbsp;zipcode<br>
+&nbsp;<br>
+lowest_price&nbsp;=&nbsp;lowest&nbsp;price&nbsp;found&nbsp;amoung&nbsp;set&nbsp;of&nbsp;restaurants<br>
+associated&nbsp;with&nbsp;the&nbsp;zipcode<br>
+&nbsp;<br>
+most_popular_restaurant&nbsp;=&nbsp;restaurant&nbsp;key&nbsp;to&nbsp;restaurant<br>
+associated&nbsp;with&nbsp;the&nbsp;zipcode&nbsp;that&nbsp;has&nbsp;the&nbsp;largest&nbsp;number&nbsp;of&nbsp;revies<br>
+&nbsp;<br>
+number_of_restuarants&nbsp;=&nbsp;number&nbsp;of&nbsp;restaurants&nbsp;associated&nbsp;with&nbsp;zipcode<br>
+&nbsp;<br>
+popular_food_type&nbsp;=&nbsp;food_type&nbsp;with&nbsp;best&nbsp;performing&nbsp;reviews&nbsp;in&nbsp;quality<br>
+and&nbsp;number&nbsp;in&nbsp;the&nbsp;zipcode.&nbsp;ex:&nbsp;78704,&nbsp;Tex-Mex<br>
+&nbsp;<br>
+highest_restaurant&nbsp;=&nbsp;restaurant&nbsp;associated&nbsp;with&nbsp;zipcode&nbsp;with&nbsp;highest<br>
+number&nbsp;of&nbsp;reviews&nbsp;and&nbsp;ratings.<br>
+&nbsp;<br>
+to_dict&nbsp;is&nbsp;a&nbsp;"serialize'&nbsp;type&nbsp;function&nbsp;that&nbsp;allows&nbsp;this&nbsp;object<br>
+to&nbsp;become&nbsp;a&nbsp;json&nbsp;in&nbsp;a&nbsp;much&nbsp;more&nbsp;efficient&nbsp;way.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Locations">Locations</a></dd>
+<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Locations-__init__"><strong>__init__</strong></a>(self, zipcode, average_rating, average_price, highest_price, lowest_price, popular_food_type, highest_rated_restaurant, most_popular_restaurant, number_restaurants)</dt></dl>
+
+<dl><dt><a name="Locations-to_dict"><strong>to_dict</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>average_price</strong></dt>
+</dl>
+<dl><dt><strong>average_rating</strong></dt>
+</dl>
+<dl><dt><strong>food</strong></dt>
+</dl>
+<dl><dt><strong>highest_price</strong></dt>
+</dl>
+<dl><dt><strong>highest_rated_restaurant</strong></dt>
+</dl>
+<dl><dt><strong>lowest_price</strong></dt>
+</dl>
+<dl><dt><strong>most_popular_restaurant</strong></dt>
+</dl>
+<dl><dt><strong>number_restaurants</strong></dt>
+</dl>
+<dl><dt><strong>popular_food_type</strong></dt>
+</dl>
+<dl><dt><strong>restaurant</strong></dt>
+</dl>
+<dl><dt><strong>zipcode</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fd5de7760f0; Locations&gt;</dl>
+
+<dl><dt><strong>__table__</strong> = Table('locations', MetaData(bind=Engine(sqlite:/... table=&lt;locations&gt;, nullable=False), schema=None)</dl>
+
+<dl><dt><strong>__table_args__</strong> = {'extend_existing': True}</dl>
+
+<dl><dt><strong>__tablename__</strong> = 'locations'</dl>
+
+<hr>
+Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=Engine(sqlite:///app/db/food_close_to.db))</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Restaurants">class <strong>Restaurants</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Primary&nbsp;Key&nbsp;=&nbsp;id&nbsp;(Surrogate&nbsp;key)<br>
+Foreign&nbsp;Keys:&nbsp;to&nbsp;<a href="#Food_Types">Food_Types</a><br>
+&nbsp;<br>
+name&nbsp;=&nbsp;restaurant&nbsp;name<br>
+&nbsp;<br>
+yelp_id&nbsp;=&nbsp;id&nbsp;granted&nbsp;by&nbsp;yelp&nbsp;to&nbsp;use&nbsp;in&nbsp;yelp_fusion&nbsp;API<br>
+&nbsp;<br>
+location&nbsp;=&nbsp;zip&nbsp;where&nbsp;restaurant&nbsp;is&nbsp;located<br>
+&nbsp;<br>
+lat/long&nbsp;=&nbsp;lat/long&nbsp;of&nbsp;the&nbsp;address&nbsp;of&nbsp;the&nbsp;restaurant<br>
+&nbsp;<br>
+price&nbsp;=&nbsp;restaurant's&nbsp;user&nbsp;reported&nbsp;rating<br>
+&nbsp;<br>
+rating&nbsp;=&nbsp;restaurant's&nbsp;performance&nbsp;as&nbsp;far&nbsp;as&nbsp;user&nbsp;ratings<br>
+&nbsp;<br>
+review&nbsp;=&nbsp;latest&nbsp;or&nbsp;a&nbsp;relevant&nbsp;recent&nbsp;review&nbsp;associated&nbsp;with<br>
+the&nbsp;restaurant.<br>
+&nbsp;<br>
+review_count&nbsp;=&nbsp;number&nbsp;of&nbsp;reviews&nbsp;given&nbsp;to&nbsp;restaurant<br>
+&nbsp;<br>
+review_date&nbsp;=&nbsp;date&nbsp;associate&nbsp;with&nbsp;review&nbsp;above.<br>
+&nbsp;<br>
+url/img_url&nbsp;=&nbsp;links&nbsp;to&nbsp;yelp.com&nbsp;associated&nbsp;with&nbsp;this&nbsp;restaurant<br>
+&nbsp;<br>
+food_types#/food_type_disp#:&nbsp;restaurants&nbsp;can&nbsp;have&nbsp;up&nbsp;to<br>
+3&nbsp;food&nbsp;types,&nbsp;and&nbsp;at&nbsp;least&nbsp;one.&nbsp;ex:&nbsp;American&nbsp;Food,&nbsp;Bar.<br>
+Each&nbsp;food_type&nbsp;needs&nbsp;an&nbsp;associated&nbsp;printable&nbsp;format&nbsp;string.<br>
+&nbsp;<br>
+to_dict&nbsp;is&nbsp;a&nbsp;"serialize'&nbsp;type&nbsp;function&nbsp;that&nbsp;allows&nbsp;this&nbsp;object<br>
+to&nbsp;become&nbsp;a&nbsp;json&nbsp;in&nbsp;a&nbsp;much&nbsp;more&nbsp;efficient&nbsp;way.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Restaurants">Restaurants</a></dd>
+<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Restaurants-__init__"><strong>__init__</strong></a>(self, id, name, yelp_id, location, lat, long, city, address, phone, price, rating, review, review_date, review_count, url, img_url, food_type, food_type_disp, food_type2=None, food_type3=None, food_type_disp2=None, food_type_disp3=None)</dt></dl>
+
+<dl><dt><a name="Restaurants-to_dict"><strong>to_dict</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>address</strong></dt>
+</dl>
+<dl><dt><strong>city</strong></dt>
+</dl>
+<dl><dt><strong>food</strong></dt>
+</dl>
+<dl><dt><strong>food_type</strong></dt>
+</dl>
+<dl><dt><strong>food_type2</strong></dt>
+</dl>
+<dl><dt><strong>food_type3</strong></dt>
+</dl>
+<dl><dt><strong>food_type_disp</strong></dt>
+</dl>
+<dl><dt><strong>food_type_disp2</strong></dt>
+</dl>
+<dl><dt><strong>food_type_disp3</strong></dt>
+</dl>
+<dl><dt><strong>id</strong></dt>
+</dl>
+<dl><dt><strong>img_url</strong></dt>
+</dl>
+<dl><dt><strong>lat</strong></dt>
+</dl>
+<dl><dt><strong>location</strong></dt>
+</dl>
+<dl><dt><strong>long</strong></dt>
+</dl>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<dl><dt><strong>phone</strong></dt>
+</dl>
+<dl><dt><strong>price</strong></dt>
+</dl>
+<dl><dt><strong>rating</strong></dt>
+</dl>
+<dl><dt><strong>review</strong></dt>
+</dl>
+<dl><dt><strong>review_count</strong></dt>
+</dl>
+<dl><dt><strong>review_date</strong></dt>
+</dl>
+<dl><dt><strong>url</strong></dt>
+</dl>
+<dl><dt><strong>yelp_id</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fd5de7679b0; Restaurants&gt;</dl>
+
+<dl><dt><strong>__table__</strong> = Table('restaurants', MetaData(bind=Engine(sqlite...g(length=250), table=&lt;restaurants&gt;), schema=None)</dl>
+
+<dl><dt><strong>__table_args__</strong> = {'extend_existing': True}</dl>
+
+<dl><dt><strong>__tablename__</strong> = 'restaurants'</dl>
+
+<hr>
+Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=Engine(sqlite:///app/db/food_close_to.db))</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Reviews">class <strong>Reviews</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Primary&nbsp;Key&nbsp;=&nbsp;id&nbsp;(Surrogate&nbsp;key)<br>
+Foreign&nbsp;Keys:&nbsp;to&nbsp;<a href="#Locations">Locations</a><br>
+&nbsp;<br>
+restaurant_id&nbsp;=&nbsp;a&nbsp;unique&nbsp;number&nbsp;different&nbsp;from&nbsp;the&nbsp;pk&nbsp;to&nbsp;id&nbsp;restaurants<br>
+associaed&nbsp;with&nbsp;this&nbsp;review<br>
+&nbsp;<br>
+restaurant_name&nbsp;=&nbsp;name&nbsp;of&nbsp;restaurant&nbsp;associated&nbsp;with&nbsp;review<br>
+&nbsp;<br>
+yelp_restaurant_id&nbsp;=&nbsp;the&nbsp;string&nbsp;yelp&nbsp;would&nbsp;require&nbsp;to&nbsp;get&nbsp;detail&nbsp;info<br>
+in&nbsp;Yelp&nbsp;API<br>
+&nbsp;<br>
+food_type&nbsp;=&nbsp;category&nbsp;associated&nbsp;with&nbsp;the&nbsp;restaurant&nbsp;in&nbsp;the&nbsp;review<br>
+food_type_display&nbsp;=&nbsp;a&nbsp;presentable&nbsp;version&nbsp;of&nbsp;the&nbsp;food_type<br>
+&nbsp;<br>
+date/rating/username/review&nbsp;=&nbsp;review&nbsp;specific&nbsp;information<br>
+&nbsp;<br>
+review_url/profile_picture_url&nbsp;=&nbsp;yelp&nbsp;links&nbsp;to&nbsp;the&nbsp;review&nbsp;in<br>
+and&nbsp;user&nbsp;profile&nbsp;picture&nbsp;in&nbsp;yelp.com<br>
+&nbsp;<br>
+zipcode&nbsp;=&nbsp;zipcode&nbsp;associated&nbsp;with&nbsp;restaurant&nbsp;associated&nbsp;with&nbsp;review<br>
+&nbsp;<br>
+to_dict&nbsp;is&nbsp;a&nbsp;"serialize'&nbsp;type&nbsp;function&nbsp;that&nbsp;allows&nbsp;this&nbsp;object<br>
+to&nbsp;become&nbsp;a&nbsp;json&nbsp;in&nbsp;a&nbsp;much&nbsp;more&nbsp;efficient&nbsp;way<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Reviews">Reviews</a></dd>
+<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Reviews-__init__"><strong>__init__</strong></a>(self, restaurant_id, restaurant_name, yelp_restaurant_id, food_type, food_type_disp, date, rating, username, review, profile_picture_url, review_url, zipcode)</dt></dl>
+
+<dl><dt><a name="Reviews-to_dict"><strong>to_dict</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>date</strong></dt>
+</dl>
+<dl><dt><strong>food_type</strong></dt>
+</dl>
+<dl><dt><strong>food_type_disp</strong></dt>
+</dl>
+<dl><dt><strong>id</strong></dt>
+</dl>
+<dl><dt><strong>location</strong></dt>
+</dl>
+<dl><dt><strong>profile_picture_url</strong></dt>
+</dl>
+<dl><dt><strong>rating</strong></dt>
+</dl>
+<dl><dt><strong>restaurant_id</strong></dt>
+</dl>
+<dl><dt><strong>restaurant_name</strong></dt>
+</dl>
+<dl><dt><strong>review</strong></dt>
+</dl>
+<dl><dt><strong>review_url</strong></dt>
+</dl>
+<dl><dt><strong>username</strong></dt>
+</dl>
+<dl><dt><strong>yelp_restaurant_id</strong></dt>
+</dl>
+<dl><dt><strong>zipcode</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7fd5de7c1710; Reviews&gt;</dl>
+
+<dl><dt><strong>__table__</strong> = Table('reviews', MetaData(bind=Engine(sqlite:///...), table=&lt;reviews&gt;, nullable=False), schema=None)</dl>
+
+<dl><dt><strong>__table_args__</strong> = {'extend_existing': True}</dl>
+
+<dl><dt><strong>__tablename__</strong> = 'reviews'</dl>
+
+<hr>
+Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=Engine(sqlite:///app/db/food_close_to.db))</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
